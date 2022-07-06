@@ -1,0 +1,6 @@
+framework module Pods_TheFellowshipOfAnts {
+  umbrella header "Pods-TheFellowshipOfAnts-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -13,9 +13,13 @@
 		8E4CB37728755FD60033AD85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CB37528755FD60033AD85 /* Main.storyboard */; };
 		8E4CB37928755FD70033AD85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CB37828755FD70033AD85 /* Assets.xcassets */; };
 		8E4CB37C28755FD70033AD85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CB37A28755FD70033AD85 /* LaunchScreen.storyboard */; };
+		F0AAD3A2362C71D8A463C638 /* Pods_TheFellowshipOfAnts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB984A0433A8D03D5F72A69 /* Pods_TheFellowshipOfAnts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		134D6C9707E3F5B44B85CB36 /* Pods-TheFellowshipOfAnts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheFellowshipOfAnts.release.xcconfig"; path = "Target Support Files/Pods-TheFellowshipOfAnts/Pods-TheFellowshipOfAnts.release.xcconfig"; sourceTree = "<group>"; };
+		4A6CDA59AC9B5965235D8C3A /* Pods-TheFellowshipOfAnts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheFellowshipOfAnts.debug.xcconfig"; path = "Target Support Files/Pods-TheFellowshipOfAnts/Pods-TheFellowshipOfAnts.debug.xcconfig"; sourceTree = "<group>"; };
+		7CB984A0433A8D03D5F72A69 /* Pods_TheFellowshipOfAnts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheFellowshipOfAnts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4CB36C28755FD60033AD85 /* TheFellowshipOfAnts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheFellowshipOfAnts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4CB36F28755FD60033AD85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E4CB37128755FD60033AD85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0AAD3A2362C71D8A463C638 /* Pods_TheFellowshipOfAnts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44E6CA64D219C96C23AE5325 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4A6CDA59AC9B5965235D8C3A /* Pods-TheFellowshipOfAnts.debug.xcconfig */,
+				134D6C9707E3F5B44B85CB36 /* Pods-TheFellowshipOfAnts.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		70682DFCD00D704E0591FA49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CB984A0433A8D03D5F72A69 /* Pods_TheFellowshipOfAnts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8E4CB36328755FD60033AD85 = {
 			isa = PBXGroup;
 			children = (
 				8E4CB36E28755FD60033AD85 /* TheFellowshipOfAnts */,
 				8E4CB36D28755FD60033AD85 /* Products */,
+				44E6CA64D219C96C23AE5325 /* Pods */,
+				70682DFCD00D704E0591FA49 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E4CB38028755FD70033AD85 /* Build configuration list for PBXNativeTarget "TheFellowshipOfAnts" */;
 			buildPhases = (
+				DF68C91617B01A81A4E2715F /* [CP] Check Pods Manifest.lock */,
 				8E4CB36828755FD60033AD85 /* Sources */,
 				8E4CB36928755FD60033AD85 /* Frameworks */,
 				8E4CB36A28755FD60033AD85 /* Resources */,
+				8280420B621C82F04D87DC65 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8280420B621C82F04D87DC65 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheFellowshipOfAnts/Pods-TheFellowshipOfAnts-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TheFellowshipOfAnts/Pods-TheFellowshipOfAnts-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheFellowshipOfAnts/Pods-TheFellowshipOfAnts-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF68C91617B01A81A4E2715F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TheFellowshipOfAnts-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8E4CB36828755FD60033AD85 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		8E4CB38128755FD70033AD85 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A6CDA59AC9B5965235D8C3A /* Pods-TheFellowshipOfAnts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +380,7 @@
 		};
 		8E4CB38228755FD70033AD85 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 134D6C9707E3F5B44B85CB36 /* Pods-TheFellowshipOfAnts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
