@@ -16,6 +16,11 @@
 		8EAAA4B9287596F000F3D5CC /* AfterLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA4B8287596F000F3D5CC /* AfterLogInViewController.swift */; };
 		8EAAA4BB2876BE6D00F3D5CC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA4BA2876BE6D00F3D5CC /* MainViewController.swift */; };
 		8EAAA4BD2876BF5700F3D5CC /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA4BC2876BF5700F3D5CC /* TabbarViewController.swift */; };
+		8EAAA4C02877244000F3D5CC /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA4BF2877244000F3D5CC /* EmailLoginViewController.swift */; };
+		8EAAA4C22877259800F3D5CC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA4C12877259800F3D5CC /* Extensions.swift */; };
+		8EAAA4C42877382400F3D5CC /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA4C32877382400F3D5CC /* EmailLoginViewModel.swift */; };
+		8EAAA5222877CA2500F3D5CC /* SignUpForEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA5212877CA2500F3D5CC /* SignUpForEmailViewController.swift */; };
+		8EAAA5252877F98D00F3D5CC /* SignUpForEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA5242877F98D00F3D5CC /* SignUpForEmailViewModel.swift */; };
 		F0AAD3A2362C71D8A463C638 /* Pods_TheFellowshipOfAnts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB984A0433A8D03D5F72A69 /* Pods_TheFellowshipOfAnts.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +39,11 @@
 		8EAAA4B8287596F000F3D5CC /* AfterLogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterLogInViewController.swift; sourceTree = "<group>"; };
 		8EAAA4BA2876BE6D00F3D5CC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8EAAA4BC2876BF5700F3D5CC /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		8EAAA4BF2877244000F3D5CC /* EmailLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
+		8EAAA4C12877259800F3D5CC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8EAAA4C32877382400F3D5CC /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
+		8EAAA5212877CA2500F3D5CC /* SignUpForEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpForEmailViewController.swift; sourceTree = "<group>"; };
+		8EAAA5242877F98D00F3D5CC /* SignUpForEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpForEmailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +106,7 @@
 				8E4CB37A28755FD70033AD85 /* LaunchScreen.storyboard */,
 				8E4CB37D28755FD70033AD85 /* Info.plist */,
 				8EAAA4BC2876BF5700F3D5CC /* TabbarViewController.swift */,
+				8EAAA4C12877259800F3D5CC /* Extensions.swift */,
 			);
 			path = TheFellowshipOfAnts;
 			sourceTree = "<group>";
@@ -104,8 +115,28 @@
 			isa = PBXGroup;
 			children = (
 				8E4CB37328755FD60033AD85 /* LoginViewController.swift */,
+				8EAAA4C52877382800F3D5CC /* EmailLoginViewController */,
+				8EAAA5232877CA4600F3D5CC /* SignUpForEmailViewController */,
 			);
 			path = LoginViewCotroller;
+			sourceTree = "<group>";
+		};
+		8EAAA4C52877382800F3D5CC /* EmailLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8EAAA4BF2877244000F3D5CC /* EmailLoginViewController.swift */,
+				8EAAA4C32877382400F3D5CC /* EmailLoginViewModel.swift */,
+			);
+			path = EmailLoginViewController;
+			sourceTree = "<group>";
+		};
+		8EAAA5232877CA4600F3D5CC /* SignUpForEmailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8EAAA5212877CA2500F3D5CC /* SignUpForEmailViewController.swift */,
+				8EAAA5242877F98D00F3D5CC /* SignUpForEmailViewModel.swift */,
+			);
+			path = SignUpForEmailViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,11 +255,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */,
+				8EAAA4C02877244000F3D5CC /* EmailLoginViewController.swift in Sources */,
 				8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */,
+				8EAAA4C22877259800F3D5CC /* Extensions.swift in Sources */,
 				8EAAA4BD2876BF5700F3D5CC /* TabbarViewController.swift in Sources */,
+				8EAAA5252877F98D00F3D5CC /* SignUpForEmailViewModel.swift in Sources */,
+				8EAAA5222877CA2500F3D5CC /* SignUpForEmailViewController.swift in Sources */,
 				8E4CB37228755FD60033AD85 /* SceneDelegate.swift in Sources */,
 				8EAAA4B9287596F000F3D5CC /* AfterLogInViewController.swift in Sources */,
 				8EAAA4BB2876BE6D00F3D5CC /* MainViewController.swift in Sources */,
+				8EAAA4C42877382400F3D5CC /* EmailLoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

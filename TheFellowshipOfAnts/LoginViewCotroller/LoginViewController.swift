@@ -11,9 +11,10 @@ class LoginViewController: UIViewController {
 
     private let sampleLabel: UILabel = {
         let label = UILabel()
-        label.text = "열심히 살까??"
+        label.text = "Main Title"
         label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
         label.textColor = .black
+        label.textAlignment = .center
         return label
     }()
 
@@ -50,6 +51,16 @@ class LoginViewController: UIViewController {
         return btn
     }()
 
+    private let signupForEmailBtn: UIButton = {
+        let button = UIButton()
+        button.setTitle("이메일로 회원가입", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.layer.cornerRadius = 12
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.black.cgColor
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -59,57 +70,69 @@ class LoginViewController: UIViewController {
     private func bind() {
         emailLoginBtn.rx.tap
             .subscribe(onNext: {
-                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let mainViewController = storyboard.instantiateViewController(identifier: "TabbarViewController")
-                mainViewController.modalPresentationStyle = .fullScreen
-                self.present(mainViewController, animated: false)
+                let emailLoginVC = EmailLoginViewController()
+                emailLoginVC.modalPresentationStyle = .fullScreen
+                self.navigationController?.pushViewController(emailLoginVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        signupForEmailBtn.rx.tap
+            .subscribe(onNext: {
+                let emailLoginVC = EmailLoginViewController()
+                emailLoginVC.modalPresentationStyle = .fullScreen
+                self.navigationController?.pushViewController(emailLoginVC, animated: true)
             })
             .disposed(by: disposeBag)
     }
 
     private func setupUI() {
-        view.addSubview(sampleLabel)
-        view.addSubview(kakaoLoginBtn)
-        view.addSubview(appleLoginBtn)
-        view.addSubview(emailLoginBtn)
-        setupSampleText()
-        setupKakaoLogInUI()
-        setupAppleLogInUI()
-        setupEmailLoginUI()
+        [sampleLabel, kakaoLoginBtn, appleLoginBtn, emailLoginBtn, signupForEmailBtn]
+            .forEach { view.addSubview($0) }
+        configSampleText()
+        configKakaoLogInBtn()
+        configAppleLogInBtn()
+        configEmailLoginBtn()
+        configSignupForEmailBtn()
     }
 
-    private func setupSampleText() {
+    private func configSampleText() {
         sampleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(130)
+            $0.top.equalToSuperview().inset(30)
             $0.leading.trailing.equalToSuperview().inset(50)
             $0.height.equalTo(50)
         }
     }
 
-    private func setupKakaoLogInUI() {
+    private func configKakaoLogInBtn() {
         kakaoLoginBtn.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
+            $0.top.equalTo(sampleLabel.snp.bottom).offset(30)
             $0.leading.trailing.equalToSuperview().inset(50)
             $0.height.equalTo(50)
         }
     }
 
-    private func setupAppleLogInUI() {
+    private func configAppleLogInBtn() {
         appleLoginBtn.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.top.equalTo(kakaoLoginBtn.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(50)
-            $0.height.equalTo(50)
+            $0.height.equalTo(kakaoLoginBtn.snp.height)
         }
     }
 
-    private func setupEmailLoginUI() {
+    private func configEmailLoginBtn() {
 //        signupBtn.addTarget(self, action: #selector(showTabbarController), for: .touchUpInside)
         emailLoginBtn.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.top.equalTo(appleLoginBtn.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(50)
-            $0.height.equalTo(50)
+            $0.height.equalTo(kakaoLoginBtn.snp.height)
+        }
+    }
+
+    private func configSignupForEmailBtn() {
+        signupForEmailBtn.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(30)
+            $0.leading.trailing.equalToSuperview().inset(50)
+            $0.height.equalTo(kakaoLoginBtn.snp.height)
         }
     }
 
@@ -147,28 +170,8 @@ extension LoginViewController {
     }
 }
 
-struct LogInViewControllerPreView: PreviewProvider {
+struct LoginViewControllerPreView: PreviewProvider {
     static var previews: some View {
         LoginViewController().toPreview()
     }
 }
-
-
-#if DEBUG
-extension UIViewController {
-    private struct LogInViewControllerPreView: UIViewControllerRepresentable {
-        let viewController: UIViewController
-
-        func makeUIViewController(context: Context) -> UIViewController {
-            return viewController
-        }
-
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        }
-    }
-
-    func toPreview() -> some View {
-        LogInViewControllerPreView(viewController: self)
-    }
-}
-#endif
