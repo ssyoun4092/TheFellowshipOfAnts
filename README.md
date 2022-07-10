@@ -5,6 +5,9 @@
 ## 🔗 Architecture
 MVVM
 
+## 🔗 서버
+* Firebase
+
 ## 🔗 활용 스택
 * SnapKit
 
