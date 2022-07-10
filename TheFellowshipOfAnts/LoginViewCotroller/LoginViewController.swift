@@ -78,9 +78,9 @@ class LoginViewController: UIViewController {
 
         signupForEmailBtn.rx.tap
             .subscribe(onNext: {
-                let emailLoginVC = EmailLoginViewController()
-                emailLoginVC.modalPresentationStyle = .fullScreen
-                self.navigationController?.pushViewController(emailLoginVC, animated: true)
+                let signupForEmailVC = SignupForEmailViewController()
+                signupForEmailVC.modalPresentationStyle = .fullScreen
+                self.navigationController?.pushViewController(signupForEmailVC, animated: true)
             })
             .disposed(by: disposeBag)
     }

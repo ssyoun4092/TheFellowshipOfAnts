@@ -12,5 +12,6 @@ target 'TheFellowshipOfAnts' do
   pod 'KakaoSDKCommon'
   pod 'KakaoSDKAuth'
   pod 'KakaoSDKUser'
+  pod 'Firebase/Auth'
 
 end
