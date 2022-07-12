@@ -1,4 +1,4 @@
-# TheFellowshipOfAnts
+# 
 해외주식에 관심있는 개미들을 위한 앱
 
 ---
