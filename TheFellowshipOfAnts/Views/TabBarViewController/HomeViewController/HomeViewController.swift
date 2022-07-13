@@ -1,8 +1,6 @@
 import UIKit
-import RxSwift
-import RxCocoa
 
-class TabbarViewController: UITabBarController {
+class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 

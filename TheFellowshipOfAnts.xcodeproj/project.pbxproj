@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E06F682287E96E80017F435 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F681287E96E80017F435 /* HomeViewController.swift */; };
+		8E06F684287E96F60017F435 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F683287E96F60017F435 /* SearchViewController.swift */; };
+		8E06F686287E97020017F435 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F685287E97020017F435 /* ChatViewController.swift */; };
+		8E06F688287E970C0017F435 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F687287E970C0017F435 /* ProfileViewController.swift */; };
+		8E06F68A287EADE60017F435 /* IndexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F689287EADE60017F435 /* IndexModel.swift */; };
+		8E06F68D287EB5830017F435 /* IndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68C287EB5830017F435 /* IndexService.swift */; };
 		8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB36F28755FD60033AD85 /* AppDelegate.swift */; };
 		8E4CB37228755FD60033AD85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB37128755FD60033AD85 /* SceneDelegate.swift */; };
 		8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB37328755FD60033AD85 /* LoginViewController.swift */; };
@@ -29,6 +35,12 @@
 		134D6C9707E3F5B44B85CB36 /* Pods-TheFellowshipOfAnts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheFellowshipOfAnts.release.xcconfig"; path = "Target Support Files/Pods-TheFellowshipOfAnts/Pods-TheFellowshipOfAnts.release.xcconfig"; sourceTree = "<group>"; };
 		4A6CDA59AC9B5965235D8C3A /* Pods-TheFellowshipOfAnts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheFellowshipOfAnts.debug.xcconfig"; path = "Target Support Files/Pods-TheFellowshipOfAnts/Pods-TheFellowshipOfAnts.debug.xcconfig"; sourceTree = "<group>"; };
 		7CB984A0433A8D03D5F72A69 /* Pods_TheFellowshipOfAnts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheFellowshipOfAnts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E06F681287E96E80017F435 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8E06F683287E96F60017F435 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8E06F685287E97020017F435 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		8E06F687287E970C0017F435 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8E06F689287EADE60017F435 /* IndexModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexModel.swift; sourceTree = "<group>"; };
+		8E06F68C287EB5830017F435 /* IndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexService.swift; sourceTree = "<group>"; };
 		8E4CB36C28755FD60033AD85 /* TheFellowshipOfAnts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheFellowshipOfAnts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4CB36F28755FD60033AD85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E4CB37128755FD60033AD85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +104,7 @@
 		8E06F67D287E80580017F435 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8E06F681287E96E80017F435 /* HomeViewController.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -99,6 +112,7 @@
 		8E06F67E287E80610017F435 /* SearchViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8E06F683287E96F60017F435 /* SearchViewController.swift */,
 			);
 			path = SearchViewController;
 			sourceTree = "<group>";
@@ -106,6 +120,7 @@
 		8E06F67F287E806C0017F435 /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8E06F685287E97020017F435 /* ChatViewController.swift */,
 			);
 			path = ChatViewController;
 			sourceTree = "<group>";
@@ -113,8 +128,17 @@
 		8E06F680287E80740017F435 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8E06F687287E970C0017F435 /* ProfileViewController.swift */,
 			);
 			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		8E06F68B287EB5360017F435 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8E06F68C287EB5830017F435 /* IndexService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		8E4CB36328755FD60033AD85 = {
@@ -140,6 +164,7 @@
 			children = (
 				8EDDC29A287C017A00FA025D /* Resources */,
 				8EDDC29B287C019D00FA025D /* Extensions */,
+				8E06F68B287EB5360017F435 /* Services */,
 				8EDDC299287C017400FA025D /* Model */,
 				8EDDC29C287C01AC00FA025D /* Views */,
 			);
@@ -187,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				8EDDC29E287C01F600FA025D /* User.swift */,
+				8E06F689287EADE60017F435 /* IndexModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,13 +376,19 @@
 				8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */,
 				8EAAA4C02877244000F3D5CC /* EmailLoginViewController.swift in Sources */,
 				8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */,
+				8E06F68A287EADE60017F435 /* IndexModel.swift in Sources */,
 				8EAAA4C22877259800F3D5CC /* Extensions.swift in Sources */,
 				8EAAA4BD2876BF5700F3D5CC /* TabbarViewController.swift in Sources */,
 				8EAAA5252877F98D00F3D5CC /* SignupForEmailViewModel.swift in Sources */,
+				8E06F68D287EB5830017F435 /* IndexService.swift in Sources */,
 				8EDDC298287A720D00FA025D /* SignupForEmailModel.swift in Sources */,
+				8E06F684287E96F60017F435 /* SearchViewController.swift in Sources */,
 				8EAAA5222877CA2500F3D5CC /* SignupForEmailViewController.swift in Sources */,
+				8E06F686287E97020017F435 /* ChatViewController.swift in Sources */,
 				8E4CB37228755FD60033AD85 /* SceneDelegate.swift in Sources */,
+				8E06F688287E970C0017F435 /* ProfileViewController.swift in Sources */,
 				8EAAA4C42877382400F3D5CC /* EmailLoginViewModel.swift in Sources */,
+				8E06F682287E96E80017F435 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

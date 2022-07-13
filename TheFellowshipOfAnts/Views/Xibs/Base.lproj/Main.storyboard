@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="4513" y="-323"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="QjM-pk-sck">
             <objects>
-                <viewController id="n5n-u3-IAB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="n5n-u3-IAB" customClass="ProfileViewController" customModule="TheFellowshipOfAnts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wni-oC-TC7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,10 +56,10 @@
             </objects>
             <point key="canvasLocation" x="4513" y="1156"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat View Controller-->
         <scene sceneID="ImE-ro-k6r">
             <objects>
-                <viewController id="jE5-5d-Mot" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" id="jE5-5d-Mot" customClass="ChatViewController" customModule="TheFellowshipOfAnts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mm3-Ry-HkQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="4512" y="384"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="1hG-lx-oaF">
             <objects>
-                <viewController id="3L7-mP-0dP" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="3L7-mP-0dP" customClass="HomeViewController" customModule="TheFellowshipOfAnts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UCe-k9-XM6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,6 +96,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="YFN-Y4-PF8" kind="relationship" relationship="viewControllers" id="97h-AP-Wei"/>
@@ -106,7 +107,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyD-iP-G3H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109" y="106"/>
+            <point key="canvasLocation" x="2204" y="102"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Tsf-sQ-sby">
@@ -126,11 +127,13 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
         </scene>
-        <!--Item 1-->
+        <!--홈-->
         <scene sceneID="oCs-3m-mmK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YFN-Y4-PF8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" selectedImage="house.fill" catalog="system" id="REw-yR-tCj"/>
+                    <tabBarItem key="tabBarItem" title="홈" image="house" catalog="system" id="REw-yR-tCj">
+                        <color key="badgeColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mhf-od-X2m">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -145,11 +148,13 @@
             </objects>
             <point key="canvasLocation" x="3602.898550724638" y="-1073.4375"/>
         </scene>
-        <!--Item 2-->
+        <!--검색-->
         <scene sceneID="qar-xc-jAf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FGm-hr-UYp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="xYN-nf-3zM"/>
+                    <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="xYN-nf-3zM">
+                        <color key="badgeColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WWS-6A-exN">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -164,11 +169,11 @@
             </objects>
             <point key="canvasLocation" x="3603" y="-323"/>
         </scene>
-        <!--Item-->
+        <!--채팅-->
         <scene sceneID="OSN-H7-bbn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QDq-DV-Ui9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="HMn-im-U3g"/>
+                    <tabBarItem key="tabBarItem" title="채팅" image="message" catalog="system" id="HMn-im-U3g"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fzF-9Y-3pL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -183,11 +188,11 @@
             </objects>
             <point key="canvasLocation" x="3603" y="384"/>
         </scene>
-        <!--Item-->
+        <!--프로필-->
         <scene sceneID="C6m-5l-sNs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GhF-q8-s6H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="miQ-ss-gO3"/>
+                    <tabBarItem key="tabBarItem" title="프로필" image="person" catalog="system" id="miQ-ss-gO3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="W52-PA-hZZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -204,7 +209,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="message" catalog="system" width="128" height="113"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -1,8 +1,7 @@
 import UIKit
-import RxSwift
-import RxCocoa
 
-class TabbarViewController: UITabBarController {
+class SearchViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

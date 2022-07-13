@@ -28,6 +28,8 @@ class LoginViewController: UIViewController {
     private let kakaoLoginLogo = UIImageView(image: UIImage(named: "KakaoLoginLogo"))
     private let appleLoginLogo = UIImageView(image: UIImage(named: "AppleLoginLogo"))
 
+    private let testButton = UIButton()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         attribute()
@@ -58,10 +60,11 @@ class LoginViewController: UIViewController {
         appleLoginBtn.setupLoginBtn(title: "Apple로 로그인", titleColor: .white,bgColor: "AppleLoginBgColor", alphaComponent: 1)
         emailLoginBtn.setupLoginBtn(title: "이메일로 로그인", titleColor: .black, bgColor: "EmailLoginBgColor", alphaComponent: 1)
         signupWithEmailBtn.setupLoginBtn(title: "이메일로 회원가입", titleColor: .black, bgColor: "SignupWithEmailBgColor", alphaComponent: 1)
+        testButton.setupLoginBtn(title: "홈화면 바로가기", titleColor: .black, bgColor: "SignupWithEmailBgColor", alphaComponent: 1)
     }
 
     private func setupUI() {
-        [titleLabel, kakaoLoginBtn, appleLoginBtn, emailLoginBtn, signupWithEmailBtn]
+        [titleLabel, kakaoLoginBtn, appleLoginBtn, emailLoginBtn, signupWithEmailBtn, testButton]
             .forEach { view.addSubview($0) }
         kakaoLoginBtn.addSubview(kakaoLoginLogo)
         appleLoginBtn.addSubview(appleLoginLogo)
@@ -70,6 +73,7 @@ class LoginViewController: UIViewController {
         configAppleLogInBtn()
         configEmailLoginBtn()
         configSignupForEmailBtn()
+        configTestButton()
     }
 
     private func configSampleText() {
@@ -131,6 +135,15 @@ class LoginViewController: UIViewController {
             $0.centerY.equalToSuperview()
         }
         appleLoginLogo.contentMode = .scaleAspectFill
+    }
+
+    private func configTestButton() {
+        testButton.snp.makeConstraints {
+            $0.top.equalTo(emailLoginBtn.snp.bottom).offset(50)
+            $0.leading.trailing.equalToSuperview().inset(50)
+            $0.height.equalTo(kakaoLoginBtn.snp.height)
+        }
+        testButton.addTarget(self, action: #selector(showTabbarController), for: .touchUpInside)
     }
 
     @objc func showTabbarController() {
