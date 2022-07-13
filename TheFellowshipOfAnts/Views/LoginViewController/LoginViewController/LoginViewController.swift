@@ -9,60 +9,28 @@ import KakaoSDKUser
 class LoginViewController: UIViewController {
     var disposeBag = DisposeBag()
 
-    private let sampleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Main Title"
-        label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
-        label.textColor = .black
+        label.text = "개미 원정대"
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         return label
     }()
-
-    private let kakaoLoginBtn: UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = UIColor(named: "KakaoColor")
-        btn.setTitle("카카오로 로그인", for: .normal)
-        btn.setTitleColor(UIColor.black.withAlphaComponent(0.85), for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        btn.setImage(UIImage(named: "KakaoLoginLogo"), for: .normal)
-        btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-        btn.imageView?.contentMode = .scaleAspectFit
-        btn.layer.cornerRadius = 12
-        return btn
-    }()
-
-    private let appleLoginBtn: UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = .black
-        btn.setTitle("Apple로 로그인", for: .normal)
-        btn.setImage(UIImage(named: "AppleLoginLogo"), for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        btn.imageView?.contentMode = .scaleAspectFit
-        btn.layer.cornerRadius = 12
-        return btn
-    }()
-
-    private let emailLoginBtn: UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = .darkGray
-        btn.setTitle("이메일로 로그인", for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
-        btn.layer.cornerRadius = 12
-        return btn
-    }()
-
-    private let signupForEmailBtn: UIButton = {
+    private let kakaoLoginBtn = UIButton()
+    private let appleLoginBtn = UIButton()
+    private let emailLoginBtn = UIButton()
+    private let signupWithEmailBtn: UIButton = {
         let button = UIButton()
-        button.setTitle("이메일로 회원가입", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.layer.cornerRadius = 12
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
+    private let kakaoLoginLogo = UIImageView(image: UIImage(named: "KakaoLoginLogo"))
+    private let appleLoginLogo = UIImageView(image: UIImage(named: "AppleLoginLogo"))
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        attribute()
         setupUI()
         bind()
     }
@@ -76,7 +44,7 @@ class LoginViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        signupForEmailBtn.rx.tap
+        signupWithEmailBtn.rx.tap
             .subscribe(onNext: {
                 let signupForEmailVC = SignupForEmailViewController()
                 signupForEmailVC.modalPresentationStyle = .fullScreen
@@ -85,9 +53,18 @@ class LoginViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 
+    private func attribute() {
+        kakaoLoginBtn.setupLoginBtn(title: "카카오로 로그인", titleColor: .black, bgColor: "KakaoLoginBgColor", alphaComponent: 0.85)
+        appleLoginBtn.setupLoginBtn(title: "Apple로 로그인", titleColor: .white,bgColor: "AppleLoginBgColor", alphaComponent: 1)
+        emailLoginBtn.setupLoginBtn(title: "이메일로 로그인", titleColor: .black, bgColor: "EmailLoginBgColor", alphaComponent: 1)
+        signupWithEmailBtn.setupLoginBtn(title: "이메일로 회원가입", titleColor: .black, bgColor: "SignupWithEmailBgColor", alphaComponent: 1)
+    }
+
     private func setupUI() {
-        [sampleLabel, kakaoLoginBtn, appleLoginBtn, emailLoginBtn, signupForEmailBtn]
+        [titleLabel, kakaoLoginBtn, appleLoginBtn, emailLoginBtn, signupWithEmailBtn]
             .forEach { view.addSubview($0) }
+        kakaoLoginBtn.addSubview(kakaoLoginLogo)
+        appleLoginBtn.addSubview(appleLoginLogo)
         configSampleText()
         configKakaoLogInBtn()
         configAppleLogInBtn()
@@ -96,8 +73,8 @@ class LoginViewController: UIViewController {
     }
 
     private func configSampleText() {
-        sampleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(30)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(10)
             $0.leading.trailing.equalToSuperview().inset(50)
             $0.height.equalTo(50)
         }
@@ -105,10 +82,11 @@ class LoginViewController: UIViewController {
 
     private func configKakaoLogInBtn() {
         kakaoLoginBtn.snp.makeConstraints {
-            $0.top.equalTo(sampleLabel.snp.bottom).offset(30)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(30)
             $0.leading.trailing.equalToSuperview().inset(50)
             $0.height.equalTo(50)
         }
+        configKakaoLoginLogo()
     }
 
     private func configAppleLogInBtn() {
@@ -117,10 +95,10 @@ class LoginViewController: UIViewController {
             $0.leading.trailing.equalToSuperview().inset(50)
             $0.height.equalTo(kakaoLoginBtn.snp.height)
         }
+        configAppleLoginLogo()
     }
 
     private func configEmailLoginBtn() {
-//        signupBtn.addTarget(self, action: #selector(showTabbarController), for: .touchUpInside)
         emailLoginBtn.snp.makeConstraints {
             $0.top.equalTo(appleLoginBtn.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(50)
@@ -129,11 +107,30 @@ class LoginViewController: UIViewController {
     }
 
     private func configSignupForEmailBtn() {
-        signupForEmailBtn.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(30)
+        signupWithEmailBtn.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
             $0.leading.trailing.equalToSuperview().inset(50)
             $0.height.equalTo(kakaoLoginBtn.snp.height)
         }
+    }
+
+    private func configKakaoLoginLogo() {
+        kakaoLoginLogo.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(30)
+            $0.width.equalTo(22)
+            $0.centerY.equalToSuperview()
+        }
+        kakaoLoginLogo.contentMode = .scaleAspectFill
+    }
+
+    private func configAppleLoginLogo() {
+        appleLoginLogo.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(30)
+            $0.width.equalTo(22)
+//            $0.height.equalTo(appleLoginBtn.snp.height).multipliedBy(0.25)
+            $0.centerY.equalToSuperview()
+        }
+        appleLoginLogo.contentMode = .scaleAspectFill
     }
 
     @objc func showTabbarController() {
@@ -167,6 +164,16 @@ extension LoginViewController {
                 print("image: \(user?.kakaoAccount?.profile?.profileImageUrl)")
             }
         }
+    }
+}
+
+private extension UIButton {
+    func setupLoginBtn(title: String?, titleColor: UIColor, bgColor: String, alphaComponent: CGFloat) {
+        self.setTitle(title, for: .normal)
+        self.backgroundColor = UIColor(named: bgColor)
+        self.setTitleColor(titleColor.withAlphaComponent(alphaComponent), for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        self.layer.cornerRadius = 12
     }
 }
 
