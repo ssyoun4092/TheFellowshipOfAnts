@@ -13,5 +13,6 @@ target 'TheFellowshipOfAnts' do
   pod 'KakaoSDKAuth'
   pod 'KakaoSDKUser'
   pod 'Firebase/Auth'
+  pod 'Charts'
 
 end

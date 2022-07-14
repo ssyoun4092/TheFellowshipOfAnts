@@ -13,6 +13,10 @@
 		8E06F688287E970C0017F435 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F687287E970C0017F435 /* ProfileViewController.swift */; };
 		8E06F68A287EADE60017F435 /* IndexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F689287EADE60017F435 /* IndexModel.swift */; };
 		8E06F68D287EB5830017F435 /* IndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68C287EB5830017F435 /* IndexService.swift */; };
+		8E06F68F287EDACB0017F435 /* MarketIndexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68E287EDACB0017F435 /* MarketIndexCollectionViewCell.swift */; };
+		8E06F692287EFA450017F435 /* IndexChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F691287EFA440017F435 /* IndexChartView.swift */; };
+		8E06F694287FA1300017F435 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F693287FA1300017F435 /* Section.swift */; };
+		8E06F697287FA19A0017F435 /* MarketIndexSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F696287FA19A0017F435 /* MarketIndexSection.swift */; };
 		8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB36F28755FD60033AD85 /* AppDelegate.swift */; };
 		8E4CB37228755FD60033AD85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB37128755FD60033AD85 /* SceneDelegate.swift */; };
 		8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB37328755FD60033AD85 /* LoginViewController.swift */; };
@@ -41,6 +45,10 @@
 		8E06F687287E970C0017F435 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8E06F689287EADE60017F435 /* IndexModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexModel.swift; sourceTree = "<group>"; };
 		8E06F68C287EB5830017F435 /* IndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexService.swift; sourceTree = "<group>"; };
+		8E06F68E287EDACB0017F435 /* MarketIndexCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketIndexCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E06F691287EFA440017F435 /* IndexChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IndexChartView.swift; path = /Users/macpro/Desktop/SeYeong/Devleoper/Swift/Storyboard/SeYeong/TheFellowshipOfAnts/TheFellowshipOfAnts/Views/TabBarViewController/HomeViewController/IndexChartView.swift; sourceTree = "<absolute>"; };
+		8E06F693287FA1300017F435 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		8E06F696287FA19A0017F435 /* MarketIndexSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketIndexSection.swift; sourceTree = "<group>"; };
 		8E4CB36C28755FD60033AD85 /* TheFellowshipOfAnts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheFellowshipOfAnts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4CB36F28755FD60033AD85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E4CB37128755FD60033AD85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				8E06F681287E96E80017F435 /* HomeViewController.swift */,
+				8E06F68E287EDACB0017F435 /* MarketIndexCollectionViewCell.swift */,
+				8E06F691287EFA440017F435 /* IndexChartView.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -139,6 +149,15 @@
 				8E06F68C287EB5830017F435 /* IndexService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		8E06F695287FA17E0017F435 /* CollectionViewSection */ = {
+			isa = PBXGroup;
+			children = (
+				8E06F693287FA1300017F435 /* Section.swift */,
+				8E06F696287FA19A0017F435 /* MarketIndexSection.swift */,
+			);
+			path = CollectionViewSection;
 			sourceTree = "<group>";
 		};
 		8E4CB36328755FD60033AD85 = {
@@ -211,6 +230,7 @@
 		8EDDC299287C017400FA025D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8E06F695287FA17E0017F435 /* CollectionViewSection */,
 				8EDDC29E287C01F600FA025D /* User.swift */,
 				8E06F689287EADE60017F435 /* IndexModel.swift */,
 			);
@@ -377,6 +397,10 @@
 				8EAAA4C02877244000F3D5CC /* EmailLoginViewController.swift in Sources */,
 				8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */,
 				8E06F68A287EADE60017F435 /* IndexModel.swift in Sources */,
+				8E06F692287EFA450017F435 /* IndexChartView.swift in Sources */,
+				8E06F697287FA19A0017F435 /* MarketIndexSection.swift in Sources */,
+				8E06F694287FA1300017F435 /* Section.swift in Sources */,
+				8E06F68F287EDACB0017F435 /* MarketIndexCollectionViewCell.swift in Sources */,
 				8EAAA4C22877259800F3D5CC /* Extensions.swift in Sources */,
 				8EAAA4BD2876BF5700F3D5CC /* TabbarViewController.swift in Sources */,
 				8EAAA5252877F98D00F3D5CC /* SignupForEmailViewModel.swift in Sources */,

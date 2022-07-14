@@ -1,5 +1,9 @@
 PODS:
   - Alamofire (5.6.1)
+  - Charts (4.0.3):
+    - Charts/Core (= 4.0.3)
+  - Charts/Core (4.0.3):
+    - SwiftAlgorithms (~> 1.0)
   - Firebase/Auth (9.1.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 9.1.0)
@@ -66,8 +70,10 @@ PODS:
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
   - SnapKit (5.6.0)
+  - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
+  - Charts
   - Firebase/Auth
   - KakaoSDKAuth
   - KakaoSDKCommon
@@ -79,6 +85,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Charts
     - Firebase
     - FirebaseAuth
     - FirebaseCore
@@ -96,9 +103,11 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SnapKit
+    - SwiftAlgorithms
 
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  Charts: d959d6723c8eedfdd0735dfc28cb0a71762ac4d9
   Firebase: 91c243d75573ac6e7c9735ec859b72bffb61347d
   FirebaseAuth: 77247e07732ec5cdb20cc58ef40ad84d2fcce847
   FirebaseCore: b7bfc258e996eada23b3666bd6b9a22ca092acb8
@@ -116,7 +125,8 @@ SPEC CHECKSUMS:
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: 151d0da5ca1f67c60753a06e46454cd745d8a0df
+PODFILE CHECKSUM: 9fc3b177b7f85b4e0b571194aa8cf91d003fd60b
 
 COCOAPODS: 1.11.3
