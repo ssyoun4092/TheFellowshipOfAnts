@@ -13,10 +13,13 @@
 		8E06F688287E970C0017F435 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F687287E970C0017F435 /* ProfileViewController.swift */; };
 		8E06F68A287EADE60017F435 /* IndexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F689287EADE60017F435 /* IndexModel.swift */; };
 		8E06F68D287EB5830017F435 /* IndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68C287EB5830017F435 /* IndexService.swift */; };
-		8E06F68F287EDACB0017F435 /* MarketIndexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68E287EDACB0017F435 /* MarketIndexCollectionViewCell.swift */; };
+		8E06F68F287EDACB0017F435 /* MarketIndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68E287EDACB0017F435 /* MarketIndexCell.swift */; };
 		8E06F692287EFA450017F435 /* IndexChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F691287EFA440017F435 /* IndexChartView.swift */; };
 		8E06F694287FA1300017F435 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F693287FA1300017F435 /* Section.swift */; };
 		8E06F697287FA19A0017F435 /* MarketIndexSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F696287FA19A0017F435 /* MarketIndexSection.swift */; };
+		8E06F69928810D060017F435 /* StockRankSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F69828810D060017F435 /* StockRankSection.swift */; };
+		8E06F69E28810E3F0017F435 /* StockRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F69D28810E3F0017F435 /* StockRankCell.swift */; };
+		8E06F6A0288114120017F435 /* StockRankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F69F288114120017F435 /* StockRankCell.xib */; };
 		8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB36F28755FD60033AD85 /* AppDelegate.swift */; };
 		8E4CB37228755FD60033AD85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB37128755FD60033AD85 /* SceneDelegate.swift */; };
 		8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB37328755FD60033AD85 /* LoginViewController.swift */; };
@@ -45,10 +48,13 @@
 		8E06F687287E970C0017F435 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8E06F689287EADE60017F435 /* IndexModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexModel.swift; sourceTree = "<group>"; };
 		8E06F68C287EB5830017F435 /* IndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexService.swift; sourceTree = "<group>"; };
-		8E06F68E287EDACB0017F435 /* MarketIndexCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketIndexCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E06F68E287EDACB0017F435 /* MarketIndexCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketIndexCell.swift; sourceTree = "<group>"; };
 		8E06F691287EFA440017F435 /* IndexChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IndexChartView.swift; path = /Users/macpro/Desktop/SeYeong/Devleoper/Swift/Storyboard/SeYeong/TheFellowshipOfAnts/TheFellowshipOfAnts/Views/TabBarViewController/HomeViewController/IndexChartView.swift; sourceTree = "<absolute>"; };
 		8E06F693287FA1300017F435 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		8E06F696287FA19A0017F435 /* MarketIndexSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketIndexSection.swift; sourceTree = "<group>"; };
+		8E06F69828810D060017F435 /* StockRankSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRankSection.swift; sourceTree = "<group>"; };
+		8E06F69D28810E3F0017F435 /* StockRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRankCell.swift; sourceTree = "<group>"; };
+		8E06F69F288114120017F435 /* StockRankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockRankCell.xib; sourceTree = "<group>"; };
 		8E4CB36C28755FD60033AD85 /* TheFellowshipOfAnts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheFellowshipOfAnts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4CB36F28755FD60033AD85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E4CB37128755FD60033AD85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,8 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				8E06F681287E96E80017F435 /* HomeViewController.swift */,
-				8E06F68E287EDACB0017F435 /* MarketIndexCollectionViewCell.swift */,
-				8E06F691287EFA440017F435 /* IndexChartView.swift */,
+				8E06F69A28810D860017F435 /* SubComponents */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -156,8 +161,36 @@
 			children = (
 				8E06F693287FA1300017F435 /* Section.swift */,
 				8E06F696287FA19A0017F435 /* MarketIndexSection.swift */,
+				8E06F69828810D060017F435 /* StockRankSection.swift */,
 			);
 			path = CollectionViewSection;
+			sourceTree = "<group>";
+		};
+		8E06F69A28810D860017F435 /* SubComponents */ = {
+			isa = PBXGroup;
+			children = (
+				8E06F69B28810D8F0017F435 /* MarektIndexCell */,
+				8E06F69C28810D9A0017F435 /* StockRankCell */,
+			);
+			path = SubComponents;
+			sourceTree = "<group>";
+		};
+		8E06F69B28810D8F0017F435 /* MarektIndexCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E06F68E287EDACB0017F435 /* MarketIndexCell.swift */,
+				8E06F691287EFA440017F435 /* IndexChartView.swift */,
+			);
+			path = MarektIndexCell;
+			sourceTree = "<group>";
+		};
+		8E06F69C28810D9A0017F435 /* StockRankCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E06F69D28810E3F0017F435 /* StockRankCell.swift */,
+				8E06F69F288114120017F435 /* StockRankCell.xib */,
+			);
+			path = StockRankCell;
 			sourceTree = "<group>";
 		};
 		8E4CB36328755FD60033AD85 = {
@@ -336,6 +369,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E06F6A0288114120017F435 /* StockRankCell.xib in Resources */,
 				8E4CB37C28755FD70033AD85 /* LaunchScreen.storyboard in Resources */,
 				8EA2D55D28792E6A00163D6A /* GoogleService-Info.plist in Resources */,
 				8E4CB37928755FD70033AD85 /* Assets.xcassets in Resources */,
@@ -400,7 +434,7 @@
 				8E06F692287EFA450017F435 /* IndexChartView.swift in Sources */,
 				8E06F697287FA19A0017F435 /* MarketIndexSection.swift in Sources */,
 				8E06F694287FA1300017F435 /* Section.swift in Sources */,
-				8E06F68F287EDACB0017F435 /* MarketIndexCollectionViewCell.swift in Sources */,
+				8E06F68F287EDACB0017F435 /* MarketIndexCell.swift in Sources */,
 				8EAAA4C22877259800F3D5CC /* Extensions.swift in Sources */,
 				8EAAA4BD2876BF5700F3D5CC /* TabbarViewController.swift in Sources */,
 				8EAAA5252877F98D00F3D5CC /* SignupForEmailViewModel.swift in Sources */,
@@ -410,7 +444,9 @@
 				8EAAA5222877CA2500F3D5CC /* SignupForEmailViewController.swift in Sources */,
 				8E06F686287E97020017F435 /* ChatViewController.swift in Sources */,
 				8E4CB37228755FD60033AD85 /* SceneDelegate.swift in Sources */,
+				8E06F69928810D060017F435 /* StockRankSection.swift in Sources */,
 				8E06F688287E970C0017F435 /* ProfileViewController.swift in Sources */,
+				8E06F69E28810E3F0017F435 /* StockRankCell.swift in Sources */,
 				8EAAA4C42877382400F3D5CC /* EmailLoginViewModel.swift in Sources */,
 				8E06F682287E96E80017F435 /* HomeViewController.swift in Sources */,
 			);

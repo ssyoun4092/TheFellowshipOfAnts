@@ -1,40 +1,46 @@
 import UIKit
 import SnapKit
 
-class MarketIndexCollectionViewCell: UICollectionViewCell {
+class MarketIndexCell: UICollectionViewCell {
     
     struct MarketIndexInfoModel: MarketInfoModel {
         let indexName: String
         let currentPrice: String
         let priceUpDown: String
+        let updown: UpDown
         let chartViewModel: IndexChartInfo
+
+        enum UpDown {
+            case up
+            case down
+        }
     }
 
-    let indexNameLabel: UILabel = {
+    private lazy var indexNameLabel: UILabel = {
         let label = UILabel()
         label.text = "나스닥"
-        label.backgroundColor = .blue
+//        label.backgroundColor = .blue
         label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         return label
     }()
 
-    let currentPriceLabel: UILabel = {
+    private lazy var currentPriceLabel: UILabel = {
         let label = UILabel()
         label.text = "11000"
-        label.backgroundColor = .red
+//        label.backgroundColor = .red
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         return label
     }()
 
-    let priceUpDownLabel: UILabel = {
+    private lazy var priceUpDownLabel: UILabel = {
         let label = UILabel()
         label.text = "1.57%"
-        label.backgroundColor = .brown
+//        label.backgroundColor = .brown
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         return label
     }()
 
-    private let miniIndexChartView: IndexChartView = {
+    private lazy var miniIndexChartView: IndexChartView = {
         let chartView = IndexChartView()
         return chartView
     }()
@@ -96,6 +102,17 @@ class MarketIndexCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(with viewModel: MarketIndexInfoModel) {
+        switch viewModel.updown {
+        case .up:
+            self.indexNameLabel.textColor = .green
+            self.currentPriceLabel.textColor = .green
+            self.priceUpDownLabel.textColor = .green
+        case .down:
+            self.indexNameLabel.textColor = .green
+            self.currentPriceLabel.textColor = .green
+            self.priceUpDownLabel.textColor = .green
+        }
+
         self.indexNameLabel.text = viewModel.indexName
         self.currentPriceLabel.text = viewModel.currentPrice
         self.priceUpDownLabel.text = viewModel.priceUpDown

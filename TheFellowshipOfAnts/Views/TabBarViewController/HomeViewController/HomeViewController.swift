@@ -20,149 +20,26 @@ class HomeViewController: UIViewController {
         Value(datetime: "2022-06-24", valueOpen: "11351.30957", high: "11613.23047", low: "11337.78027", close: "11607.62012", volume: "9438810000"),
         Value(datetime: "2022-06-23", valueOpen: "11137.67969", high: "11260.26953", low: "11046.28027", close: "11232.19043", volume: "5238210000")
     ]
-    /*
- {
-     "datetime": "2022-06-23",
-     "open": "11137.67969",
-     "high": "11260.26953",
-     "low": "11046.28027",
-     "close": "11232.19043",
-     "volume": "5238210000"
- },
- {
-     "datetime": "2022-06-22",
-     "open": "10941.95020",
-     "high": "11216.76953",
-     "low": "10938.05957",
-     "close": "11053.08008",
-     "volume": "5215100000"
- },
- {
-     "datetime": "2022-06-21",
-     "open": "10974.04980",
-     "high": "11164.99023",
-     "low": "10974.04980",
-     "close": "11069.29980",
-     "volume": "5201450000"
- },
- {
-     "datetime": "2022-06-17",
-     "open": "10697.54980",
-     "high": "10884.70996",
-     "low": "10638.71973",
-     "close": "10798.34961",
-     "volume": "7423600000"
- },
- {
-     "datetime": "2022-06-16",
-     "open": "10806.01953",
-     "high": "10831.07031",
-     "low": "10565.13965",
-     "close": "10646.09961",
-     "volume": "5667810000"
- },
- {
-     "datetime": "2022-06-15",
-     "open": "10968.40039",
-     "high": "11244.25977",
-     "low": "10866.38965",
-     "close": "11099.15039",
-     "volume": "5346110000"
- },
- {
-     "datetime": "2022-06-14",
-     "open": "10897.42969",
-     "high": "10926.80957",
-     "low": "10733.04004",
-     "close": "10828.34961",
-     "volume": "4802090000"
- },
- {
-     "datetime": "2022-06-13",
-     "open": "10986.84961",
-     "high": "11071.48047",
-     "low": "10775.13965",
-     "close": "10809.23047",
-     "volume": "5912360000"
- },
- {
-     "datetime": "2022-06-10",
-     "open": "11543.87988",
-     "high": "11569.15039",
-     "low": "11328.26953",
-     "close": "11340.01953",
-     "volume": "5125980000"
- },
- {
-     "datetime": "2022-06-09",
-     "open": "12016.46973",
-     "high": "12115.05957",
-     "low": "11751.98047",
-     "close": "11754.23047",
-     "volume": "5382110000"
- },
- {
-     "datetime": "2022-06-08",
-     "open": "12147.28027",
-     "high": "12235.78027",
-     "low": "12052.70020",
-     "close": "12086.26953",
-     "volume": "4689310000"
- },
- {
-     "datetime": "2022-06-07",
-     "open": "11925.80957",
-     "high": "12194.86035",
-     "low": "11888.61035",
-     "close": "12175.23047",
-     "volume": "4383960000"
- },
- {
-     "datetime": "2022-06-06",
-     "open": "12200.33008",
-     "high": "12245.40039",
-     "low": "12004.20020",
-     "close": "12061.37012",
-     "volume": "4633950000"
- },
- {
-     "datetime": "2022-06-03",
-     "open": "12097.12012",
-     "high": "12167.44043",
-     "low": "11966.62012",
-     "close": "12012.73047",
-     "volume": "4117290000"
- },
- {
-     "datetime": "2022-06-02",
-     "open": "11945.57031",
-     "high": "12320.12012",
-     "low": "11901.45020",
-     "close": "12316.90039",
-     "volume": "4422830000"
- },
- {
-     "datetime": "2022-06-01",
-     "open": "12176.88965",
-     "high": "12237.94043",
-     "low": "11901.42969",
-     "close": "11994.45996",
-     "volume": "4697810000"
- }*/
+
     let sections: [Section] = [
-        MarketIndexSection(viewModel: nil)
+        MarketIndexSection(viewModel: nil),
+        StockRankSection(viewModel: nil)
     ]
 
-    lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: colleectionViewLayout)
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: colleectionViewLayout
+        )
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(MarketIndexCollectionViewCell.self, forCellWithReuseIdentifier: "MarketIndexCollectionViewCell")
+        collectionView.register(MarketIndexCell.self, forCellWithReuseIdentifier: "MarketIndexCell")
+        collectionView.register(StockRankCell.self, forCellWithReuseIdentifier: "StockRankCell")
         collectionView.dataSource = self
         collectionView.delegate = self
         return collectionView
     }()
 
-    lazy var colleectionViewLayout: UICollectionViewLayout = {
+    private lazy var colleectionViewLayout: UICollectionViewLayout = {
         let sections = self.sections
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _  -> NSCollectionLayoutSection? in
             sections[sectionIndex].layout()
@@ -194,16 +71,26 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketIndexCollectionViewCell", for: indexPath) as? MarketIndexCollectionViewCell else { return UICollectionViewCell() }
-        let model = dummyModel[indexPath.row]
-        let data = dummyModel.map { $0.close }.map { Double($0)! }
-        cell.configure(with: .init(
-            indexName: "Nasdaq",
-            currentPrice: "111000",
-            priceUpDown: "1.58%",
-            chartViewModel: .init(data: data))
-        )
-        return cell
+        switch indexPath.section {
+        case 0:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MarketIndexCell", for: indexPath) as? MarketIndexCell else { return UICollectionViewCell() }
+            let data = dummyModel.map { $0.close }.map { Double($0)! }
+            cell.configure(with: .init(
+                indexName: "Nasdaq",
+                currentPrice: "111000",
+                priceUpDown: "1.58%",
+                updown: .up,
+                chartViewModel: .init(data: data))
+            )
+            return cell
+        case 1:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StockRankCell", for: indexPath) as? StockRankCell else { return UICollectionViewCell() }
+
+            return cell
+        default:
+            print("None")
+            return UICollectionViewCell()
+        }
     }
 }
 
