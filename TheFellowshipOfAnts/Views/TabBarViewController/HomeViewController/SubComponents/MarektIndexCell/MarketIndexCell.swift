@@ -19,7 +19,6 @@ class MarketIndexCell: UICollectionViewCell {
     private lazy var indexNameLabel: UILabel = {
         let label = UILabel()
         label.text = "나스닥"
-//        label.backgroundColor = .blue
         label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         return label
     }()
@@ -27,7 +26,6 @@ class MarketIndexCell: UICollectionViewCell {
     private lazy var currentPriceLabel: UILabel = {
         let label = UILabel()
         label.text = "11000"
-//        label.backgroundColor = .red
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         return label
     }()
@@ -35,7 +33,6 @@ class MarketIndexCell: UICollectionViewCell {
     private lazy var priceUpDownLabel: UILabel = {
         let label = UILabel()
         label.text = "1.57%"
-//        label.backgroundColor = .brown
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         return label
     }()
