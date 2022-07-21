@@ -23,7 +23,6 @@ final class StockRankSectionView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.register(StockRankCollectionViewCell.self, forCellWithReuseIdentifier: "StockRankCollectionViewCell")
         collectionView.isPagingEnabled = true
-        collectionView.backgroundColor = .gray
         collectionView.dataSource = self
         collectionView.delegate = self
 
@@ -32,34 +31,28 @@ final class StockRankSectionView: UIView {
 
     private lazy var collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewCompositionalLayout { _, _ -> NSCollectionLayoutSection in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.15))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.92), heightDimension: .fractionalHeight(1.0))
-            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 4)
-            group.interItemSpacing = .fixed(5)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.7), heightDimension: .fractionalHeight(1.0))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 5)
+            group.interItemSpacing = .fixed(28)
 
             let section = NSCollectionLayoutSection(group: group)
+            section.visibleItemsInvalidationHandler = { (items, point, env) in
+                print(point.x)
+            }
             section.interGroupSpacing = 15
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-            section.orthogonalScrollingBehavior = .continuous
+            section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0)
+            section.orthogonalScrollingBehavior = .groupPaging
 
             return section
-
-//            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.2))
-//            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//
-//            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.92), heightDimension: .fractionalHeight(1))
-//            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 4)
-//
-//            let section = NSCollectionLayoutSection(group: group)
-//            section.orthogonalScrollingBehavior = .groupPagingCentered
-//
-//            return section
         }
 
         return layout
     }()
+
+    private let dividerView = DividerView(frame: .zero)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,7 +64,8 @@ final class StockRankSectionView: UIView {
     }
 
     func setupUI() {
-        [titleLabel, stocksCollectionView].forEach { addSubview($0) }
+        [titleLabel, stocksCollectionView, dividerView]
+            .forEach { addSubview($0) }
 
         titleLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(10)
@@ -80,7 +74,14 @@ final class StockRankSectionView: UIView {
         stocksCollectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview().inset(10)
-            $0.height.equalTo(200)
+            $0.height.equalTo(400)
+        }
+
+        dividerView.snp.makeConstraints {
+            $0.top.equalTo(stocksCollectionView.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(10)
+            $0.bottom.equalToSuperview()
         }
     }
 }
@@ -95,9 +96,9 @@ extension StockRankSectionView: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let ranks = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StockRankCollectionViewCell", for: indexPath) as? StockRankCollectionViewCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .purple
-        cell.setupUI()
+        cell.configure(rank: ranks[indexPath.row])
 
         return cell
     }

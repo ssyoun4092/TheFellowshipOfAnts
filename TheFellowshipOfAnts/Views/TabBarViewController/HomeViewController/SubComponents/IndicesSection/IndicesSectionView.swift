@@ -3,17 +3,28 @@ import SnapKit
 
 final class IndicesSectionView: UIView {
     private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = .zero
-        layout.scrollDirection = .horizontal
-
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.isPagingEnabled = true
         collectionView.isScrollEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(IndexCollectionViewCell.self, forCellWithReuseIdentifier: "IndexCollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
 
         return collectionView
+    }()
+
+    private lazy var flowLayout: UICollectionViewLayout = {
+        let cellWidth = UIScreen.main.bounds.width - 60
+        let spacing: CGFloat = 30
+
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: cellWidth, height: 120)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        layout.minimumLineSpacing = CGFloat(spacing * 2)
+
+        return layout
     }()
 
     private lazy var pageControl: UIPageControl = {
@@ -23,6 +34,8 @@ final class IndicesSectionView: UIView {
 
         return pageControl
     }()
+
+    private let dividerView = DividerView(frame: .zero)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,16 +47,24 @@ final class IndicesSectionView: UIView {
     }
 
     private func setupUI() {
-        [collectionView, pageControl].forEach { addSubview($0) }
+        [collectionView, pageControl, dividerView]
+            .forEach { addSubview($0) }
 
         collectionView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(300)
+            $0.height.equalTo(150)
         }
 
         pageControl.snp.makeConstraints {
             $0.top.equalTo(collectionView.snp.bottom).offset(15)
             $0.centerX.equalToSuperview()
+        }
+
+        dividerView.snp.makeConstraints {
+            $0.top.equalTo(pageControl.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(10)
+            $0.bottom.equalToSuperview()
         }
     }
 }
@@ -55,31 +76,20 @@ extension IndicesSectionView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IndexCollectionViewCell", for: indexPath) as? IndexCollectionViewCell else { return UICollectionViewCell() }
-//        cell.backgroundColor = .systemBlue
-        cell.setupUI()
 
         return cell
     }
 }
 
-extension IndicesSectionView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+extension IndicesSectionView: UICollectionViewDelegate {
 
-        return CGSize(width: 300, height: 150)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 20, bottom: 30, right: 20)
-    }
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//
-//        return CGFloat(10)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//
-//        return .zero
-//    }
 }
 
+extension IndicesSectionView: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.x
+        let width = UIScreen.main.bounds.width
+        let currentPage = Int(offset / width)
+        self.pageControl.currentPage = currentPage
+    }
+}

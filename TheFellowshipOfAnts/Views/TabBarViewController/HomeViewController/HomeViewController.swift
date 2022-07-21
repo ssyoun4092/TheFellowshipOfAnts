@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 import SnapKit
 import RxSwift
 import RxCocoa
@@ -9,14 +10,6 @@ class HomeViewController: UIViewController {
 
     let indicesSectionView = IndicesSectionView()
     let stockRankSectionView = StockRankSectionView()
-    let spacingView = UIView()
-
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "TEST"
-        label.font = .systemFont(ofSize: 50, weight: .bold)
-        return label
-    }()
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
@@ -25,7 +18,12 @@ class HomeViewController: UIViewController {
         stackView.distribution = .equalSpacing
         stackView.spacing = 0.0
 
-        [indicesSectionView, stockRankSectionView, titleLabel]
+        let spacingView = UIView()
+        spacingView.snp.makeConstraints {
+            $0.height.equalTo(70)
+        }
+
+        [indicesSectionView, stockRankSectionView, spacingView]
             .forEach { stackView.addArrangedSubview($0) }
 
         return stackView
@@ -55,9 +53,11 @@ class HomeViewController: UIViewController {
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+}
 
-        spacingView.snp.makeConstraints {
-            $0.height.equalTo(70)
-        }
+struct HomeViewControllerPreView: PreviewProvider {
+    static var previews: some View {
+        HomeViewController().toPreview()
     }
 }

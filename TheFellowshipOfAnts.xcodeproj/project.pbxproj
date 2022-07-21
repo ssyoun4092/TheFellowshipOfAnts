@@ -24,6 +24,7 @@
 		8E4CB37728755FD60033AD85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CB37528755FD60033AD85 /* Main.storyboard */; };
 		8E4CB37928755FD70033AD85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CB37828755FD70033AD85 /* Assets.xcassets */; };
 		8E4CB37C28755FD70033AD85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CB37A28755FD70033AD85 /* LaunchScreen.storyboard */; };
+		8E5B087E28894F2400107C2E /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5B087D28894F2400107C2E /* DividerView.swift */; };
 		8EA2D55D28792E6A00163D6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EA2D55C28792E6A00163D6A /* GoogleService-Info.plist */; };
 		8EA4A3BA2887DD39009E8161 /* StockRankSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4A3B92887DD39009E8161 /* StockRankSectionView.swift */; };
 		8EA4A3BC2887DD73009E8161 /* StockRankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4A3BB2887DD73009E8161 /* StockRankCollectionViewCell.swift */; };
@@ -61,6 +62,7 @@
 		8E4CB37828755FD70033AD85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E4CB37B28755FD70033AD85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E4CB37D28755FD70033AD85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E5B087D28894F2400107C2E /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		8EA2D55C28792E6A00163D6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8EA4A3B92887DD39009E8161 /* StockRankSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRankSectionView.swift; sourceTree = "<group>"; };
 		8EA4A3BB2887DD73009E8161 /* StockRankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRankCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			children = (
 				8E06F681287E96E80017F435 /* HomeViewController.swift */,
 				8E251D73288791BD00694346 /* SubComponents */,
+				8E5B087D28894F2400107C2E /* DividerView.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				8EAAA4BD2876BF5700F3D5CC /* TabbarViewController.swift in Sources */,
 				8EAAA5252877F98D00F3D5CC /* SignupForEmailViewModel.swift in Sources */,
 				8E251D752887925400694346 /* IndicesSectionView.swift in Sources */,
+				8E5B087E28894F2400107C2E /* DividerView.swift in Sources */,
 				8E06F68D287EB5830017F435 /* IndexService.swift in Sources */,
 				8EDDC298287A720D00FA025D /* SignupForEmailModel.swift in Sources */,
 				8E06F684287E96F60017F435 /* SearchViewController.swift in Sources */,

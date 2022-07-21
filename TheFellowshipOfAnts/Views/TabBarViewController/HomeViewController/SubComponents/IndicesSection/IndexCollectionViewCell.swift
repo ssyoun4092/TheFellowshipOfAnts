@@ -42,18 +42,30 @@ class IndexCollectionViewCell: UICollectionViewCell {
         return chartView
     }()
 
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setupUI()
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
 
-    func setupUI() {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupUI() {
+        self.backgroundColor = .white
+        self.contentView.layer.cornerRadius = 15.0
+        self.contentView.layer.borderWidth = 1.0
+        self.contentView.layer.borderColor = UIColor.lightGray.cgColor
+        self.contentView.layer.masksToBounds = true
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowRadius = 5
+        self.layer.cornerRadius = 15.0
+        self.layer.masksToBounds = false
+        self.layer.shadowOpacity = 0.3
+
         [indexName, currentPriceLabel, DTDLabel, fluctuationRateLabel, chartView]
-            .forEach { contentView.addSubview($0) }
+            .forEach { addSubview($0) }
 
         indexName.snp.makeConstraints {
             $0.leading.top.equalToSuperview().inset(15)
