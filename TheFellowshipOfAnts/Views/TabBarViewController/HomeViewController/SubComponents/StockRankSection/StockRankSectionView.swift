@@ -23,6 +23,7 @@ final class StockRankSectionView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.register(StockRankCollectionViewCell.self, forCellWithReuseIdentifier: "StockRankCollectionViewCell")
         collectionView.isPagingEnabled = true
+        collectionView.alwaysBounceVertical = false
         collectionView.dataSource = self
         collectionView.delegate = self
 
@@ -34,16 +35,14 @@ final class StockRankSectionView: UIView {
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.7), heightDimension: .fractionalHeight(1.0))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(1.0))
             let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 5)
             group.interItemSpacing = .fixed(28)
 
             let section = NSCollectionLayoutSection(group: group)
-            section.visibleItemsInvalidationHandler = { (items, point, env) in
-                print(point.x)
-            }
             section.interGroupSpacing = 15
-            section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0)
+            let trailingSpacing = UIScreen.main.bounds.width * 0.1
+            section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 0, bottom: 15, trailing: trailingSpacing)
             section.orthogonalScrollingBehavior = .groupPaging
 
             return section
@@ -51,8 +50,6 @@ final class StockRankSectionView: UIView {
 
         return layout
     }()
-
-    private let dividerView = DividerView(frame: .zero)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,7 +61,7 @@ final class StockRankSectionView: UIView {
     }
 
     func setupUI() {
-        [titleLabel, stocksCollectionView, dividerView]
+        [titleLabel, stocksCollectionView]
             .forEach { addSubview($0) }
 
         titleLabel.snp.makeConstraints {
@@ -75,12 +72,6 @@ final class StockRankSectionView: UIView {
             $0.top.equalTo(titleLabel.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(400)
-        }
-
-        dividerView.snp.makeConstraints {
-            $0.top.equalTo(stocksCollectionView.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(10)
             $0.bottom.equalToSuperview()
         }
     }

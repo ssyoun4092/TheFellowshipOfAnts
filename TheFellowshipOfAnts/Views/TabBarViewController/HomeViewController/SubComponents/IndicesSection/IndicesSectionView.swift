@@ -15,8 +15,8 @@ final class IndicesSectionView: UIView {
     }()
 
     private lazy var flowLayout: UICollectionViewLayout = {
-        let cellWidth = UIScreen.main.bounds.width - 60
         let spacing: CGFloat = 30
+        let cellWidth = UIScreen.main.bounds.width - (2 * spacing)
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -31,11 +31,11 @@ final class IndicesSectionView: UIView {
         let pageControl = UIPageControl()
         pageControl.numberOfPages = 3
         pageControl.currentPageIndicatorTintColor = .systemRed
+        pageControl.pageIndicatorTintColor = .systemRed.withAlphaComponent(0.3)
+        pageControl.isUserInteractionEnabled = false
 
         return pageControl
     }()
-
-    private let dividerView = DividerView(frame: .zero)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,7 +47,7 @@ final class IndicesSectionView: UIView {
     }
 
     private func setupUI() {
-        [collectionView, pageControl, dividerView]
+        [collectionView, pageControl]
             .forEach { addSubview($0) }
 
         collectionView.snp.makeConstraints {
@@ -58,12 +58,6 @@ final class IndicesSectionView: UIView {
         pageControl.snp.makeConstraints {
             $0.top.equalTo(collectionView.snp.bottom).offset(15)
             $0.centerX.equalToSuperview()
-        }
-
-        dividerView.snp.makeConstraints {
-            $0.top.equalTo(pageControl.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(10)
             $0.bottom.equalToSuperview()
         }
     }

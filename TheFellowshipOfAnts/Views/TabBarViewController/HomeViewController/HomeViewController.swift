@@ -10,20 +10,22 @@ class HomeViewController: UIViewController {
 
     let indicesSectionView = IndicesSectionView()
     let stockRankSectionView = StockRankSectionView()
+    let majorCommoditiesSectionView = MajorCommoditiesSectionView()
+    let majorETFSectionView = MajorETFSectionView()
 
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
 
         stackView.distribution = .equalSpacing
-        stackView.spacing = 0.0
+        stackView.spacing = 13.0
 
         let spacingView = UIView()
         spacingView.snp.makeConstraints {
             $0.height.equalTo(70)
         }
 
-        [indicesSectionView, stockRankSectionView, spacingView]
+        [indicesSectionView, stockRankSectionView, majorCommoditiesSectionView, majorETFSectionView, spacingView]
             .forEach { stackView.addArrangedSubview($0) }
 
         return stackView
