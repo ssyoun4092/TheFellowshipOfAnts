@@ -30,6 +30,20 @@ class MajorCommodityCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    private lazy var tempLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemBlue
+
+        return view
+    }()
+
+    private lazy var tempRedLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemRed
+
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -44,7 +58,7 @@ class MajorCommodityCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupUI() {
-        [descriptionLabel, commodityName, fluctuationRateLabel, currentPriceLabel]
+        [descriptionLabel, commodityName, fluctuationRateLabel, currentPriceLabel, tempLine, tempRedLine]
             .forEach { contentView.addSubview($0)
         }
 
@@ -64,6 +78,18 @@ class MajorCommodityCollectionViewCell: UICollectionViewCell {
         fluctuationRateLabel.snp.makeConstraints {
             $0.bottom.equalTo(currentPriceLabel.snp.top).offset(5)
             $0.trailing.equalTo(currentPriceLabel)
+        }
+
+        tempLine.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
+            $0.width.equalTo(3)
+        }
+
+        tempRedLine.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset((29.1))
+            $0.top.bottom.equalToSuperview()
+            $0.width.equalTo(1)
         }
     }
 }
