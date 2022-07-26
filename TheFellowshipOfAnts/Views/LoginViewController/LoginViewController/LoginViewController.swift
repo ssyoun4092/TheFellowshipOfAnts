@@ -13,7 +13,8 @@ class LoginViewController: UIViewController {
         let label = UILabel()
         label.text = "개미 원정대"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+//        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        label.font = UIFont(name: "NanumGothicBold", size: 50)
         return label
     }()
     private let kakaoLoginBtn = UIButton()
