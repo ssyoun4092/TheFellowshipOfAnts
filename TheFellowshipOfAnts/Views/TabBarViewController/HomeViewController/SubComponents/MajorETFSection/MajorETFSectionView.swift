@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 class MajorETFSectionView: UIView {
-    let descriptions: [String] = ["금", "원유", "니켈", "옥수수"]
+    private let descriptions: [String] = ["SPY", "TLT", "SHY", "VIX"]
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -14,8 +14,9 @@ class MajorETFSectionView: UIView {
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.register(MajorETFCollectionViewCell.self, forCellWithReuseIdentifier: "MajorETFCollectionViewCell")
-        collectionView.isPagingEnabled = true
+        collectionView.register(MajorCommodityCollectionViewCell.self, forCellWithReuseIdentifier: "MajorCommodityCollectionViewCell")
+        collectionView.decelerationRate = .fast
+        collectionView.isPagingEnabled = false
         collectionView.isScrollEnabled = true
         collectionView.alwaysBounceVertical = false
         collectionView.dataSource = self
@@ -33,6 +34,9 @@ class MajorETFSectionView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: cellWidth, height: 120)
+        layout.minimumLineSpacing = (spacing / 2)
+
+        let sideSpacing = ((cellWidth * 3) + (2 * spacing) - UIScreen.main.bounds.width) / 2
 
         return layout
     }()
@@ -44,6 +48,11 @@ class MajorETFSectionView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        collectionView.scrollToItem(at: IndexPath(item: descriptions.count, section: 0), at: .centeredHorizontally, animated: false)
     }
 
     private func setupUI() {
@@ -66,27 +75,51 @@ class MajorETFSectionView: UIView {
 extension MajorETFSectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 4
+        return descriptions.count * 5
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MajorETFCollectionViewCell", for: indexPath) as? MajorETFCollectionViewCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .lightGray.withAlphaComponent(0.5)
-        cell.configure(description: descriptions[indexPath.row])
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MajorCommodityCollectionViewCell", for: indexPath) as? MajorCommodityCollectionViewCell else { return UICollectionViewCell() }
+        let itemIndex = indexPath.row % descriptions.count
+        cell.configure(description: descriptions[itemIndex])
 
         return cell
     }
 }
 
 extension MajorETFSectionView: UICollectionViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let cellWidth = (UIScreen.main.bounds.width - (2 * 20)) / 2.5
-        let offsetX = Int(scrollView.contentOffset.x)
-        let currentPage = offsetX / Int(cellWidth)
-        let indexPath = collectionView.indexPathsForVisibleItems[0]
 
-        print("offsetX: \(offsetX)")
-        print("currentPage: \(currentPage)")
-        print("visibleIndexPath: \(indexPath)")
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        let cellWidth = layout.itemSize.width
+        let spacing = layout.minimumLineSpacing
+        let cellWidthIncludingSpacing = cellWidth + spacing
+
+        let offset = scrollView.contentOffset.x
+        let estimatedIndex = offset / cellWidthIncludingSpacing
+
+        let index: Int
+
+        if velocity.x > 0 {
+            index = Int(ceil(estimatedIndex))
+        } else if velocity.x < 0 {
+            index = Int(floor(estimatedIndex))
+        } else {
+            index = Int(round(estimatedIndex))
+        }
+
+        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing + ((cellWidth / 4) * 0.75), y: 0)
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var item = collectionView.indexPathsForVisibleItems[0].item
+        print(collectionView.indexPathsForVisibleItems)
+        if item == 1 {
+            item = descriptions.count + 2
+            collectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .centeredHorizontally, animated: false)
+        } else if item == descriptions.count * 3 - 3 {
+            item = descriptions.count + 2
+            collectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .centeredHorizontally, animated: false)
+        }
     }
 }

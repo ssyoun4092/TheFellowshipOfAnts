@@ -39,6 +39,14 @@ class MajorETFCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        descriptionLabel.text = nil
+        ETFName.text = nil
+        fluctuationRateLabel.text = nil
+        currentPriceLabel.text = nil
+    }
+
     func configure(description: String) {
         self.descriptionLabel.text = description
     }

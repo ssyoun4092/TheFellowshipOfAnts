@@ -29,6 +29,7 @@
 		8E81F54B288A4F1400514D8C /* MajorCommodityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E81F54A288A4F1400514D8C /* MajorCommodityCollectionViewCell.swift */; };
 		8E81F54E288ABCF100514D8C /* MajorETFSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E81F54D288ABCF100514D8C /* MajorETFSectionView.swift */; };
 		8E81F550288ABCFF00514D8C /* MajorETFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E81F54F288ABCFF00514D8C /* MajorETFCollectionViewCell.swift */; };
+		8E81F560288CDEF200514D8C /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E81F55F288CDEF200514D8C /* UILabel.swift */; };
 		8EA2D55D28792E6A00163D6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EA2D55C28792E6A00163D6A /* GoogleService-Info.plist */; };
 		8EA4A3BA2887DD39009E8161 /* StockRankSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4A3B92887DD39009E8161 /* StockRankSectionView.swift */; };
 		8EA4A3BC2887DD73009E8161 /* StockRankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4A3BB2887DD73009E8161 /* StockRankCollectionViewCell.swift */; };
@@ -71,6 +72,7 @@
 		8E81F54A288A4F1400514D8C /* MajorCommodityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCommodityCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E81F54D288ABCF100514D8C /* MajorETFSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorETFSectionView.swift; sourceTree = "<group>"; };
 		8E81F54F288ABCFF00514D8C /* MajorETFCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorETFCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E81F55F288CDEF200514D8C /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		8EA2D55C28792E6A00163D6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8EA4A3B92887DD39009E8161 /* StockRankSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRankSectionView.swift; sourceTree = "<group>"; };
 		8EA4A3BB2887DD73009E8161 /* StockRankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRankCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				8EAAA4C12877259800F3D5CC /* UIViewController.swift */,
 				8E251D7D28879A9E00694346 /* UITextField.swift */,
 				8E251D7F28879AC900694346 /* UIFont.swift */,
+				8E81F55F288CDEF200514D8C /* UILabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				8E251D8028879AC900694346 /* UIFont.swift in Sources */,
 				8E81F54B288A4F1400514D8C /* MajorCommodityCollectionViewCell.swift in Sources */,
 				8E06F68A287EADE60017F435 /* IndexModel.swift in Sources */,
+				8E81F560288CDEF200514D8C /* UILabel.swift in Sources */,
 				8EA4A3BC2887DD73009E8161 /* StockRankCollectionViewCell.swift in Sources */,
 				8EAAA4C22877259800F3D5CC /* UIViewController.swift in Sources */,
 				8EAAA4BD2876BF5700F3D5CC /* TabbarViewController.swift in Sources */,

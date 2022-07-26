@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 class MajorCommoditiesSectionView: UIView {
-    let descriptions: [String] = ["금", "원유", "니켈", "옥수수", "은", "카카오"]
+    private let descriptions: [String] = ["금", "원유", "니켈", "옥수수", "은", "카카오"]
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -82,7 +82,6 @@ extension MajorCommoditiesSectionView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MajorCommodityCollectionViewCell", for: indexPath) as? MajorCommodityCollectionViewCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .lightGray.withAlphaComponent(0.5)
         let itemIndex = indexPath.row % descriptions.count
         cell.configure(description: descriptions[itemIndex])
 
@@ -91,16 +90,6 @@ extension MajorCommoditiesSectionView: UICollectionViewDataSource {
 }
 
 extension MajorCommoditiesSectionView: UICollectionViewDelegate {
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        let cellWidth = (UIScreen.main.bounds.width - (2 * 20)) / 2.5
-//        let offsetX = Int(scrollView.contentOffset.x)
-//        let currentPage = offsetX / Int(cellWidth)
-//        let indexPath = collectionView.indexPathsForVisibleItems[0]
-//
-//        print("offsetX: \(offsetX)")
-//        print("currentPage: \(currentPage)")
-//        print("visibleIndexPath: \(indexPath)")
-//    }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
@@ -126,6 +115,7 @@ extension MajorCommoditiesSectionView: UICollectionViewDelegate {
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         var item = collectionView.indexPathsForVisibleItems[0].item
+        print(collectionView.indexPathsForVisibleItems)
         if item == 1 {
             item = descriptions.count + 2
             collectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .centeredHorizontally, animated: false)

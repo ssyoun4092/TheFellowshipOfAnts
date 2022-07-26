@@ -5,6 +5,8 @@ class MajorCommodityCollectionViewCell: UICollectionViewCell {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "원유"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        label.textColor = .black.withAlphaComponent(0.5)
 
         return label
     }()
@@ -12,6 +14,10 @@ class MajorCommodityCollectionViewCell: UICollectionViewCell {
     private lazy var commodityName: UILabel = {
         let label = UILabel()
         label.text = "WTI"
+        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.01
 
         return label
     }()
@@ -19,29 +25,21 @@ class MajorCommodityCollectionViewCell: UICollectionViewCell {
     private lazy var fluctuationRateLabel: UILabel = {
         let label = UILabel()
         label.text = "+1.34%"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        label.setLetterSpacing(by: -0.5)
 
         return label
     }()
 
     private lazy var currentPriceLabel: UILabel = {
         let label = UILabel()
-        label.text = "$97.59"
+        label.text = "$395.05"
+        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        label.textAlignment = .right
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.01
 
         return label
-    }()
-
-    private lazy var tempLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBlue
-
-        return view
-    }()
-
-    private lazy var tempRedLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemRed
-
-        return view
     }()
 
     override init(frame: CGRect) {
@@ -58,7 +56,15 @@ class MajorCommodityCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupUI() {
-        [descriptionLabel, commodityName, fluctuationRateLabel, currentPriceLabel, tempLine, tempRedLine]
+        self.backgroundColor = .white
+        self.contentView.layer.cornerRadius = 15.0
+        self.contentView.layer.borderWidth = 1.0
+        self.contentView.layer.borderColor = UIColor.lightGray.cgColor
+        self.contentView.layer.masksToBounds = true
+        self.layer.cornerRadius = 15.0
+        self.layer.masksToBounds = false
+
+        [descriptionLabel, commodityName, fluctuationRateLabel, currentPriceLabel]
             .forEach { contentView.addSubview($0)
         }
 
@@ -67,29 +73,21 @@ class MajorCommodityCollectionViewCell: UICollectionViewCell {
         }
 
         commodityName.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(5)
+            $0.top.equalTo(descriptionLabel.snp.bottom)
             $0.leading.equalTo(descriptionLabel.snp.leading)
+            $0.width.equalToSuperview { $0.snp.width }.multipliedBy(0.2)
+            $0.height.equalTo(20)
         }
 
         currentPriceLabel.snp.makeConstraints {
             $0.trailing.bottom.equalToSuperview().inset(15)
+            $0.width.equalToSuperview { $0.snp.width }.multipliedBy(0.5)
+            $0.height.equalTo(25)
         }
 
         fluctuationRateLabel.snp.makeConstraints {
-            $0.bottom.equalTo(currentPriceLabel.snp.top).offset(5)
+            $0.bottom.equalTo(currentPriceLabel.snp.top)
             $0.trailing.equalTo(currentPriceLabel)
-        }
-
-        tempLine.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.bottom.equalToSuperview()
-            $0.width.equalTo(3)
-        }
-
-        tempRedLine.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset((29.1))
-            $0.top.bottom.equalToSuperview()
-            $0.width.equalTo(1)
         }
     }
 }
