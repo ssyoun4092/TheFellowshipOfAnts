@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="101.78571428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="XZ6-dX-bRl">
             <objects>
-                <viewController id="IA1-bf-a7U" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="IA1-bf-a7U" customClass="SearchViewController" customModule="TheFellowshipOfAnts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7H1-Pe-yB8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,13 +151,12 @@
         <!--검색-->
         <scene sceneID="qar-xc-jAf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FGm-hr-UYp" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FGm-hr-UYp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="xYN-nf-3zM">
                         <color key="badgeColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WWS-6A-exN">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
