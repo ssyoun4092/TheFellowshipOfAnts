@@ -54,8 +54,7 @@ class StockRankCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupUI() {
-        [rankLabel, logoImage, stockName, stockPriceLabel, fluctuationRateLabel]
-            .forEach { contentView.addSubview($0) }
+        contentView.addSubviews([rankLabel, logoImage, stockName, stockPriceLabel, fluctuationRateLabel])
 
         rankLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(10)
