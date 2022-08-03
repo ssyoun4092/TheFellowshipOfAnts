@@ -30,6 +30,7 @@ class RecentSearchListView: UIView {
         collectionView.register(RecentSearchCell.self, forCellWithReuseIdentifier: RecentSearchCell.identifer)
         collectionView.alwaysBounceVertical = false
         collectionView.isScrollEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
 
