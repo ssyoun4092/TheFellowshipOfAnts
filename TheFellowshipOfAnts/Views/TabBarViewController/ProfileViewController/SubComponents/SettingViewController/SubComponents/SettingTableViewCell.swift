@@ -1,13 +1,13 @@
 import UIKit
 import SnapKit
 
-class SetttingTableViewCell: UITableViewCell {
+class SettingTableViewCell: UITableViewCell {
     //MARK: - Property
-    static let identifier = String(describing: SetttingTableViewCell.self)
+    static let identifier = String(describing: SettingTableViewCell.self)
 
     private lazy var itemLabel: UILabel = {
         let label = UILabel()
-        label.text = "고객 센터"
+        label.text = "Sample"
 
         return label
     }()
@@ -23,7 +23,7 @@ class SetttingTableViewCell: UITableViewCell {
 }
 
 //MARK: - Layout
-extension SetttingTableViewCell {
+extension SettingTableViewCell {
     private func layout() {
         addSubview(itemLabel)
 

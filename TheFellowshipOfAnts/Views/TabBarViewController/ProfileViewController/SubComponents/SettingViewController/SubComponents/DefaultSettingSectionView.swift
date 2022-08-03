@@ -10,7 +10,7 @@ class DefaultSettingSectionView: UIView {
 
     private lazy var settingTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(SetttingTableViewCell.self, forCellReuseIdentifier: SetttingTableViewCell.identifier)
+        tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -53,7 +53,7 @@ extension DefaultSettingSectionView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SetttingTableViewCell.identifier, for: indexPath) as? SetttingTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
         let settingInfo = settingInfos[indexPath.row]
         cell.configure(item: settingInfo.itemName, hasIndicator: settingInfo.hasIndicator)
 
@@ -64,7 +64,7 @@ extension DefaultSettingSectionView: UITableViewDataSource {
 extension DefaultSettingSectionView: UITableViewDelegate {
     var cellHeight: CGFloat {
 
-        return CGFloat(27)
+        return CGFloat(45)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
