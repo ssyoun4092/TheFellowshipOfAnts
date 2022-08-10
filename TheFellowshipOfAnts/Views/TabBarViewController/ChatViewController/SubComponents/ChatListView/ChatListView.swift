@@ -1,13 +1,19 @@
 import UIKit
 import SnapKit
 
+protocol ChatListViewDelegate {
+    func showMessageViewController()
+}
+
 class ChatListView: UIView {
+    var delegate: ChatListViewDelegate?
 
     private lazy var chatListTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(ChatCell.self, forCellReuseIdentifier: ChatCell.identifier)
         tableView.rowHeight = 70
         tableView.dataSource = self
+        tableView.delegate = self
 
         return tableView
     }()
@@ -43,6 +49,11 @@ extension ChatListView: UITableViewDataSource {
 
         return cell
     }
+}
 
-
+extension ChatListView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("did Selected")
+        delegate?.showMessageViewController()
+    }
 }
