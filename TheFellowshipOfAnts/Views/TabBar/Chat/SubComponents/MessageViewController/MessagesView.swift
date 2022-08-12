@@ -14,7 +14,6 @@ class MessagesView: UIView {
 
     private lazy var flowLayout: UICollectionViewLayout = {
         let cellWidth = UIScreen.main.bounds.width
-
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         layout.minimumLineSpacing = 70
@@ -70,8 +69,16 @@ extension MessagesView: UICollectionViewDataSource {
             return cell
         }
     }
+
+    func scroll(to position: UICollectionView.Position) {
+        messageCollectionView.scroll(to: position, animated: true)
+    }
 }
 
 extension MessagesView: UICollectionViewDelegateFlowLayout {
+
+}
+
+extension MessagesView: UICollectionViewDelegate {
 
 }

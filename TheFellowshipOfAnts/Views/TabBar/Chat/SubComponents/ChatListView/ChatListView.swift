@@ -53,7 +53,7 @@ extension ChatListView: UITableViewDataSource {
 
 extension ChatListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("did Selected")
+        tableView.deselectRow(at: indexPath, animated: true)
         delegate?.showMessageViewController()
     }
 }

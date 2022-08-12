@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class YourMessageCell: UICollectionViewCell {
+class YourMessageCell: MessageCell {
     static let identifier = String(describing: YourMessageCell.self)
 
     private lazy var profilePic: UIImageView = {
@@ -49,7 +49,7 @@ extension YourMessageCell {
 
         profilePic.snp.makeConstraints {
             $0.top.equalToSuperview()
-            $0.leading.equalToSuperview().inset(15)
+            $0.leading.equalToSuperview().inset(cellSidePadding)
             $0.width.height.equalTo(50)
         }
 
@@ -62,14 +62,14 @@ extension YourMessageCell {
         bubbleBackgroundView.snp.makeConstraints {
             $0.top.equalTo(userNicknameLabel.snp.bottom).offset(13)
             $0.leading.equalTo(profilePic.snp.trailing).offset(10)
-            $0.width.equalTo(messageLabel.snp.width).offset(32)
-            $0.height.equalTo(messageLabel).offset(36)
+            $0.width.equalTo(messageLabel.snp.width).offset(messageLeadingPadding * 2)
+            $0.height.equalTo(messageLabel).offset(messageTopPadding * 2)
             $0.bottom.equalToSuperview()
         }
 
         messageLabel.snp.makeConstraints {
-            $0.top.equalTo(bubbleBackgroundView.snp.top).inset(18)
-            $0.leading.equalTo(bubbleBackgroundView.snp.leading).offset(16)
+            $0.top.equalTo(bubbleBackgroundView.snp.top).inset(messageTopPadding)
+            $0.leading.equalTo(bubbleBackgroundView.snp.leading).offset(messageLeadingPadding)
             $0.width.lessThanOrEqualTo(width)
         }
     }
