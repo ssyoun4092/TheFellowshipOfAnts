@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
 
         let spacingView = UIView()
         spacingView.snp.makeConstraints {
-            $0.height.equalTo(70)
+            $0.height.equalTo(50)
         }
 
         [indicesSectionView, stockRankSectionView, majorCommoditiesSectionView, majorETFSectionView, spacingView]
