@@ -8,7 +8,7 @@ class ChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        chatListView.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -31,5 +31,13 @@ extension ChatViewController {
             $0.top.equalTo(headerView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+}
+
+extension ChatViewController: ChatListViewDelegate {
+    func showMessageViewController() {
+        let vc = MessagesViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated:  true)
     }
 }

@@ -28,7 +28,6 @@ class RecentSearchListView: UIView {
     private lazy var recentSearchCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(RecentSearchCell.self, forCellWithReuseIdentifier: RecentSearchCell.identifer)
-        collectionView.alwaysBounceVertical = false
         collectionView.isScrollEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self

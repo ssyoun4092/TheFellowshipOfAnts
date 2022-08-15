@@ -33,6 +33,7 @@ extension ProfileViewController {
 extension ProfileViewController {
     @objc func tappedSettings() {
         let settingVC = SettingsViewController(nibName: nil, bundle: nil)
+        settingVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(settingVC, animated: true)
     }
 }
