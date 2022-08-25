@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "logo_apple@1x.png",
+      "filename" : "Logo - SIWA - Left-aligned - White - Large@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "logo_apple@2x.png",
+      "filename" : "Logo - SIWA - Left-aligned - White - Large@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "logo_apple@3x.png",
+      "filename" : "Logo - SIWA - Left-aligned - White - Large@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
