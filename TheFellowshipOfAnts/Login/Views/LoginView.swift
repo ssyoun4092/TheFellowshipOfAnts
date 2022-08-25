@@ -81,7 +81,6 @@ extension LoginView {
 
         VStack.axis = .vertical
         VStack.distribution = .equalSpacing
-        VStack.spacing = 30
 
         VStack.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(30)

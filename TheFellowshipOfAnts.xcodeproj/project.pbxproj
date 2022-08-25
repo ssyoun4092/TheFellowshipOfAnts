@@ -478,12 +478,12 @@
 			);
 			mainGroup = 8E4CB36328755FD60033AD85;
 			packageReferences = (
-				8EAD1FED28AFB77700288624 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				8EA4B53E28B5E11500AB5D1D /* XCRemoteSwiftPackageReference "SnapKit" */,
-				8EA4B54128B5E12700AB5D1D /* XCRemoteSwiftPackageReference "RxSwift" */,
+				8EAD1FED28AFB77700288624 /* XCRemoteSwiftPackageReference "Kingfisher.git" */,
+				8EA4B53E28B5E11500AB5D1D /* XCRemoteSwiftPackageReference "SnapKit.git" */,
+				8EA4B54128B5E12700AB5D1D /* XCRemoteSwiftPackageReference "RxSwift.git" */,
 				8EA4B54628B5E18C00AB5D1D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
-				8EA4B55028B5E59700AB5D1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				8EFFF46928B7531900C3E762 /* XCRemoteSwiftPackageReference "Charts" */,
+				8EA4B55028B5E59700AB5D1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */,
+				8EFFF46928B7531900C3E762 /* XCRemoteSwiftPackageReference "Charts.git" */,
 			);
 			productRefGroup = 8E4CB36D28755FD60033AD85 /* Products */;
 			projectDirPath = "";
@@ -770,7 +770,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8EA4B53E28B5E11500AB5D1D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		8EA4B53E28B5E11500AB5D1D /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -778,7 +778,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		8EA4B54128B5E12700AB5D1D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		8EA4B54128B5E12700AB5D1D /* XCRemoteSwiftPackageReference "RxSwift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -794,7 +794,7 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		8EA4B55028B5E59700AB5D1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		8EA4B55028B5E59700AB5D1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -802,7 +802,7 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		8EAD1FED28AFB77700288624 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		8EAD1FED28AFB77700288624 /* XCRemoteSwiftPackageReference "Kingfisher.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -810,7 +810,7 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		8EFFF46928B7531900C3E762 /* XCRemoteSwiftPackageReference "Charts" */ = {
+		8EFFF46928B7531900C3E762 /* XCRemoteSwiftPackageReference "Charts.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
 			requirement = {
@@ -823,17 +823,17 @@
 /* Begin XCSwiftPackageProductDependency section */
 		8EA4B53F28B5E11500AB5D1D /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8EA4B53E28B5E11500AB5D1D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 8EA4B53E28B5E11500AB5D1D /* XCRemoteSwiftPackageReference "SnapKit.git" */;
 			productName = SnapKit;
 		};
 		8EA4B54228B5E12700AB5D1D /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8EA4B54128B5E12700AB5D1D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 8EA4B54128B5E12700AB5D1D /* XCRemoteSwiftPackageReference "RxSwift.git" */;
 			productName = RxCocoa;
 		};
 		8EA4B54428B5E12700AB5D1D /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8EA4B54128B5E12700AB5D1D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 8EA4B54128B5E12700AB5D1D /* XCRemoteSwiftPackageReference "RxSwift.git" */;
 			productName = RxSwift;
 		};
 		8EA4B54728B5E18C00AB5D1D /* KakaoSDK */ = {
@@ -858,17 +858,17 @@
 		};
 		8EA4B55128B5E59700AB5D1D /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8EA4B55028B5E59700AB5D1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 8EA4B55028B5E59700AB5D1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk.git" */;
 			productName = FirebaseAuth;
 		};
 		8EAD1FEE28AFB77700288624 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8EAD1FED28AFB77700288624 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 8EAD1FED28AFB77700288624 /* XCRemoteSwiftPackageReference "Kingfisher.git" */;
 			productName = Kingfisher;
 		};
 		8EFFF46A28B7531900C3E762 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8EFFF46928B7531900C3E762 /* XCRemoteSwiftPackageReference "Charts" */;
+			package = 8EFFF46928B7531900C3E762 /* XCRemoteSwiftPackageReference "Charts.git" */;
 			productName = Charts;
 		};
 /* End XCSwiftPackageProductDependency section */
