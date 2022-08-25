@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        /Users/macpro/Desktop/SeYeong/Devleoper/Swift/출시용 Projects/TheFellowshipOfAnts/TheFellowshipOfAnts/Login/SignUpForEmailViewController
+        
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
