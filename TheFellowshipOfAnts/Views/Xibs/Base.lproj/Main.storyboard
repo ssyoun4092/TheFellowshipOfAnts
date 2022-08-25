@@ -56,6 +56,22 @@
             </objects>
             <point key="canvasLocation" x="4513" y="1156"/>
         </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="ImE-ro-k6r">
+            <objects>
+                <viewController storyboardIdentifier="ChatViewController" id="jE5-5d-Mot" customClass="ChatViewController" customModule="TheFellowshipOfAnts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mm3-Ry-HkQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Chf-sd-8Kb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="R2K-yt-FBP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BQM-yb-1BA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4512" y="384"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="1hG-lx-oaF">
             <objects>
@@ -85,6 +101,7 @@
                     <connections>
                         <segue destination="YFN-Y4-PF8" kind="relationship" relationship="viewControllers" id="97h-AP-Wei"/>
                         <segue destination="FGm-hr-UYp" kind="relationship" relationship="viewControllers" id="is1-4d-lT5"/>
+                        <segue destination="QDq-DV-Ui9" kind="relationship" relationship="viewControllers" id="chy-VY-y0I"/>
                         <segue destination="GhF-q8-s6H" kind="relationship" relationship="viewControllers" id="TwJ-22-fCj"/>
                     </connections>
                 </tabBarController>
@@ -151,6 +168,25 @@
             </objects>
             <point key="canvasLocation" x="3603" y="-323"/>
         </scene>
+        <!--채팅-->
+        <scene sceneID="OSN-H7-bbn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QDq-DV-Ui9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="채팅" image="message" catalog="system" id="HMn-im-U3g"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fzF-9Y-3pL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jE5-5d-Mot" kind="relationship" relationship="rootViewController" id="KUq-1N-HIT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cO7-fu-zhF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3603" y="384"/>
+        </scene>
         <!--프로필-->
         <scene sceneID="C6m-5l-sNs">
             <objects>
@@ -174,6 +210,7 @@
     <resources>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="message" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
