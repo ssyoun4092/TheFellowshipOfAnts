@@ -21,6 +21,9 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loginView.delegate = self
+
         setupViews()
         bind()
     }
@@ -79,6 +82,14 @@ extension LoginViewController {
                 print("image: \(user?.kakaoAccount?.profile?.profileImageUrl)")
             }
         }
+    }
+}
+
+extension LoginViewController: LoginViewDelegate {
+    func navigateTabBar() {
+        let vc = TabBarController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false)
     }
 }
 
