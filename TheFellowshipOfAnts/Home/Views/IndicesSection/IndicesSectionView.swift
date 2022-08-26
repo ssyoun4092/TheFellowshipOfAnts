@@ -2,19 +2,13 @@ import UIKit
 import SnapKit
 
 final class IndicesSectionView: UIView {
-    private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.isPagingEnabled = true
-        collectionView.isScrollEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(IndexCollectionViewCell.self, forCellWithReuseIdentifier: "IndexCollectionViewCell")
-        collectionView.delegate = self
-        collectionView.dataSource = self
 
-        return collectionView
-    }()
-
-    private lazy var flowLayout: UICollectionViewLayout = {
+    // MARK: - IBOulets
+    lazy var collectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: flowLayout
+    )
+    let flowLayout: UICollectionViewLayout = {
         let spacing: CGFloat = 30
         let cellWidth = UIScreen.main.bounds.width - (2 * spacing)
 
@@ -26,45 +20,29 @@ final class IndicesSectionView: UIView {
 
         return layout
     }()
+    let pageControl = UIPageControl()
 
-    private lazy var pageControl: UIPageControl = {
-        let pageControl = UIPageControl()
-        pageControl.numberOfPages = 3
-        pageControl.currentPageIndicatorTintColor = .systemRed
-        pageControl.pageIndicatorTintColor = .systemRed.withAlphaComponent(0.3)
-        pageControl.isUserInteractionEnabled = false
-
-        return pageControl
-    }()
+    // MARK: - Life Cycle
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+        setupCollectionView()
+        setupPageControl()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
 
-    private func setupUI() {
-        [collectionView, pageControl]
-            .forEach { addSubview($0) }
-
-        collectionView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(150)
-        }
-
-
-    }
-
+extension IndicesSectionView {
     private func setupCollectionView() {
         addSubview(collectionView)
 
+        collectionView.register(IndexCollectionViewCell.self,
+                                forCellWithReuseIdentifier: IndexCollectionViewCell.identifier)
         collectionView.isPagingEnabled = true
-        collectionView.isScrollEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(IndexCollectionViewCell.self, forCellWithReuseIdentifier: "IndexCollectionViewCell")
         collectionView.delegate = self
         collectionView.dataSource = self
 
@@ -87,30 +65,5 @@ final class IndicesSectionView: UIView {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
-    }
-}
-
-extension IndicesSectionView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IndexCollectionViewCell", for: indexPath) as? IndexCollectionViewCell else { return UICollectionViewCell() }
-
-        return cell
-    }
-}
-
-extension IndicesSectionView: UICollectionViewDelegate {
-
-}
-
-extension IndicesSectionView: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.x
-        let width = UIScreen.main.bounds.width
-        let currentPage = Int(offset / width)
-        self.pageControl.currentPage = currentPage
     }
 }

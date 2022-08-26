@@ -3,34 +3,14 @@ import SnapKit
 
 final class StockRankSectionView: UIView {
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "TOP 20"
-        label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
+    // MARK: - IBOutlets
 
-        return label
-    }()
-
-//    private lazy var filterCollectionView: UICollectionView = {
-//        let layout = UICollectionViewFlowLayout()
-//
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//
-//        return collectionView
-//    }()
-
-    private lazy var stocksCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.register(StockRankCollectionViewCell.self, forCellWithReuseIdentifier: "StockRankCollectionViewCell")
-        collectionView.isPagingEnabled = true
-        collectionView.alwaysBounceVertical = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
-
-        return collectionView
-    }()
-
-    private lazy var collectionViewLayout: UICollectionViewLayout = {
+    let titleLabel = UILabel()
+    private lazy var stocksCollectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: collectionViewLayout
+    )
+    let collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewCompositionalLayout { _, _ -> NSCollectionLayoutSection in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -51,22 +31,42 @@ final class StockRankSectionView: UIView {
         return layout
     }()
 
+    // MARK: - Life Cycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+
+        setupTitleLabel()
+        setupStocksCollectionView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
 
-    func setupUI() {
-        [titleLabel, stocksCollectionView]
-            .forEach { addSubview($0) }
+extension StockRankSectionView {
+    func setupTitleLabel() {
+        addSubview(titleLabel)
+
+        titleLabel.text = "TOP 20"
+        titleLabel.font = UIFont.systemFont(ofSize: 23, weight: .bold)
+
 
         titleLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(10)
         }
+    }
+
+    func setupStocksCollectionView() {
+        addSubview(stocksCollectionView)
+
+        stocksCollectionView.register(
+            StockRankCollectionViewCell.self,
+            forCellWithReuseIdentifier: StockRankCollectionViewCell.identifier)
+        stocksCollectionView.isPagingEnabled = true
+        stocksCollectionView.dataSource = self
+        stocksCollectionView.delegate = self
 
         stocksCollectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(15)
@@ -75,26 +75,4 @@ final class StockRankSectionView: UIView {
             $0.bottom.equalToSuperview()
         }
     }
-}
-
-extension StockRankSectionView: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let ranks = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StockRankCollectionViewCell", for: indexPath) as? StockRankCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(rank: ranks[indexPath.row])
-
-        return cell
-    }
-}
-
-extension StockRankSectionView: UICollectionViewDelegate {
-
 }

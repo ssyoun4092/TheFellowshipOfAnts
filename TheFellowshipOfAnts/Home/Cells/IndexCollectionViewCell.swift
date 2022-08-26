@@ -39,6 +39,7 @@ extension IndexCollectionViewCell {
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         contentView.layer.masksToBounds = true
+
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowRadius = 5

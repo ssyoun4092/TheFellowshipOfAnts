@@ -14,6 +14,11 @@
 		8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB37328755FD60033AD85 /* LoginViewController.swift */; };
 		8E4CB37928755FD70033AD85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CB37828755FD70033AD85 /* Assets.xcassets */; };
 		8E4CB37C28755FD70033AD85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CB37A28755FD70033AD85 /* LaunchScreen.storyboard */; };
+		8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8068E828B842E2004039B1 /* NSObject+.swift */; };
+		8E8068ED28B844D2004039B1 /* IndicesSectionView.UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8068EC28B844D2004039B1 /* IndicesSectionView.UICollectionView.swift */; };
+		8E8068EF28B84D98004039B1 /* StockRankSection.UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8068EE28B84D98004039B1 /* StockRankSection.UICollectionView.swift */; };
+		8E8068F128B84EE3004039B1 /* MajorETFSectionView.UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8068F028B84EE3004039B1 /* MajorETFSectionView.UICollectionView.swift */; };
+		8E8068F328B85562004039B1 /* MajorCommoditiesSectionView.UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8068F228B85562004039B1 /* MajorCommoditiesSectionView.UICollectionView.swift */; };
 		8E9B2BC92895670C007B4196 /* SettingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B2BC82895670C007B4196 /* SettingInfo.swift */; };
 		8EA2D55D28792E6A00163D6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EA2D55C28792E6A00163D6A /* GoogleService-Info.plist */; };
 		8EA4B54028B5E11500AB5D1D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8EA4B53F28B5E11500AB5D1D /* SnapKit */; };
@@ -62,8 +67,7 @@
 		8EFFF47228B7570400C3E762 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47128B7570400C3E762 /* TabBarController.swift */; };
 		8EFFF47528B76EF800C3E762 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47428B76EF800C3E762 /* HomeView.swift */; };
 		8EFFF48428B7727C00C3E762 /* MajorCommoditiesSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47928B7727B00C3E762 /* MajorCommoditiesSectionView.swift */; };
-		8EFFF48528B7727C00C3E762 /* MajorETFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47C28B7727B00C3E762 /* MajorETFCollectionViewCell.swift */; };
-		8EFFF48628B7727C00C3E762 /* MajorCommodityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47828B7727B00C3E762 /* MajorCommodityCollectionViewCell.swift */; };
+		8EFFF48628B7727C00C3E762 /* MajorCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47828B7727B00C3E762 /* MajorCarouselCell.swift */; };
 		8EFFF48728B7727C00C3E762 /* IndexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF48028B7727B00C3E762 /* IndexCollectionViewCell.swift */; };
 		8EFFF48828B7727C00C3E762 /* StockRankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF48328B7727C00C3E762 /* StockRankCollectionViewCell.swift */; };
 		8EFFF48928B7727C00C3E762 /* MajorETFSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47B28B7727B00C3E762 /* MajorETFSectionView.swift */; };
@@ -82,6 +86,11 @@
 		8E4CB37828755FD70033AD85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E4CB37B28755FD70033AD85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E4CB37D28755FD70033AD85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E8068E828B842E2004039B1 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		8E8068EC28B844D2004039B1 /* IndicesSectionView.UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicesSectionView.UICollectionView.swift; sourceTree = "<group>"; };
+		8E8068EE28B84D98004039B1 /* StockRankSection.UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRankSection.UICollectionView.swift; sourceTree = "<group>"; };
+		8E8068F028B84EE3004039B1 /* MajorETFSectionView.UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorETFSectionView.UICollectionView.swift; sourceTree = "<group>"; };
+		8E8068F228B85562004039B1 /* MajorCommoditiesSectionView.UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCommoditiesSectionView.UICollectionView.swift; sourceTree = "<group>"; };
 		8E9B2BC82895670C007B4196 /* SettingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInfo.swift; sourceTree = "<group>"; };
 		8EA2D55C28792E6A00163D6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8EA4B55328B60E7200AB5D1D /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
@@ -119,10 +128,9 @@
 		8EFFF46E28B7539D00C3E762 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		8EFFF47128B7570400C3E762 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8EFFF47428B76EF800C3E762 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		8EFFF47828B7727B00C3E762 /* MajorCommodityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCommodityCollectionViewCell.swift; sourceTree = "<group>"; };
+		8EFFF47828B7727B00C3E762 /* MajorCarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCarouselCell.swift; sourceTree = "<group>"; };
 		8EFFF47928B7727B00C3E762 /* MajorCommoditiesSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCommoditiesSectionView.swift; sourceTree = "<group>"; };
 		8EFFF47B28B7727B00C3E762 /* MajorETFSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorETFSectionView.swift; sourceTree = "<group>"; };
-		8EFFF47C28B7727B00C3E762 /* MajorETFCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorETFCollectionViewCell.swift; sourceTree = "<group>"; };
 		8EFFF47E28B7727B00C3E762 /* IndexChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexChartView.swift; sourceTree = "<group>"; };
 		8EFFF47F28B7727B00C3E762 /* IndicesSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicesSectionView.swift; sourceTree = "<group>"; };
 		8EFFF48028B7727B00C3E762 /* IndexCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -155,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				8EFFF44128B7503200C3E762 /* HomeViewController.swift */,
+				8E8068F428B856B1004039B1 /* Cells */,
 				8EFFF47628B7726200C3E762 /* Views */,
 			);
 			path = Home;
@@ -234,6 +243,16 @@
 			path = TheFellowshipOfAnts;
 			sourceTree = "<group>";
 		};
+		8E8068F428B856B1004039B1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8EFFF48028B7727B00C3E762 /* IndexCollectionViewCell.swift */,
+				8EFFF48328B7727C00C3E762 /* StockRankCollectionViewCell.swift */,
+				8EFFF47828B7727B00C3E762 /* MajorCarouselCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		8EA4B55528B60EE900AB5D1D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +301,7 @@
 				8EAAA4C12877259800F3D5CC /* UIViewController+.swift */,
 				8EFFF46E28B7539D00C3E762 /* UIView+.swift */,
 				8EA4B55328B60E7200AB5D1D /* UITextField+.swift */,
+				8E8068E828B842E2004039B1 /* NSObject+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -380,8 +400,8 @@
 				8EFFF47428B76EF800C3E762 /* HomeView.swift */,
 				8EFFF47D28B7727B00C3E762 /* IndicesSection */,
 				8EFFF48128B7727B00C3E762 /* StockRankSection */,
-				8EFFF47A28B7727B00C3E762 /* MajorETFSection */,
 				8EFFF47728B7727B00C3E762 /* MajorCommoditiesSection */,
+				8EFFF47A28B7727B00C3E762 /* MajorETFSection */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -389,8 +409,8 @@
 		8EFFF47728B7727B00C3E762 /* MajorCommoditiesSection */ = {
 			isa = PBXGroup;
 			children = (
-				8EFFF47828B7727B00C3E762 /* MajorCommodityCollectionViewCell.swift */,
 				8EFFF47928B7727B00C3E762 /* MajorCommoditiesSectionView.swift */,
+				8E8068F228B85562004039B1 /* MajorCommoditiesSectionView.UICollectionView.swift */,
 			);
 			path = MajorCommoditiesSection;
 			sourceTree = "<group>";
@@ -399,7 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				8EFFF47B28B7727B00C3E762 /* MajorETFSectionView.swift */,
-				8EFFF47C28B7727B00C3E762 /* MajorETFCollectionViewCell.swift */,
+				8E8068F028B84EE3004039B1 /* MajorETFSectionView.UICollectionView.swift */,
 			);
 			path = MajorETFSection;
 			sourceTree = "<group>";
@@ -408,7 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				8EFFF47F28B7727B00C3E762 /* IndicesSectionView.swift */,
-				8EFFF48028B7727B00C3E762 /* IndexCollectionViewCell.swift */,
+				8E8068EC28B844D2004039B1 /* IndicesSectionView.UICollectionView.swift */,
 				8EFFF47E28B7727B00C3E762 /* IndexChartView.swift */,
 			);
 			path = IndicesSection;
@@ -417,8 +437,8 @@
 		8EFFF48128B7727B00C3E762 /* StockRankSection */ = {
 			isa = PBXGroup;
 			children = (
-				8EFFF48328B7727C00C3E762 /* StockRankCollectionViewCell.swift */,
 				8EFFF48228B7727B00C3E762 /* StockRankSectionView.swift */,
+				8E8068EE28B84D98004039B1 /* StockRankSection.UICollectionView.swift */,
 			);
 			path = StockRankSection;
 			sourceTree = "<group>";
@@ -514,6 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8068F128B84EE3004039B1 /* MajorETFSectionView.UICollectionView.swift in Sources */,
 				8EDDC29F287C01F600FA025D /* User.swift in Sources */,
 				8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */,
 				8EFFF47528B76EF800C3E762 /* HomeView.swift in Sources */,
@@ -523,18 +544,21 @@
 				8EFFF48828B7727C00C3E762 /* StockRankCollectionViewCell.swift in Sources */,
 				8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */,
 				8EFFF46728B7505700C3E762 /* ProfileSectionView.swift in Sources */,
-				8EFFF48628B7727C00C3E762 /* MajorCommodityCollectionViewCell.swift in Sources */,
+				8E8068EF28B84D98004039B1 /* StockRankSection.UICollectionView.swift in Sources */,
+				8EFFF48628B7727C00C3E762 /* MajorCarouselCell.swift in Sources */,
+				8E8068F328B85562004039B1 /* MajorCommoditiesSectionView.UICollectionView.swift in Sources */,
+				8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */,
 				8E9B2BC92895670C007B4196 /* SettingInfo.swift in Sources */,
 				8EFFF45528B7504A00C3E762 /* YourMessageCell.swift in Sources */,
 				8EFFF45428B7504A00C3E762 /* ChatCell.swift in Sources */,
 				8EFFF46F28B7539D00C3E762 /* UIView+.swift in Sources */,
 				8EFFF48B28B7727C00C3E762 /* IndicesSectionView.swift in Sources */,
-				8EFFF48528B7727C00C3E762 /* MajorETFCollectionViewCell.swift in Sources */,
 				8EFFF41528B7282400C3E762 /* SignupView.swift in Sources */,
 				8EFFF43E28B7502100C3E762 /* SearchingItemCell.swift in Sources */,
 				8EFFF45128B7504A00C3E762 /* ChatViewController.swift in Sources */,
 				8E06F68A287EADE60017F435 /* IndexModel.swift in Sources */,
 				8EAAA4C22877259800F3D5CC /* UIViewController+.swift in Sources */,
+				8E8068ED28B844D2004039B1 /* IndicesSectionView.UICollectionView.swift in Sources */,
 				8EFFF45228B7504A00C3E762 /* ChatHeaderView.swift in Sources */,
 				8EAAA5252877F98D00F3D5CC /* SignupForEmailViewModel.swift in Sources */,
 				8EFFF44228B7503200C3E762 /* HomeViewController.swift in Sources */,

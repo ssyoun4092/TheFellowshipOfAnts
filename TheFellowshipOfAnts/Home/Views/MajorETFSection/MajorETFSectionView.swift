@@ -2,32 +2,15 @@ import UIKit
 import SnapKit
 
 class MajorETFSectionView: UIView {
-    private let descriptions: [String] = ["SPY", "TLT", "SHY", "VIX"]
 
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "주요 ETF"
-        label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
+    // MARK: - IBOulets
 
-        return label
-    }()
-
-    private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.register(MajorCommodityCollectionViewCell.self, forCellWithReuseIdentifier: "MajorCommodityCollectionViewCell")
-        collectionView.decelerationRate = .fast
-        collectionView.isPagingEnabled = false
-        collectionView.isScrollEnabled = true
-        collectionView.alwaysBounceVertical = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
-
-        collectionView.showsHorizontalScrollIndicator = false
-
-        return collectionView
-    }()
-
-    private lazy var flowLayout: UICollectionViewLayout = {
+    let titleLabel = UILabel()
+    lazy var collectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: flowLayout
+    )
+    let flowLayout: UICollectionViewLayout = {
         let spacing: CGFloat = 20
         let cellWidth = (UIScreen.main.bounds.width - (2 * spacing)) / 2.5
 
@@ -41,9 +24,13 @@ class MajorETFSectionView: UIView {
         return layout
     }()
 
+    // MARK: - Life Cycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+
+        setupTitleLabel()
+        setupColletionView()
     }
 
     required init?(coder: NSCoder) {
@@ -52,16 +39,36 @@ class MajorETFSectionView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        collectionView.scrollToItem(at: IndexPath(item: descriptions.count, section: 0), at: .centeredHorizontally, animated: false)
-    }
 
-    private func setupUI() {
-        [titleLabel, collectionView]
-            .forEach { addSubview($0) }
+        collectionView.scrollToItem(
+            at: IndexPath(item: descriptions.count, section: 0),
+            at: .centeredHorizontally, animated: false)
+    }
+}
+
+extension MajorETFSectionView {
+    private func setupTitleLabel() {
+        addSubview(titleLabel)
+
+        titleLabel.text = "주요 ETF"
+        titleLabel.font = UIFont.systemFont(ofSize: 23, weight: .bold)
 
         titleLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(10)
         }
+    }
+
+    private func setupColletionView() {
+        addSubview(collectionView)
+
+        collectionView.register(
+            MajorCarouselCell.self,
+            forCellWithReuseIdentifier: MajorCarouselCell.identifier)
+        collectionView.decelerationRate = .fast
+        collectionView.isPagingEnabled = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.showsHorizontalScrollIndicator = false
 
         collectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(15)
@@ -72,54 +79,4 @@ class MajorETFSectionView: UIView {
     }
 }
 
-extension MajorETFSectionView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return descriptions.count * 5
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MajorCommodityCollectionViewCell", for: indexPath) as? MajorCommodityCollectionViewCell else { return UICollectionViewCell() }
-        let itemIndex = indexPath.row % descriptions.count
-        cell.configure(description: descriptions[itemIndex])
-
-        return cell
-    }
-}
-
-extension MajorETFSectionView: UICollectionViewDelegate {
-
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        guard let layout = self.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        let cellWidth = layout.itemSize.width
-        let spacing = layout.minimumLineSpacing
-        let cellWidthIncludingSpacing = cellWidth + spacing
-
-        let offset = scrollView.contentOffset.x
-        let estimatedIndex = offset / cellWidthIncludingSpacing
-
-        let index: Int
-
-        if velocity.x > 0 {
-            index = Int(ceil(estimatedIndex))
-        } else if velocity.x < 0 {
-            index = Int(floor(estimatedIndex))
-        } else {
-            index = Int(round(estimatedIndex))
-        }
-
-        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing + ((cellWidth / 4) * 0.75), y: 0)
-    }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        var item = collectionView.indexPathsForVisibleItems[0].item
-        print(collectionView.indexPathsForVisibleItems)
-        if item == 1 {
-            item = descriptions.count + 2
-            collectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .centeredHorizontally, animated: false)
-        } else if item == descriptions.count * 3 - 3 {
-            item = descriptions.count + 2
-            collectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .centeredHorizontally, animated: false)
-        }
-    }
-}
