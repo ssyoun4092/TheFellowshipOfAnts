@@ -22,14 +22,11 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loginView.delegate = self
-
         setupViews()
         bind()
     }
 
     private func setupViews() {
-        view.backgroundColor = .white
         view.addSubview(loginView)
 
         loginView.snp.makeConstraints {
@@ -53,6 +50,14 @@ class LoginViewController: UIViewController {
                 let signupForEmailVC = SignupForEmailViewController()
                 signupForEmailVC.modalPresentationStyle = .fullScreen
                 self.navigationController?.pushViewController(signupForEmailVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        loginView.testButton.rx.tap
+            .subscribe(onNext: {
+                let tabBar = TabBarController()
+                tabBar.modalPresentationStyle = .fullScreen
+                self.present(tabBar, animated: false)
             })
             .disposed(by: disposeBag)
     }
@@ -82,14 +87,6 @@ extension LoginViewController {
                 print("image: \(user?.kakaoAccount?.profile?.profileImageUrl)")
             }
         }
-    }
-}
-
-extension LoginViewController: LoginViewDelegate {
-    func navigateTabBar() {
-        let vc = TabBarController()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false)
     }
 }
 

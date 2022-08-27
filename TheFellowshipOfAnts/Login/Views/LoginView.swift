@@ -8,14 +8,7 @@
 import UIKit
 import SnapKit
 
-protocol LoginViewDelegate: AnyObject {
-    func navigateTabBar()
-}
-
 class LoginView: UIView {
-
-    // MARK: - Properties
-    weak var delegate: LoginViewDelegate?
 
     // MARK: - IBOulets
 
@@ -39,11 +32,6 @@ class LoginView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    @objc
-    private func didTapTestButton() {
-        delegate?.navigateTabBar()
     }
 }
 
@@ -126,7 +114,6 @@ extension LoginView {
         testButton.setTitle("홈화면 바로가기", for: .normal)
         testButton.setTitleColor(.black, for: .normal)
         testButton.backgroundColor = UIColor(named: "SignupWithEmailBgColor")
-        testButton.addTarget(self, action: #selector(didTapTestButton), for: .touchUpInside)
 
         testButton.snp.makeConstraints {
             $0.height.equalTo(44)
