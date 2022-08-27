@@ -31,6 +31,7 @@ class LoginView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         setupTitleLabel()
         setupSignupWithEmailButton()
         setupVStack()
@@ -41,7 +42,7 @@ class LoginView: UIView {
     }
 
     @objc
-    func didTapTestButton() {
+    private func didTapTestButton() {
         delegate?.navigateTabBar()
     }
 }
@@ -81,7 +82,6 @@ extension LoginView {
         addSubview(VStack)
 
         VStack.axis = .vertical
-        VStack.distribution = .equalSpacing
         VStack.spacing = 30
 
         VStack.snp.makeConstraints {
@@ -93,7 +93,7 @@ extension LoginView {
 
         kakaoLoginButton.setTitle("카카오로 로그인", for: .normal)
         kakaoLoginButton.setImage(UIImage(named: "KakaoLoginLogo"), for: .normal)
-        kakaoLoginButton.setTitleColor(.black, for: .normal)
+        kakaoLoginButton.setTitleColor(.black.withAlphaComponent(0.85), for: .normal)
         kakaoLoginButton.titleLabel?.font = .systemFont(ofSize: 19, weight: .semibold)
         kakaoLoginButton.backgroundColor = UIColor(named: "KakaoLoginBgColor")
         kakaoLoginButton.layer.cornerRadius = 7
@@ -120,7 +120,7 @@ extension LoginView {
         emailLoginButton.layer.cornerRadius = 7
 
         emailLoginButton.snp.makeConstraints {
-            $0.height.equalTo(50)
+            $0.height.equalTo(44)
         }
 
         testButton.setTitle("홈화면 바로가기", for: .normal)
@@ -129,7 +129,7 @@ extension LoginView {
         testButton.addTarget(self, action: #selector(didTapTestButton), for: .touchUpInside)
 
         testButton.snp.makeConstraints {
-            $0.height.equalTo(50)
+            $0.height.equalTo(44)
         }
     }
 }
