@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import AuthenticationServices
 
 class LoginView: UIView {
 
@@ -90,12 +91,12 @@ extension LoginView {
             $0.height.equalTo(44)
         }
 
-        appleLoginButton.setTitle("Apple로 로그인", for: .normal)
-        appleLoginButton.setImage(UIImage(named: "AppleLoginLogo"), for: .normal)
-        appleLoginButton.titleLabel?.font = .systemFont(ofSize: 19, weight: .semibold)
-        appleLoginButton.setTitleColor(.white, for: .normal)
-        appleLoginButton.backgroundColor = UIColor(named: "AppleLoginBgColor")
-        appleLoginButton.layer.cornerRadius = 7
+//        appleLoginButton.setTitle("Apple로 로그인", for: .normal)
+//        appleLoginButton.setImage(UIImage(named: "AppleLoginLogo"), for: .normal)
+//        appleLoginButton.titleLabel?.font = .systemFont(ofSize: 19, weight: .semibold)
+//        appleLoginButton.setTitleColor(.white, for: .normal)
+//        appleLoginButton.backgroundColor = UIColor(named: "AppleLoginBgColor")
+//        appleLoginButton.layer.cornerRadius = 7
 
         appleLoginButton.snp.makeConstraints {
             $0.height.equalTo(44)
