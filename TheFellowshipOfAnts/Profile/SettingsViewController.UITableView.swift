@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import KakaoSDKUser
 
 extension SettingsViewController: UITableViewDataSource {
     var settingsSection: [SettingsSection] { return SettingsSection.model }
@@ -38,7 +40,8 @@ extension SettingsViewController: UITableViewDelegate {
             frame: .init(x: 0,
                          y: 0,
                          width: tableView.frame.size.width,
-                         height: 24)
+                         height: 24
+                        )
         )
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.text = settingsSection[section].header
@@ -48,5 +51,26 @@ extension SettingsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(60)
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("indexPath: \(indexPath)")
+        if indexPath == IndexPath(row: 1, section: 1) {
+//            UserApi.shared.logout { error in
+//                if let error = error {
+//                    print("error: \(error.localizedDescription)")
+//                } else {
+//                    print("Logout Success")
+//                }
+//            }
+            UserApi.shared.unlink { error in
+                if let error = error {
+                    print("error: \(error.localizedDescription)")
+                } else {
+                    print("Unlink Success")
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }
+        }
     }
 }
