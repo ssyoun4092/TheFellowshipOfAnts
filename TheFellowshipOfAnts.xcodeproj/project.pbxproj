@@ -10,6 +10,9 @@
 		8E06F68A287EADE60017F435 /* IndexModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F689287EADE60017F435 /* IndexModel.swift */; };
 		8E06F68D287EB5830017F435 /* IndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68C287EB5830017F435 /* IndexService.swift */; };
 		8E27715928BC8E2A00CF6D8D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27715828BC8E2A00CF6D8D /* Auth.swift */; };
+		8E27717628BCDAE000CF6D8D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27717528BCDAE000CF6D8D /* APIClient.swift */; };
+		8E27718128BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */; };
+		8E27718228BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB36F28755FD60033AD85 /* AppDelegate.swift */; };
 		8E4CB37228755FD60033AD85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB37128755FD60033AD85 /* SceneDelegate.swift */; };
 		8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB37328755FD60033AD85 /* LoginViewController.swift */; };
@@ -36,6 +39,9 @@
 		8EAAA4C42877382400F3D5CC /* EmailLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA4C32877382400F3D5CC /* EmailLoginViewModel.swift */; };
 		8EAAA5222877CA2500F3D5CC /* SignupForEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA5212877CA2500F3D5CC /* SignupForEmailViewController.swift */; };
 		8EAAA5252877F98D00F3D5CC /* SignupForEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAAA5242877F98D00F3D5CC /* SignupForEmailViewModel.swift */; };
+		8EAB1BD528BDB813004F38C3 /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB1BD428BDB813004F38C3 /* Double+.swift */; };
+		8EAB1BD828BDBD99004F38C3 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB1BD728BDBD99004F38C3 /* String+.swift */; };
+		8EAB1BDA28BDE761004F38C3 /* UpDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB1BD928BDE761004F38C3 /* UpDown.swift */; };
 		8EAD1FEF28AFB77700288624 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8EAD1FEE28AFB77700288624 /* Kingfisher */; };
 		8EBC442028B8666D00E6F356 /* RecentSearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC441F28B8663200E6F356 /* RecentSearchListView.swift */; };
 		8EBC442128B8667000E6F356 /* RecentSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC441E28B8662D00E6F356 /* RecentSearchCell.swift */; };
@@ -78,11 +84,37 @@
 		8EFFF48C28B7727C00C3E762 /* StockRankSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF48228B7727B00C3E762 /* StockRankSectionView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8E27717D28BDA4A600CF6D8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8E27716628BCD10F00CF6D8D;
+			remoteInfo = TheFellowshipOfAntsKey;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8E27718328BDA53B00CF6D8D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8E27718228BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8E06F689287EADE60017F435 /* IndexModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexModel.swift; sourceTree = "<group>"; };
 		8E06F68C287EB5830017F435 /* IndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexService.swift; sourceTree = "<group>"; };
 		8E27715828BC8E2A00CF6D8D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		8E32114528B9EBC6009B7F42 /* TheFellowshipOfAnts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheFellowshipOfAnts.entitlements; sourceTree = "<group>"; };
+		8E27717528BCDAE000CF6D8D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheFellowshipOfAntsKey.xcodeproj; path = ../../TheFellowshipOfAntsKey/TheFellowshipOfAntsKey.xcodeproj; sourceTree = "<group>"; };
 		8E4CB36C28755FD60033AD85 /* TheFellowshipOfAnts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheFellowshipOfAnts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4CB36F28755FD60033AD85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E4CB37128755FD60033AD85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +135,9 @@
 		8EAAA4C32877382400F3D5CC /* EmailLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginViewModel.swift; sourceTree = "<group>"; };
 		8EAAA5212877CA2500F3D5CC /* SignupForEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupForEmailViewController.swift; sourceTree = "<group>"; };
 		8EAAA5242877F98D00F3D5CC /* SignupForEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupForEmailViewModel.swift; sourceTree = "<group>"; };
+		8EAB1BD428BDB813004F38C3 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		8EAB1BD728BDBD99004F38C3 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		8EAB1BD928BDE761004F38C3 /* UpDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDown.swift; sourceTree = "<group>"; };
 		8EBC441D28B8662D00E6F356 /* SearchingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingItemCell.swift; sourceTree = "<group>"; };
 		8EBC441E28B8662D00E6F356 /* RecentSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchCell.swift; sourceTree = "<group>"; };
 		8EBC441F28B8663200E6F356 /* RecentSearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchListView.swift; sourceTree = "<group>"; };
@@ -151,6 +186,7 @@
 				8EA4B54C28B5E18C00AB5D1D /* KakaoSDKCommon in Frameworks */,
 				8EA4B55228B5E59700AB5D1D /* FirebaseAuth in Frameworks */,
 				8EA4B54A28B5E18C00AB5D1D /* KakaoSDKAuth in Frameworks */,
+				8E27718128BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Frameworks */,
 				8EA4B54028B5E11500AB5D1D /* SnapKit in Frameworks */,
 				8EAD1FEF28AFB77700288624 /* Kingfisher in Frameworks */,
 				8EFFF46B28B7531900C3E762 /* Charts in Frameworks */,
@@ -206,11 +242,34 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		8E06F68B287EB5360017F435 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8E27717A28BDA4A600CF6D8D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E27718028BDA53A00CF6D8D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8E4CB36328755FD60033AD85 = {
 			isa = PBXGroup;
 			children = (
 				8E4CB36E28755FD60033AD85 /* TheFellowshipOfAnts */,
 				8E4CB36D28755FD60033AD85 /* Products */,
+				8E27718028BDA53A00CF6D8D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,6 +300,7 @@
 				8E4CB37D28755FD70033AD85 /* Info.plist */,
 				8E4CB37828755FD70033AD85 /* Assets.xcassets */,
 				8E4CB37A28755FD70033AD85 /* LaunchScreen.storyboard */,
+				8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */,
 			);
 			path = TheFellowshipOfAnts;
 			sourceTree = "<group>";
@@ -329,6 +389,8 @@
 				8E06F689287EADE60017F435 /* IndexModel.swift */,
 				8E9B2BC82895670C007B4196 /* Setting.swift */,
 				8E27715828BC8E2A00CF6D8D /* Auth.swift */,
+				8E27717528BCDAE000CF6D8D /* APIClient.swift */,
+				8EAB1BD928BDE761004F38C3 /* UpDown.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -340,6 +402,8 @@
 				8EFFF46E28B7539D00C3E762 /* UIView+.swift */,
 				8EA4B55328B60E7200AB5D1D /* UITextField+.swift */,
 				8E8068E828B842E2004039B1 /* NSObject+.swift */,
+				8EAB1BD428BDB813004F38C3 /* Double+.swift */,
+				8EAB1BD728BDBD99004F38C3 /* String+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -435,6 +499,7 @@
 				8E4CB36828755FD60033AD85 /* Sources */,
 				8E4CB36928755FD60033AD85 /* Frameworks */,
 				8E4CB36A28755FD60033AD85 /* Resources */,
+				8E27718328BDA53B00CF6D8D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -491,12 +556,28 @@
 			);
 			productRefGroup = 8E4CB36D28755FD60033AD85 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8E27717A28BDA4A600CF6D8D /* Products */;
+					ProjectRef = 8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8E4CB36B28755FD60033AD85 /* TheFellowshipOfAnts */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TheFellowshipOfAntsKey.framework;
+			remoteRef = 8E27717D28BDA4A600CF6D8D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8E4CB36A28755FD60033AD85 /* Resources */ = {
@@ -528,6 +609,7 @@
 				8EFFF48628B7727C00C3E762 /* MajorCarouselCell.swift in Sources */,
 				8EBC442E28B8DBC100E6F356 /* ProfileView.swift in Sources */,
 				8EBC443528B8DBD700E6F356 /* SettingsViewController.swift in Sources */,
+				8EAB1BD528BDB813004F38C3 /* Double+.swift in Sources */,
 				8E8068F328B85562004039B1 /* MajorCommoditiesSectionView.UICollectionView.swift in Sources */,
 				8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */,
 				8E9B2BC92895670C007B4196 /* Setting.swift in Sources */,
@@ -554,17 +636,20 @@
 				8EA4B55428B60E7200AB5D1D /* UITextField+.swift in Sources */,
 				8EDDC298287A720D00FA025D /* SignupForEmailModel.swift in Sources */,
 				8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */,
+				8EAB1BDA28BDE761004F38C3 /* UpDown.swift in Sources */,
 				8EAAA5222877CA2500F3D5CC /* SignupForEmailViewController.swift in Sources */,
 				8E27715928BC8E2A00CF6D8D /* Auth.swift in Sources */,
 				8EFFF45728B7504A00C3E762 /* MessagesViewController.swift in Sources */,
 				8EFFF47228B7570400C3E762 /* TabBarController.swift in Sources */,
 				8ED9D77D28ADD13A006A7F94 /* LoginView.swift in Sources */,
 				8EBC442228B8667200E6F356 /* SearchingItemCell.swift in Sources */,
+				8E27717628BCDAE000CF6D8D /* APIClient.swift in Sources */,
 				8EFFF48A28B7727C00C3E762 /* IndexChartView.swift in Sources */,
 				8EFFF45828B7504A00C3E762 /* MyMessageCell.swift in Sources */,
 				8EFFF48C28B7727C00C3E762 /* StockRankSectionView.swift in Sources */,
 				8EFFF45928B7504A00C3E762 /* MessagesView.swift in Sources */,
 				8E4CB37228755FD60033AD85 /* SceneDelegate.swift in Sources */,
+				8EAB1BD828BDBD99004F38C3 /* String+.swift in Sources */,
 				8EAAA4C42877382400F3D5CC /* EmailLoginViewModel.swift in Sources */,
 				8EFFF48428B7727C00C3E762 /* MajorCommoditiesSectionView.swift in Sources */,
 				8EFFF48928B7727C00C3E762 /* MajorETFSectionView.swift in Sources */,

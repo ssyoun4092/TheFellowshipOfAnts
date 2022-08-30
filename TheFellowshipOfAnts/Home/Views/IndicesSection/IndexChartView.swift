@@ -15,6 +15,7 @@ class IndexChartView: UIView {
         super.init(frame: frame)
 
         setupChartView()
+        configure(with: dummy.chart30min.reversed(), upDown: .down)
     }
 
     required init?(coder: NSCoder) {
@@ -27,34 +28,33 @@ class IndexChartView: UIView {
         lineChartView.data = nil
     }
 
-    /*
-    func configure(with model: IndexChartInfo) {
+    func configure(with model: [Double], upDown: UpDown) {
         var entries = [ChartDataEntry]()
 
-        for (index, value) in model.data.enumerated() {
+        for (index, value) in model.enumerated() {
             let value = ChartDataEntry(x: Double(index), y: value)
             entries.append(value)
         }
-        lineChartView.rightAxis.enabled = false
-        lineChartView.leftAxis.enabled = false
 
-        let gradient: [CGColor] = [UIColor.blue.cgColor, UIColor.brown.cgColor]
         let dataSet = LineChartDataSet(entries: entries, label: "1day")
-        dataSet.colors = [UIColor.red]
-        dataSet.fill = LinearGradientFill(gradient: CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradient as CFArray, locations: [0.0, 1.0])!, angle: -90)
-        //        dataSet.fillColor = model.fillColor
+
+        dataSet.colors = [upDown.textColor]
+        let gradient = upDown.gradient
+        dataSet.fill = Fill.fillWithLinearGradient(
+            CGGradient(
+                colorsSpace: CGColorSpaceCreateDeviceRGB(),
+                colors: gradient as CFArray,
+                locations: [0.0, 1.0])!,
+            angle: -90
+        )
         dataSet.drawFilledEnabled = true
-        dataSet.drawIconsEnabled = false
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = false
-        dataSet.lineWidth = 3
+        dataSet.lineWidth = 2
 
-        let data = LineChartData()
-        data.append(dataSet)
-
+        let data = LineChartData(dataSet: dataSet)
         lineChartView.data = data
     }
-    */
 }
 
 extension IndexChartView {
@@ -69,7 +69,6 @@ extension IndexChartView {
         lineChartView.setScaleEnabled(true)
         lineChartView.drawGridBackgroundEnabled = false
         lineChartView.isUserInteractionEnabled = false
-        lineChartView.backgroundColor = .systemBlue
 
         lineChartView.snp.makeConstraints {
             $0.edges.equalToSuperview()
