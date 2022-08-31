@@ -28,7 +28,7 @@ class StockRankCollectionViewCell: UICollectionViewCell {
     func configure(with model: StockRank) {
         rankLabel.text = model.rank
         stockNameLabel.text = model.companyName
-        ticker.text = model.ticker
+        ticker.text = model.symbol
         currentPrice.text = model.price
     }
 }

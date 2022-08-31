@@ -29,6 +29,7 @@ class IndexCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(with indexModel: StockIndex, upDown: UpDown) {
+        // TODO: - currentPrice 전날과 비교 로직 추가
         indexTitleLabel.text = indexModel.basic.title
         currentPriceLabel.text = indexModel.values[0].close.floorIfDouble(at: 2)
         currentPriceLabel.textColor = upDown.textColor
