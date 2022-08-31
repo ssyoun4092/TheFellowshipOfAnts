@@ -9,12 +9,12 @@ import Foundation
 
 class API<T: Decodable> {
     var baseURL: String
-    var params: [String: String]
+    var parameters: [String: String]
     var apiKey: String
 
     var urlRequest: URLRequest {
         var urlComponents = URLComponents(string: baseURL)!
-        var queryItems = params.map { (key, value) in
+        var queryItems = parameters.map { (key, value) in
             URLQueryItem(name: key, value: value)
         }
         let apiKeyQureyItem = URLQueryItem(name: "apikey", value: apiKey)
@@ -30,11 +30,12 @@ class API<T: Decodable> {
 
     init(baseURL: String, params: [String: String], apiKey: String = "") {
         self.baseURL = baseURL
-        self.params = params
+        self.parameters = params
         self.apiKey = apiKey
     }
 
     func fetch(completion: @escaping (Result<T, Error>) -> Void) {
+        print(urlRequest)
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let apiError = error {
                 completion(.failure(apiError))
