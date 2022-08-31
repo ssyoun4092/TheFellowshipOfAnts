@@ -35,23 +35,23 @@ extension HomeViewController: UICollectionViewDataSource {
         switch collectionView.tag {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IndexCollectionViewCell.identifier, for: indexPath) as? IndexCollectionViewCell else { return UICollectionViewCell() }
-            let stockIndex = stockIndexes[indexPath.row]
-            let updown = UpDown.check(Double(stockIndex.values[1].close)!, Double(stockIndex.values[0].close)!)
+            var stockIndex = stockIndexes[indexPath.row]
+            let currentPrice = stockIndex.values[0].close
+            let prevPrice = stockIndex.values
+                .filter { $0.date == "15:30" }
+                .filter { $0.close != currentPrice }
+                .first?.close ?? "0"
+
+            let updown = UpDown.check(Double(prevPrice)!, Double(currentPrice)!)
+
             cell.configure(with: stockIndex, upDown: updown)
 
             return cell
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StockRankCollectionViewCell.identifier, for: indexPath) as? StockRankCollectionViewCell else { return UICollectionViewCell() }
-            crawlTop20CompanyNamesAndTickers { ranks, companyNames, tickers, prices in
-                let stockRankModel = StockRank(
-                    rank: ranks[indexPath.row],
-                    companyName: companyNames[indexPath.row],
-                    ticker: tickers[indexPath.row],
-                    price: prices[indexPath.row]
-                )
+            let stockRank = stockRanks[indexPath.row]
 
-                cell.configure(with: stockRankModel)
-            }
+            cell.configure(with: stockRank)
 
             return cell
         case 2:
@@ -80,7 +80,6 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print(scrollView.tag)
         switch scrollView.tag {
         case 0:
             let offset = scrollView.contentOffset.x
@@ -120,7 +119,7 @@ extension HomeViewController: UICollectionViewDelegate {
                 )
             }
         default:
-            print("Cannot Scroll")
+            print(#function)
         }
     }
 
@@ -167,7 +166,7 @@ extension HomeViewController: UICollectionViewDelegate {
 
             targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing + ((cellWidth / 4) * 0.75), y: 0)
         default:
-            print("Cannot Scroll")
+            print(#function)
         }
     }
 }
