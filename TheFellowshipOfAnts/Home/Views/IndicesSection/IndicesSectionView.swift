@@ -35,6 +35,7 @@ final class IndicesSectionView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         setupCollectionView()
         setupPageControl()
     }
@@ -52,8 +53,7 @@ extension IndicesSectionView {
                                 forCellWithReuseIdentifier: IndexCollectionViewCell.identifier)
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        collectionView.tag = 0
 
         collectionView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()

@@ -27,7 +27,7 @@ enum UpDown {
 }
 
 extension UpDown {
-    static func checkUpDown(_ prev: Double, _ current: Double) -> UpDown {
+    static func check(_ prev: Double, _ current: Double) -> UpDown {
         return current - prev > 0 ? .up : .down
     }
 }

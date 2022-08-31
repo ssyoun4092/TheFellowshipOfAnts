@@ -44,7 +44,8 @@ class IndexChartView: UIView {
             CGGradient(
                 colorsSpace: CGColorSpaceCreateDeviceRGB(),
                 colors: gradient as CFArray,
-                locations: [0.0, 1.0])!,
+                locations: [0.0, 1.0]
+            )!,
             angle: -90
         )
         dataSet.drawFilledEnabled = true

@@ -66,8 +66,7 @@ extension MajorETFSectionView {
             forCellWithReuseIdentifier: MajorCarouselCell.identifier)
         collectionView.decelerationRate = .fast
         collectionView.isPagingEnabled = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        collectionView.tag = 3
         collectionView.showsHorizontalScrollIndicator = false
 
         collectionView.snp.makeConstraints {
