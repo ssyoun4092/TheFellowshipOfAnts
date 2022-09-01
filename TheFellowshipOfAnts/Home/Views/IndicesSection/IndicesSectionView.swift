@@ -3,6 +3,15 @@ import SnapKit
 
 final class IndicesSectionView: UIView {
 
+    // MARK: - Properties
+    var stockIndexes: [StockIndex] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+
     // MARK: - IBOulets
     lazy var collectionView = UICollectionView(
         frame: .zero,
@@ -26,6 +35,7 @@ final class IndicesSectionView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         setupCollectionView()
         setupPageControl()
     }
@@ -43,8 +53,7 @@ extension IndicesSectionView {
                                 forCellWithReuseIdentifier: IndexCollectionViewCell.identifier)
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        collectionView.tag = 0
 
         collectionView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
@@ -56,8 +65,8 @@ extension IndicesSectionView {
         addSubview(pageControl)
 
         pageControl.numberOfPages = 3
-        pageControl.currentPageIndicatorTintColor = .systemRed
-        pageControl.pageIndicatorTintColor = .systemRed.withAlphaComponent(0.3)
+        pageControl.currentPageIndicatorTintColor = .systemPurple
+        pageControl.pageIndicatorTintColor = .systemPurple.withAlphaComponent(0.3)
         pageControl.isUserInteractionEnabled = false
 
         pageControl.snp.makeConstraints {

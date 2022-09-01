@@ -8,8 +8,8 @@ class StockRankCollectionViewCell: UICollectionViewCell {
     let rankLabel = UILabel()
     let logoImage = UIImageView()
     let stockNameLabel = UILabel()
-    let stockPriceLabel = UILabel()
-    let fluctuationRateLabel = UILabel()
+    let ticker = UILabel()
+    let currentPrice = UILabel()
 
     // MARK: - Life Cycle
 
@@ -25,8 +25,11 @@ class StockRankCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Methods
 
-    func configure(with rank: String) {
-        self.rankLabel.text = rank
+    func configure(with model: StockRank) {
+        rankLabel.text = model.rank
+        stockNameLabel.text = model.companyName
+        ticker.text = model.symbol
+        currentPrice.text = model.price
     }
 }
 
@@ -68,6 +71,7 @@ extension StockRankCollectionViewCell {
         contentView.addSubview(stockNameLabel)
 
         stockNameLabel.text = "애플"
+        stockNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
 
         stockNameLabel.snp.makeConstraints {
             $0.leading.equalTo(logoImage.snp.trailing).offset(10)
@@ -76,25 +80,27 @@ extension StockRankCollectionViewCell {
     }
 
     private func setupStockPriceLabel() {
-        contentView.addSubview(stockPriceLabel)
+        contentView.addSubview(ticker)
 
-        stockPriceLabel.text = "$153.04"
+        ticker.text = "AAPL"
+        ticker.font = .systemFont(ofSize: 14, weight: .medium)
+        ticker.textColor = .lightGray
 
-        stockPriceLabel.snp.makeConstraints {
+        ticker.snp.makeConstraints {
             $0.leading.equalTo(logoImage.snp.trailing).offset(10)
             $0.top.equalToSuperview { $0.snp.centerY }.offset(2)
         }
     }
 
     private func setupFluctuationRateLabel() {
-        contentView.addSubview(fluctuationRateLabel)
+        contentView.addSubview(currentPrice)
 
-        fluctuationRateLabel.text = "+1.35%"
-        fluctuationRateLabel.textColor = .systemRed
+        currentPrice.text = "$158.91"
+        currentPrice.font = .systemFont(ofSize: 15, weight: .medium)
 
-        fluctuationRateLabel.snp.makeConstraints {
-            $0.leading.equalTo(stockPriceLabel.snp.trailing).offset(5)
-            $0.bottom.equalTo(stockPriceLabel.snp.bottom)
+        currentPrice.snp.makeConstraints {
+            $0.leading.equalTo(ticker.snp.trailing).offset(5)
+            $0.bottom.equalTo(ticker.snp.bottom)
         }
     }
 }

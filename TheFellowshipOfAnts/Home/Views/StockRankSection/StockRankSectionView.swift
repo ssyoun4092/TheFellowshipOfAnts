@@ -1,12 +1,13 @@
 import UIKit
 import SnapKit
+import SwiftSoup
 
 final class StockRankSectionView: UIView {
 
     // MARK: - IBOutlets
 
     let titleLabel = UILabel()
-    private lazy var stocksCollectionView = UICollectionView(
+    lazy var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: collectionViewLayout
     )
@@ -59,16 +60,15 @@ extension StockRankSectionView {
     }
 
     func setupStocksCollectionView() {
-        addSubview(stocksCollectionView)
+        addSubview(collectionView)
 
-        stocksCollectionView.register(
+        collectionView.register(
             StockRankCollectionViewCell.self,
             forCellWithReuseIdentifier: StockRankCollectionViewCell.identifier)
-        stocksCollectionView.isPagingEnabled = true
-        stocksCollectionView.dataSource = self
-        stocksCollectionView.delegate = self
+        collectionView.isPagingEnabled = true
+        collectionView.tag = 1
 
-        stocksCollectionView.snp.makeConstraints {
+        collectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(400)

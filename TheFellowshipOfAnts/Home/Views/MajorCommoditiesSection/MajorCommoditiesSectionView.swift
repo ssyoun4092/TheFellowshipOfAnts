@@ -3,6 +3,9 @@ import SnapKit
 
 class MajorCommoditiesSectionView: UIView {
 
+    // MARK: - Properties
+    let majorCommodityList: [String] = ["금", "원유", "니켈", "옥수수", "은", "카카오"]
+
     // MARK: - IBOutlets
 
     let titleLabel = UILabel()
@@ -39,8 +42,9 @@ class MajorCommoditiesSectionView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         collectionView.scrollToItem(
-            at: IndexPath(item: descriptions.count, section: 0),
+            at: IndexPath(item: majorCommodityList.count, section: 0),
             at: .centeredHorizontally, animated: false)
     }
 }
@@ -65,8 +69,7 @@ extension MajorCommoditiesSectionView {
             forCellWithReuseIdentifier: MajorCarouselCell.identifier)
         collectionView.decelerationRate = .fast
         collectionView.isPagingEnabled = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        collectionView.tag = 2
         collectionView.showsHorizontalScrollIndicator = false
 
         collectionView.snp.makeConstraints {

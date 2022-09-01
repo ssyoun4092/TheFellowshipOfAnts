@@ -17,15 +17,31 @@ class IndexCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
 
         setupCellLayer()
+        setupChartView()
         setupIndexTitleLabel()
         setupCurrentPriceLabel()
         setupDTDLabel()
         setupfluctuationRateLabel()
-        setupChartView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func configure(with indexModel: StockIndex, upDown: UpDown) {
+        // TODO: - currentPrice 전날과 비교 로직 추가
+        indexTitleLabel.text = indexModel.basic.title
+        currentPriceLabel.text = indexModel.values[0].close.floorIfDouble(at: 2)
+        currentPriceLabel.textColor = upDown.textColor
+        DTDLabel.text = calculateDayToDayPrice(with: indexModel.values.first!.close, indexModel.values.last!.close)
+        DTDLabel.textColor = upDown.textColor
+        fluctuationRateLabel.text = calculateFluctuation(with: indexModel.values.first!.close, indexModel.values.last!.close) + "%"
+        fluctuationRateLabel.textColor = upDown.textColor
+
+        let chartInfos: [Double] = indexModel.values.map { value in
+            Double(value.close)!
+        }
+        chartView.configure(with: chartInfos.reversed(), upDown: upDown)
     }
 }
 
@@ -66,11 +82,13 @@ extension IndexCollectionViewCell {
 
         currentPriceLabel.text = "11,713.15"
         currentPriceLabel.textColor = .systemRed
-        currentPriceLabel.font = .systemFont(ofSize: 30, weight: .bold)
+        currentPriceLabel.font = .systemFont(ofSize: 25, weight: .bold)
+        currentPriceLabel.adjustsFontSizeToFitWidth = true
 
         currentPriceLabel.snp.makeConstraints {
-            $0.top.equalTo(indexTitleLabel.snp.bottom).offset(10)
+            $0.top.equalTo(indexTitleLabel.snp.bottom).offset(6)
             $0.leading.equalToSuperview().inset(leading)
+            $0.trailing.equalTo(chartView.snp.leading).offset(15)
         }
     }
 
@@ -78,12 +96,11 @@ extension IndexCollectionViewCell {
         contentView.addSubview(DTDLabel)
 
         DTDLabel.text = "+10.88"
-        DTDLabel.textColor = .systemRed
-        DTDLabel.font = .systemFont(ofSize: 17, weight: .medium)
+        DTDLabel.font = .systemFont(ofSize: 15, weight: .medium)
 
         DTDLabel.snp.makeConstraints {
-            $0.leading.equalTo(currentPriceLabel.snp.trailing).offset(10)
-            $0.bottom.equalTo(currentPriceLabel.snp.bottom)
+            $0.leading.equalToSuperview().inset(leading)
+            $0.top.equalTo(currentPriceLabel.snp.bottom).offset(6)
         }
     }
 
@@ -91,12 +108,13 @@ extension IndexCollectionViewCell {
         contentView.addSubview(fluctuationRateLabel)
 
         fluctuationRateLabel.text = "(1.3%)"
-        fluctuationRateLabel.textColor = .systemRed
-        fluctuationRateLabel.font = .systemFont(ofSize: 17, weight: .medium)
+        fluctuationRateLabel.textAlignment = .left
+        fluctuationRateLabel.font = .systemFont(ofSize: 15, weight: .medium)
+        fluctuationRateLabel.adjustsFontSizeToFitWidth = true
 
         fluctuationRateLabel.snp.makeConstraints {
             $0.leading.equalTo(DTDLabel.snp.trailing).offset(5)
-            $0.bottom.equalTo(currentPriceLabel.snp.bottom)
+            $0.bottom.equalTo(DTDLabel.snp.bottom)
         }
     }
 
@@ -106,7 +124,20 @@ extension IndexCollectionViewCell {
         chartView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.bottom.equalToSuperview().inset(trailing)
-            $0.width.equalToSuperview().multipliedBy(0.3)
+            $0.width.equalToSuperview().multipliedBy(0.4)
         }
+    }
+
+    private func calculateDayToDayPrice(with prev: String, _ current: String) -> String {
+        let value = Double(prev)! - Double(current)!
+
+        return value.toStringWithFloor(at: 2)
+    }
+
+    private func calculateFluctuation(with prev: String, _ current: String) -> String {
+        let prevValue = Double(prev)!
+        let currentValue = Double(current)!
+
+        return (((currentValue - prevValue) / prevValue) * 100).toStringWithFloor(at: 2)
     }
 }

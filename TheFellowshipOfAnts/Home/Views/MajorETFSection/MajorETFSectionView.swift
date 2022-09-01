@@ -3,6 +3,9 @@ import SnapKit
 
 class MajorETFSectionView: UIView {
 
+    // MARK: - Properties
+    let majorETFList: [String] = ["SPY", "TLT", "SHY", "VIX"]
+
     // MARK: - IBOulets
 
     let titleLabel = UILabel()
@@ -41,7 +44,7 @@ class MajorETFSectionView: UIView {
         super.layoutSubviews()
 
         collectionView.scrollToItem(
-            at: IndexPath(item: descriptions.count, section: 0),
+            at: IndexPath(item: majorETFList.count, section: 0),
             at: .centeredHorizontally, animated: false)
     }
 }
@@ -66,8 +69,7 @@ extension MajorETFSectionView {
             forCellWithReuseIdentifier: MajorCarouselCell.identifier)
         collectionView.decelerationRate = .fast
         collectionView.isPagingEnabled = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        collectionView.tag = 3
         collectionView.showsHorizontalScrollIndicator = false
 
         collectionView.snp.makeConstraints {
