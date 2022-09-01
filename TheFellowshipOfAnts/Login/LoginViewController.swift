@@ -6,12 +6,15 @@ import SnapKit
 import KakaoSDKAuth
 import KakaoSDKUser
 import AuthenticationServices
+import CryptoKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
     // MARK: - Properties
 
     var disposeBag = DisposeBag()
+    private var currentNonce: String?
 
     // MARK: - IBOulet
 
@@ -22,14 +25,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loginView.delegate = self
-
         setupViews()
         bind()
     }
 
+    // MARK: - Methods
+
     private func setupViews() {
-        view.backgroundColor = .white
         view.addSubview(loginView)
 
         loginView.snp.makeConstraints {
@@ -41,32 +43,56 @@ class LoginViewController: UIViewController {
 
     private func bind() {
         loginView.emailLoginButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] _ in
                 let emailLoginVC = EmailLoginViewController()
                 emailLoginVC.modalPresentationStyle = .fullScreen
-                self.navigationController?.pushViewController(emailLoginVC, animated: true)
+                self?.navigationController?.pushViewController(emailLoginVC, animated: true)
             })
             .disposed(by: disposeBag)
 
         loginView.signupWithEmailButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] _ in
                 let signupForEmailVC = SignupForEmailViewController()
                 signupForEmailVC.modalPresentationStyle = .fullScreen
-                self.navigationController?.pushViewController(signupForEmailVC, animated: true)
+                self?.navigationController?.pushViewController(signupForEmailVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        loginView.testButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                let tabBar = TabBarController()
+                tabBar.modalPresentationStyle = .fullScreen
+                self?.present(tabBar, animated: false)
+            })
+            .disposed(by: disposeBag)
+
+        loginView.kakaoLoginButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.kakaoLogIn()
+            })
+            .disposed(by: disposeBag)
+
+        loginView.appleLoginButton.rx.tap
+            .subscribe(onNext: { _ in
+                AppleAuth.shared.signInWithApple()
             })
             .disposed(by: disposeBag)
     }
 }
 
 extension LoginViewController {
-    @objc
-    func kakaoLogIn(_ sender: Any) {
+    private func kakaoLogIn() {
+        print(#function)
         UserApi.shared.loginWithKakaoTalk { oauthToken, error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                print("login kakao")
+                print("loginWithKakaoTalk() Success")
                 _ = oauthToken
+
+                let accessToken = oauthToken?.accessToken
+                print("accessToken: \(accessToken)") 
+                self.setUserInfo()
             }
         }
     }
@@ -76,20 +102,13 @@ extension LoginViewController {
             if let error = error {
                 print(error)
             } else {
-                print("me() success")
                 _ = user
+                print("email: \(user?.kakaoAccount?.email)")
+                print("password: \(user?.id)")
                 print("nickname: \(user?.kakaoAccount?.profile?.nickname ?? "no nickname")")
                 print("image: \(user?.kakaoAccount?.profile?.profileImageUrl)")
             }
         }
-    }
-}
-
-extension LoginViewController: LoginViewDelegate {
-    func navigateTabBar() {
-        let vc = TabBarController()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false)
     }
 }
 
