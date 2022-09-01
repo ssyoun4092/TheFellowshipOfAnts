@@ -12,6 +12,7 @@
 		8E17812D28C0788700E009BC /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812C28C0788700E009BC /* UIView+.swift */; };
 		8E17813528C099D700E009BC /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813428C099D700E009BC /* Commodity.swift */; };
 		8E17813B28C1C1D900E009BC /* ETF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813A28C1C1D900E009BC /* ETF.swift */; };
+		8E17812928C05D0400E009BC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812828C05D0400E009BC /* AppCoordinator.swift */; };
 		8E27715928BC8E2A00CF6D8D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27715828BC8E2A00CF6D8D /* Auth.swift */; };
 		8E27717628BCDAE000CF6D8D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27717528BCDAE000CF6D8D /* APIClient.swift */; };
 		8E27718128BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */; };
@@ -116,6 +117,7 @@
 		8E17812C28C0788700E009BC /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		8E17813428C099D700E009BC /* Commodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
 		8E17813A28C1C1D900E009BC /* ETF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETF.swift; sourceTree = "<group>"; };
+		8E17812828C05D0400E009BC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8E27715828BC8E2A00CF6D8D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		8E27717528BCDAE000CF6D8D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheFellowshipOfAntsKey.xcodeproj; path = ../../TheFellowshipOfAntsKey/TheFellowshipOfAntsKey.xcodeproj; sourceTree = "<group>"; };
@@ -247,6 +249,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		8E17812628C05CF700E009BC /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8E17812828C05D0400E009BC /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		8E27717A28BDA4A600CF6D8D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +292,7 @@
 		8E4CB36E28755FD60033AD85 /* TheFellowshipOfAnts */ = {
 			isa = PBXGroup;
 			children = (
+				8E17812628C05CF700E009BC /* Coordinator */,
 				8E32114528B9EBC6009B7F42 /* TheFellowshipOfAnts.entitlements */,
 				8E4CB36F28755FD60033AD85 /* AppDelegate.swift */,
 				8E4CB37128755FD60033AD85 /* SceneDelegate.swift */,
@@ -609,6 +620,7 @@
 				8EBC443528B8DBD700E6F356 /* SettingsViewController.swift in Sources */,
 				8EAB1BD528BDB813004F38C3 /* Double+.swift in Sources */,
 				8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */,
+				8E17812928C05D0400E009BC /* AppCoordinator.swift in Sources */,
 				8E9B2BC92895670C007B4196 /* Setting.swift in Sources */,
 				8EBC442028B8666D00E6F356 /* RecentSearchListView.swift in Sources */,
 				8EFFF45528B7504A00C3E762 /* YourMessageCell.swift in Sources */,
