@@ -21,7 +21,7 @@ extension HomeViewController: UICollectionViewDataSource {
         case 0:
             return stockIndexes.count
         case 1:
-            return 20
+            return stockRanks.count
         case 2:
             return majorCommodityList.count * 3
         case 3:
@@ -35,12 +35,9 @@ extension HomeViewController: UICollectionViewDataSource {
         switch collectionView.tag {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IndexCollectionViewCell.identifier, for: indexPath) as? IndexCollectionViewCell else { return UICollectionViewCell() }
-            var stockIndex = stockIndexes[indexPath.row]
-            let currentPrice = stockIndex.values[0].close
-            let prevPrice = stockIndex.values
-                .filter { $0.date == "15:30" }
-                .filter { $0.close != currentPrice }
-                .first?.close ?? "0"
+            let stockIndex = stockIndexes[indexPath.row]
+            let currentPrice = stockIndex.values.first?.close ?? "0"
+            let prevPrice = stockIndex.values.last?.close ?? "0"
 
             let updown = UpDown.check(Double(prevPrice)!, Double(currentPrice)!)
 
