@@ -13,15 +13,23 @@ enum UpDown {
 
     var textColor: UIColor {
         switch self {
-        case .up: return .systemRed
-        case .down: return .systemBlue
+        case .up: return .systemGreen
+        case .down: return .systemRed
         }
     }
 
     var gradient: [CGColor] {
         switch self {
-        case .up: return [UIColor.red.cgColor, UIColor.clear.cgColor]
-        case .down: return [UIColor.blue.cgColor, UIColor.clear.cgColor]
+        case .up: return [UIColor.green.cgColor, UIColor.clear.cgColor]
+        case .down: return [UIColor.red.cgColor, UIColor.clear.cgColor]
+        }
+    }
+
+    /// 플러스 마이너스 부호
+    var sign: String {
+        switch self {
+        case .up: return "+"
+        case .down: return "-"
         }
     }
 }

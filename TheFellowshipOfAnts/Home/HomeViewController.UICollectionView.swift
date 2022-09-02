@@ -21,11 +21,11 @@ extension HomeViewController: UICollectionViewDataSource {
         case 0:
             return stockIndexes.count
         case 1:
-            return 20
+            return stockRanks.count
         case 2:
-            return majorCommodityList.count * 3
+            return commodities.count * 3
         case 3:
-            return majorETFList.count * 3
+            return etfs.count * 3
         default:
             return 0
         }
@@ -35,12 +35,9 @@ extension HomeViewController: UICollectionViewDataSource {
         switch collectionView.tag {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IndexCollectionViewCell.identifier, for: indexPath) as? IndexCollectionViewCell else { return UICollectionViewCell() }
-            var stockIndex = stockIndexes[indexPath.row]
-            let currentPrice = stockIndex.values[0].close
-            let prevPrice = stockIndex.values
-                .filter { $0.date == "15:30" }
-                .filter { $0.close != currentPrice }
-                .first?.close ?? "0"
+            let stockIndex = stockIndexes[indexPath.row]
+            let currentPrice = stockIndex.details.first?.close ?? "0"
+            let prevPrice = stockIndex.details.last?.close ?? "0"
 
             let updown = UpDown.check(Double(prevPrice)!, Double(currentPrice)!)
 
@@ -58,18 +55,18 @@ extension HomeViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: MajorCarouselCell.identifier,
                 for: indexPath) as? MajorCarouselCell else { return UICollectionViewCell() }
-            let itemIndex = indexPath.row % majorCommodityList.count
+            let itemIndex = indexPath.row % commodities.count
 
-            cell.configure(description: majorCommodityList[itemIndex])
+            cell.configure(with: commodities[itemIndex])
 
             return cell
         case 3:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: MajorCarouselCell.identifier,
                 for: indexPath) as? MajorCarouselCell else { return UICollectionViewCell() }
-            let itemIndex = indexPath.row % majorETFList.count
-
-            cell.configure(description: majorETFList[itemIndex])
+            let itemIndex = indexPath.row % etfs.count
+            
+            cell.configure(with: etfs[itemIndex])
 
             return cell
         default:
@@ -90,13 +87,13 @@ extension HomeViewController: UICollectionViewDelegate {
             let collectionView = homeView.majorCommoditiesSectionView.collectionView
             var item = collectionView.indexPathsForVisibleItems[0].item
             if item == 1 {
-                item = majorCommodityList.count + 2
+                item = commodities.count + 2
                 collectionView.scrollToItem(
                     at: IndexPath(item: item, section: 0),
                     at: .centeredHorizontally, animated: false
                 )
-            } else if item == majorCommodityList.count * 3 - 4 {
-                item = majorCommodityList.count + 3
+            } else if item == commodities.count * 3 - 4 {
+                item = commodities.count + 3
                 collectionView.scrollToItem(
                     at: IndexPath(item: item, section: 0),
                     at: .centeredHorizontally, animated: false
@@ -106,13 +103,13 @@ extension HomeViewController: UICollectionViewDelegate {
             let collectionView = homeView.majorETFSectionView.collectionView
             var item = collectionView.indexPathsForVisibleItems[0].item
             if item == 1 {
-                item = majorETFList.count + 2
+                item = etfs.count + 2
                 collectionView.scrollToItem(
                     at: IndexPath(item: item, section: 0),
                     at: .centeredHorizontally, animated: false
                 )
-            } else if item == majorETFList.count * 3 - 4 {
-                item = majorETFList.count + 3
+            } else if item == etfs.count * 3 - 4 {
+                item = etfs.count + 3
                 collectionView.scrollToItem(
                     at: IndexPath(item: item, section: 0),
                     at: .centeredHorizontally, animated: false

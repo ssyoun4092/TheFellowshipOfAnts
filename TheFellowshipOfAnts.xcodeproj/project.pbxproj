@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8E06F68A287EADE60017F435 /* StockIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F689287EADE60017F435 /* StockIndex.swift */; };
 		8E06F68D287EB5830017F435 /* IndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68C287EB5830017F435 /* IndexService.swift */; };
+		8E17812D28C0788700E009BC /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812C28C0788700E009BC /* UIView+.swift */; };
+		8E17813528C099D700E009BC /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813428C099D700E009BC /* Commodity.swift */; };
+		8E17813B28C1C1D900E009BC /* ETF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813A28C1C1D900E009BC /* ETF.swift */; };
 		8E27715928BC8E2A00CF6D8D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27715828BC8E2A00CF6D8D /* Auth.swift */; };
 		8E27717628BCDAE000CF6D8D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27717528BCDAE000CF6D8D /* APIClient.swift */; };
 		8E27718128BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */; };
@@ -71,7 +74,6 @@
 		8EFFF45928B7504A00C3E762 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF45028B7504A00C3E762 /* MessagesView.swift */; };
 		8EFFF46828B7505700C3E762 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF46228B7505700C3E762 /* ProfileViewController.swift */; };
 		8EFFF46B28B7531900C3E762 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 8EFFF46A28B7531900C3E762 /* Charts */; };
-		8EFFF46F28B7539D00C3E762 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF46E28B7539D00C3E762 /* UIView+.swift */; };
 		8EFFF47228B7570400C3E762 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47128B7570400C3E762 /* TabBarController.swift */; };
 		8EFFF47528B76EF800C3E762 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47428B76EF800C3E762 /* HomeView.swift */; };
 		8EFFF48428B7727C00C3E762 /* MajorCommoditiesSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47928B7727B00C3E762 /* MajorCommoditiesSectionView.swift */; };
@@ -111,10 +113,13 @@
 /* Begin PBXFileReference section */
 		8E06F689287EADE60017F435 /* StockIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIndex.swift; sourceTree = "<group>"; };
 		8E06F68C287EB5830017F435 /* IndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexService.swift; sourceTree = "<group>"; };
+		8E17812C28C0788700E009BC /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		8E17813428C099D700E009BC /* Commodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
+		8E17813A28C1C1D900E009BC /* ETF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETF.swift; sourceTree = "<group>"; };
 		8E27715828BC8E2A00CF6D8D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		8E32114528B9EBC6009B7F42 /* TheFellowshipOfAnts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheFellowshipOfAnts.entitlements; sourceTree = "<group>"; };
 		8E27717528BCDAE000CF6D8D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheFellowshipOfAntsKey.xcodeproj; path = ../../TheFellowshipOfAntsKey/TheFellowshipOfAntsKey.xcodeproj; sourceTree = "<group>"; };
+		8E32114528B9EBC6009B7F42 /* TheFellowshipOfAnts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheFellowshipOfAnts.entitlements; sourceTree = "<group>"; };
 		8E4CB36C28755FD60033AD85 /* TheFellowshipOfAnts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheFellowshipOfAnts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E4CB36F28755FD60033AD85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E4CB37128755FD60033AD85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,7 +169,6 @@
 		8EFFF44F28B7504A00C3E762 /* MyMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMessageCell.swift; sourceTree = "<group>"; };
 		8EFFF45028B7504A00C3E762 /* MessagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		8EFFF46228B7505700C3E762 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "../../../../../../../../Downloads/TheFellowshipOfAnts-a2c6bf0eb0112a565b73a2e4875b8901f22b5043/TheFellowshipOfAnts/Views/TabBar/Profile/ProfileViewController.swift"; sourceTree = "<group>"; };
-		8EFFF46E28B7539D00C3E762 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		8EFFF47128B7570400C3E762 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8EFFF47428B76EF800C3E762 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8EFFF47828B7727B00C3E762 /* MajorCarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCarouselCell.swift; sourceTree = "<group>"; };
@@ -241,13 +245,6 @@
 				8EBC442C28B8DBB200E6F356 /* Cells */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		8E06F68B287EB5360017F435 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		8E27717A28BDA4A600CF6D8D /* Products */ = {
@@ -394,6 +391,8 @@
 				8E27715828BC8E2A00CF6D8D /* Auth.swift */,
 				8E27717528BCDAE000CF6D8D /* APIClient.swift */,
 				8EAB1BD928BDE761004F38C3 /* UpDown.swift */,
+				8E17813428C099D700E009BC /* Commodity.swift */,
+				8E17813A28C1C1D900E009BC /* ETF.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -402,7 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				8EAAA4C12877259800F3D5CC /* UIViewController+.swift */,
-				8EFFF46E28B7539D00C3E762 /* UIView+.swift */,
+				8E17812C28C0788700E009BC /* UIView+.swift */,
 				8EA4B55328B60E7200AB5D1D /* UITextField+.swift */,
 				8E8068E828B842E2004039B1 /* NSObject+.swift */,
 				8EAB1BD428BDB813004F38C3 /* Double+.swift */,
@@ -616,7 +615,6 @@
 				8EBC442128B8667000E6F356 /* RecentSearchCell.swift in Sources */,
 				8EFFF45428B7504A00C3E762 /* ChatCell.swift in Sources */,
 				8EBC443828B8E87200E6F356 /* SettingsView.swift in Sources */,
-				8EFFF46F28B7539D00C3E762 /* UIView+.swift in Sources */,
 				8EFFF48B28B7727C00C3E762 /* IndicesSectionView.swift in Sources */,
 				8EFFF41528B7282400C3E762 /* SignupView.swift in Sources */,
 				8EFFF45128B7504A00C3E762 /* ChatViewController.swift in Sources */,
@@ -626,6 +624,7 @@
 				8EAAA5252877F98D00F3D5CC /* SignupForEmailViewModel.swift in Sources */,
 				8EFFF44228B7503200C3E762 /* HomeViewController.swift in Sources */,
 				8EFFF45328B7504A00C3E762 /* ChatListView.swift in Sources */,
+				8E17812D28C0788700E009BC /* UIView+.swift in Sources */,
 				8EDD6FE928BF46F6004958C5 /* HomeViewController.UICollectionView.swift in Sources */,
 				8EBC443628B8DBFB00E6F356 /* SettingTableViewCell.swift in Sources */,
 				8EBC442428B8668F00E6F356 /* SearchViewController.UITableView.swift in Sources */,
@@ -633,6 +632,8 @@
 				8EDD6FE628BF4058004958C5 /* StockRank.swift in Sources */,
 				8E06F68D287EB5830017F435 /* IndexService.swift in Sources */,
 				8EA4B55428B60E7200AB5D1D /* UITextField+.swift in Sources */,
+				8E17813B28C1C1D900E009BC /* ETF.swift in Sources */,
+				8E17813528C099D700E009BC /* Commodity.swift in Sources */,
 				8ED070DC28BEFEC3006DB54D /* Stock.swift in Sources */,
 				8EDDC298287A720D00FA025D /* SignupForEmailModel.swift in Sources */,
 				8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */,

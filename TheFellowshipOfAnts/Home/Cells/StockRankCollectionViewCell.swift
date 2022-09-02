@@ -1,15 +1,17 @@
 import UIKit
 import SnapKit
+import Kingfisher
 
 class StockRankCollectionViewCell: UICollectionViewCell {
 
     // MARK: - IBOulets
 
     let rankLabel = UILabel()
-    let logoImage = UIImageView()
+    let logoImageView = UIImageView()
     let stockNameLabel = UILabel()
-    let ticker = UILabel()
-    let currentPrice = UILabel()
+    let symbolLabel = UILabel()
+    let currentPriceLabel = UILabel()
+    let fluctuationRateLabel = UILabel()
 
     // MARK: - Life Cycle
 
@@ -27,9 +29,12 @@ class StockRankCollectionViewCell: UICollectionViewCell {
 
     func configure(with model: StockRank) {
         rankLabel.text = model.rank
+        logoImageView.kf.setImage(with: URL(string: model.logoURL))
         stockNameLabel.text = model.companyName
-        ticker.text = model.symbol
-        currentPrice.text = model.price
+        symbolLabel.text = model.symbol
+        currentPriceLabel.text = model.price
+        fluctuationRateLabel.text = model.upDown.sign + model.fluctuationRate
+        fluctuationRateLabel.textColor = model.upDown.textColor
     }
 }
 
@@ -38,7 +43,8 @@ extension StockRankCollectionViewCell {
         setupRankLabel()
         setupLogoImage()
         setupStockNameLabel()
-        setupStockPriceLabel()
+        setupSymbolLabel()
+        setupCurrentPriceLabel()
         setupFluctuationRateLabel()
     }
 
@@ -52,17 +58,17 @@ extension StockRankCollectionViewCell {
     }
 
     private func setupLogoImage() {
-        contentView.addSubview(logoImage)
+        contentView.addSubview(logoImageView)
 
-        logoImage.image = UIImage(named: "AppleLoginLogo")
-        logoImage.backgroundColor = .black
-        logoImage.layer.cornerRadius = 25
-        logoImage.clipsToBounds = true
+        logoImageView.image = UIImage(named: "AppleLoginLogo")
+        logoImageView.backgroundColor = .white
+        logoImageView.layer.cornerRadius = 25
+        logoImageView.clipsToBounds = true
 
-        logoImage.snp.makeConstraints {
+        logoImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(40)
             $0.height.equalToSuperview()
-            $0.width.equalTo(logoImage.snp.height)
+            $0.width.equalTo(logoImageView.snp.height)
             $0.centerY.equalToSuperview()
         }
     }
@@ -74,33 +80,45 @@ extension StockRankCollectionViewCell {
         stockNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
 
         stockNameLabel.snp.makeConstraints {
-            $0.leading.equalTo(logoImage.snp.trailing).offset(10)
+            $0.leading.equalTo(logoImageView.snp.trailing).offset(10)
             $0.bottom.equalToSuperview { $0.snp.centerY }.offset(-2)
         }
     }
 
-    private func setupStockPriceLabel() {
-        contentView.addSubview(ticker)
+    private func setupSymbolLabel() {
+        contentView.addSubview(symbolLabel)
 
-        ticker.text = "AAPL"
-        ticker.font = .systemFont(ofSize: 14, weight: .medium)
-        ticker.textColor = .lightGray
+        symbolLabel.text = "AAPL"
+        symbolLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        symbolLabel.textColor = .lightGray
 
-        ticker.snp.makeConstraints {
-            $0.leading.equalTo(logoImage.snp.trailing).offset(10)
+        symbolLabel.snp.makeConstraints {
+            $0.leading.equalTo(logoImageView.snp.trailing).offset(10)
             $0.top.equalToSuperview { $0.snp.centerY }.offset(2)
         }
     }
 
+    private func setupCurrentPriceLabel() {
+        contentView.addSubview(currentPriceLabel)
+
+        currentPriceLabel.text = "$158.91"
+        currentPriceLabel.font = .systemFont(ofSize: 15, weight: .medium)
+
+        currentPriceLabel.snp.makeConstraints {
+            $0.leading.equalTo(symbolLabel.snp.trailing).offset(5)
+            $0.bottom.equalTo(symbolLabel.snp.bottom)
+        }
+    }
+
     private func setupFluctuationRateLabel() {
-        contentView.addSubview(currentPrice)
+        contentView.addSubview(fluctuationRateLabel)
 
-        currentPrice.text = "$158.91"
-        currentPrice.font = .systemFont(ofSize: 15, weight: .medium)
+        fluctuationRateLabel.text = "+1.3%"
+        fluctuationRateLabel.font = .systemFont(ofSize: 15, weight: .medium)
 
-        currentPrice.snp.makeConstraints {
-            $0.leading.equalTo(ticker.snp.trailing).offset(5)
-            $0.bottom.equalTo(ticker.snp.bottom)
+        fluctuationRateLabel.snp.makeConstraints {
+            $0.leading.equalTo(currentPriceLabel.snp.trailing).offset(5)
+            $0.bottom.equalTo(currentPriceLabel.snp.bottom)
         }
     }
 }

@@ -49,8 +49,9 @@ extension IndicesSectionView {
     private func setupCollectionView() {
         addSubview(collectionView)
 
-        collectionView.register(IndexCollectionViewCell.self,
-                                forCellWithReuseIdentifier: IndexCollectionViewCell.identifier)
+        collectionView.register(
+            IndexCollectionViewCell.self,
+            forCellWithReuseIdentifier: IndexCollectionViewCell.identifier)
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.tag = 0

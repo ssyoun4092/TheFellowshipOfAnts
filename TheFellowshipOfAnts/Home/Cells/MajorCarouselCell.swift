@@ -6,7 +6,7 @@ class MajorCarouselCell: UICollectionViewCell {
     // MARK: - IBOulets
 
     let descriptionLabel = UILabel()
-    let mainLabel = UILabel()
+    var mainLabel = UILabel()
     let fluctuationRateLabel = UILabel()
     let currentPriceLabel = UILabel()
 
@@ -37,8 +37,10 @@ class MajorCarouselCell: UICollectionViewCell {
 
     // MARK: - Methods
 
-    func configure(description: String) {
-        self.descriptionLabel.text = description
+    func configure(with model: CarouselCellType) {
+        self.mainLabel.text = model.name
+        self.fluctuationRateLabel.text = model.fluctuationRate
+        self.currentPriceLabel.text = model.price
     }
 }
 
@@ -58,7 +60,7 @@ extension MajorCarouselCell {
     private func setupDescriptionLabel() {
         contentView.addSubview(descriptionLabel)
 
-        descriptionLabel.text = "원유"
+        descriptionLabel.text = ""
         descriptionLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         descriptionLabel.textColor = .black.withAlphaComponent(0.5)
 
@@ -71,29 +73,16 @@ extension MajorCarouselCell {
         contentView.addSubview(mainLabel)
 
         mainLabel.text = "WTI"
-        mainLabel.font = UIFont.systemFont(ofSize: 40, weight: .bold)
-        mainLabel.textAlignment = .right
-        mainLabel.adjustsFontSizeToFitWidth = true
-        mainLabel.minimumScaleFactor = 0.01
+        mainLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        mainLabel.textAlignment = .left
+//        mainLabel.adjustsFontSizeToFitWidth = true
+//        mainLabel.minimumScaleFactor = 0.01
 
         mainLabel.snp.makeConstraints {
             $0.top.equalTo(descriptionLabel.snp.bottom)
             $0.leading.equalTo(descriptionLabel.snp.leading)
-            $0.width.equalToSuperview { $0.snp.width }.multipliedBy(0.2)
+//            $0.width.equalToSuperview { $0.snp.width }.multipliedBy(0.2)
             $0.height.equalTo(20)
-        }
-    }
-
-    private func setupCurrentPriceLabel() {
-        contentView.addSubview(currentPriceLabel)
-
-        currentPriceLabel.text = "+1.34%"
-        currentPriceLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
-
-        currentPriceLabel.snp.makeConstraints {
-            $0.trailing.bottom.equalToSuperview().inset(15)
-            $0.width.equalToSuperview { $0.snp.width }.multipliedBy(0.5)
-            $0.height.equalTo(25)
         }
     }
 
@@ -105,7 +94,21 @@ extension MajorCarouselCell {
 
         fluctuationRateLabel.snp.makeConstraints {
             $0.bottom.equalTo(currentPriceLabel.snp.top)
-            $0.trailing.equalTo(currentPriceLabel)
+            $0.trailing.equalTo(currentPriceLabel.snp.trailing)
+        }
+    }
+
+    private func setupCurrentPriceLabel() {
+        contentView.addSubview(currentPriceLabel)
+
+        currentPriceLabel.text = "2.59"
+        currentPriceLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        currentPriceLabel.textAlignment = .right
+
+        currentPriceLabel.snp.makeConstraints {
+            $0.trailing.bottom.equalToSuperview().inset(10)
+            $0.width.equalToSuperview { $0.snp.width }.multipliedBy(0.5)
+            $0.height.equalTo(25)
         }
     }
 }
