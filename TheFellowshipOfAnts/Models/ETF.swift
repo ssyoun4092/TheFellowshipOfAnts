@@ -39,9 +39,9 @@ struct ETF: CarouselCellType {
 
 extension ETF {
     static let dummy: [ETF] = [
-        ETF(name: "SPY", price: "396.39999", fluctuationRate: "-0.32"),
-        ETF(name: "SHY", price: "82.13000", fluctuationRate: "0.19"),
-        ETF(name: "TLT", price: "109.59000", fluctuationRate: "2.14"),
-        ETF(name: "VIX", price: "25.33000", fluctuationRate: "2.37")
+        ETF(name: "SPY", price: "$396.4", fluctuationRate: "-0.32%"),
+        ETF(name: "SHY", price: "$82.13", fluctuationRate: "0.19%"),
+        ETF(name: "TLT", price: "$109.59", fluctuationRate: "2.14%"),
+        ETF(name: "VIX", price: "$25.33", fluctuationRate: "2.37%")
     ]
 }
