@@ -10,6 +10,8 @@
 		8E06F68A287EADE60017F435 /* StockIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F689287EADE60017F435 /* StockIndex.swift */; };
 		8E06F68D287EB5830017F435 /* IndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68C287EB5830017F435 /* IndexService.swift */; };
 		8E17812D28C0788700E009BC /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812C28C0788700E009BC /* UIView+.swift */; };
+		8E17813528C099D700E009BC /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813428C099D700E009BC /* Commodity.swift */; };
+		8E17813B28C1C1D900E009BC /* ETF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813A28C1C1D900E009BC /* ETF.swift */; };
 		8E27715928BC8E2A00CF6D8D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27715828BC8E2A00CF6D8D /* Auth.swift */; };
 		8E27717628BCDAE000CF6D8D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27717528BCDAE000CF6D8D /* APIClient.swift */; };
 		8E27718128BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */; };
@@ -112,6 +114,8 @@
 		8E06F689287EADE60017F435 /* StockIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIndex.swift; sourceTree = "<group>"; };
 		8E06F68C287EB5830017F435 /* IndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexService.swift; sourceTree = "<group>"; };
 		8E17812C28C0788700E009BC /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		8E17813428C099D700E009BC /* Commodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
+		8E17813A28C1C1D900E009BC /* ETF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETF.swift; sourceTree = "<group>"; };
 		8E27715828BC8E2A00CF6D8D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		8E27717528BCDAE000CF6D8D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheFellowshipOfAntsKey.xcodeproj; path = ../../TheFellowshipOfAntsKey/TheFellowshipOfAntsKey.xcodeproj; sourceTree = "<group>"; };
@@ -387,6 +391,8 @@
 				8E27715828BC8E2A00CF6D8D /* Auth.swift */,
 				8E27717528BCDAE000CF6D8D /* APIClient.swift */,
 				8EAB1BD928BDE761004F38C3 /* UpDown.swift */,
+				8E17813428C099D700E009BC /* Commodity.swift */,
+				8E17813A28C1C1D900E009BC /* ETF.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -626,6 +632,8 @@
 				8EDD6FE628BF4058004958C5 /* StockRank.swift in Sources */,
 				8E06F68D287EB5830017F435 /* IndexService.swift in Sources */,
 				8EA4B55428B60E7200AB5D1D /* UITextField+.swift in Sources */,
+				8E17813B28C1C1D900E009BC /* ETF.swift in Sources */,
+				8E17813528C099D700E009BC /* Commodity.swift in Sources */,
 				8ED070DC28BEFEC3006DB54D /* Stock.swift in Sources */,
 				8EDDC298287A720D00FA025D /* SignupForEmailModel.swift in Sources */,
 				8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */,

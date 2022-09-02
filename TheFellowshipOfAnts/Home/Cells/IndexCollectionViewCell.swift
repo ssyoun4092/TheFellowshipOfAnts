@@ -30,14 +30,14 @@ class IndexCollectionViewCell: UICollectionViewCell {
 
     func configure(with indexModel: StockIndex, upDown: UpDown) {
         indexTitleLabel.text = indexModel.basic.title
-        currentPriceLabel.text = indexModel.values.first?.close.floorIfDouble(at: 2)
+        currentPriceLabel.text = indexModel.details.first?.close.floorIfDouble(at: 2)
         currentPriceLabel.textColor = upDown.textColor
-        DTDLabel.text = calculateDayToDayPrice(with: indexModel.values.first!.close, indexModel.values.last!.close)
+        DTDLabel.text = calculateDayToDayPrice(with: indexModel.details.first!.close, indexModel.details.last!.close)
         DTDLabel.textColor = upDown.textColor
-        fluctuationRateLabel.text = calculateFluctuation(with: indexModel.values.first!.close, indexModel.values.last!.close) + "%"
+        fluctuationRateLabel.text = calculateFluctuation(with: indexModel.details.first!.close, indexModel.details.last!.close) + "%"
         fluctuationRateLabel.textColor = upDown.textColor
 
-        let chartInfos: [Double] = indexModel.values.map { value in
+        let chartInfos: [Double] = indexModel.details.map { value in
             Double(value.close)!
         }
         chartView.configure(with: chartInfos.reversed(), upDown: upDown)

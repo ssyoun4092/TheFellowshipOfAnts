@@ -6,7 +6,7 @@ class MajorCarouselCell: UICollectionViewCell {
     // MARK: - IBOulets
 
     let descriptionLabel = UILabel()
-    let mainLabel = UILabel()
+    var mainLabel = UILabel()
     let fluctuationRateLabel = UILabel()
     let currentPriceLabel = UILabel()
 
@@ -37,8 +37,10 @@ class MajorCarouselCell: UICollectionViewCell {
 
     // MARK: - Methods
 
-    func configure(description: String) {
-        self.descriptionLabel.text = description
+    func configure(with model: CarouselCellType) {
+        self.mainLabel.text = model.name
+        self.fluctuationRateLabel.text = model.fluctuationRate
+        self.currentPriceLabel.text = model.price
     }
 }
 
