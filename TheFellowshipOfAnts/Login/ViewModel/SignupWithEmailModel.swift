@@ -11,7 +11,7 @@ protocol ValidForEmailPassword {
     func testing(_ email: String)
 }
 
-struct SignupForEmailModel: ValidForEmailPassword {
+struct SignupWithEmailModel: ValidForEmailPassword {
     func checkEmailValid(_ email: String) -> Bool {
         let emailRegEx = "^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
