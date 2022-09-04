@@ -22,4 +22,10 @@ class HomeCoordinator: Coordinator {
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
+
+    func pushToStockDetailViewController() {
+        let vc = StockDetailViewController()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

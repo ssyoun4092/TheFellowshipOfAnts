@@ -76,6 +76,15 @@ extension HomeViewController: UICollectionViewDataSource {
 }
 
 extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView.tag {
+        case 0:
+            coordinator?.pushToStockDetailViewController()
+        default:
+            print(#function)
+        }
+    }
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         switch scrollView.tag {
         case 0:
