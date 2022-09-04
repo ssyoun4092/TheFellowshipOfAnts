@@ -3,7 +3,7 @@ import SnapKit
 
 class IndexCollectionViewCell: UICollectionViewCell {
 
-    // MARK: - IBOulets
+    // MARK: - IBOutlets
 
     let indexTitleLabel = UILabel()
     let currentPriceLabel = UILabel()

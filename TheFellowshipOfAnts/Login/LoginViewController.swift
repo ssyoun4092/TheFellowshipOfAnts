@@ -113,7 +113,7 @@ extension LoginViewController {
     }
 }
 
-struct LoginViewControllerPreView: PreviewProvider {
+struct LoginViewControllerPreview: PreviewProvider {
     static var previews: some View {
         LoginViewController().toPreview()
     }
