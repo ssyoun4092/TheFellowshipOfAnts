@@ -73,4 +73,8 @@ class TabBarCoordinator: Coordinator {
 
         navigationController.present(tabBarController, animated: false)
     }
+
+    func childDidFinish(_ coordinator: Coordinator) {
+        self.childCoordinators = self.childCoordinators.filter { $0 !== coordinator }
+    }
 }

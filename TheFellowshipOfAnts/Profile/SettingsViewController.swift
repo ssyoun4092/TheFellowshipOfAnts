@@ -3,6 +3,10 @@ import SnapKit
 
 class SettingsViewController: UIViewController {
 
+    // MARK: - Properties
+
+    weak var coordinator: ProfileCoordinator?
+
     // MARK: - IBOulets
 
     let settingsView = SettingsView()
@@ -17,6 +21,16 @@ class SettingsViewController: UIViewController {
 
         setupNavigationBar()
         setupViews()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        coordinator?.didFinishProfile()
+    }
+
+    deinit {
+        print("SettingsVC Deinit")
     }
 }
 

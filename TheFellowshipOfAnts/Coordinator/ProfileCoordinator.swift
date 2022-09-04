@@ -22,4 +22,14 @@ class ProfileCoordinator: Coordinator {
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
+
+    func pushToSettingVC() {
+        let vc = SettingsViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(vc, animated: true)
+    }
+
+    func didFinishProfile() {
+        parentCoordinator?.childDidFinish(self)
+    }
 }
