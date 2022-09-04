@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     // MARK: - Properties
 
     var disposeBag = DisposeBag()
+    var coordinator: AuthCoordinator?
     private var currentNonce: String?
 
     // MARK: - IBOulet
@@ -27,6 +28,12 @@ class LoginViewController: UIViewController {
 
         setupViews()
         bind()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        coordinator?.didFinishAuth()
     }
 
     // MARK: - Methods
@@ -44,25 +51,19 @@ class LoginViewController: UIViewController {
     private func bind() {
         loginView.emailLoginButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                let emailLoginVC = EmailLoginViewController()
-                emailLoginVC.modalPresentationStyle = .fullScreen
-                self?.navigationController?.pushViewController(emailLoginVC, animated: true)
+                self?.coordinator?.pushToEmailLoginVC()
             })
             .disposed(by: disposeBag)
 
         loginView.signupWithEmailButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                let signupForEmailVC = SignupForEmailViewController()
-                signupForEmailVC.modalPresentationStyle = .fullScreen
-                self?.navigationController?.pushViewController(signupForEmailVC, animated: true)
+                self?.coordinator?.pushToSignupWithEmailVC()
             })
             .disposed(by: disposeBag)
 
         loginView.testButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
-                let tabBar = TabBarController()
-                tabBar.modalPresentationStyle = .fullScreen
-                self?.present(tabBar, animated: false)
+                self?.coordinator?.showTabBarVC()
             })
             .disposed(by: disposeBag)
 

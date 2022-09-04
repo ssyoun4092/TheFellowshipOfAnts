@@ -4,10 +4,10 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class SignupForEmailViewController: UIViewController {
+class SignupWithEmailViewController: UIViewController {
 
     // MARK: - Properties
-    let viewModel = SignupForEmailViewModel()
+    let viewModel = SignupWithEmailViewModel()
     var disposeBag = DisposeBag()
 
     // MARK: - IBOutlet
@@ -143,6 +143,6 @@ class SignupForEmailViewController: UIViewController {
 
 struct SignUpForEmailViewControllerPreview: PreviewProvider {
     static var previews: some View {
-        SignupForEmailViewController().toPreview()
+        SignupWithEmailViewController().toPreview()
     }
 }

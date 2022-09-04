@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol SignupForEmailType {
+protocol SignupWithEmailType {
     // input
     var emailText: AnyObserver<String> { get }
     var passwordText: AnyObserver<String> { get }
@@ -27,7 +27,7 @@ protocol SignupForEmailType {
     var nicknameValid: Observable<Bool> { get }
 }
 
-class SignupForEmailViewModel: SignupForEmailType {
+class SignupWithEmailViewModel: SignupWithEmailType {
     var disposeBag = DisposeBag()
 
     let emailText: AnyObserver<String>
@@ -52,7 +52,7 @@ class SignupForEmailViewModel: SignupForEmailType {
     let passwordValid: Observable<Bool>
     let nicknameValid: Observable<Bool>
 
-    init(model: ValidForEmailPassword = SignupForEmailModel()) {
+    init(model: ValidForEmailPassword = SignupWithEmailModel()) {
         let emailTexting = BehaviorSubject<String>(value: "")
         let emailInputDidBegin = PublishSubject<Void>()
         let emailInputDidEnd = PublishSubject<Void>()
