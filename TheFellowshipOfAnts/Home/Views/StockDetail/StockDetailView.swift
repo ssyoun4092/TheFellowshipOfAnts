@@ -166,7 +166,7 @@ extension StockDetailView {
         contentView.addSubview(chartsVStack)
 
         chartsVStack.axis = .vertical
-        chartsVStack.spacing = 30
+        chartsVStack.spacing = 50
 
         chartsVStack.snp.makeConstraints {
             $0.top.equalTo(fluctuationRateLabel.snp.bottom).offset(15)

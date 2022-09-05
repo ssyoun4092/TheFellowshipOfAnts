@@ -16,6 +16,7 @@
 		8E16556128C488A000577886 /* GrossProfitChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556028C488A000577886 /* GrossProfitChartView.swift */; };
 		8E16556928C5B03700577886 /* StockIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556828C5B03700577886 /* StockIncome.swift */; };
 		8E16556B28C5D02E00577886 /* GrossProfitRatioChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556A28C5D02E00577886 /* GrossProfitRatioChartView.swift */; };
+		8E16556D28C5DD1200577886 /* StockOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556C28C5DD1100577886 /* StockOverview.swift */; };
 		8E17812928C05D0400E009BC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812828C05D0400E009BC /* Coordinator.swift */; };
 		8E17812D28C0788700E009BC /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812C28C0788700E009BC /* UIView+.swift */; };
 		8E17813528C099D700E009BC /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813428C099D700E009BC /* Commodity.swift */; };
@@ -135,6 +136,7 @@
 		8E16556028C488A000577886 /* GrossProfitChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrossProfitChartView.swift; sourceTree = "<group>"; };
 		8E16556828C5B03700577886 /* StockIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIncome.swift; sourceTree = "<group>"; };
 		8E16556A28C5D02E00577886 /* GrossProfitRatioChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrossProfitRatioChartView.swift; sourceTree = "<group>"; };
+		8E16556C28C5DD1100577886 /* StockOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOverview.swift; sourceTree = "<group>"; };
 		8E17812828C05D0400E009BC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8E17812C28C0788700E009BC /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		8E17813428C099D700E009BC /* Commodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				8EAB1BD928BDE761004F38C3 /* UpDown.swift */,
 				8E17813428C099D700E009BC /* Commodity.swift */,
 				8E17813A28C1C1D900E009BC /* ETF.swift */,
+				8E16556C28C5DD1100577886 /* StockOverview.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				8EAAA4C02877244000F3D5CC /* EmailLoginViewController.swift in Sources */,
 				8EFFF48828B7727C00C3E762 /* StockRankCollectionViewCell.swift in Sources */,
 				8E17814528C307BB00E009BC /* AuthCoordinator.swift in Sources */,
+				8E16556D28C5DD1200577886 /* StockOverview.swift in Sources */,
 				8E17814328C3066800E009BC /* AppCoordinator.swift in Sources */,
 				8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */,
 				8EFFF48628B7727C00C3E762 /* MajorCarouselCell.swift in Sources */,
