@@ -127,7 +127,7 @@
 		8E06F689287EADE60017F435 /* StockIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIndex.swift; sourceTree = "<group>"; };
 		8E06F68C287EB5830017F435 /* IndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexService.swift; sourceTree = "<group>"; };
 		8E16555628C454BB00577886 /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
-		8E16555928C484C800577886 /* StockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StockDetailView.swift; path = Views/StockDetailView.swift; sourceTree = "<group>"; };
+		8E16555928C484C800577886 /* StockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailView.swift; sourceTree = "<group>"; };
 		8E16555C28C4887100577886 /* StockGraphChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockGraphChartView.swift; sourceTree = "<group>"; };
 		8E16555E28C4888E00577886 /* RevenueChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueChartView.swift; sourceTree = "<group>"; };
 		8E16556028C488A000577886 /* GrossProfitChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrossProfitChartView.swift; sourceTree = "<group>"; };
@@ -236,10 +236,6 @@
 				8EFFF44128B7503200C3E762 /* HomeViewController.swift */,
 				8EDD6FE828BF46F6004958C5 /* HomeViewController.UICollectionView.swift */,
 				8E16555628C454BB00577886 /* StockDetailViewController.swift */,
-				8E16555928C484C800577886 /* StockDetailView.swift */,
-				8E16555E28C4888E00577886 /* RevenueChartView.swift */,
-				8E16556028C488A000577886 /* GrossProfitChartView.swift */,
-				8E16555C28C4887100577886 /* StockGraphChartView.swift */,
 				8E8068F428B856B1004039B1 /* Cells */,
 				8EFFF47628B7726200C3E762 /* Views */,
 			);
@@ -276,6 +272,29 @@
 				8EBC442C28B8DBB200E6F356 /* Cells */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		8E16556428C5907C00577886 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8EFFF47428B76EF800C3E762 /* HomeView.swift */,
+				8EFFF47D28B7727B00C3E762 /* IndicesSection */,
+				8EFFF48128B7727B00C3E762 /* StockRankSection */,
+				8EFFF47728B7727B00C3E762 /* MajorCommoditiesSection */,
+				8EFFF47A28B7727B00C3E762 /* MajorETFSection */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		8E16556528C5909100577886 /* StockDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8E16555928C484C800577886 /* StockDetailView.swift */,
+				8E16555E28C4888E00577886 /* RevenueChartView.swift */,
+				8E16556028C488A000577886 /* GrossProfitChartView.swift */,
+				8E16555C28C4887100577886 /* StockGraphChartView.swift */,
+			);
+			path = StockDetail;
 			sourceTree = "<group>";
 		};
 		8E17812628C05CF700E009BC /* Coordinator */ = {
@@ -492,11 +511,8 @@
 		8EFFF47628B7726200C3E762 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8EFFF47428B76EF800C3E762 /* HomeView.swift */,
-				8EFFF47D28B7727B00C3E762 /* IndicesSection */,
-				8EFFF48128B7727B00C3E762 /* StockRankSection */,
-				8EFFF47728B7727B00C3E762 /* MajorCommoditiesSection */,
-				8EFFF47A28B7727B00C3E762 /* MajorETFSection */,
+				8E16556428C5907C00577886 /* Home */,
+				8E16556528C5909100577886 /* StockDetail */,
 			);
 			path = Views;
 			sourceTree = "<group>";

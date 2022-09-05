@@ -17,14 +17,25 @@ class StockDetailView: UIView {
 
     // MARK: - IBOutlets
 
+    let scrollView = UIScrollView()
+    let contentView = UIView()
+
     let logoImageView = UIImageView()
     let companyNameLabel = UILabel()
     let symbolLabel = UILabel()
+
     let currentPriceLabel = UILabel()
     let fluctuationRateLabel = UILabel()
+
+    let chartsVStack = UIStackView()
+
     let stockGraphChartView = StockGraphChartView()
+
+    let revenueVStack = UIStackView()
     let revenueTitleLabel = UILabel()
     let revenueChartView = RevenueChartView()
+
+    let grossProfitVStack = UIStackView()
     let grossProfitTitleLabel = UILabel()
     let grossProfitChartView = GrossProfitChartView()
 
@@ -33,29 +44,49 @@ class StockDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        setupLogoImageView()
-        setupCompanyNameLabel()
-        setupSymbolLabel()
-        setupCurrenPriceLabel()
-        setupFluctuationRateLabel()
-        setupStockGraphChartView()
-        stockGraphChartView.configure()
-        setupRevenueTitleLabel()
-        setupRevenueChartView()
-        revenueChartView.configure()
-        setupGrossProfitTitleLable()
-        setupGrossProfitChartView()
-        grossProfitChartView.configure()
+        setupScrollView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func configure() {
+
+    }
 }
 
 extension StockDetailView {
+    private func setupScrollView() {
+        addSubview(scrollView)
+
+        scrollView.showsVerticalScrollIndicator = false
+
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+
+        setupContentView()
+    }
+
+    private func setupContentView() {
+        scrollView.addSubview(contentView)
+
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+
+        setupLogoImageView()
+        setupCompanyNameLabel()
+        setupSymbolLabel()
+        setupCurrenPriceLabel()
+        setupFluctuationRateLabel()
+        setupChartsVStack()
+    }
+
     private func setupLogoImageView() {
-        addSubview(logoImageView)
+        contentView.addSubview(logoImageView)
 
         logoImageView.kf.setImage(with: URL(string: "https://companiesmarketcap.com/img/company-logos/64/AAPL.png"))
 
@@ -67,7 +98,7 @@ extension StockDetailView {
     }
 
     private func setupCompanyNameLabel() {
-        addSubview(companyNameLabel)
+        contentView.addSubview(companyNameLabel)
 
         companyNameLabel.text = "애플"
         companyNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
@@ -79,7 +110,7 @@ extension StockDetailView {
     }
 
     private func setupSymbolLabel() {
-        addSubview(symbolLabel)
+        contentView.addSubview(symbolLabel)
 
         symbolLabel.text = "AAPL"
         symbolLabel.font = .systemFont(ofSize: 14, weight: .medium)
@@ -91,7 +122,7 @@ extension StockDetailView {
     }
 
     private func setupCurrenPriceLabel() {
-        addSubview(currentPriceLabel)
+        contentView.addSubview(currentPriceLabel)
 
         currentPriceLabel.text = "$155.81"
         currentPriceLabel.font = .systemFont(ofSize: 45, weight: .bold)
@@ -103,7 +134,7 @@ extension StockDetailView {
     }
 
     private func setupFluctuationRateLabel() {
-        addSubview(fluctuationRateLabel)
+        contentView.addSubview(fluctuationRateLabel)
 
         fluctuationRateLabel.text = "-1.37%"
         fluctuationRateLabel.font = .systemFont(ofSize: 25, weight: .regular)
@@ -115,58 +146,58 @@ extension StockDetailView {
         }
     }
 
-    private func setupStockGraphChartView() {
-        addSubview(stockGraphChartView)
+    private func setupChartsVStack() {
+        contentView.addSubview(chartsVStack)
 
-        stockGraphChartView.snp.makeConstraints {
+        chartsVStack.axis = .vertical
+        chartsVStack.spacing = 30
+
+        chartsVStack.snp.makeConstraints {
             $0.top.equalTo(fluctuationRateLabel.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(20)
+        }
+
+        [stockGraphChartView, revenueVStack, grossProfitVStack].forEach { chartsVStack.addArrangedSubview($0) }
+
+        stockGraphChartView.snp.makeConstraints {
             $0.height.equalTo(400)
         }
+
+        stockGraphChartView.configure()
+
+        setupRevenueVStack()
+        setupGrossProfitVStack()
     }
 
-    private func setupRevenueTitleLabel() {
-        addSubview(revenueTitleLabel)
+    private func setupRevenueVStack() {
+        revenueVStack.axis = .vertical
+        revenueVStack.spacing = 10
+
+        [revenueTitleLabel, revenueChartView].forEach { revenueVStack.addArrangedSubview($0) }
 
         revenueTitleLabel.text = "연간 매출"
         revenueTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
 
-        revenueTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(stockGraphChartView.snp.bottom).offset(30)
-            $0.leading.equalToSuperview()
-        }
-    }
-
-    private func setupRevenueChartView() {
-        addSubview(revenueChartView)
-
         revenueChartView.snp.makeConstraints {
-            $0.top.equalTo(revenueTitleLabel.snp.bottom).offset(5)
-            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(175)
         }
+        revenueChartView.configure()
     }
 
-    private func setupGrossProfitTitleLable() {
-        addSubview(grossProfitTitleLabel)
+    private func setupGrossProfitVStack() {
+        grossProfitVStack.axis = .vertical
+        grossProfitVStack.spacing = 10
+
+        [grossProfitTitleLabel, grossProfitChartView].forEach { grossProfitVStack.addArrangedSubview($0) }
 
         grossProfitTitleLabel.text = "연간 이익"
         grossProfitTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
 
-        grossProfitTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(revenueChartView.snp.bottom).offset(50)
-            $0.leading.equalToSuperview()
-        }
-    }
-
-    private func setupGrossProfitChartView() {
-        addSubview(grossProfitChartView)
-
         grossProfitChartView.snp.makeConstraints {
-            $0.top.equalTo(grossProfitTitleLabel.snp.bottom).offset(5)
-            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(175)
         }
+        grossProfitChartView.configure()
     }
 }
 
