@@ -29,6 +29,7 @@ class StockDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationBar()
         setupViews()
         stockDetailView.configure(with: companyName ?? "No CompanyName", incomes.reversed())
         let stockValues = stockDatas.details.map { Double($0.close)! }
@@ -38,6 +39,10 @@ class StockDetailViewController: UIViewController {
     }
 
     // MARK: - Methods
+
+    private func setupNavigationBar() {
+        title = companyName ?? ""
+    }
 
     private func setupViews() {
         view.backgroundColor = .white
@@ -86,6 +91,7 @@ class StockDetailViewController: UIViewController {
             let companyName = self?.companyName ?? ""
             switch result {
             case .success(let incomes):
+                print(incomes)
                 DispatchQueue.main.async {
                     self?.stockDetailView.configure(with: companyName, incomes.reversed())
                     self?.stockDetailView.layoutIfNeeded()
