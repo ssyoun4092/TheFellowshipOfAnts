@@ -15,7 +15,7 @@ class IndexChartView: UIView {
         super.init(frame: frame)
 
         setupChartView()
-        configure(with: dummy.chart30min.reversed(), upDown: .down)
+//        configure(with: .chart30min.reversed(), upDown: .down)
     }
 
     required init?(coder: NSCoder) {

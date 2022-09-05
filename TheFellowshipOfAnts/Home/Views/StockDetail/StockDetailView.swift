@@ -39,6 +39,10 @@ class StockDetailView: UIView {
     let grossProfitTitleLabel = UILabel()
     let grossProfitChartView = GrossProfitChartView()
 
+    let grossProfitRatioVStack = UIStackView()
+    let grossProfitRatioTitleLabel = UILabel()
+    let grossProfitRatioChartView = GrossProfitRatioChartView()
+
     // MARK: - Life Cycle
 
     override init(frame: CGRect) {
@@ -51,8 +55,20 @@ class StockDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure() {
+    func configure(with companyName: String, _ incomes: [StockIncome]) {
+        logoImageView.kf.setImage(with: URL(string: "https://logo.clearbit.com/\(companyName).com"))
+        companyNameLabel.text = companyName
+        symbolLabel.text = incomes[0].symbol
 
+        let revenueValues = incomes.map { Double($0.revenue) }
+        let periods = incomes.map { $0.calendarYear }
+        revenueChartView.configure(with: revenueValues, periods: periods)
+
+        let grossProfitValues = incomes.map { Double($0.grossProfit) }
+        grossProfitChartView.configure(with: grossProfitValues, periods: periods)
+
+        let grossProfitRatioValues = incomes.map { Double($0.grossProfitRatio) }
+        grossProfitRatioChartView.configure(with: grossProfitRatioValues, periods: periods)
     }
 }
 
@@ -158,16 +174,15 @@ extension StockDetailView {
             $0.bottom.equalToSuperview().inset(20)
         }
 
-        [stockGraphChartView, revenueVStack, grossProfitVStack].forEach { chartsVStack.addArrangedSubview($0) }
+        [stockGraphChartView, revenueVStack, grossProfitVStack, grossProfitRatioVStack].forEach { chartsVStack.addArrangedSubview($0) }
 
         stockGraphChartView.snp.makeConstraints {
             $0.height.equalTo(400)
         }
 
-        stockGraphChartView.configure()
-
         setupRevenueVStack()
         setupGrossProfitVStack()
+        setupGrossProfitRatioVStack()
     }
 
     private func setupRevenueVStack() {
@@ -182,7 +197,6 @@ extension StockDetailView {
         revenueChartView.snp.makeConstraints {
             $0.height.equalTo(175)
         }
-        revenueChartView.configure()
     }
 
     private func setupGrossProfitVStack() {
@@ -197,7 +211,20 @@ extension StockDetailView {
         grossProfitChartView.snp.makeConstraints {
             $0.height.equalTo(175)
         }
-        grossProfitChartView.configure()
+    }
+
+    private func setupGrossProfitRatioVStack() {
+        grossProfitRatioVStack.axis = .vertical
+        grossProfitRatioVStack.spacing = 10
+
+        [grossProfitRatioTitleLabel, grossProfitRatioChartView].forEach { grossProfitRatioVStack.addArrangedSubview($0) }
+
+        grossProfitRatioTitleLabel.text = "순 이익률"
+        grossProfitRatioTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
+
+        grossProfitRatioChartView.snp.makeConstraints {
+            $0.height.equalTo(175)
+        }
     }
 }
 

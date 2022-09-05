@@ -29,14 +29,14 @@ class GrossProfitChartView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure() {
-        let annual: [String] = ["18", "19", "20", "21"]
-        let revenue: [String] = ["53.2", "53.8", "59.6", "81.4"]
+    func configure(with values: [Double], periods: [String]) {
+//        let annual: [String] = ["18", "19", "20", "21"]
+//        let revenue: [String] = ["53.2", "53.8", "59.6", "81.4"]
 
         var entries = [BarChartDataEntry]()
 
-        for (index, value) in revenue.enumerated() {
-            let entryData = BarChartDataEntry(x: Double(index), y: Double(value)!)
+        for (index, value) in values.enumerated() {
+            let entryData = BarChartDataEntry(x: Double(index), y: value)
             entries.append(entryData)
         }
 
@@ -45,11 +45,11 @@ class GrossProfitChartView: UIView {
         chartDataSet.valueFont = .systemFont(ofSize: 13, weight: .bold)
         chartDataSet.valueFormatter = self
         for (index, entry) in chartDataSet.enumerated() {
-            stringForValue(Double(revenue[index])!, entry: entry, dataSetIndex: index, viewPortHandler: nil)
+            stringForValue(values[index], entry: entry, dataSetIndex: index, viewPortHandler: nil)
         }
 
-        barChartView.xAxis.setLabelCount(annual.count, force: false)
-        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: annual)
+        barChartView.xAxis.setLabelCount(periods.count, force: false)
+        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: periods)
 
 
         let data = BarChartData(dataSet: chartDataSet)
@@ -82,6 +82,6 @@ extension GrossProfitChartView {
 extension GrossProfitChartView: IValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
 
-        return String(value) + "B"
+        return value.convertToMetrics()
     }
 }

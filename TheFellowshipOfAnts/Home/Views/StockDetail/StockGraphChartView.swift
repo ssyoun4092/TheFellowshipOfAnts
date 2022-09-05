@@ -25,13 +25,10 @@ class StockGraphChartView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure() {
-        let model = MajorStockIndexes.dummy.IXIC.details.map { Double($0.close)! }
-        let upDown: UpDown = .down
-
+    func configure(with values: [Double], upDown: UpDown) {
         var entries = [ChartDataEntry]()
 
-        for (index, value) in model.enumerated() {
+        for (index, value) in values.enumerated() {
             let value = ChartDataEntry(x: Double(index), y: value)
             entries.append(value)
         }

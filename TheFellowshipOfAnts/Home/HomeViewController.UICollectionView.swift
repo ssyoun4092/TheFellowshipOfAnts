@@ -78,8 +78,10 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView.tag {
-        case 0:
-            coordinator?.pushToStockDetailViewController()
+        case 1:
+            let companyName = stockRanks[indexPath.row].companyName
+            let symbol = stockRanks[indexPath.row].symbol
+            coordinator?.pushToStockDetailViewController(companyName: companyName, symbol: symbol)
         default:
             print(#function)
         }
