@@ -1,15 +1,15 @@
 //
-//  ReveneueChartView.swift
+//  GrossProfitRatioChartView.swift
 //  TheFellowshipOfAnts
 //
-//  Created by SeYeong on 2022/09/04.
+//  Created by SeYeong on 2022/09/05.
 //
 
 import UIKit
 import Charts
 import SnapKit
 
-class RevenueChartView: UIView {
+class PercentageValueBarChartView: UIView {
 
     // MARK: - Properties
 
@@ -30,8 +30,6 @@ class RevenueChartView: UIView {
     }
 
     func configure(with values: [Double], periods: [String]) {
-//        let annual: [String] = ["18", "19", "20", "21"]
-//        let revenue: [String] = ["53.2", "53.8", "59.6", "81.4"]
 
         var entries = [BarChartDataEntry]()
 
@@ -51,13 +49,12 @@ class RevenueChartView: UIView {
         barChartView.xAxis.setLabelCount(periods.count, force: false)
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: periods)
 
-
         let data = BarChartData(dataSet: chartDataSet)
         barChartView.data = data
     }
 }
 
-extension RevenueChartView {
+extension PercentageValueBarChartView {
     private func setupBarChartView() {
         addSubview(barChartView)
 
@@ -66,6 +63,7 @@ extension RevenueChartView {
         barChartView.xAxis.labelFont = .systemFont(ofSize: 15, weight: .bold)
         barChartView.xAxis.labelPosition = .bottom
         barChartView.leftAxis.axisMinimum = 0
+        barChartView.leftAxis.axisMaximum = 1
         barChartView.leftAxis.enabled = false
         barChartView.rightAxis.enabled = false
         barChartView.legend.enabled = false
@@ -79,9 +77,9 @@ extension RevenueChartView {
     }
 }
 
-extension RevenueChartView: IValueFormatter {
+extension PercentageValueBarChartView: IValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
 
-        return value.convertToMetrics()
+        return String((value * 100).toStringWithFloor(at: 1)) + "%"
     }
 }

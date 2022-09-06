@@ -33,15 +33,15 @@ class StockDetailView: UIView {
 
     let revenueVStack = UIStackView()
     let revenueTitleLabel = UILabel()
-    let revenueChartView = RevenueChartView()
+    let revenueChartView = AbsoluteValueBarChartView()
 
     let grossProfitVStack = UIStackView()
     let grossProfitTitleLabel = UILabel()
-    let grossProfitChartView = GrossProfitChartView()
+    let grossProfitChartView = AbsoluteValueBarChartView()
 
     let grossProfitRatioVStack = UIStackView()
     let grossProfitRatioTitleLabel = UILabel()
-    let grossProfitRatioChartView = GrossProfitRatioChartView()
+    let grossProfitRatioChartView = PercentageValueBarChartView()
 
     // MARK: - Life Cycle
 
@@ -64,10 +64,10 @@ class StockDetailView: UIView {
         let periods = incomes.map { $0.calendarYear }
         revenueChartView.configure(with: revenueValues, periods: periods)
 
-        let grossProfitValues = incomes.map { Double($0.grossProfit) }
+        let grossProfitValues = incomes.map { Double($0.operatingIncome) }
         grossProfitChartView.configure(with: grossProfitValues, periods: periods)
 
-        let grossProfitRatioValues = incomes.map { Double($0.grossProfitRatio) }
+        let grossProfitRatioValues = incomes.map { Double($0.operatingIncomeRatio) }
         grossProfitRatioChartView.configure(with: grossProfitRatioValues, periods: periods)
     }
 }
@@ -177,7 +177,7 @@ extension StockDetailView {
         [stockGraphChartView, revenueVStack, grossProfitVStack, grossProfitRatioVStack].forEach { chartsVStack.addArrangedSubview($0) }
 
         stockGraphChartView.snp.makeConstraints {
-            $0.height.equalTo(400)
+            $0.height.equalTo(300)
         }
 
         setupRevenueVStack()
@@ -191,7 +191,7 @@ extension StockDetailView {
 
         [revenueTitleLabel, revenueChartView].forEach { revenueVStack.addArrangedSubview($0) }
 
-        revenueTitleLabel.text = "연간 매출"
+        revenueTitleLabel.text = "매출액"
         revenueTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
 
         revenueChartView.snp.makeConstraints {
@@ -205,7 +205,7 @@ extension StockDetailView {
 
         [grossProfitTitleLabel, grossProfitChartView].forEach { grossProfitVStack.addArrangedSubview($0) }
 
-        grossProfitTitleLabel.text = "연간 이익"
+        grossProfitTitleLabel.text = "영업이익"
         grossProfitTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
 
         grossProfitChartView.snp.makeConstraints {
@@ -219,7 +219,7 @@ extension StockDetailView {
 
         [grossProfitRatioTitleLabel, grossProfitRatioChartView].forEach { grossProfitRatioVStack.addArrangedSubview($0) }
 
-        grossProfitRatioTitleLabel.text = "순 이익률"
+        grossProfitRatioTitleLabel.text = "영업이익 마진율"
         grossProfitRatioTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
 
         grossProfitRatioChartView.snp.makeConstraints {

@@ -11,8 +11,8 @@ struct StockIncome: Decodable {
     let symbol: String
     let calendarYear: String
     let revenue: Int
-    let grossProfit: Int
-    let grossProfitRatio: Double
+    let operatingIncome: Int
+    let operatingIncomeRatio: Double
 }
 
 extension StockIncome {
@@ -21,31 +21,31 @@ extension StockIncome {
             symbol: "AAPL",
             calendarYear: "2021",
             revenue: 365817000000,
-            grossProfit: 152836000000,
-            grossProfitRatio: 0.4177935962516778),
+            operatingIncome: 108949000000,
+            operatingIncomeRatio: 0.29782377527561593),
         StockIncome(
             symbol: "AAPL",
             calendarYear: "2020",
             revenue: 274515000000,
-            grossProfit: 104956000000,
-            grossProfitRatio: 0.38233247727810865),
+            operatingIncome: 66288000000,
+            operatingIncomeRatio: 0.24147314354406862),
         StockIncome(
             symbol: "AAPL",
             calendarYear: "2019",
             revenue: 260174000000,
-            grossProfit: 98392000000,
-            grossProfitRatio: 0.3781776810903472),
+            operatingIncome: 63930000000,
+            operatingIncomeRatio: 0.24572017188496928),
         StockIncome(
             symbol: "AAPL",
             calendarYear: "2018",
             revenue: 265595000000,
-            grossProfit: 101839000000,
-            grossProfitRatio: 0.38343718820007905),
+            operatingIncome: 70898000000,
+            operatingIncomeRatio: 0.26694026619477024),
         StockIncome(
             symbol: "AAPL",
             calendarYear: "2017",
             revenue: 229234000000,
-            grossProfit: 88186000000,
-            grossProfitRatio: 0.38469860491899105)
-    ]
+            operatingIncome: 61344000000,
+            operatingIncomeRatio: 0.2676042820872994)]
+
 }

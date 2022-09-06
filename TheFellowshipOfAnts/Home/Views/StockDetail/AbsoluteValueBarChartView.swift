@@ -1,15 +1,15 @@
 //
-//  GrossProfitRatioChartView.swift
+//  ReveneueChartView.swift
 //  TheFellowshipOfAnts
 //
-//  Created by SeYeong on 2022/09/05.
+//  Created by SeYeong on 2022/09/04.
 //
 
 import UIKit
 import Charts
 import SnapKit
 
-class GrossProfitRatioChartView: UIView {
+class AbsoluteValueBarChartView: UIView {
 
     // MARK: - Properties
 
@@ -57,7 +57,7 @@ class GrossProfitRatioChartView: UIView {
     }
 }
 
-extension GrossProfitRatioChartView {
+extension AbsoluteValueBarChartView {
     private func setupBarChartView() {
         addSubview(barChartView)
 
@@ -79,9 +79,9 @@ extension GrossProfitRatioChartView {
     }
 }
 
-extension GrossProfitRatioChartView: IValueFormatter {
+extension AbsoluteValueBarChartView: IValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
 
-        return String((value * 100).toStringWithFloor(at: 1)) + "%"
+        return value.convertToMetrics()
     }
 }
