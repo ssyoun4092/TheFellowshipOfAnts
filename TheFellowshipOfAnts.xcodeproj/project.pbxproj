@@ -28,6 +28,8 @@
 		8E17814B28C36F5000E009BC /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814A28C36F5000E009BC /* SearchCoordinator.swift */; };
 		8E17814D28C36F7C00E009BC /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814C28C36F7C00E009BC /* ChatCoordinator.swift */; };
 		8E17814F28C36FA900E009BC /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814E28C36FA900E009BC /* ProfileCoordinator.swift */; };
+		8E20DFF828CB298300DB44A2 /* StockOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20DFF728CB298300DB44A2 /* StockOverviewCollectionViewCell.swift */; };
+		8E20DFFD28CB318300DB44A2 /* StockDetailViewController.UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20DFFC28CB318300DB44A2 /* StockDetailViewController.UICollectionView.swift */; };
 		8E27715928BC8E2A00CF6D8D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27715828BC8E2A00CF6D8D /* Auth.swift */; };
 		8E27717628BCDAE000CF6D8D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27717528BCDAE000CF6D8D /* APIClient.swift */; };
 		8E27718128BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */; };
@@ -148,6 +150,8 @@
 		8E17814A28C36F5000E009BC /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		8E17814C28C36F7C00E009BC /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		8E17814E28C36FA900E009BC /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		8E20DFF728CB298300DB44A2 /* StockOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StockOverviewCollectionViewCell.swift; path = TheFellowshipOfAnts/Home/Cells/StockOverviewCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		8E20DFFC28CB318300DB44A2 /* StockDetailViewController.UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.UICollectionView.swift; sourceTree = "<group>"; };
 		8E27715828BC8E2A00CF6D8D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		8E27717528BCDAE000CF6D8D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheFellowshipOfAntsKey.xcodeproj; path = ../../TheFellowshipOfAntsKey/TheFellowshipOfAntsKey.xcodeproj; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 				8EFFF44128B7503200C3E762 /* HomeViewController.swift */,
 				8EDD6FE828BF46F6004958C5 /* HomeViewController.UICollectionView.swift */,
 				8E16555628C454BB00577886 /* StockDetailViewController.swift */,
+				8E20DFFC28CB318300DB44A2 /* StockDetailViewController.UICollectionView.swift */,
 				8E8068F428B856B1004039B1 /* Cells */,
 				8EFFF47628B7726200C3E762 /* Views */,
 			);
@@ -296,10 +301,6 @@
 			isa = PBXGroup;
 			children = (
 				8E16555928C484C800577886 /* StockDetailView.swift */,
-				8E16555C28C4887100577886 /* StockGraphChartView.swift */,
-				8E16555E28C4888E00577886 /* AbsoluteValueBarChartView.swift */,
-				8E16556028C488A000577886 /* OperatingProfitChartView.swift */,
-				8E16556A28C5D02E00577886 /* PercentageValueChartView.swift */,
 			);
 			path = StockDetail;
 			sourceTree = "<group>";
@@ -382,6 +383,7 @@
 				8EFFF48028B7727B00C3E762 /* IndexCollectionViewCell.swift */,
 				8EFFF48328B7727C00C3E762 /* StockRankCollectionViewCell.swift */,
 				8EFFF47828B7727B00C3E762 /* MajorCarouselCell.swift */,
+				8E20DFF728CB298300DB44A2 /* StockOverviewCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -485,6 +487,18 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		8EF9F71328C771EE00A88E29 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				8EFFF47E28B7727B00C3E762 /* IndexChartView.swift */,
+				8E16555C28C4887100577886 /* StockGraphChartView.swift */,
+				8E16555E28C4888E00577886 /* AbsoluteValueBarChartView.swift */,
+				8E16556028C488A000577886 /* OperatingProfitChartView.swift */,
+				8E16556A28C5D02E00577886 /* PercentageValueChartView.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
 		8EFFF44628B7504A00C3E762 /* SubComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +536,7 @@
 			children = (
 				8E16556428C5907C00577886 /* Home */,
 				8E16556528C5909100577886 /* StockDetail */,
+				8EF9F71328C771EE00A88E29 /* Charts */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -546,7 +561,6 @@
 			isa = PBXGroup;
 			children = (
 				8EFFF47F28B7727B00C3E762 /* IndicesSectionView.swift */,
-				8EFFF47E28B7727B00C3E762 /* IndexChartView.swift */,
 			);
 			path = IndicesSection;
 			sourceTree = "<group>";
@@ -695,6 +709,7 @@
 				8EFFF45528B7504A00C3E762 /* YourMessageCell.swift in Sources */,
 				8EBC442128B8667000E6F356 /* RecentSearchCell.swift in Sources */,
 				8EFFF45428B7504A00C3E762 /* ChatCell.swift in Sources */,
+				8E20DFF828CB298300DB44A2 /* StockOverviewCollectionViewCell.swift in Sources */,
 				8EBC443828B8E87200E6F356 /* SettingsView.swift in Sources */,
 				8EFFF48B28B7727C00C3E762 /* IndicesSectionView.swift in Sources */,
 				8E16556128C488A000577886 /* OperatingProfitChartView.swift in Sources */,
@@ -711,6 +726,7 @@
 				8EFFF45328B7504A00C3E762 /* ChatListView.swift in Sources */,
 				8E17812D28C0788700E009BC /* UIView+.swift in Sources */,
 				8EDD6FE928BF46F6004958C5 /* HomeViewController.UICollectionView.swift in Sources */,
+				8E20DFFD28CB318300DB44A2 /* StockDetailViewController.UICollectionView.swift in Sources */,
 				8EBC443628B8DBFB00E6F356 /* SettingTableViewCell.swift in Sources */,
 				8EBC442428B8668F00E6F356 /* SearchViewController.UITableView.swift in Sources */,
 				8EFFF44428B7503D00C3E762 /* SearchViewController.swift in Sources */,

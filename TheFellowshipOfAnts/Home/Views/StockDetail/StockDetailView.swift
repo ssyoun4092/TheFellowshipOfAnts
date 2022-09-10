@@ -31,6 +31,21 @@ class StockDetailView: UIView {
 
     let stockGraphChartView = StockGraphChartView()
 
+    let overviewVStack = UIStackView()
+    let overviewTitleLabel = UILabel()
+    lazy var overviewCollectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: overviewFlowLayout
+    )
+    let overviewFlowLayout: UICollectionViewLayout = {
+        let cellWidth = ((UIScreen.main.bounds.width - 40) / 3) - 9
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: cellWidth, height: 50)
+        layout.minimumLineSpacing = CGFloat(10)
+
+        return layout
+    }()
+
     let revenueVStack = UIStackView()
     let revenueTitleLabel = UILabel()
     let revenueChartView = AbsoluteValueBarChartView()
@@ -174,15 +189,34 @@ extension StockDetailView {
             $0.bottom.equalToSuperview().inset(20)
         }
 
-        [stockGraphChartView, revenueVStack, grossProfitVStack, grossProfitRatioVStack].forEach { chartsVStack.addArrangedSubview($0) }
+        [stockGraphChartView, overviewVStack, revenueVStack, grossProfitVStack, grossProfitRatioVStack].forEach { chartsVStack.addArrangedSubview($0) }
 
         stockGraphChartView.snp.makeConstraints {
             $0.height.equalTo(300)
         }
 
+        setupOverviewVStack()
         setupRevenueVStack()
         setupGrossProfitVStack()
         setupGrossProfitRatioVStack()
+    }
+
+    private func setupOverviewVStack() {
+        overviewVStack.axis = .vertical
+        overviewVStack.spacing = 10
+
+        [overviewTitleLabel, overviewCollectionView].forEach { overviewVStack.addArrangedSubview($0) }
+
+        overviewTitleLabel.text = "주식 요약"
+        overviewTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
+
+        overviewCollectionView.register(
+            StockOverviewCollectionViewCell.self,
+            forCellWithReuseIdentifier: StockOverviewCollectionViewCell.identifier)
+
+        overviewCollectionView.snp.makeConstraints {
+            $0.height.equalTo(110)
+        }
     }
 
     private func setupRevenueVStack() {

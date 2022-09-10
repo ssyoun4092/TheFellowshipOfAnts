@@ -32,9 +32,9 @@ class IndexCollectionViewCell: UICollectionViewCell {
         indexTitleLabel.text = indexModel.basic.title
         currentPriceLabel.text = indexModel.details.first?.close.floorIfDouble(at: 2)
         currentPriceLabel.textColor = upDown.textColor
-        DTDLabel.text = calculateDayToDayPrice(with: indexModel.details.first!.close, indexModel.details.last!.close)
+        DTDLabel.text = calculateDayToDayPrice(with: indexModel.details.last!.close, indexModel.details.first!.close)
         DTDLabel.textColor = upDown.textColor
-        fluctuationRateLabel.text = calculateFluctuation(with: indexModel.details.first!.close, indexModel.details.last!.close) + "%"
+        fluctuationRateLabel.text = calculateFluctuation(with: indexModel.details.last!.close, indexModel.details.first!.close) + "%"
         fluctuationRateLabel.textColor = upDown.textColor
 
         let chartInfos: [Double] = indexModel.details.map { value in
@@ -128,7 +128,7 @@ extension IndexCollectionViewCell {
     }
 
     private func calculateDayToDayPrice(with prev: String, _ current: String) -> String {
-        let value = Double(prev)! - Double(current)!
+        let value = Double(current)! - Double(prev)!
 
         return value.toStringWithFloor(at: 2)
     }

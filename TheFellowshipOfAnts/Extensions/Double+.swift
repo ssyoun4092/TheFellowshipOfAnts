@@ -25,7 +25,7 @@ extension Double {
         case ..<1_000_000_000_000:
             let formattedValue = self / 1_000_000_000
             return String(format: "%.1f", formattedValue) + "B"
-        case ..<1_000_000_000_000:
+        case ..<1_000_000_000_000_000:
             let formattedValue = self / 1_000_000_000_000
             return String(format: "%.1f", formattedValue) + "T"
         default:

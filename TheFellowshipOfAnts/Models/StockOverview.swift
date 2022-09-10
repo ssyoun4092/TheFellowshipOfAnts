@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct StockOveriview: Decodable {
+struct StockOverview: Decodable {
+
     let marketCap: String
     let PER: String
     let PBR: String
@@ -23,4 +24,15 @@ struct StockOveriview: Decodable {
         case lowIn52Weeks = "52WeekLow"
         case EPS
     }
+}
+
+extension StockOverview {
+    static let dummy = StockOverview(
+        marketCap: "2506402038000",
+        PER: "25.78",
+        PBR: "3.61",
+        EPS: "6.05",
+        highIn52Weeks: "182.19",
+        lowIn52Weeks: "128.86"
+    )
 }
