@@ -13,7 +13,6 @@
 		8E16555A28C484C800577886 /* StockDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555928C484C800577886 /* StockDetailView.swift */; };
 		8E16555D28C4887100577886 /* StockGraphChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555C28C4887100577886 /* StockGraphChartView.swift */; };
 		8E16555F28C4888E00577886 /* AbsoluteValueBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555E28C4888E00577886 /* AbsoluteValueBarChartView.swift */; };
-		8E16556128C488A000577886 /* OperatingProfitChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556028C488A000577886 /* OperatingProfitChartView.swift */; };
 		8E16556928C5B03700577886 /* StockIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556828C5B03700577886 /* StockIncome.swift */; };
 		8E16556B28C5D02E00577886 /* PercentageValueChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556A28C5D02E00577886 /* PercentageValueChartView.swift */; };
 		8E16556D28C5DD1200577886 /* StockOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556C28C5DD1100577886 /* StockOverview.swift */; };
@@ -135,7 +134,6 @@
 		8E16555928C484C800577886 /* StockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailView.swift; sourceTree = "<group>"; };
 		8E16555C28C4887100577886 /* StockGraphChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockGraphChartView.swift; sourceTree = "<group>"; };
 		8E16555E28C4888E00577886 /* AbsoluteValueBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsoluteValueBarChartView.swift; sourceTree = "<group>"; };
-		8E16556028C488A000577886 /* OperatingProfitChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatingProfitChartView.swift; sourceTree = "<group>"; };
 		8E16556828C5B03700577886 /* StockIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIncome.swift; sourceTree = "<group>"; };
 		8E16556A28C5D02E00577886 /* PercentageValueChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageValueChartView.swift; sourceTree = "<group>"; };
 		8E16556C28C5DD1100577886 /* StockOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOverview.swift; sourceTree = "<group>"; };
@@ -493,7 +491,6 @@
 				8EFFF47E28B7727B00C3E762 /* IndexChartView.swift */,
 				8E16555C28C4887100577886 /* StockGraphChartView.swift */,
 				8E16555E28C4888E00577886 /* AbsoluteValueBarChartView.swift */,
-				8E16556028C488A000577886 /* OperatingProfitChartView.swift */,
 				8E16556A28C5D02E00577886 /* PercentageValueChartView.swift */,
 			);
 			path = Charts;
@@ -712,7 +709,6 @@
 				8E20DFF828CB298300DB44A2 /* StockOverviewCollectionViewCell.swift in Sources */,
 				8EBC443828B8E87200E6F356 /* SettingsView.swift in Sources */,
 				8EFFF48B28B7727C00C3E762 /* IndicesSectionView.swift in Sources */,
-				8E16556128C488A000577886 /* OperatingProfitChartView.swift in Sources */,
 				8E17814B28C36F5000E009BC /* SearchCoordinator.swift in Sources */,
 				8EFFF41528B7282400C3E762 /* SignupView.swift in Sources */,
 				8EFFF45128B7504A00C3E762 /* ChatViewController.swift in Sources */,

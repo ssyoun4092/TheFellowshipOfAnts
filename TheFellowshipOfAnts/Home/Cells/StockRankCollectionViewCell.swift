@@ -1,6 +1,7 @@
 import UIKit
-import SnapKit
+
 import Kingfisher
+import SnapKit
 
 class StockRankCollectionViewCell: UICollectionViewCell {
 

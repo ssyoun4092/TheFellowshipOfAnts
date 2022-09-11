@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import SnapKit
-import SwiftUI
+
 import Kingfisher
+import SnapKit
 
 class StockDetailView: UIView {
 
@@ -259,11 +259,5 @@ extension StockDetailView {
         grossProfitRatioChartView.snp.makeConstraints {
             $0.height.equalTo(175)
         }
-    }
-}
-
-struct StockDetailViewControllerPreview: PreviewProvider {
-    static var previews: some View {
-        StockDetailViewController().toPreview()
     }
 }

@@ -1,6 +1,6 @@
 import UIKit
+
 import SnapKit
-import SwiftSoup
 
 final class StockRankSectionView: UIView {
 

@@ -6,8 +6,9 @@
 //
 
 import UIKit
-import SwiftUI
+
 import SnapKit
+import SwiftUI
 import TheFellowshipOfAntsKey
 
 class StockDetailViewController: UIViewController {

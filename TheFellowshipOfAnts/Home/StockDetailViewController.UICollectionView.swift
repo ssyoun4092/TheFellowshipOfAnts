@@ -5,7 +5,6 @@
 //  Created by SeYeong on 2022/09/09.
 //
 
-import Foundation
 import UIKit
 
 extension StockDetailViewController: UICollectionViewDataSource {

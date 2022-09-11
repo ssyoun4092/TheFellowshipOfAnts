@@ -1,8 +1,9 @@
 import UIKit
-import SwiftUI
-import RxSwift
+
 import RxCocoa
+import RxSwift
 import SnapKit
+import SwiftUI
 
 class SignupWithEmailViewController: UIViewController {
 
