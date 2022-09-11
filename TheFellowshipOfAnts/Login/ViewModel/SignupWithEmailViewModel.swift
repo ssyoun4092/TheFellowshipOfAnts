@@ -1,6 +1,7 @@
 import Foundation
-import RxSwift
+
 import RxCocoa
+import RxSwift
 
 protocol SignupWithEmailType {
     // input

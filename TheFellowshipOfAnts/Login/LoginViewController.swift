@@ -1,13 +1,14 @@
 import UIKit
-import SwiftUI
-import RxSwift
-import RxCocoa
-import SnapKit
-import KakaoSDKAuth
-import KakaoSDKUser
+
 import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
+import KakaoSDKAuth
+import KakaoSDKUser
+import RxCocoa
+import RxSwift
+import SnapKit
+import SwiftUI
 
 class LoginViewController: UIViewController {
 
@@ -113,7 +114,7 @@ extension LoginViewController {
     }
 }
 
-struct LoginViewControllerPreView: PreviewProvider {
+struct LoginViewControllerPreview: PreviewProvider {
     static var previews: some View {
         LoginViewController().toPreview()
     }

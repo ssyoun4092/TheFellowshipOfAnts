@@ -1,37 +1,35 @@
-import Foundation
+//
+//  StockGraphChartView.swift
+//  TheFellowshipOfAnts
+//
+//  Created by SeYeong on 2022/09/04.
+//
+
 import UIKit
+
 import Charts
 import SnapKit
 
-class IndexChartView: UIView {
+class StockGraphChartView: UIView {
 
-    // MARK: - IBOulet
+    // MARK: - IBOutlet
 
-    private let lineChartView = LineChartView()
-
-    // MARK: - Life Cycle
+    let lineChartView = LineChartView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        setupChartView()
-        configure(with: dummy.chart30min.reversed(), upDown: .down)
+        setupLineChartView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Methods
-
-    func reset() {
-        lineChartView.data = nil
-    }
-
-    func configure(with model: [Double], upDown: UpDown) {
+    func configure(with values: [Double], upDown: UpDown) {
         var entries = [ChartDataEntry]()
 
-        for (index, value) in model.enumerated() {
+        for (index, value) in values.enumerated() {
             let value = ChartDataEntry(x: Double(index), y: value)
             entries.append(value)
         }
@@ -39,27 +37,18 @@ class IndexChartView: UIView {
         let dataSet = LineChartDataSet(entries: entries, label: "1day")
 
         dataSet.colors = [upDown.textColor]
-        let gradient = upDown.gradient
-        dataSet.fill = Fill.fillWithLinearGradient(
-            CGGradient(
-                colorsSpace: CGColorSpaceCreateDeviceRGB(),
-                colors: gradient as CFArray,
-                locations: [0.0, 1.0]
-            )!,
-            angle: -90
-        )
-        dataSet.drawFilledEnabled = true
+        dataSet.drawFilledEnabled = false
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = false
-        dataSet.lineWidth = 2
+        dataSet.lineWidth = 4
 
         let data = LineChartData(dataSet: dataSet)
         lineChartView.data = data
     }
 }
 
-extension IndexChartView {
-    private func setupChartView() {
+extension StockGraphChartView {
+    private func setupLineChartView() {
         addSubview(lineChartView)
 
         lineChartView.xAxis.enabled = false

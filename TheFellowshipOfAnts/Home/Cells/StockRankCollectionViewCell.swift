@@ -1,14 +1,15 @@
 import UIKit
-import SnapKit
+
 import Kingfisher
+import SnapKit
 
 class StockRankCollectionViewCell: UICollectionViewCell {
 
-    // MARK: - IBOulets
+    // MARK: - IBOutlets
 
     let rankLabel = UILabel()
     let logoImageView = UIImageView()
-    let stockNameLabel = UILabel()
+    let companyNameLabel = UILabel()
     let symbolLabel = UILabel()
     let currentPriceLabel = UILabel()
     let fluctuationRateLabel = UILabel()
@@ -30,7 +31,7 @@ class StockRankCollectionViewCell: UICollectionViewCell {
     func configure(with model: StockRank) {
         rankLabel.text = model.rank
         logoImageView.kf.setImage(with: URL(string: model.logoURL))
-        stockNameLabel.text = model.companyName
+        companyNameLabel.text = model.companyName
         symbolLabel.text = model.symbol
         currentPriceLabel.text = model.price
         fluctuationRateLabel.text = model.upDown.sign + model.fluctuationRate
@@ -42,7 +43,7 @@ extension StockRankCollectionViewCell {
     private func setupContentView() {
         setupRankLabel()
         setupLogoImage()
-        setupStockNameLabel()
+        setupCompanyNameLabel()
         setupSymbolLabel()
         setupCurrentPriceLabel()
         setupFluctuationRateLabel()
@@ -73,13 +74,13 @@ extension StockRankCollectionViewCell {
         }
     }
 
-    private func setupStockNameLabel() {
-        contentView.addSubview(stockNameLabel)
+    private func setupCompanyNameLabel() {
+        contentView.addSubview(companyNameLabel)
 
-        stockNameLabel.text = "애플"
-        stockNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
+        companyNameLabel.text = "애플"
+        companyNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
 
-        stockNameLabel.snp.makeConstraints {
+        companyNameLabel.snp.makeConstraints {
             $0.leading.equalTo(logoImageView.snp.trailing).offset(10)
             $0.bottom.equalToSuperview { $0.snp.centerY }.offset(-2)
         }

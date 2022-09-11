@@ -22,4 +22,12 @@ class HomeCoordinator: Coordinator {
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
+
+    func pushToStockDetailViewController(companyName: String, symbol: String) {
+        let vc = StockDetailViewController()
+        vc.companyName = companyName
+        vc.symbol = symbol
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
 }

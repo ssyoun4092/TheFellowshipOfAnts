@@ -1,7 +1,8 @@
 import Foundation
-import RxSwift
-import RxCocoa
+
 import FirebaseAuth
+import RxCocoa
+import RxSwift
 
 protocol ValidForEmailPassword {
     func checkEmailValid(_ email: String) -> Bool

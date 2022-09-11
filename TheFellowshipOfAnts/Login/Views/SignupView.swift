@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import SnapKit
 
 class SignupView: UIView {
@@ -56,7 +57,9 @@ extension SignupView {
             $0.leading.trailing.equalToSuperview()
         }
 
-        [emailHeaderLabel, emailTextField, invalidEmailLabel].forEach { emailStackView.addArrangedSubview($0) }
+        [emailHeaderLabel, emailTextField, invalidEmailLabel].forEach {
+            emailStackView.addArrangedSubview($0)
+        }
 
         emailHeaderLabel.text = "이메일 주소"
         emailHeaderLabel.font = .systemFont(ofSize: 17, weight: .semibold)
