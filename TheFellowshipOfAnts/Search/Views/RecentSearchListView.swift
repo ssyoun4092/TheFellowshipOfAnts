@@ -90,13 +90,24 @@ extension RecentSearchListView {
 }
 
 extension RecentSearchListView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
 
         return dummyList.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentSearchCell.identifier, for: indexPath) as? RecentSearchCell else { return UICollectionViewCell() }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: RecentSearchCell.identifier,
+            for: indexPath) as? RecentSearchCell
+        else {
+            return UICollectionViewCell()
+        }
 
         cell.configure(with: dummyList[indexPath.row])
 
@@ -105,9 +116,22 @@ extension RecentSearchListView: UICollectionViewDataSource {
 }
 
 extension RecentSearchListView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = dummyList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .medium)]).width
-        let xWidth = "X".size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .regular)]).width
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let itemWidth = dummyList[indexPath.item].size(
+            withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(
+                ofSize: 16,
+                weight: .medium)]
+        ).width
+
+        let xWidth = "X".size(
+            withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(
+                ofSize: 14,
+                weight: .regular)]
+        ).width
         let inset = CGFloat(15)
         let spacing = CGFloat(13)
         let totalWidth = itemWidth + xWidth + (2 * inset) + spacing

@@ -8,14 +8,20 @@
 import UIKit
 
 extension StockDetailViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
 
         print("overviews: \(overviews)")
 
         return overviews.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let titles: [String] = ["시가 총액", "52주 최고가", "52주 최저가", "PER", "PBR", "EPS"]
 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StockOverviewCollectionViewCell.identifier, for: indexPath) as? StockOverviewCollectionViewCell else { return UICollectionViewCell() }
@@ -25,7 +31,4 @@ extension StockDetailViewController: UICollectionViewDataSource {
 
         return cell
     }
-}
-
-extension StockDetailViewController: UICollectionViewDelegate {
 }

@@ -189,7 +189,8 @@ extension StockDetailView {
             $0.bottom.equalToSuperview().inset(20)
         }
 
-        [stockGraphChartView, overviewVStack, revenueVStack, grossProfitVStack, grossProfitRatioVStack].forEach { chartsVStack.addArrangedSubview($0) }
+        [stockGraphChartView, overviewVStack, revenueVStack, grossProfitVStack, grossProfitRatioVStack]
+            .forEach { chartsVStack.addArrangedSubview($0) }
 
         stockGraphChartView.snp.makeConstraints {
             $0.height.equalTo(300)
@@ -205,7 +206,9 @@ extension StockDetailView {
         overviewVStack.axis = .vertical
         overviewVStack.spacing = 10
 
-        [overviewTitleLabel, overviewCollectionView].forEach { overviewVStack.addArrangedSubview($0) }
+        [overviewTitleLabel, overviewCollectionView].forEach {
+            overviewVStack.addArrangedSubview($0)
+        }
 
         overviewTitleLabel.text = "주식 요약"
         overviewTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)

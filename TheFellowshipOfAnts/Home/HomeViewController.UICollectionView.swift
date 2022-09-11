@@ -16,7 +16,9 @@ extension HomeViewController: UICollectionViewDataSource {
         return ["SPY", "TLT", "SHY", "VIX"]
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int) -> Int {
         switch collectionView.tag {
         case 0:
             return stockIndexes.count
@@ -31,7 +33,9 @@ extension HomeViewController: UICollectionViewDataSource {
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView.tag {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IndexCollectionViewCell.identifier, for: indexPath) as? IndexCollectionViewCell else { return UICollectionViewCell() }
@@ -134,7 +138,11 @@ extension HomeViewController: UICollectionViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         switch scrollView.tag {
         case 2:
-            guard let layout = homeView.majorCommoditiesSectionView.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+            guard let layout = homeView.majorCommoditiesSectionView.collectionView.collectionViewLayout
+                    as? UICollectionViewFlowLayout
+            else {
+                return
+            }
             let cellWidth = layout.itemSize.width
             let spacing = layout.minimumLineSpacing
             let cellWidthIncludingSpacing = cellWidth + spacing
@@ -154,7 +162,11 @@ extension HomeViewController: UICollectionViewDelegate {
 
             targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing + ((cellWidth / 4) * 0.75), y: 0)
         case 3:
-            guard let layout = homeView.majorETFSectionView.collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+            guard let layout = homeView.majorETFSectionView.collectionView.collectionViewLayout
+                    as? UICollectionViewFlowLayout
+            else {
+                return
+            }
             let cellWidth = layout.itemSize.width
             let spacing = layout.minimumLineSpacing
             let cellWidthIncludingSpacing = cellWidth + spacing

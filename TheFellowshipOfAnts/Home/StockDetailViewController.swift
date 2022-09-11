@@ -118,7 +118,10 @@ class StockDetailViewController: UIViewController {
                 let stockValues = stockIndex.details.map { Double($0.close)! }
                 let upDown = UpDown.check(stockValues.last ?? 0, stockValues.first ?? 0)
                 DispatchQueue.main.async {
-                    self?.stockDetailView.stockGraphChartView.configure(with: stockValues.reversed(), upDown: upDown)
+                    self?.stockDetailView.stockGraphChartView.configure(
+                        with: stockValues.reversed(),
+                        upDown: upDown
+                    )
                     self?.stockDetailView.layoutIfNeeded()
                 }
 

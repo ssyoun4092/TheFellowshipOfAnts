@@ -81,7 +81,12 @@ extension AbsoluteValueBarChartView {
 }
 
 extension AbsoluteValueBarChartView: IValueFormatter {
-    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
+    func stringForValue(
+        _ value: Double,
+        entry: ChartDataEntry,
+        dataSetIndex: Int,
+        viewPortHandler: ViewPortHandler?
+    ) -> String {
 
         return value.convertToMetrics()
     }

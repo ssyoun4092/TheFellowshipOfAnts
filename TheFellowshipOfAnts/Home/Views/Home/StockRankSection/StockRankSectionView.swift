@@ -13,17 +13,32 @@ final class StockRankSectionView: UIView {
     )
     let collectionViewLayout: UICollectionViewLayout = {
         let layout = UICollectionViewCompositionalLayout { _, _ -> NSCollectionLayoutSection in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
+            let itemSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .estimated(50)
+            )
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalHeight(1.0))
-            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 5)
+            let groupSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(0.9),
+                heightDimension: .fractionalHeight(1.0)
+            )
+            let group = NSCollectionLayoutGroup.vertical(
+                layoutSize: groupSize,
+                subitem: item,
+                count: 5
+            )
             group.interItemSpacing = .fixed(28)
 
             let section = NSCollectionLayoutSection(group: group)
             section.interGroupSpacing = 15
             let trailingSpacing = UIScreen.main.bounds.width * 0.1
-            section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 0, bottom: 15, trailing: trailingSpacing)
+            section.contentInsets = NSDirectionalEdgeInsets(
+                top: 15,
+                leading: 0,
+                bottom: 15,
+                trailing: trailingSpacing
+            )
             section.orthogonalScrollingBehavior = .groupPaging
 
             return section
