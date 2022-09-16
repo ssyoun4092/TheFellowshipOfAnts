@@ -40,14 +40,19 @@ class IndexChartView: UIView {
 
         dataSet.colors = [upDown.textColor]
         let gradient = upDown.gradient
-        dataSet.fill = Fill.fillWithLinearGradient(
-            CGGradient(
-                colorsSpace: CGColorSpaceCreateDeviceRGB(),
-                colors: gradient as CFArray,
-                locations: [0.0, 1.0]
-            )!,
-            angle: -90
-        )
+        dataSet.fill = LinearGradientFill(gradient: CGGradient(
+            colorsSpace: CGColorSpaceCreateDeviceRGB(),
+            colors: gradient as CFArray,
+            locations: [0.0, 1.0]
+        )!, angle: -90)
+//        dataSet.fill = Fill.fillWithLinearGradient(
+//            CGGradient(
+//                colorsSpace: CGColorSpaceCreateDeviceRGB(),
+//                colors: gradient as CFArray,
+//                locations: [0.0, 1.0]
+//            )!,
+//            angle: -90
+//        )
         dataSet.drawFilledEnabled = true
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = false

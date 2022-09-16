@@ -24,7 +24,7 @@ struct StockIndexBasic: Decodable {
 
     var title: String {
         switch symbol {
-        case "IXIC": return "나스닥"
+        case "IXIC": return "나스닥 종합"
         case "DJI": return "다우지수"
         case "SPX": return "S&P500"
         default: return ""

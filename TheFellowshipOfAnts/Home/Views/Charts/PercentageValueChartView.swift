@@ -78,7 +78,7 @@ extension PercentageValueBarChartView {
     }
 }
 
-extension PercentageValueBarChartView: IValueFormatter {
+extension PercentageValueBarChartView: ValueFormatter {
     func stringForValue(
         _ value: Double,
         entry: ChartDataEntry,

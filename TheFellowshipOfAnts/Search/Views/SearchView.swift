@@ -11,7 +11,7 @@ import SnapKit
 
 class SearchView: UIView {
 
-    // MARK: - IBOulets
+    // MARK: - IBOutlets
 
     let searchBar = UISearchBar()
     let searchResultTableView = UITableView()

@@ -3,18 +3,12 @@ import UIKit
 import SnapKit
 
 class RecentSearchListView: UIView {
-    let dummyList: [String] = [
-        "에코프로비엠",
-        "엘엔에프",
-        "애플",
-        "알파벳"
-    ]
 
     // MARK: - IBOulets
 
     let recentSearchTitleLabel = UILabel()
     let deleteAllLabel = UILabel()
-    lazy var recentSearchCollectionView = UICollectionView(
+    lazy var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: flowLayout
     )
@@ -72,70 +66,17 @@ extension RecentSearchListView {
     }
 
     private func setupRecentSearchCollectionView() {
-        addSubview(recentSearchCollectionView)
+        addSubview(collectionView)
 
-        recentSearchCollectionView.register(
+        collectionView.register(
             RecentSearchCell.self,
             forCellWithReuseIdentifier: RecentSearchCell.identifier)
-        recentSearchCollectionView.showsHorizontalScrollIndicator = false
-        recentSearchCollectionView.dataSource = self
-        recentSearchCollectionView.delegate = self
+        collectionView.showsHorizontalScrollIndicator = false
 
-        recentSearchCollectionView.snp.makeConstraints {
+        collectionView.snp.makeConstraints {
             $0.top.equalTo(recentSearchTitleLabel.snp.bottom).offset(5)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.greaterThanOrEqualToSuperview()
         }
-    }
-}
-
-extension RecentSearchListView: UICollectionViewDataSource {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-
-        return dummyList.count
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: RecentSearchCell.identifier,
-            for: indexPath) as? RecentSearchCell
-        else {
-            return UICollectionViewCell()
-        }
-
-        cell.configure(with: dummyList[indexPath.row])
-
-        return cell
-    }
-}
-
-extension RecentSearchListView: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        let itemWidth = dummyList[indexPath.item].size(
-            withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(
-                ofSize: 16,
-                weight: .medium)]
-        ).width
-
-        let xWidth = "X".size(
-            withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(
-                ofSize: 14,
-                weight: .regular)]
-        ).width
-        let inset = CGFloat(15)
-        let spacing = CGFloat(13)
-        let totalWidth = itemWidth + xWidth + (2 * inset) + spacing
-
-        return CGSize(width: totalWidth, height: 30)
     }
 }

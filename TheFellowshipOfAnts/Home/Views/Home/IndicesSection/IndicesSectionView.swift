@@ -13,7 +13,7 @@ final class IndicesSectionView: UIView {
         }
     }
 
-    // MARK: - IBOulets
+    // MARK: - IBOutlets
     lazy var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: flowLayout

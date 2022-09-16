@@ -22,4 +22,12 @@ class SearchCoordinator: Coordinator {
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
+
+    // TODO: - pushToStockDetailVC 구현해야됨
+
+//    func pushToStockDetailVC(companyName: String, symbol: String) {
+//        let vc = StockDetailViewController()
+//        vc.companyName = companyName
+//        vc.symbol = symbol
+//    }
 }

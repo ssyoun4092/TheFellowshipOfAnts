@@ -75,6 +75,7 @@ class SignupWithEmailViewModel: SignupWithEmailType {
         let tappedCompleteBtn = PublishSubject<Void>()
 
         //MARK: - Email Handling
+
         emailText = emailTexting.asObserver()
         emailTextDidBegin = emailInputDidBegin.asObserver()
         emailTextDidEnd = emailInputDidEnd.asObserver()
@@ -100,6 +101,7 @@ class SignupWithEmailViewModel: SignupWithEmailType {
             .disposed(by: disposeBag)
 
         //MARK: - Password Handling
+
         passwordText = passwordTexting.asObserver()
         passwordTextDidBegin = passwordInputDidBegin.asObserver()
         passwordTextDidEnd = passwordInputDidEnd.asObserver()
@@ -125,6 +127,7 @@ class SignupWithEmailViewModel: SignupWithEmailType {
             .disposed(by: disposeBag)
 
         //MARK: - Nickname Handling
+        
         nicknameText = nicknameTexting.asObserver()
         nicknameTextDidBegin = nicknameInputDidBegin.asObserver()
         nicknameTextDidEnd = nicknameInputDidEnd.asObserver()
