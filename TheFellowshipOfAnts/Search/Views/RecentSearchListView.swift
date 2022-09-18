@@ -7,7 +7,7 @@ class RecentSearchListView: UIView {
     // MARK: - IBOulets
 
     let recentSearchTitleLabel = UILabel()
-    let deleteAllLabel = UILabel()
+    let deleteAllButton = UIButton()
     lazy var collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: flowLayout
@@ -27,7 +27,7 @@ class RecentSearchListView: UIView {
         super.init(frame: frame)
 
         setupRecentSearchTitleLabel()
-        setupDeleteAllLabel()
+        setupDeleteAllButton()
         setupRecentSearchCollectionView()
     }
 
@@ -53,13 +53,14 @@ extension RecentSearchListView {
         }
     }
 
-    private func setupDeleteAllLabel() {
-        addSubview(deleteAllLabel)
+    private func setupDeleteAllButton() {
+        addSubview(deleteAllButton)
 
-        deleteAllLabel.text = "전체 삭제"
-        deleteAllLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        deleteAllButton.setTitle("전체 삭제", for: .normal)
+        deleteAllButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
+        deleteAllButton.setTitleColor(.black, for: .normal)
 
-        deleteAllLabel.snp.makeConstraints {
+        deleteAllButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(trailing)
             $0.bottom.equalTo(recentSearchTitleLabel.snp.bottom).inset(2)
         }

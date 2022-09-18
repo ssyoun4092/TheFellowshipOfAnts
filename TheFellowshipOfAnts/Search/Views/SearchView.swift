@@ -14,6 +14,7 @@ class SearchView: UIView {
     // MARK: - IBOutlets
 
     let searchBar = UISearchBar()
+    let cancelButton = UIButton()
     let searchResultTableView = UITableView()
     let recentSearchView = RecentSearchListView()
 
@@ -23,6 +24,7 @@ class SearchView: UIView {
         super.init(frame: frame)
 
         setupSearchBar()
+        setupCancelLabel()
         setupSearchResultTableView()
         setupRecentSearchView()
     }
@@ -43,6 +45,20 @@ extension SearchView {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(10)
             $0.height.equalTo(50)
+        }
+    }
+
+    private func setupCancelLabel() {
+        addSubview(cancelButton)
+
+        cancelButton.setTitle("취소", for: .normal)
+        cancelButton.setTitleColor(.black, for: .normal)
+        cancelButton.titleLabel?.adjustsFontSizeToFitWidth = true
+
+        cancelButton.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.top)
+            $0.leading.equalTo(searchBar.snp.trailing).offset(10)
+            $0.bottom.equalTo(searchBar.snp.bottom)
         }
     }
 
