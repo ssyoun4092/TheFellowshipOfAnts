@@ -13,7 +13,7 @@ extension SearchViewController: UICollectionViewDataSource {
         numberOfItemsInSection section: Int
     ) -> Int {
 
-        return recentSearchList.count
+        return UserDefaultManager.shared.recentSearches.count
     }
 
     func collectionView(
@@ -26,8 +26,9 @@ extension SearchViewController: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
+        let reversedIndexPathRow = UserDefaultManager.shared.recentSearches.count - 1 - indexPath.row
 
-        cell.configure(with: recentSearchList[indexPath.row])
+        cell.configure(with: UserDefaultManager.shared.recentSearches[reversedIndexPathRow][0])
 
         return cell
     }
@@ -39,7 +40,9 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        let itemWidth = recentSearchList[indexPath.item].size(
+        let reversedIndexPathRow = UserDefaultManager.shared.recentSearches.count - 1 - indexPath.row
+
+        let itemWidth = UserDefaultManager.shared.recentSearches[reversedIndexPathRow][0].size(
             withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(
                 ofSize: 16,
                 weight: .medium)]

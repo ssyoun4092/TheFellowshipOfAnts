@@ -34,6 +34,13 @@ extension SearchViewController: UITableViewDelegate {
         let viewController = StockDetailViewController()
         viewController.symbol = symbol
         viewController.companyName = companyName
+
+        if UserDefaultManager.shared.recentSearches.contains(where: { $0.first == companyName }) {
+            let index = UserDefaultManager.shared.recentSearches.firstIndex { $0[0] == companyName }!
+            UserDefaultManager.shared.recentSearches.remove(at: index)
+        }
+        UserDefaultManager.shared.recentSearches.append([companyName, symbol])
+
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

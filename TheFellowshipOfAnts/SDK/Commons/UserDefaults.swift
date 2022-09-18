@@ -15,7 +15,7 @@ class UserDefaultManager {
     private init() { }
 
     @UserDefault(key: TheFellowshipOfAntsKey.UserDefaultKey.recentSearch, defaultValue: [])
-    public var recentSearches: [String]
+    public var recentSearches: [[String]]
 }
 
 @propertyWrapper
