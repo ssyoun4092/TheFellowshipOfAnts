@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct SearchedStock {
+    let symbol: String
+    let instrumentName: String
+    let country: String
+    let logoURLString: String
+}
+
 struct SymbolSearch: Decodable {
     let symbolSearchInfos: [SymbolSearchInfo]
 
@@ -16,7 +23,6 @@ struct SymbolSearch: Decodable {
 }
 
 struct SymbolSearchInfo: Decodable {
-    var urlString: String = ""
     let symbol: String
     let instrumentName: String
     let country: String
@@ -33,4 +39,8 @@ enum InstrumentType: Decodable {
     case commonStock
     case etf
     case preferredStock
+}
+
+struct Logo: Decodable {
+    let url: String
 }

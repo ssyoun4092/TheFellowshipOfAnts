@@ -97,6 +97,7 @@ class SearchViewControllerRx: UIViewController {
                 let str = String(data: data, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue)) ?? "왜 안돼"
                 completion(str)
             }
+
             //통신 실패
             if let error = error {
                 print(error.localizedDescription)
@@ -151,37 +152,37 @@ extension SearchViewControllerRx {
         }
     }
 
-    private func fetchLogos(text: String, completion: @escaping ([SymbolSearchInfo]) -> Void) {
-        let dispatchGroup = DispatchGroup()
-        var tempSearchInfos: [SymbolSearchInfo] = []
-        fetchSymbols(text: text) { searchInfos in
-            tempSearchInfos = searchInfos
-            for (index, searchInfo) in searchInfos.enumerated() {
-                dispatchGroup.enter()
-                API<Logo>(
-                    baseURL: TheFellowshipOfAntsRequest.Logo.baseURL,
-                    params: [
-                        TheFellowshipOfAntsRequest.Logo.ParamsKey.symbol: searchInfo.symbol
-                    ],
-                    apiKey: TheFellowshipOfAntsRequest.Logo.apiKey
-                ).fetch { result in
-                    switch result {
-                    case .success(let logo):
-                        print(logo.url)
-                        tempSearchInfos[index].urlString = logo.url
-                        dispatchGroup.leave()
-                    case .failure(let error):
-                        print(error)
-                        dispatchGroup.leave()
-                    }
-                }
-            }
-
-            dispatchGroup.notify(queue: .main) {
-                completion(tempSearchInfos)
-            }
-        }
-    }
+//    private func fetchLogos(text: String, completion: @escaping ([SymbolSearchInfo]) -> Void) {
+//        let dispatchGroup = DispatchGroup()
+//        var tempSearchInfos: [SymbolSearchInfo] = []
+//        fetchSymbols(text: text) { searchInfos in
+//            tempSearchInfos = searchInfos
+//            for (index, searchInfo) in searchInfos.enumerated() {
+//                dispatchGroup.enter()
+//                API<Logo>(
+//                    baseURL: TheFellowshipOfAntsRequest.Logo.baseURL,
+//                    params: [
+//                        TheFellowshipOfAntsRequest.Logo.ParamsKey.symbol: searchInfo.symbol
+//                    ],
+//                    apiKey: TheFellowshipOfAntsRequest.Logo.apiKey
+//                ).fetch { result in
+//                    switch result {
+//                    case .success(let logo):
+//                        print(logo.url)
+//                        tempSearchInfos[index].urlString = logo.url
+//                        dispatchGroup.leave()
+//                    case .failure(let error):
+//                        print(error)
+//                        dispatchGroup.leave()
+//                    }
+//                }
+//            }
+//
+//            dispatchGroup.notify(queue: .main) {
+//                completion(tempSearchInfos)
+//            }
+//        }
+//    }
 }
 
 extension SearchViewControllerRx: UISearchBarDelegate {
