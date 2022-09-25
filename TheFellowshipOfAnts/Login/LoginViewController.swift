@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     var coordinator: AuthCoordinator?
     private var currentNonce: String?
 
-    // MARK: - IBOulet
+    // MARK: - IBOutlet
 
     let loginView = LoginView()
 
@@ -40,6 +40,8 @@ class LoginViewController: UIViewController {
     // MARK: - Methods
 
     private func setupViews() {
+        view.backgroundColor = .white
+
         view.addSubview(loginView)
 
         loginView.snp.makeConstraints {
@@ -114,8 +116,8 @@ extension LoginViewController {
     }
 }
 
-struct LoginViewControllerPreview: PreviewProvider {
-    static var previews: some View {
-        LoginViewController().toPreview()
-    }
-}
+//struct LoginViewControllerPreview: PreviewProvider {
+//    static var previews: some View {
+//        LoginViewController().toPreview()
+//    }
+//}

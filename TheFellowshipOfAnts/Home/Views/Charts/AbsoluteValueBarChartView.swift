@@ -80,7 +80,7 @@ extension AbsoluteValueBarChartView {
     }
 }
 
-extension AbsoluteValueBarChartView: IValueFormatter {
+extension AbsoluteValueBarChartView: ValueFormatter {
     func stringForValue(
         _ value: Double,
         entry: ChartDataEntry,

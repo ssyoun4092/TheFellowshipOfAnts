@@ -1,5 +1,6 @@
 import UIKit
 
+import Kingfisher
 import SnapKit
 
 class SearchingItemCell: UITableViewCell {
@@ -20,6 +21,12 @@ class SearchingItemCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Methods
+    func configure(with item: SearchStock) {
+        logoImageView.kf.setImage(with: URL(string: item.logoURLString))
+        companyNameLabel.text = item.instrumentName
     }
 }
 

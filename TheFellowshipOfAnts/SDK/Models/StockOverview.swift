@@ -8,7 +8,6 @@
 import Foundation
 
 struct StockOverview: Decodable {
-
     let marketCap: String
     let PER: String
     let PBR: String

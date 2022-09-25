@@ -51,7 +51,7 @@ class StockDetailViewController: UIViewController {
     // MARK: - Methods
 
     private func setupNavigationBar() {
-        title = companyName ?? ""
+        title = symbol ?? ""
     }
 
     private func setupViews() {
@@ -60,17 +60,16 @@ class StockDetailViewController: UIViewController {
         view.addSubview(stockDetailView)
 
         stockDetailView.overviewCollectionView.dataSource = self
-        stockDetailView.overviewCollectionView.delegate = self
 
         stockDetailView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
 
     private func fetchStockOverview() {
-        var tempOvervies: [String] = []
+        var tempOverviews: [String] = []
 
         API<StockOverview>(
             baseURL: TheFellowshipOfAntsRequest.Overview.baseURL,
@@ -85,14 +84,14 @@ class StockDetailViewController: UIViewController {
             case .success(let stockOverview):
                 print(stockOverview)
                 let marketCap = Double(stockOverview.marketCap)!.convertToMetrics()
-                tempOvervies.append("$" + marketCap)
-                tempOvervies.append("$" + stockOverview.highIn52Weeks)
-                tempOvervies.append("$" + stockOverview.lowIn52Weeks)
-                tempOvervies.append(stockOverview.PER)
-                tempOvervies.append(stockOverview.PBR)
-                tempOvervies.append(stockOverview.EPS)
+                tempOverviews.append("$" + marketCap)
+                tempOverviews.append("$" + stockOverview.highIn52Weeks)
+                tempOverviews.append("$" + stockOverview.lowIn52Weeks)
+                tempOverviews.append(stockOverview.PER)
+                tempOverviews.append(stockOverview.PBR)
+                tempOverviews.append(stockOverview.EPS)
 
-                self.overviews = tempOvervies
+                self.overviews = tempOverviews
 
                 DispatchQueue.main.async {
                     self.stockDetailView.overviewCollectionView.reloadData()

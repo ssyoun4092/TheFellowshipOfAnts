@@ -54,8 +54,8 @@ class EmailLoginViewController: UIViewController {
     }
 }
 
-struct EmailLoginViewControllerPreview: PreviewProvider {
-    static var previews: some View {
-        EmailLoginViewController().toPreview()
-    }
-}
+//struct EmailLoginViewControllerPreview: PreviewProvider {
+//    static var previews: some View {
+//        EmailLoginViewController().toPreview()
+//    }
+//}

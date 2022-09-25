@@ -27,9 +27,9 @@ class StockDetailView: UIView {
     let currentPriceLabel = UILabel()
     let fluctuationRateLabel = UILabel()
 
-    let chartsVStack = UIStackView()
-
     let stockGraphChartView = StockGraphChartView()
+
+    let informationsVStack = UIStackView()
 
     let overviewVStack = UIStackView()
     let overviewTitleLabel = UILabel()
@@ -38,9 +38,10 @@ class StockDetailView: UIView {
         collectionViewLayout: overviewFlowLayout
     )
     let overviewFlowLayout: UICollectionViewLayout = {
-        let cellWidth = ((UIScreen.main.bounds.width - 40) / 3) - 9
+        let cellWidth = ((UIScreen.main.bounds.width - 40) / 3)
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: cellWidth, height: 50)
+        layout.minimumInteritemSpacing = CGFloat(0)
         layout.minimumLineSpacing = CGFloat(10)
 
         return layout
@@ -113,7 +114,8 @@ extension StockDetailView {
         setupSymbolLabel()
         setupCurrenPriceLabel()
         setupFluctuationRateLabel()
-        setupChartsVStack()
+        setupStockGraphChartView()
+        setupInformationsVStack()
     }
 
     private func setupLogoImageView() {
@@ -122,7 +124,8 @@ extension StockDetailView {
         logoImageView.kf.setImage(with: URL(string: "https://companiesmarketcap.com/img/company-logos/64/AAPL.png"))
 
         logoImageView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().inset(20)
             $0.width.equalTo(40)
             $0.height.equalTo(logoImageView.snp.width)
         }
@@ -160,7 +163,7 @@ extension StockDetailView {
 
         currentPriceLabel.snp.makeConstraints {
             $0.top.equalTo(logoImageView.snp.bottom).offset(15)
-            $0.leading.equalToSuperview()
+            $0.leading.equalToSuperview().inset(20)
         }
     }
 
@@ -177,24 +180,30 @@ extension StockDetailView {
         }
     }
 
-    private func setupChartsVStack() {
-        contentView.addSubview(chartsVStack)
+    private func setupStockGraphChartView() {
+        contentView.addSubview(stockGraphChartView)
 
-        chartsVStack.axis = .vertical
-        chartsVStack.spacing = 50
-
-        chartsVStack.snp.makeConstraints {
+        stockGraphChartView.snp.makeConstraints {
             $0.top.equalTo(fluctuationRateLabel.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(300)
+        }
+    }
+
+    private func setupInformationsVStack() {
+        contentView.addSubview(informationsVStack)
+
+        informationsVStack.axis = .vertical
+        informationsVStack.spacing = 50
+
+        informationsVStack.snp.makeConstraints {
+            $0.top.equalTo(stockGraphChartView.snp.bottom).offset(15)
+            $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(20)
         }
 
-        [stockGraphChartView, overviewVStack, revenueVStack, grossProfitVStack, grossProfitRatioVStack]
-            .forEach { chartsVStack.addArrangedSubview($0) }
-
-        stockGraphChartView.snp.makeConstraints {
-            $0.height.equalTo(300)
-        }
+        [overviewVStack, revenueVStack, grossProfitVStack, grossProfitRatioVStack]
+            .forEach { informationsVStack.addArrangedSubview($0) }
 
         setupOverviewVStack()
         setupRevenueVStack()
