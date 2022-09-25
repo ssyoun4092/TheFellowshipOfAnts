@@ -83,6 +83,8 @@
 		8ED070D928BEF53D006DB54D /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED070D828BEF53D006DB54D /* SwiftSoup */; };
 		8ED070DC28BEFEC3006DB54D /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED070DB28BEFEC3006DB54D /* Stock.swift */; };
 		8ED9D77D28ADD13A006A7F94 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9D77C28ADD13A006A7F94 /* LoginView.swift */; };
+		8EDABDA228E0253A008814F3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 8EDABDA128E0253A008814F3 /* Moya */; };
+		8EDABDA428E0253A008814F3 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 8EDABDA328E0253A008814F3 /* RxMoya */; };
 		8EDD6FE628BF4058004958C5 /* StockRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD6FE528BF4058004958C5 /* StockRank.swift */; };
 		8EDD6FE928BF46F6004958C5 /* HomeViewController.UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD6FE828BF46F6004958C5 /* HomeViewController.UICollectionView.swift */; };
 		8EDDC298287A720D00FA025D /* SignupWithEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDDC297287A720D00FA025D /* SignupWithEmailModel.swift */; };
@@ -242,8 +244,10 @@
 				8EA4B55228B5E59700AB5D1D /* FirebaseAuth in Frameworks */,
 				8EA4B54A28B5E18C00AB5D1D /* KakaoSDKAuth in Frameworks */,
 				8E27718128BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Frameworks */,
+				8EDABDA428E0253A008814F3 /* RxMoya in Frameworks */,
 				8EA4B54028B5E11500AB5D1D /* SnapKit in Frameworks */,
 				8ED070D928BEF53D006DB54D /* SwiftSoup in Frameworks */,
+				8EDABDA228E0253A008814F3 /* Moya in Frameworks */,
 				8EAD1FEF28AFB77700288624 /* Kingfisher in Frameworks */,
 				8E43315328D199ED008922AB /* Charts in Frameworks */,
 				8EA4B54528B5E12700AB5D1D /* RxSwift in Frameworks */,
@@ -650,6 +654,8 @@
 				8EA4B55128B5E59700AB5D1D /* FirebaseAuth */,
 				8ED070D828BEF53D006DB54D /* SwiftSoup */,
 				8E43315228D199ED008922AB /* Charts */,
+				8EDABDA128E0253A008814F3 /* Moya */,
+				8EDABDA328E0253A008814F3 /* RxMoya */,
 			);
 			productName = TheFellowshipOfAnts;
 			productReference = 8E4CB36C28755FD60033AD85 /* TheFellowshipOfAnts.app */;
@@ -687,6 +693,7 @@
 				8EA4B55028B5E59700AB5D1D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8ED070D728BEF53D006DB54D /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				8E43315128D199ED008922AB /* XCRemoteSwiftPackageReference "Charts" */,
+				8EDABDA028E0253A008814F3 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 8E4CB36D28755FD60033AD85 /* Products */;
 			projectDirPath = "";
@@ -1087,6 +1094,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		8EDABDA028E0253A008814F3 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1144,6 +1159,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8ED070D728BEF53D006DB54D /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		8EDABDA128E0253A008814F3 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EDABDA028E0253A008814F3 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		8EDABDA328E0253A008814F3 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EDABDA028E0253A008814F3 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
