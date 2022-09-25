@@ -142,8 +142,8 @@ class SignupWithEmailViewController: UIViewController {
     }
 }
 
-struct SignUpForEmailViewControllerPreview: PreviewProvider {
-    static var previews: some View {
-        SignupWithEmailViewController().toPreview()
-    }
-}
+//struct SignUpForEmailViewControllerPreview: PreviewProvider {
+//    static var previews: some View {
+//        SignupWithEmailViewController().toPreview()
+//    }
+//}

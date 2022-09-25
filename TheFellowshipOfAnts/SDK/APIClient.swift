@@ -44,7 +44,7 @@ class API<T: Decodable> {
     }
 
     func fetch(completion: @escaping (Result<T, Error>) -> Void) {
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let apiError = error {
                 completion(.failure(apiError))
             }
@@ -66,7 +66,7 @@ class API<T: Decodable> {
                 completion(.failure(NetworkError.clientError))
             }
         }
-        .resume()
+        task.resume()
     }
 
     func fetchRx() -> Observable<T> {

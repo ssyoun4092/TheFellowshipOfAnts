@@ -1,104 +1,175 @@
 import UIKit
+
+import TheFellowshipOfAntsKey
 import SnapKit
-import SwiftUI
 
 class SearchViewController: UIViewController {
-    private var searchItems: [String] = [
-        "애플",
-        "알파벳",
-        "엔비디아",
-        "테슬라"
-    ]
 
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.placeholder = "종목 검색"
-        searchBar.backgroundImage = UIImage()
-        searchBar.delegate = self
+    // MARK: - Properties
+    var searchItems: [SearchStock] = [] {
+        didSet {
+            if searchItems.isEmpty {
+                searchView.searchedStocksTableView.isHidden = true
+                searchView.recentSearchView.isHidden = false
+                searchView.recentSearchView.collectionView.reloadData()
+            } else {
+                searchView.searchedStocksTableView.isHidden = false
+                searchView.recentSearchView.isHidden = true
+                searchView.searchedStocksTableView.reloadData()
+            }
+        }
+    }
 
-        return searchBar
-    }()
+    weak var coordinator: SearchCoordinator?
 
-    private let recentSearchView = RecentSearchListView()
+    // MARK: - IBOutlets
 
-    private lazy var searchResultTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(SearchingItemCell.self, forCellReuseIdentifier: SearchingItemCell.identifer)
-        tableView.rowHeight = 60
-        tableView.isHidden = true
-        tableView.dataSource = self
-        tableView.delegate = self
+    let searchView = SearchView()
 
-        return tableView
-    }()
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        layout()
+        setupViews()
     }
 
     override func viewDidLayoutSubviews() {
-        searchResultTableView.separatorStyle = .none
+        searchView.searchedStocksTableView.separatorStyle = .none
+    }
+
+    private func translateKoreanToEnglish(text: String, completion: @escaping (String) -> Void) {
+        let parameters = "source=ko&target=en&text=\(text)"
+        let paramData = parameters.data(using: .utf8)
+        let papagoURL = URL(string: "https://openapi.naver.com/v1/papago/n2mt")
+
+        let clientID = "ASAlIspGHK5XDC_9NdDi"
+        let clientSecret = "2CoRBE3tpY"
+
+        var request = URLRequest(url: papagoURL!)
+        request.httpMethod = "POST"
+        request.addValue(clientID, forHTTPHeaderField: "X-Naver-Client-Id")
+        request.addValue(clientSecret, forHTTPHeaderField: "X-Naver-Client-Secret")
+        request.httpBody = paramData
+        request.setValue(String(paramData!.count), forHTTPHeaderField: "Content-Length")
+
+        let config = URLSessionConfiguration.default
+
+        URLSession(configuration: config).dataTask(with: request) { data, response, error in
+            if let data = data {
+                let str = String(data: data, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue)) ?? "왜 안돼"
+                completion(str)
+            }
+            //통신 실패
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        .resume()
+    }
+
+    @objc
+    private func didTapDeleteAllButton() {
+        print(#function)
+        UserDefaultManager.shared.recentSearches.removeAll()
+        searchView.recentSearchView.collectionView.reloadData()
+    }
+
+    @objc
+    private func didTapCancelButton() {
+        view.endEditing(true)
+        searchView.searchBar.snp.updateConstraints {
+            $0.trailing.equalToSuperview().inset(10)
+        }
+        UIView.animate(withDuration: 0.3) { [unowned self] in
+            self.searchView.searchBar.superview?.layoutIfNeeded()
+        }
     }
 }
 
 extension SearchViewController {
-    private func layout() {
-        view.addSubviews([searchBar, recentSearchView, searchResultTableView])
+    private func setupViews() {
+        view.endEditing(true)
 
-        searchBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            $0.leading.trailing.equalToSuperview().inset(10)
-            $0.height.equalTo(50)
-        }
+        view.addSubview(searchView)
 
-        recentSearchView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom).offset(15)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(120)
-        }
+        searchView.searchBar.delegate = self
+        searchView.recentSearchView.collectionView.dataSource = self
+        searchView.recentSearchView.collectionView.delegate = self
+        searchView.searchedStocksTableView.dataSource = self
+        searchView.searchedStocksTableView.delegate = self
 
-        searchResultTableView.snp.makeConstraints {
-            $0.top.equalTo(searchBar.snp.bottom).offset(15)
+        searchView.recentSearchView.deleteAllButton.addTarget(
+            self,
+            action: #selector(didTapDeleteAllButton),
+            for: .touchUpInside
+        )
+        searchView.cancelButton.addTarget(
+            self,
+            action: #selector(didTapCancelButton),
+            for: .touchUpInside
+        )
+
+        searchView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+
+    private func isContainKorean(item: String) -> Bool {
+        let koreanRegister = "^[ㄱ-ㅎㅏ-ㅣ가-힣]*$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", koreanRegister)
+
+        return predicate.evaluate(with: item)
     }
 }
 
 extension SearchViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchResultTableView.reloadData()
-        searchResultTableView.isHidden = false
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchText.isEmpty
+        ? searchItems.removeAll()
+        : NetworkService.fetchSearchingStocksInfo(text: searchText, completion: { result in
+            switch result {
+            case .success(let stockInfos):
+                self.searchItems = stockInfos
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
 
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchResultTableView.isHidden = true
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchView.searchBar.snp.updateConstraints {
+            $0.trailing.equalToSuperview().inset(62)
+        }
+        UIView.animate(withDuration: 0.3) { [unowned self] in
+            self.searchView.searchBar.superview?.layoutIfNeeded()
+        }
+
+        return true
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+
+        if isContainKorean(item: text) {
+            NetworkService.translateKoreanToEnglish(text: text) { result in
+                switch result {
+                case .success(let translatedEnglish):
+                    NetworkService.fetchSearchingStocksInfo(text: translatedEnglish) { result in
+                        switch result {
+                        case .success(let stockInfos):
+                            self.searchItems = stockInfos
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        searchBar.resignFirstResponder()
     }
 }
 
-extension SearchViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return searchItems.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchingItemCell.identifer, for: indexPath) as? SearchingItemCell else { return UITableViewCell() }
-
-        return cell
-    }
-}
-
-extension SearchViewController: UITableViewDelegate {
-
-}
-
-struct SearchViewControllerPreView: PreviewProvider {
-    static var previews: some View {
-        SearchViewController().toPreview()
-    }
-}

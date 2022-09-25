@@ -116,8 +116,8 @@ extension LoginViewController {
     }
 }
 
-struct LoginViewControllerPreview: PreviewProvider {
-    static var previews: some View {
-        LoginViewController().toPreview()
-    }
-}
+//struct LoginViewControllerPreview: PreviewProvider {
+//    static var previews: some View {
+//        LoginViewController().toPreview()
+//    }
+//}

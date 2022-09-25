@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchedStock {
+struct SearchStock {
     let symbol: String
     let instrumentName: String
     let country: String
@@ -41,6 +41,6 @@ enum InstrumentType: Decodable {
     case preferredStock
 }
 
-struct Logo: Decodable {
+struct LogoData: Decodable {
     let url: String
 }

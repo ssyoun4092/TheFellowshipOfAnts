@@ -72,7 +72,7 @@ class SignupWithEmailViewModel: SignupWithEmailType {
         let showWrongNickname = BehaviorSubject<Bool>(value: false)
         let nicknameValidating = BehaviorSubject<Bool>(value: false)
 
-        let tappedCompleteBtn = PublishSubject<Void>()
+        let didTapCompleteButton = PublishSubject<Void>()
 
         //MARK: - Email Handling
 
@@ -152,9 +152,9 @@ class SignupWithEmailViewModel: SignupWithEmailType {
             })
             .disposed(by: disposeBag)
 
-        completeBtnTap = tappedCompleteBtn.asObserver()
+        completeBtnTap = didTapCompleteButton.asObserver()
 
-        tappedCompleteBtn
+        didTapCompleteButton
             .withLatestFrom(Observable.combineLatest(emailTexting, passwordTexting) { email, _ in
                 model.testing(email)
             })

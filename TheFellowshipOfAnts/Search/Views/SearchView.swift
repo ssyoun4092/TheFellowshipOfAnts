@@ -11,22 +11,40 @@ import SnapKit
 
 class SearchView: UIView {
 
+    // MARK: - Properties
+    
+    var cancelButtonShouldShow: Bool {
+        didSet {
+            let inset: CGFloat = cancelButtonShouldShow ? 10 : 62
+            searchBar.snp.updateConstraints {
+                $0.trailing.equalToSuperview().inset(inset)
+            }
+
+            UIView.animate(withDuration: 0.3) {
+                self.searchBar.superview?.layoutIfNeeded()
+            }
+        }
+    }
+
     // MARK: - IBOutlets
 
     let searchBar = UISearchBar()
+    let activityIndicator = UIActivityIndicatorView()
     let cancelButton = UIButton()
-    let searchResultTableView = UITableView()
+    let searchedStocksTableView = UITableView()
     let recentSearchView = RecentSearchListView()
 
     // MARK: - Life Cycle
 
     override init(frame: CGRect) {
+        self.cancelButtonShouldShow = true
         super.init(frame: frame)
 
         setupSearchBar()
         setupCancelLabel()
         setupSearchResultTableView()
         setupRecentSearchView()
+        setupActivityIndicator()
     }
 
     required init?(coder: NSCoder) {
@@ -63,15 +81,15 @@ extension SearchView {
     }
 
     private func setupSearchResultTableView() {
-        addSubview(searchResultTableView)
+        addSubview(searchedStocksTableView)
 
-        searchResultTableView.register(
+        searchedStocksTableView.register(
             SearchingItemCell.self,
             forCellReuseIdentifier: SearchingItemCell.identifier)
-        searchResultTableView.rowHeight = 60
-        searchResultTableView.isHidden = true
+        searchedStocksTableView.rowHeight = 60
+        searchedStocksTableView.isHidden = true
 
-        searchResultTableView.snp.makeConstraints {
+        searchedStocksTableView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).offset(15)
             $0.leading.trailing.bottom.equalToSuperview()
         }
@@ -84,6 +102,15 @@ extension SearchView {
             $0.top.equalTo(searchBar.snp.bottom).offset(15)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(120)
+        }
+    }
+
+    private func setupActivityIndicator() {
+        addSubview(activityIndicator)
+
+        activityIndicator.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom).offset(50)
+            $0.centerX.equalToSuperview()
         }
     }
 }

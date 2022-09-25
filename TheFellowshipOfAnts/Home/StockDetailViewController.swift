@@ -51,7 +51,7 @@ class StockDetailViewController: UIViewController {
     // MARK: - Methods
 
     private func setupNavigationBar() {
-        title = companyName ?? ""
+        title = symbol ?? ""
     }
 
     private func setupViews() {

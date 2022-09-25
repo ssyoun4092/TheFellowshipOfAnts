@@ -10,7 +10,7 @@ import Foundation
 import TheFellowshipOfAntsKey
 
 class NetworkService {
-    static func fetchSearchingStocks(text: String, completion: @escaping (Result<[SymbolSearchInfo], Error>) -> Void) {
+    static func fetchSearchStocks(text: String, completion: @escaping (Result<[SymbolSearchInfo], Error>) -> Void) {
         API<SymbolSearch>(
             baseURL: TheFellowshipOfAntsRequest.SymbolSearch.baseURL,
             params: [
@@ -20,8 +20,8 @@ class NetworkService {
         ).fetch { result in
             switch result {
             case .success(let searchedSymbols):
-                let filteredSymbols = searchedSymbols.symbolSearchInfos.filter { $0.country == "United States"}
-                completion(.success(filteredSymbols))
+                let stocksInUS = searchedSymbols.symbolSearchInfos.filter { $0.country == "United States"}
+                completion(.success(stocksInUS))
             case .failure(let error):
                 print(#function)
                 print(error)
@@ -30,12 +30,15 @@ class NetworkService {
         }
     }
 
-    static func fetchLogoURLString(symbols: [String], completion: @escaping (_ urlStrings: [String]) -> Void) {
+    static func fetchLogoURLString(symbols: [String], completion: @escaping (_ logoURLStringOfSymbol: [String: String]) -> Void) {
         let dispatchGroup = DispatchGroup()
-        var tempURLStrings: [String] = []
+
+        var logoURLStringOfSymbol: [String: String] = [:]
+
         symbols.forEach { symbol in
             dispatchGroup.enter()
-            API<Logo>(
+
+            API<LogoData>(
                 baseURL: TheFellowshipOfAntsRequest.Logo.baseURL,
                 params: [
                     TheFellowshipOfAntsRequest.Logo.ParamsKey.symbol: symbol
@@ -44,39 +47,39 @@ class NetworkService {
             ).fetch { result in
                 switch result {
                 case .success(let logo):
-                    tempURLStrings.append(logo.url)
+                    logoURLStringOfSymbol[symbol] = logo.url
                     dispatchGroup.leave()
                 case .failure(let error):
                     print(error)
-                    tempURLStrings.append("")
                     dispatchGroup.leave()
                 }
             }
         }
 
         dispatchGroup.notify(queue: .main) {
-            completion(tempURLStrings)
+            completion(logoURLStringOfSymbol)
         }
     }
 
-    static func fetchSearchingStocksInfo(text: String, completion: @escaping (Result<[SearchedStock], Error>) -> Void) {
-        var tempSearchInfos: [SearchedStock] = []
-        fetchSearchingStocks(text: text) { result in
+    static func fetchSearchingStocksInfo(text: String, completion: @escaping (Result<[SearchStock], Error>) -> Void) {
+        var tempSearchInfos: [SearchStock] = []
+        fetchSearchStocks(text: text) { result in
             switch result {
             case .success(let symbolInfos):
                 let symbols = symbolInfos.map { $0.symbol }
-                fetchLogoURLString(symbols: symbols) { urlStrings in
+                fetchLogoURLString(symbols: symbols) { logoURLStringOfSymbol in
                     for index in 0..<symbolInfos.count {
-                        tempSearchInfos.append(SearchedStock(
+                        let targetSymbol = symbolInfos[index].symbol
+                        let logoURLString = logoURLStringOfSymbol[targetSymbol] ?? ""
+                        tempSearchInfos.append(SearchStock(
                             symbol: symbolInfos[index].symbol,
                             instrumentName: symbolInfos[index].instrumentName,
                             country: symbolInfos[index].instrumentName,
-                            logoURLString: urlStrings[index])
+                            logoURLString: logoURLString)
                         )
                     }
                     completion(.success(tempSearchInfos))
                 }
-
             case .failure(let error):
                 completion(.failure(error))
             }

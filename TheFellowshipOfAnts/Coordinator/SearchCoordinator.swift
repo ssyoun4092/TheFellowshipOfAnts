@@ -18,7 +18,7 @@ class SearchCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = SearchViewController()
+        let vc = SearchViewControllerRx()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }

@@ -11,16 +11,20 @@ import TheFellowshipOfAntsKey
 import RxSwift
 
 class NetworkServiceRx {
-    static func fetchSearchingStocksWithLogoRx(symbol: String) -> Observable<[SearchedStock]> {
-        return Observable.create { observer -> Disposable in
+    func fetchSearchingStocksWithLogoRx(symbol: String) -> Observable<Result<[SearchStock], Error>> {
+        return Observable.create { observer in
             NetworkService.fetchSearchingStocksInfo(text: symbol) { result in
-                switch result {
-                case .success(let searchedStockInfos):
-                    observer.onNext(searchedStockInfos)
+                observer.onNext(result)
+            }
 
-                case .failure(let error):
-                    observer.onError(error)
-                }
+            return Disposables.create()
+        }
+    }
+
+    func translateKoreanToEnglishRx(text: String) -> Observable<Result<String, Error>> {
+        return Observable.create { observer in
+            NetworkService.translateKoreanToEnglish(text: text) { result in
+                observer.onNext(result)
             }
 
             return Disposables.create()
