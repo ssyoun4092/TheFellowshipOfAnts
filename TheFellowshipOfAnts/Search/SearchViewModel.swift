@@ -20,6 +20,7 @@ final class SearchViewModel {
     let searchButtonClicked = PublishRelay<Void>()
     let didTapCancelButton = PublishRelay<Void>()
     let didSelectSearchedStocksItem = PublishRelay<Int>()
+    let didTapMoyaButton = PublishRelay<Void>()
 
     // viewModel -> view
     let hideRecentSearchView: Driver<Bool>
@@ -28,12 +29,22 @@ final class SearchViewModel {
     let hideKeyboard: Driver<Void>
     let searchedStocks: Driver<[SearchStock]>
     let activated: Driver<Bool>
+    let overviews: Driver<[Entity.SearchStock]>
     //    let searchItems =  BehaviorSubject<[SymbolSearchInfo]>(value: [])
 
-    init(model: SearchModel = SearchModel()) {
+    private let useCase: UseCase
+
+    init(model: SearchModel = SearchModel(), useCase: UseCase = UseCaseImpl()) {
+        self.useCase = useCase
+
+        overviews = didTapMoyaButton
+            .flatMap { _ in useCase.searchStockList(text: "aa") }
+            .asDriver(onErrorJustReturn: [])
+
         let activating = BehaviorSubject<Bool>(value: false)
 
         let isTextEmpty = searchBarText
+            .do(onNext: { _ in print("왜 안돼") })
             .map { $0.isEmpty ? true : false }
 
         let inputText = searchBarText
@@ -56,14 +67,14 @@ final class SearchViewModel {
             translatedText
         ])
             .do(onNext: { _ in activating.onNext(true)})
-            .flatMap { model.fetchSearchingStockList(symbol: $0) }
-            .do(onNext: { _ in activating.onNext(false)})
+                .flatMap { model.fetchSearchingStockList(symbol: $0) }
+                .do(onNext: { _ in activating.onNext(false)})
 
-        let searchedStocksError = searchedStocksResult
-            .compactMap { result -> Error? in
-                guard case .failure(let error) = result else { return nil }
-                return error
-            }
+                    let searchedStocksError = searchedStocksResult
+                    .compactMap { result -> Error? in
+                        guard case .failure(let error) = result else { return nil }
+                        return error
+                    }
 
         searchedStocks = searchedStocksResult
             .compactMap { result -> [SearchStock] in
@@ -96,7 +107,7 @@ final class SearchViewModel {
             .asDriver(onErrorJustReturn: ())
 
         activated = Observable
-            .combineLatest(activating, isTextEmpty) { $0 ? false : $1 }
+            .combineLatest(activating, isTextEmpty) { $1 ? false : $0 }
             .asDriver(onErrorJustReturn: false)
     }
 }

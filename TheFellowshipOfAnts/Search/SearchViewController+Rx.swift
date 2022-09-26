@@ -42,9 +42,6 @@ class SearchViewControllerRx: UIViewController {
 
     private func bind(to viewModel: SearchViewModel) {
         searchView.searchBar.rx.text.orEmpty
-//            .do(onNext: { print("In VC", $0) })
-//            .debounce(0.001, scheduler: MainScheduler)
-//            .map { $0 ?? "" }
             .bind(to: viewModel.searchBarText)
             .disposed(by: disposeBag)
 

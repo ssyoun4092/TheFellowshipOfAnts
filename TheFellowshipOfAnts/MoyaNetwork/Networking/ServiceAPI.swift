@@ -7,34 +7,20 @@
 
 import Foundation
 
-import TheFellowshipOfAntsKey
 import Moya
 
 protocol ServiceAPI: TargetType {
     associatedtype ResponseDTO: Decodable
-    var serviceBaseURL: ServiceBaseURL { get }
+    var serviceProvider: ServiceProvider { get }
 }
 
 extension ServiceAPI {
-    var baseURL: URL { serviceBaseURL.baseURL }
+    var baseURL: URL { serviceProvider.baseURL }
+    var method: Moya.Method { .get }
     var headers: [String : String]? { nil }
+    var apiKey: String { serviceProvider.apiKey }
 }
 
-enum ServiceBaseURL {
-    case twelveData
-    case alphavantage
-    case financialmodeling
-}
-
-extension ServiceBaseURL {
-    var baseURL: URL {
-        switch self {
-        case .twelveData:
-            return URL(string: "https://api.twelvedata.com")!
-        case .alphavantage:
-            return URL(string: "https://www.alphavantage.co")!
-        case .financialmodeling:
-            return URL(string: "https://financialmodelingprep.com")!
-        }
-    }
+protocol StockAPI: ServiceAPI {
+    var symbol: String { get }
 }
