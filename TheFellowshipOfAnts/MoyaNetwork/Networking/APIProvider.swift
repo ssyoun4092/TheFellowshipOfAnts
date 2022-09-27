@@ -9,13 +9,14 @@ import Foundation
 
 import TheFellowshipOfAntsKey
 
-enum ServiceProvider {
+enum APIProvider {
     case twelveData
     case alphavantage
     case financialmodeling
+    case naver
 }
 
-extension ServiceProvider {
+extension APIProvider {
     var baseURL: URL {
         switch self {
         case .twelveData:
@@ -24,6 +25,8 @@ extension ServiceProvider {
             return URL(string: "https://www.alphavantage.co")!
         case .financialmodeling:
             return URL(string: "https://financialmodelingprep.com")!
+        case .naver:
+            return URL(string: "https://openapi.naver.com")!
         }
     }
 
@@ -35,6 +38,8 @@ extension ServiceProvider {
             return TheFOARequest.ApiKey.alphavantage.rawValue
         case .financialmodeling:
             return TheFOARequest.ApiKey.financialmodeling.rawValue
+        case .naver:
+            return TheFOARequest.Translate.clientSecret
         }
     }
 }

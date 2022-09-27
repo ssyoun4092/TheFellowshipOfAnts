@@ -10,21 +10,16 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol UseCase {
-    func searchStockList(text: String) -> Observable<[Entity.SearchStock]>
-    func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview>
-}
+class StocksUseCaseImpl: StocksUseCase {
+    let repository: StocksRepository
 
-class UseCaseImpl: UseCase {
-    let repository: Repository
-
-    init(repository: Repository = RepositoryImpl()) {
+    init(repository: StocksRepository = StocksRepositoryImpl()) {
         self.repository = repository
     }
 
     func searchStockList(text: String) -> Observable<[Entity.SearchStock]> {
 
-        return repository.searchStockList(text: "aa")
+        return repository.searchStockList(text: text)
     }
 
     func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview> {

@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-class RepositoryImpl: Repository {
+class StocksRepositoryImpl: StocksRepository {
     let network: NetworkServable
     let disposeBag = DisposeBag()
     init(network: NetworkServable = NetworkServiceMoya()) {
@@ -59,21 +59,21 @@ class RepositoryImpl: Repository {
     }
 
     func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview> {
-        return network.request(StockOverviewAPI2(symbol: "AAPL"))
+        return network.request(StockOverviewAPI(symbol: symbol))
             .compactMap { [weak self] stockOverviewDTO in
                 return self?.convertOverviewDTOToEntity(stockOverviewDTO)
             }
             .asObservable()
     }
 
-    private func convertOverviewDTOToEntity(_ DTO: DTO.StockOverview2) -> Entity.StockOverview {
+    private func convertOverviewDTOToEntity(_ DTO: DTO.StockOverview) -> Entity.StockOverview {
         return .init(
-            marketCap: DTO.MarketCapitalization ?? "",
-            PER: DTO.PERatio ?? "",
-            PBR: DTO.BookValue ?? "",
-            EPS: DTO.EPS ?? "",
-            the52WeekHigh: "",
-            the52WeekLow: ""
+            marketCap: DTO.marketCapitalization,
+            PER: DTO.PER,
+            PBR: DTO.PBR,
+            EPS: DTO.EPS,
+            the52WeekHigh: DTO.the52WeekHigh,
+            the52WeekLow: DTO.the52WeekLow
         )
     }
 

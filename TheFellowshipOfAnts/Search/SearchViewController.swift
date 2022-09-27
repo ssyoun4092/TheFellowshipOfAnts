@@ -71,7 +71,7 @@ class SearchViewController: UIViewController {
     @objc
     private func didTapDeleteAllButton() {
         print(#function)
-        UserDefaultManager.shared.recentSearches.removeAll()
+        UserDefaultManager.recentSearches.removeAll()
         searchView.recentSearchView.collectionView.reloadData()
     }
 

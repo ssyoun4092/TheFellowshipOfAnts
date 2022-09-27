@@ -27,15 +27,10 @@ class NetworkServiceMoya: NetworkServable {
 
         return provider.rx.request(endPoint)
             .flatMap { response -> Single<API.ResponseDTO> in
-//                print("endPoint:", endPoint)
-//                print("baseURL:", endPoint.baseURL)
-//                print("path:", endPoint.path)
-//                print("params:", endPoint.task)
-//                print(response.data)
                 do {
                     _ = try response.filterSuccessfulStatusCodes()
                     let decodedData = try JSONDecoder().decode(API.ResponseDTO.self, from: response.data)
-
+                    print("Successfully Decoded!!!!!")
                     return .just(decodedData)
                 } catch MoyaError.statusCode(let response) {
                     print("💩💩💩💩 HTTPStatusCode: \(response.statusCode) 문제가 생겼어요!!!")

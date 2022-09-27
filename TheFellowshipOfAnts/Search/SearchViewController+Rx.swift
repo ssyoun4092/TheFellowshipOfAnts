@@ -8,8 +8,9 @@
 import UIKit
 
 import TheFellowshipOfAntsKey
-import RxSwift
 import RxCocoa
+import RxSwift
+import RxViewController
 import SnapKit
 
 class SearchViewControllerRx: UIViewController {
@@ -19,7 +20,7 @@ class SearchViewControllerRx: UIViewController {
     let disposeBag = DisposeBag()
     let viewModel = SearchViewModel()
 
-    let recentSearchList = UserDefaultManager.shared.recentSearches
+    let recentSearchList = UserDefaultManager.recentSearches
 
     weak var coordinator: SearchCoordinator?
 
@@ -63,24 +64,33 @@ class SearchViewControllerRx: UIViewController {
             .disposed(by: disposeBag)
 
         viewModel.searchedStocks
-            .drive(searchView.searchedStocksTableView.rx.items) { tableView, row, data in
+            .drive(searchView.searchedStocksTableView.rx.items) { tableView, row, searchedStock in
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: SearchingItemCell.identifier,
                     for: IndexPath(row: row, section: 0)
                 ) as! SearchingItemCell
 
-                cell.configure(with: data)
+                cell.configure(with: searchedStock)
 
                 return cell
             }
             .disposed(by: disposeBag)
 
+        viewModel.push
+            .drive(with: self) { owner, entity in
+                let viewController = StockDetailViewController()
+                viewController.symbol = entity.symbol
+                viewController.companyName = entity.companyName
+                owner.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+
         viewModel.activated
-            .drive(with: self, onNext: { owner, isSearching in
+            .drive(with: self) { owner, isSearching in
                 isSearching
                 ? owner.searchView.activityIndicator.startAnimating()
                 : owner.searchView.activityIndicator.stopAnimating()
-            })
+            }
             .disposed(by: disposeBag)
 
         viewModel.hideRecentSearchView

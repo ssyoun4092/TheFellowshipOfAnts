@@ -24,9 +24,9 @@ class SearchingItemCell: UITableViewCell {
     }
 
     // MARK: - Methods
-    func configure(with item: SearchStock) {
+    func configure(with item: Entity.SearchStock) {
         logoImageView.kf.setImage(with: URL(string: item.logoURLString))
-        companyNameLabel.text = item.instrumentName
+        companyNameLabel.text = item.companyName
     }
 }
 

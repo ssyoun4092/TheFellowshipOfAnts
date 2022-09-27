@@ -20,78 +20,81 @@ final class SearchViewModel {
     let searchButtonClicked = PublishRelay<Void>()
     let didTapCancelButton = PublishRelay<Void>()
     let didSelectSearchedStocksItem = PublishRelay<Int>()
-    let didTapMoyaButton = PublishRelay<Void>()
 
     // viewModel -> view
     let hideRecentSearchView: Driver<Bool>
     let hideSearchedStocksView: Driver<Bool>
     let hideCancelButton: Driver<Bool>
     let hideKeyboard: Driver<Void>
-    let searchedStocks: Driver<[SearchStock]>
+    let searchedStocks: Driver<[Entity.SearchStock]>
+    let recentSearchedStockList: Driver<[Entity.RecentSearchedStock]>
     let activated: Driver<Bool>
-    let overviews: Driver<[Entity.SearchStock]>
-    //    let searchItems =  BehaviorSubject<[SymbolSearchInfo]>(value: [])
+    let push: Driver<Entity.RecentSearchedStock>
 
-    private let useCase: UseCase
+    private let stockUseCase: StocksUseCase
+    private let translateUseCase: TranslateUseCase
+    private let userDefaultUseCase: UserDefaultUseCase
 
-    init(model: SearchModel = SearchModel(), useCase: UseCase = UseCaseImpl()) {
-        self.useCase = useCase
-
-        overviews = didTapMoyaButton
-            .flatMap { _ in useCase.searchStockList(text: "aa") }
-            .asDriver(onErrorJustReturn: [])
+    init(
+        stockUseCase: StocksUseCase = StocksUseCaseImpl(),
+        translateUseCase: TranslateUseCase = TranslateUseCaseImpl(),
+        userDefaultUseCase: UserDefaultUseCase = UserDefaultUseCaseImpl()
+    ) {
+        self.stockUseCase = stockUseCase
+        self.translateUseCase = translateUseCase
+        self.userDefaultUseCase = userDefaultUseCase
 
         let activating = BehaviorSubject<Bool>(value: false)
-
-        let isTextEmpty = searchBarText
-            .do(onNext: { _ in print("왜 안돼") })
-            .map { $0.isEmpty ? true : false }
 
         let inputText = searchBarText
             .distinctUntilChanged()
             .filter { !$0.isEmpty }
 
-        let translatedText = Observable
-            .combineLatest(searchButtonClicked, inputText) { $1 }
-            .filter { model.containKorean($0) }
-            .flatMap { text in
-                model.translateKoreanToEnglish(text: text)
-            }
-            .map { result -> String in
-                guard case let .success(translatedText) = result else { return "" }
-                return translatedText
-            }
+        let translatedText = searchButtonClicked
+            .withLatestFrom(inputText)
+            .filter { translateUseCase.containKorean($0) }
+            .flatMap { text in translateUseCase.translateKoreanToEnglish(text: text) }
+            .map { $0.text }
 
         let searchedStocksResult = Observable.merge([
             searchBarText.asObservable(),
             translatedText
         ])
             .do(onNext: { _ in activating.onNext(true)})
-                .flatMap { model.fetchSearchingStockList(symbol: $0) }
-                .do(onNext: { _ in activating.onNext(false)})
+            .flatMap { stockUseCase.searchStockList(text: $0) }
+            .do(onNext: { _ in activating.onNext(false)})
 
-                    let searchedStocksError = searchedStocksResult
-                    .compactMap { result -> Error? in
-                        guard case .failure(let error) = result else { return nil }
-                        return error
-                    }
+        self.push = didSelectSearchedStocksItem
+            .withLatestFrom(searchedStocksResult) { row, searchedStocks -> Entity.RecentSearchedStock in
+                let symbol = searchedStocks[row].symbol
+                let companyName = searchedStocks[row].companyName
+                let entity = Entity.RecentSearchedStock(symbol: symbol, companyName: companyName)
+                userDefaultUseCase.updateRecentSearchStockList(entity)
 
-        searchedStocks = searchedStocksResult
-            .compactMap { result -> [SearchStock] in
-                guard case let Result.success(searchedStocks) = result else { return [] }
-                return searchedStocks
+                return entity
             }
+            .asDriver(onErrorJustReturn: .init(symbol: "", companyName: ""))
+
+
+        // TODO: - Fetch Error Handling
+
+        self.searchedStocks = searchedStocksResult
             .asDriver(onErrorJustReturn: [])
 
-        hideRecentSearchView = isTextEmpty
-            .map { !$0 }
+        self.hideRecentSearchView = searchBarText
+            .map { $0.isEmpty ? false : true }
             .asDriver(onErrorJustReturn: false)
 
-        hideSearchedStocksView = isTextEmpty
-            .map { $0 }
-            .asDriver(onErrorJustReturn: false)
+        self.hideSearchedStocksView = Observable.combineLatest(searchBarText, activating) { searchBarText, activating in
+            if searchBarText.isEmpty {
+                return true
+            } else {
+                return activating ? true : false
+            }
+        }
+        .asDriver(onErrorJustReturn: false)
 
-        hideCancelButton = Observable
+        self.hideCancelButton = Observable
             .merge([
                 searchBarDidBeginEditing.map { _ in false },
                 didTapCancelButton.map { _ in true },
@@ -99,15 +102,15 @@ final class SearchViewModel {
             ])
             .asDriver(onErrorJustReturn: false)
 
-        hideKeyboard = Observable
+        self.hideKeyboard = Observable
             .merge([
                 didTapCancelButton.asObservable(),
                 searchButtonClicked.asObservable()
             ])
             .asDriver(onErrorJustReturn: ())
 
-        activated = Observable
-            .combineLatest(activating, isTextEmpty) { $1 ? false : $0 }
+        self.activated = Observable
+            .combineLatest(activating, searchBarText) { $1.isEmpty ? false : $0 }
             .asDriver(onErrorJustReturn: false)
     }
 }

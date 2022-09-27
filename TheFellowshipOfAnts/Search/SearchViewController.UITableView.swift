@@ -20,8 +20,8 @@ extension SearchViewController: UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-        let searchInfo = searchItems[indexPath.row]
-        cell.configure(with: searchInfo)
+//        let searchInfo = searchItems[indexPath.row]
+//        cell.configure(with: searchInfo)
 
         return cell
     }
@@ -35,11 +35,11 @@ extension SearchViewController: UITableViewDelegate {
         viewController.symbol = symbol
         viewController.companyName = companyName
 
-        if UserDefaultManager.shared.recentSearches.contains(where: { $0.first == companyName }) {
-            let index = UserDefaultManager.shared.recentSearches.firstIndex { $0[0] == companyName }!
-            UserDefaultManager.shared.recentSearches.remove(at: index)
+        if UserDefaultManager.recentSearches.contains(where: { $0.first == companyName }) {
+            let index = UserDefaultManager.recentSearches.firstIndex { $0[0] == companyName }!
+            UserDefaultManager.recentSearches.remove(at: index)
         }
-        UserDefaultManager.shared.recentSearches.append([companyName, symbol])
+        UserDefaultManager.recentSearches.append([companyName, symbol])
 
         navigationController?.pushViewController(viewController, animated: true)
     }

@@ -15,7 +15,7 @@ struct SearchStockAPI: StockAPI {
     init(symbol: String) {
         self.symbol = symbol
     }
-    var serviceProvider: ServiceProvider { .twelveData }
+    var apiProvider: APIProvider { .twelveData }
     var path: String = "/symbol_search"
     var task: Moya.Task {
         .requestParameters(parameters: [

@@ -7,10 +7,9 @@
 
 import Foundation
 
-import RxCocoa
 import RxSwift
 
-protocol Repository {
+protocol StocksRepository {
     func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview>
     func searchStockList(text: String) -> Observable<[Entity.SearchStock]>
 }

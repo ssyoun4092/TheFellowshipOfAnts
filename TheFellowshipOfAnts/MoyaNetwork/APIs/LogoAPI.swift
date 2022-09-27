@@ -15,7 +15,7 @@ struct LogoAPI: StockAPI {
     init(symbol: String) {
         self.symbol = symbol
     }
-    var serviceProvider: ServiceProvider { .twelveData }
+    var apiProvider: APIProvider { .twelveData }
     var path: String { "/logo" }
     var task: Moya.Task {
         .requestParameters(parameters: [

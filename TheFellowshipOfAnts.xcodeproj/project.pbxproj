@@ -42,6 +42,11 @@
 		8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4CB37328755FD60033AD85 /* LoginViewController.swift */; };
 		8E4CB37928755FD70033AD85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CB37828755FD70033AD85 /* Assets.xcassets */; };
 		8E4CB37C28755FD70033AD85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4CB37A28755FD70033AD85 /* LaunchScreen.storyboard */; };
+		8E55C9D928E2FFD300191603 /* UserDefaultCRUDRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C9D828E2FFD300191603 /* UserDefaultCRUDRepository.swift */; };
+		8E55C9DB28E2FFF700191603 /* UserDefaultCRUDRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C9DA28E2FFF700191603 /* UserDefaultCRUDRepositoryImpl.swift */; };
+		8E55C9DD28E3115500191603 /* UserDefaultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C9DC28E3115500191603 /* UserDefaultUseCase.swift */; };
+		8E55C9DF28E311AC00191603 /* UserDefaultUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C9DE28E311AC00191603 /* UserDefaultUseCaseImpl.swift */; };
+		8E55C9E128E341BB00191603 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C9E028E341BB00191603 /* Models.swift */; };
 		8E7C469528E05D6000163D30 /* StockOverviewAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C469428E05D6000163D30 /* StockOverviewAPI.swift */; };
 		8E7C469628E061D300163D30 /* NetworkServiceMoya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDABDAC28E03A50008814F3 /* NetworkServiceMoya.swift */; };
 		8E7C469828E0633E00163D30 /* CustomProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C469728E0633E00163D30 /* CustomProvider.swift */; };
@@ -49,21 +54,32 @@
 		8E7C469D28E0770C00163D30 /* StockOverviewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C469C28E0770C00163D30 /* StockOverviewDTO.swift */; };
 		8E7C46A328E07ACA00163D30 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46A228E07ACA00163D30 /* Entity.swift */; };
 		8E7C46A528E07AE300163D30 /* StockOverviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46A428E07AE300163D30 /* StockOverviewEntity.swift */; };
-		8E7C46A728E07B1E00163D30 /* UseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46A628E07B1E00163D30 /* UseCaseImpl.swift */; };
-		8E7C46A928E07BBA00163D30 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46A828E07BBA00163D30 /* Repository.swift */; };
-		8E7C46AD28E07BFF00163D30 /* RepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46AC28E07BFF00163D30 /* RepositoryImpl.swift */; };
+		8E7C46A728E07B1E00163D30 /* StocksUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46A628E07B1E00163D30 /* StocksUseCaseImpl.swift */; };
+		8E7C46A928E07BBA00163D30 /* StocksRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46A828E07BBA00163D30 /* StocksRepository.swift */; };
+		8E7C46AD28E07BFF00163D30 /* StocksRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46AC28E07BFF00163D30 /* StocksRepositoryImpl.swift */; };
 		8E7C46AF28E08BD100163D30 /* EmptyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46AE28E08BD100163D30 /* EmptyDTO.swift */; };
 		8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8068E828B842E2004039B1 /* NSObject+.swift */; };
 		8E82C9DE28D83DC000BB7001 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9DD28D83DC000BB7001 /* NetworkService.swift */; };
 		8E82C9E328D8593500BB7001 /* NetworkService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9E228D8593500BB7001 /* NetworkService+Rx.swift */; };
 		8E82C9E728D97B4A00BB7001 /* Translated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9E628D97B4A00BB7001 /* Translated.swift */; };
 		8E94B80128DAAB0A00988F69 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94B80028DAAB0A00988F69 /* SearchModel.swift */; };
+		8E96D54228E283A300CCFE15 /* TranslateUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54128E283A300CCFE15 /* TranslateUseCaseImpl.swift */; };
+		8E96D54628E2857800CCFE15 /* StocksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54528E2857800CCFE15 /* StocksUseCase.swift */; };
+		8E96D54A28E286EA00CCFE15 /* TranslateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54928E286EA00CCFE15 /* TranslateUseCase.swift */; };
+		8E96D54C28E287AB00CCFE15 /* TranslatedMessageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54B28E287AB00CCFE15 /* TranslatedMessageEntity.swift */; };
+		8E96D54E28E2883A00CCFE15 /* TranslateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54D28E2883A00CCFE15 /* TranslateRepository.swift */; };
+		8E96D55028E2887300CCFE15 /* TranslateRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54F28E2887200CCFE15 /* TranslateRepositoryImpl.swift */; };
+		8E96D55228E288DA00CCFE15 /* TranslateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D55128E288DA00CCFE15 /* TranslateDTO.swift */; };
+		8E96D55428E288E600CCFE15 /* TranslateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D55328E288E600CCFE15 /* TranslateAPI.swift */; };
+		8E96D55728E2988D00CCFE15 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D55628E2988D00CCFE15 /* UserDefault.swift */; };
+		8E96D55928E298B800CCFE15 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D55828E298B800CCFE15 /* UserDefaultManager.swift */; };
+		8E96D55B28E29A0500CCFE15 /* RecentSearchedStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */; };
 		8E9B2BC92895670C007B4196 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B2BC82895670C007B4196 /* Setting.swift */; };
 		8E9D32EE28CDB2050039094D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D32ED28CDB2050039094D /* UserDefaults.swift */; };
 		8E9D32F028CECCD10039094D /* SearchViewController.UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D32EF28CECCD10039094D /* SearchViewController.UICollectionView.swift */; };
 		8E9EC10928E1531800A5DD2D /* SearchStockListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10828E1531800A5DD2D /* SearchStockListEntity.swift */; };
 		8E9EC10B28E1535400A5DD2D /* SearchStockLIstDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10A28E1535400A5DD2D /* SearchStockLIstDTO.swift */; };
-		8E9EC10D28E15BBD00A5DD2D /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10C28E15BBD00A5DD2D /* ServiceProvider.swift */; };
+		8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10C28E15BBD00A5DD2D /* APIProvider.swift */; };
 		8E9EC10F28E1679900A5DD2D /* LogoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10E28E1679900A5DD2D /* LogoDTO.swift */; };
 		8E9EC11128E168BA00A5DD2D /* LogoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC11028E168BA00A5DD2D /* LogoAPI.swift */; };
 		8EA2D55D28792E6A00163D6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EA2D55C28792E6A00163D6A /* GoogleService-Info.plist */; };
@@ -194,27 +210,43 @@
 		8E4CB37828755FD70033AD85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E4CB37B28755FD70033AD85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E4CB37D28755FD70033AD85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E55C9D828E2FFD300191603 /* UserDefaultCRUDRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultCRUDRepository.swift; sourceTree = "<group>"; };
+		8E55C9DA28E2FFF700191603 /* UserDefaultCRUDRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultCRUDRepositoryImpl.swift; sourceTree = "<group>"; };
+		8E55C9DC28E3115500191603 /* UserDefaultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultUseCase.swift; sourceTree = "<group>"; };
+		8E55C9DE28E311AC00191603 /* UserDefaultUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultUseCaseImpl.swift; sourceTree = "<group>"; };
+		8E55C9E028E341BB00191603 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		8E7C469428E05D6000163D30 /* StockOverviewAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOverviewAPI.swift; sourceTree = "<group>"; };
 		8E7C469728E0633E00163D30 /* CustomProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProvider.swift; sourceTree = "<group>"; };
 		8E7C469A28E076DE00163D30 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		8E7C469C28E0770C00163D30 /* StockOverviewDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOverviewDTO.swift; sourceTree = "<group>"; };
 		8E7C46A228E07ACA00163D30 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8E7C46A428E07AE300163D30 /* StockOverviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOverviewEntity.swift; sourceTree = "<group>"; };
-		8E7C46A628E07B1E00163D30 /* UseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseImpl.swift; sourceTree = "<group>"; };
-		8E7C46A828E07BBA00163D30 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		8E7C46AC28E07BFF00163D30 /* RepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryImpl.swift; sourceTree = "<group>"; };
+		8E7C46A628E07B1E00163D30 /* StocksUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksUseCaseImpl.swift; sourceTree = "<group>"; };
+		8E7C46A828E07BBA00163D30 /* StocksRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksRepository.swift; sourceTree = "<group>"; };
+		8E7C46AC28E07BFF00163D30 /* StocksRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksRepositoryImpl.swift; sourceTree = "<group>"; };
 		8E7C46AE28E08BD100163D30 /* EmptyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDTO.swift; sourceTree = "<group>"; };
 		8E8068E828B842E2004039B1 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		8E82C9DD28D83DC000BB7001 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8E82C9E228D8593500BB7001 /* NetworkService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Rx.swift"; sourceTree = "<group>"; };
 		8E82C9E628D97B4A00BB7001 /* Translated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translated.swift; sourceTree = "<group>"; };
 		8E94B80028DAAB0A00988F69 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		8E96D54128E283A300CCFE15 /* TranslateUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateUseCaseImpl.swift; sourceTree = "<group>"; };
+		8E96D54528E2857800CCFE15 /* StocksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksUseCase.swift; sourceTree = "<group>"; };
+		8E96D54928E286EA00CCFE15 /* TranslateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateUseCase.swift; sourceTree = "<group>"; };
+		8E96D54B28E287AB00CCFE15 /* TranslatedMessageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatedMessageEntity.swift; sourceTree = "<group>"; };
+		8E96D54D28E2883A00CCFE15 /* TranslateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateRepository.swift; sourceTree = "<group>"; };
+		8E96D54F28E2887200CCFE15 /* TranslateRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateRepositoryImpl.swift; sourceTree = "<group>"; };
+		8E96D55128E288DA00CCFE15 /* TranslateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateDTO.swift; sourceTree = "<group>"; };
+		8E96D55328E288E600CCFE15 /* TranslateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateAPI.swift; sourceTree = "<group>"; };
+		8E96D55628E2988D00CCFE15 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		8E96D55828E298B800CCFE15 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchedStocks.swift; sourceTree = "<group>"; };
 		8E9B2BC82895670C007B4196 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		8E9D32ED28CDB2050039094D /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		8E9D32EF28CECCD10039094D /* SearchViewController.UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.UICollectionView.swift; sourceTree = "<group>"; };
 		8E9EC10828E1531800A5DD2D /* SearchStockListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockListEntity.swift; sourceTree = "<group>"; };
 		8E9EC10A28E1535400A5DD2D /* SearchStockLIstDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockLIstDTO.swift; sourceTree = "<group>"; };
-		8E9EC10C28E15BBD00A5DD2D /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		8E9EC10C28E15BBD00A5DD2D /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		8E9EC10E28E1679900A5DD2D /* LogoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoDTO.swift; sourceTree = "<group>"; };
 		8E9EC11028E168BA00A5DD2D /* LogoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoAPI.swift; sourceTree = "<group>"; };
 		8EA2D55C28792E6A00163D6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -417,6 +449,7 @@
 		8E4CB36E28755FD60033AD85 /* TheFellowshipOfAnts */ = {
 			isa = PBXGroup;
 			children = (
+				8E96D50928E1DA5900CCFE15 /* Presentation */,
 				8E7C46AA28E07BE800163D30 /* Data */,
 				8E7C469E28E07A9D00163D30 /* Domain */,
 				8EDABDA528E0265C008814F3 /* MoyaNetwork */,
@@ -443,6 +476,14 @@
 			path = TheFellowshipOfAnts;
 			sourceTree = "<group>";
 		};
+		8E55C9E228E341C000191603 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E55C9E028E341BB00191603 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		8E7C469928E076C700163D30 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +492,7 @@
 				8E7C469C28E0770C00163D30 /* StockOverviewDTO.swift */,
 				8E9EC10A28E1535400A5DD2D /* SearchStockLIstDTO.swift */,
 				8E9EC10E28E1679900A5DD2D /* LogoDTO.swift */,
+				8E96D55128E288DA00CCFE15 /* TranslateDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -458,25 +500,29 @@
 		8E7C469E28E07A9D00163D30 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				8E7C46A028E07AAD00163D30 /* Repositories */,
+				8E96D54328E2853B00CCFE15 /* Interfaces */,
 				8E7C46A128E07ABB00163D30 /* Entities */,
-				8E7C469F28E07AA500163D30 /* UseCases */,
+				8E7C469F28E07AA500163D30 /* UseCaseImpls */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		8E7C469F28E07AA500163D30 /* UseCases */ = {
+		8E7C469F28E07AA500163D30 /* UseCaseImpls */ = {
 			isa = PBXGroup;
 			children = (
-				8E7C46A628E07B1E00163D30 /* UseCaseImpl.swift */,
+				8E7C46A628E07B1E00163D30 /* StocksUseCaseImpl.swift */,
+				8E96D54128E283A300CCFE15 /* TranslateUseCaseImpl.swift */,
+				8E55C9DE28E311AC00191603 /* UserDefaultUseCaseImpl.swift */,
 			);
-			path = UseCases;
+			path = UseCaseImpls;
 			sourceTree = "<group>";
 		};
 		8E7C46A028E07AAD00163D30 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				8E7C46A828E07BBA00163D30 /* Repository.swift */,
+				8E7C46A828E07BBA00163D30 /* StocksRepository.swift */,
+				8E96D54D28E2883A00CCFE15 /* TranslateRepository.swift */,
+				8E55C9D828E2FFD300191603 /* UserDefaultCRUDRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -487,6 +533,8 @@
 				8E7C46A228E07ACA00163D30 /* Entity.swift */,
 				8E7C46A428E07AE300163D30 /* StockOverviewEntity.swift */,
 				8E9EC10828E1531800A5DD2D /* SearchStockListEntity.swift */,
+				8E96D54B28E287AB00CCFE15 /* TranslatedMessageEntity.swift */,
+				8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -494,6 +542,7 @@
 		8E7C46AA28E07BE800163D30 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8E96D55528E2979D00CCFE15 /* UserDefaults */,
 				8E7C46AB28E07BF300163D30 /* RepositoryImpls */,
 			);
 			path = Data;
@@ -502,7 +551,9 @@
 		8E7C46AB28E07BF300163D30 /* RepositoryImpls */ = {
 			isa = PBXGroup;
 			children = (
-				8E7C46AC28E07BFF00163D30 /* RepositoryImpl.swift */,
+				8E7C46AC28E07BFF00163D30 /* StocksRepositoryImpl.swift */,
+				8E96D54F28E2887200CCFE15 /* TranslateRepositoryImpl.swift */,
+				8E55C9DA28E2FFF700191603 /* UserDefaultCRUDRepositoryImpl.swift */,
 			);
 			path = RepositoryImpls;
 			sourceTree = "<group>";
@@ -525,6 +576,42 @@
 				8E82C9E228D8593500BB7001 /* NetworkService+Rx.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		8E96D50928E1DA5900CCFE15 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		8E96D54328E2853B00CCFE15 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				8E7C46A028E07AAD00163D30 /* Repositories */,
+				8E96D54428E2855D00CCFE15 /* UseCases */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		8E96D54428E2855D00CCFE15 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				8E96D54528E2857800CCFE15 /* StocksUseCase.swift */,
+				8E96D54928E286EA00CCFE15 /* TranslateUseCase.swift */,
+				8E55C9DC28E3115500191603 /* UserDefaultUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		8E96D55528E2979D00CCFE15 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				8E96D55628E2988D00CCFE15 /* UserDefault.swift */,
+				8E96D55828E298B800CCFE15 /* UserDefaultManager.swift */,
+				8E55C9E228E341C000191603 /* Models */,
+			);
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 		8E9D32EA28CDB1D30039094D /* SDK */ = {
@@ -626,7 +713,7 @@
 			isa = PBXGroup;
 			children = (
 				8EDABDA728E02694008814F3 /* ServiceAPI.swift */,
-				8E9EC10C28E15BBD00A5DD2D /* ServiceProvider.swift */,
+				8E9EC10C28E15BBD00A5DD2D /* APIProvider.swift */,
 				8EDABDAC28E03A50008814F3 /* NetworkServiceMoya.swift */,
 				8E7C469728E0633E00163D30 /* CustomProvider.swift */,
 				8EDABDAE28E03CC6008814F3 /* NetworkError.swift */,
@@ -640,6 +727,7 @@
 				8E7C469428E05D6000163D30 /* StockOverviewAPI.swift */,
 				8EDABDAA28E02AE3008814F3 /* SearchStockListAPI.swift */,
 				8E9EC11028E168BA00A5DD2D /* LogoAPI.swift */,
+				8E96D55328E288E600CCFE15 /* TranslateAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -884,12 +972,15 @@
 				8EFFF47528B76EF800C3E762 /* HomeView.swift in Sources */,
 				8EDABDA828E02694008814F3 /* ServiceAPI.swift in Sources */,
 				8E82C9DE28D83DC000BB7001 /* NetworkService.swift in Sources */,
+				8E96D55428E288E600CCFE15 /* TranslateAPI.swift in Sources */,
 				8E17814D28C36F7C00E009BC /* ChatCoordinator.swift in Sources */,
 				8EAAA4C02877244000F3D5CC /* EmailLoginViewController.swift in Sources */,
 				8EFFF48828B7727C00C3E762 /* StockRankCollectionViewCell.swift in Sources */,
 				8E17814528C307BB00E009BC /* AuthCoordinator.swift in Sources */,
 				8E16556D28C5DD1200577886 /* StockOverview.swift in Sources */,
 				8E17814328C3066800E009BC /* AppCoordinator.swift in Sources */,
+				8E55C9DB28E2FFF700191603 /* UserDefaultCRUDRepositoryImpl.swift in Sources */,
+				8E96D54A28E286EA00CCFE15 /* TranslateUseCase.swift in Sources */,
 				8E9EC10928E1531800A5DD2D /* SearchStockListEntity.swift in Sources */,
 				8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */,
 				8EFFF48628B7727C00C3E762 /* MajorCarouselCell.swift in Sources */,
@@ -898,10 +989,12 @@
 				8EBC442E28B8DBC100E6F356 /* ProfileView.swift in Sources */,
 				8EBC443528B8DBD700E6F356 /* SettingsViewController.swift in Sources */,
 				8E7C469628E061D300163D30 /* NetworkServiceMoya.swift in Sources */,
+				8E96D55028E2887300CCFE15 /* TranslateRepositoryImpl.swift in Sources */,
 				8E17814F28C36FA900E009BC /* ProfileCoordinator.swift in Sources */,
 				8EAB1BD528BDB813004F38C3 /* Double+.swift in Sources */,
-				8E7C46A728E07B1E00163D30 /* UseCaseImpl.swift in Sources */,
+				8E7C46A728E07B1E00163D30 /* StocksUseCaseImpl.swift in Sources */,
 				8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */,
+				8E96D54228E283A300CCFE15 /* TranslateUseCaseImpl.swift in Sources */,
 				8E17812928C05D0400E009BC /* Coordinator.swift in Sources */,
 				8E9B2BC92895670C007B4196 /* Setting.swift in Sources */,
 				8E43316328D3084E008922AB /* SymbolSearch.swift in Sources */,
@@ -909,17 +1002,21 @@
 				8EFFF45528B7504A00C3E762 /* YourMessageCell.swift in Sources */,
 				8EBC442128B8667000E6F356 /* RecentSearchCell.swift in Sources */,
 				8EFFF45428B7504A00C3E762 /* ChatCell.swift in Sources */,
+				8E55C9D928E2FFD300191603 /* UserDefaultCRUDRepository.swift in Sources */,
 				8E20DFF828CB298300DB44A2 /* StockOverviewCollectionViewCell.swift in Sources */,
 				8E7C469828E0633E00163D30 /* CustomProvider.swift in Sources */,
+				8E96D55B28E29A0500CCFE15 /* RecentSearchedStocks.swift in Sources */,
 				8EBC443828B8E87200E6F356 /* SettingsView.swift in Sources */,
 				8EFFF48B28B7727C00C3E762 /* IndicesSectionView.swift in Sources */,
 				8E17814B28C36F5000E009BC /* SearchCoordinator.swift in Sources */,
+				8E96D54C28E287AB00CCFE15 /* TranslatedMessageEntity.swift in Sources */,
 				8E9D32F028CECCD10039094D /* SearchViewController.UICollectionView.swift in Sources */,
 				8EFFF41528B7282400C3E762 /* SignupView.swift in Sources */,
 				8EDABDAF28E03CC6008814F3 /* NetworkError.swift in Sources */,
 				8EFFF45128B7504A00C3E762 /* ChatViewController.swift in Sources */,
 				8E16556928C5B03700577886 /* StockIncome.swift in Sources */,
 				8E7C469B28E076DE00163D30 /* DTO.swift in Sources */,
+				8E96D54628E2857800CCFE15 /* StocksUseCase.swift in Sources */,
 				8E06F68A287EADE60017F435 /* StockIndex.swift in Sources */,
 				8E7C46A528E07AE300163D30 /* StockOverviewEntity.swift in Sources */,
 				8EAAA4C22877259800F3D5CC /* UIViewController+.swift in Sources */,
@@ -929,6 +1026,7 @@
 				8EAAA5252877F98D00F3D5CC /* SignupWithEmailViewModel.swift in Sources */,
 				8EFFF44228B7503200C3E762 /* HomeViewController.swift in Sources */,
 				8EFFF45328B7504A00C3E762 /* ChatListView.swift in Sources */,
+				8E55C9E128E341BB00191603 /* Models.swift in Sources */,
 				8E17812D28C0788700E009BC /* UIView+.swift in Sources */,
 				8EDD6FE928BF46F6004958C5 /* HomeViewController.UICollectionView.swift in Sources */,
 				8E7C46AF28E08BD100163D30 /* EmptyDTO.swift in Sources */,
@@ -937,7 +1035,8 @@
 				8E9EC10B28E1535400A5DD2D /* SearchStockLIstDTO.swift in Sources */,
 				8EBC442428B8668F00E6F356 /* SearchViewController.UITableView.swift in Sources */,
 				8E9D32EE28CDB2050039094D /* UserDefaults.swift in Sources */,
-				8E9EC10D28E15BBD00A5DD2D /* ServiceProvider.swift in Sources */,
+				8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */,
+				8E55C9DD28E3115500191603 /* UserDefaultUseCase.swift in Sources */,
 				8EDD6FE628BF4058004958C5 /* StockRank.swift in Sources */,
 				8E06F68D287EB5830017F435 /* IndexService.swift in Sources */,
 				8EA4B55428B60E7200AB5D1D /* UITextField+.swift in Sources */,
@@ -950,10 +1049,12 @@
 				8E43316C28D42CA2008922AB /* SearchViewController+Rx.swift in Sources */,
 				8E9EC11128E168BA00A5DD2D /* LogoAPI.swift in Sources */,
 				8EAB1BDA28BDE761004F38C3 /* UpDown.swift in Sources */,
-				8E7C46AD28E07BFF00163D30 /* RepositoryImpl.swift in Sources */,
+				8E7C46AD28E07BFF00163D30 /* StocksRepositoryImpl.swift in Sources */,
 				8EAAA5222877CA2500F3D5CC /* SignupWithEmailViewController.swift in Sources */,
+				8E96D54E28E2883A00CCFE15 /* TranslateRepository.swift in Sources */,
 				8E7C46A328E07ACA00163D30 /* Entity.swift in Sources */,
-				8E7C46A928E07BBA00163D30 /* Repository.swift in Sources */,
+				8E7C46A928E07BBA00163D30 /* StocksRepository.swift in Sources */,
+				8E96D55228E288DA00CCFE15 /* TranslateDTO.swift in Sources */,
 				8E27715928BC8E2A00CF6D8D /* Auth.swift in Sources */,
 				8EFFF45728B7504A00C3E762 /* MessagesViewController.swift in Sources */,
 				8EFFF47228B7570400C3E762 /* TabBarController.swift in Sources */,
@@ -971,11 +1072,14 @@
 				8EAB1BD828BDBD99004F38C3 /* String+.swift in Sources */,
 				8EAAA4C42877382400F3D5CC /* EmailLoginViewModel.swift in Sources */,
 				8E17814728C33D1D00E009BC /* TabBarCoordinator.swift in Sources */,
+				8E55C9DF28E311AC00191603 /* UserDefaultUseCaseImpl.swift in Sources */,
 				8EFFF48428B7727C00C3E762 /* MajorCommoditiesSectionView.swift in Sources */,
 				8EFFF48928B7727C00C3E762 /* MajorETFSectionView.swift in Sources */,
+				8E96D55728E2988D00CCFE15 /* UserDefault.swift in Sources */,
 				8E43316E28D42D66008922AB /* SearchViewModel.swift in Sources */,
 				8EBC442728B8740900E6F356 /* SearchView.swift in Sources */,
 				8EFFF45628B7504A00C3E762 /* InputTextContainerView.swift in Sources */,
+				8E96D55928E298B800CCFE15 /* UserDefaultManager.swift in Sources */,
 				8EFFF46828B7505700C3E762 /* ProfileViewController.swift in Sources */,
 				8EFFF48728B7727C00C3E762 /* IndexCollectionViewCell.swift in Sources */,
 				8E7C469D28E0770C00163D30 /* StockOverviewDTO.swift in Sources */,
