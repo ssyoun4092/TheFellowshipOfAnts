@@ -21,6 +21,10 @@ final class SearchViewModel {
     let searchButtonClicked = PublishRelay<Void>()
     let didTapCancelButton = PublishRelay<Void>()
     let didSelectSearchedStocksItem = PublishRelay<Int>()
+    let didTapDeleteAllButton = PublishRelay<Void>()
+    let pushToStockDetailViewController = PublishRelay<[String]>()
+    let pushToStockDetailViewController2 = PublishRelay<Int>()
+    let deleteRecentSearchedCellRow = PublishRelay<Int>()
 
     // viewModel -> view
     let hideRecentSearchView: Driver<Bool>
@@ -28,10 +32,9 @@ final class SearchViewModel {
     let hideCancelButton: Driver<Bool>
     let hideKeyboard: Driver<Void>
     let searchedStocks: Driver<[Entity.SearchStock]>
-    let recentSearchedStockList: Driver<[Entity.RecentSearchedStock]>
+    var recentSearchedStocks: Driver<[Entity.RecentSearchedStock]>
     let activated: Driver<Bool>
     let push: Driver<Entity.RecentSearchedStock>
-//    let recentSearchedStocksCellWidths: [CGFloat]
 
     private let stockUseCase: StocksUseCase
     private let translateUseCase: TranslateUseCase
@@ -50,10 +53,12 @@ final class SearchViewModel {
 
         let inputText = searchBarText
             .distinctUntilChanged()
+            .do(onNext: { print("inputText: \($0)") })
             .filter { !$0.isEmpty }
 
         let translatedText = searchButtonClicked
             .withLatestFrom(inputText)
+            .do(onNext: { print("translatedText: \($0)") })
             .filter { translateUseCase.containKorean($0) }
             .flatMap { text in translateUseCase.translateKoreanToEnglish(text: text) }
             .map { $0.text }
@@ -66,29 +71,46 @@ final class SearchViewModel {
             .flatMap { stockUseCase.searchStockList(text: $0) }
             .do(onNext: { _ in activating.onNext(false)})
 
-        self.push = didSelectSearchedStocksItem
-            .withLatestFrom(searchedStocksResult) { row, searchedStocks -> Entity.RecentSearchedStock in
-                let symbol = searchedStocks[row].symbol
-                let companyName = searchedStocks[row].companyName
-                let entity = Entity.RecentSearchedStock(symbol: symbol, companyName: companyName)
-                userDefaultUseCase.updateRecentSearchStockList(entity)
+        let deletedRecentSearchedStocks = didTapDeleteAllButton
+            .do(onNext: { _ in userDefaultUseCase.removeAllRecentSearchedStocks() })
 
-                return entity
+        let removedRecentSearchStock = deleteRecentSearchedCellRow
+            .do(onNext: { print("row: ", $0) })
+            .do(onNext: { row in userDefaultUseCase.removeRecentSearchStock(at: row) })
+            .map { _ in () }
+
+        self.push = Observable.merge([
+            didSelectSearchedStocksItem
+                .withLatestFrom(searchedStocksResult) { row, searchedStocks -> Entity.RecentSearchedStock in
+                    let symbol = searchedStocks[row].symbol
+                    let companyName = searchedStocks[row].companyName
+                    let entity = Entity.RecentSearchedStock(symbol: symbol, companyName: companyName)
+                    userDefaultUseCase.updateRecentSearchStockList(entity)
+
+                    return entity
+                },
+            pushToStockDetailViewController2
+                .withLatestFrom(userDefaultUseCase.readRecentSearchStocks()) { row, searchedStocks in
+                    print(searchedStocks)
+                    return searchedStocks[row]
             }
-            .asDriver(onErrorJustReturn: .init(symbol: "", companyName: ""))
+        ])
+        .asDriver(onErrorJustReturn: .init(symbol: "", companyName: ""))
 
 
         // TODO: - Fetch Error Handling
 
         self.searchedStocks = searchedStocksResult
-            .asDriver(onErrorJustReturn: [])
+                .asDriver(onErrorJustReturn: [])
 
-        self.recentSearchedStockList = firstLoad
-            .flatMap { _ in userDefaultUseCase.readRecentSearchStockList() }
+        self.recentSearchedStocks = Observable.merge([
+            firstLoad.asObservable(),
+            deletedRecentSearchedStocks,
+            removedRecentSearchStock.asObservable()
+        ])
+            .flatMap { _ in userDefaultUseCase.readRecentSearchStocks() }
             .do(onNext: { print("RecentSearchStockList: \($0)") })
             .asDriver(onErrorJustReturn: [])
-
-//        self.recentSearchedStocksCellWidths = userDefaultUseCase.getRecentSearchedStocksCellWidths()
 
         self.hideRecentSearchView = searchBarText
             .map { $0.isEmpty ? false : true }
@@ -128,3 +150,4 @@ final class SearchViewModel {
         return userDefaultUseCase.getRecentSearchedStocksCellWidths()
     }
 }
+

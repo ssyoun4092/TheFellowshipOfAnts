@@ -1,8 +1,14 @@
 import UIKit
 
+import RxSwift
+import RxGesture
 import SnapKit
 
 class RecentSearchCell: UICollectionViewCell {
+
+    // MARK: - Properties
+
+    let disposeBag = DisposeBag()
 
     // MARK: - IBOulets
 
@@ -27,6 +33,13 @@ class RecentSearchCell: UICollectionViewCell {
 
     func configure(with item: String) {
         self.searchedItemLabel.text = item
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.gestureRecognizers?.forEach { removeGestureRecognizer($0) }
+        deleteLabel.gestureRecognizers?.forEach { deleteLabel.removeGestureRecognizer($0) }
     }
 }
 

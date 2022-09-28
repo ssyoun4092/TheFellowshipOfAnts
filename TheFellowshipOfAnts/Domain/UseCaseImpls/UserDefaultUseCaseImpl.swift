@@ -16,13 +16,13 @@ class UserDefaultUseCaseImpl: UserDefaultUseCase {
         self.repository = repository
     }
 
-    func readRecentSearchStockList() -> Observable<[Entity.RecentSearchedStock]> {
+    func readRecentSearchStocks() -> Observable<[Entity.RecentSearchedStock]> {
 
         return Observable.create { [unowned self] observer in
 //            guard let self else { return }
 
             // TODO: - reversed 성능 이슈 고려
-            observer.onNext(self.repository.readRecentSearchStockList().reversed()) // 최신 순으로 정렬하기 위해 append 역순으로 정렬
+            observer.onNext(self.repository.readRecentSearchStockList()) // 최신 순으로 정렬하기 위해 append 역순으로 정렬
 
             return Disposables.create()
         }
@@ -33,11 +33,18 @@ class UserDefaultUseCaseImpl: UserDefaultUseCase {
         return repository.updateRecentSearchStockList(entity)
     }
 
+    func removeAllRecentSearchedStocks() {
+        repository.removeAllRecentSearchedStocks()
+    }
+
+    func removeRecentSearchStock(at row: Int) {
+        repository.removeRecentSearchStock(at: row)
+    }
+
     func getRecentSearchedStocksCellWidths() -> [CGFloat] {
         // 최근 검색한 회사 이름 길이만큼의 CGFloat 반환
-        let sizes = repository.readRecentSearchStockList().reversed()
+        let sizes = repository.readRecentSearchStockList()
             .map { recentSearchedStock in
-                print("recentSearchedStock:", recentSearchedStock)
                 let size = recentSearchedStock.companyName.size(
                     withAttributes: [
                         NSAttributedString.Key.font: UIFont.systemFont(
@@ -45,10 +52,10 @@ class UserDefaultUseCaseImpl: UserDefaultUseCase {
                             weight: .medium)
                     ]
                 ).width
-                print("size: ", size)
                 return size
             }
-        print("sizes: ", sizes)
+        print("sizes: \(sizes)")
+
         return sizes
     }
 }

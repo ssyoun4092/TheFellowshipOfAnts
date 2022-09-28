@@ -9,17 +9,16 @@ import UIKit
 
 import TheFellowshipOfAntsKey
 import RxCocoa
+import RxGesture
 import RxSwift
 import SnapKit
 
-class SearchViewControllerRx: UIViewController {
+class SearchViewController: UIViewController {
 
     // MARK: - Properties
 
     let disposeBag = DisposeBag()
     let viewModel = SearchViewModel()
-
-    let recentSearchList = UserDefaultManager.recentSearches
 
     weak var coordinator: SearchCoordinator?
 
@@ -65,23 +64,45 @@ class SearchViewControllerRx: UIViewController {
         searchView.recentSearchView.collectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
 
+        searchView.recentSearchView.deleteAllButton.rx.tap
+            .bind(to: viewModel.didTapDeleteAllButton)
+            .disposed(by: disposeBag)
+
         searchView.searchedStocksTableView.rx.itemSelected
             .map { $0.row }
             .bind(to: viewModel.didSelectSearchedStocksItem)
             .disposed(by: disposeBag)
 
-        viewModel.recentSearchedStockList
-            .drive(searchView.recentSearchView.collectionView.rx.items) { collectionView, row, recentSearchStock in
+        searchView.recentSearchView.collectionView.rx.itemSelected
+            .map { $0.row }
+            .bind(to: viewModel.pushToStockDetailViewController2)
+            .disposed(by: disposeBag)
+
+        viewModel.recentSearchedStocks
+            .drive(searchView.recentSearchView.collectionView.rx.items) { [weak self] collectionView, row, recentSearchStock in
+                guard let self = self else { return UICollectionViewCell() }
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: RecentSearchCell.identifier,
                     for: IndexPath(row: row, section: 0)
                 ) as! RecentSearchCell
-                cell.configure(with: recentSearchStock.companyName)
 
+                cell.configure(with: recentSearchStock.companyName)
+//                cell.searchedItemLabel.rx.tapGesture()
+//                    .when(.recognized)
+//                    .map { _ in [recentSearchStock.symbol, recentSearchStock.companyName] }
+//                    .bind(to: viewModel.pushToStockDetailViewController)
+//                    .disposed(by: self.disposeBag)
+
+                cell.deleteLabel.rx.tapGesture()
+                    .when(.recognized)
+                    .map { _ in row }
+                    .bind(to: viewModel.deleteRecentSearchedCellRow)
+                    .disposed(by: self.disposeBag)
+                
                 return cell
             }
             .disposed(by: disposeBag)
-
+        
         viewModel.searchedStocks
             .drive(searchView.searchedStocksTableView.rx.items) { tableView, row, searchedStock in
                 let cell = tableView.dequeueReusableCell(
@@ -149,7 +170,7 @@ class SearchViewControllerRx: UIViewController {
     }
 }
 
-extension SearchViewControllerRx {
+extension SearchViewController {
     private func setupViews() {
         view.endEditing(true)
 
@@ -162,7 +183,7 @@ extension SearchViewControllerRx {
     }
 }
 
-extension SearchViewControllerRx: UICollectionViewDelegateFlowLayout {
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,

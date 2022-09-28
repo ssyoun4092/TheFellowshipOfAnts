@@ -12,4 +12,6 @@ import RxSwift
 protocol UserDefaultCRUDRepository {
     func readRecentSearchStockList() -> [Entity.RecentSearchedStock]
     func updateRecentSearchStockList(_ entity: Entity.RecentSearchedStock)
+    func removeAllRecentSearchedStocks()
+    func removeRecentSearchStock(at row: Int)
 }

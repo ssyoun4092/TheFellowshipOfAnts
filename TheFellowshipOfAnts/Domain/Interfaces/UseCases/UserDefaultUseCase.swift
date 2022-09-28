@@ -10,7 +10,9 @@ import Foundation
 import RxSwift
 
 protocol UserDefaultUseCase {
-    func readRecentSearchStockList() -> Observable<[Entity.RecentSearchedStock]>
+    func readRecentSearchStocks() -> Observable<[Entity.RecentSearchedStock]>
     func updateRecentSearchStockList(_ entity: Entity.RecentSearchedStock)
+    func removeAllRecentSearchedStocks()
+    func removeRecentSearchStock(at row: Int)
     func getRecentSearchedStocksCellWidths() -> [CGFloat]
 }

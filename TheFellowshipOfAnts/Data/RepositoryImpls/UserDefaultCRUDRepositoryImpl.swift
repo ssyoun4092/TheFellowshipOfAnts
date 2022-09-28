@@ -24,6 +24,15 @@ class UserDefaultCRUDRepositoryImpl: UserDefaultCRUDRepository {
             let index = UserDefaultManager.recentSearchStocks.firstIndex { $0.companyName == entity.companyName }!
             UserDefaultManager.recentSearchStocks.remove(at: index)
         }
-        UserDefaultManager.recentSearchStocks.append(.init(symbol: entity.symbol, companyName: entity.companyName))
+        UserDefaultManager.recentSearchStocks.insert(.init(symbol: entity.symbol, companyName: entity.companyName), at: 0)
+//        UserDefaultManager.recentSearchStocks.append(.init(symbol: entity.symbol, companyName: entity.companyName))
+    }
+
+    func removeAllRecentSearchedStocks() {
+        UserDefaultManager.recentSearchStocks.removeAll()
+    }
+
+    func removeRecentSearchStock(at row: Int) {
+        UserDefaultManager.recentSearchStocks.remove(at: row)
     }
 }

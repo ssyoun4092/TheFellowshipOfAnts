@@ -77,7 +77,6 @@
 		8E96D55B28E29A0500CCFE15 /* RecentSearchedStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */; };
 		8E9B2BC92895670C007B4196 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B2BC82895670C007B4196 /* Setting.swift */; };
 		8E9D32EE28CDB2050039094D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D32ED28CDB2050039094D /* UserDefaults.swift */; };
-		8E9D32F028CECCD10039094D /* SearchViewController.UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D32EF28CECCD10039094D /* SearchViewController.UICollectionView.swift */; };
 		8E9EC10928E1531800A5DD2D /* SearchStockListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10828E1531800A5DD2D /* SearchStockListEntity.swift */; };
 		8E9EC10B28E1535400A5DD2D /* SearchStockLIstDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10A28E1535400A5DD2D /* SearchStockLIstDTO.swift */; };
 		8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10C28E15BBD00A5DD2D /* APIProvider.swift */; };
@@ -102,11 +101,9 @@
 		8EAB1BD828BDBD99004F38C3 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB1BD728BDBD99004F38C3 /* String+.swift */; };
 		8EAB1BDA28BDE761004F38C3 /* UpDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB1BD928BDE761004F38C3 /* UpDown.swift */; };
 		8EAD1FEF28AFB77700288624 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8EAD1FEE28AFB77700288624 /* Kingfisher */; };
-		8EB0A06E28D9C98F0008C23B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0A06D28D9C98F0008C23B /* SearchViewController.swift */; };
 		8EBC442028B8666D00E6F356 /* RecentSearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC441F28B8663200E6F356 /* RecentSearchListView.swift */; };
 		8EBC442128B8667000E6F356 /* RecentSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC441E28B8662D00E6F356 /* RecentSearchCell.swift */; };
 		8EBC442228B8667200E6F356 /* SearchingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC441D28B8662D00E6F356 /* SearchingItemCell.swift */; };
-		8EBC442428B8668F00E6F356 /* SearchViewController.UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC442328B8668F00E6F356 /* SearchViewController.UITableView.swift */; };
 		8EBC442728B8740900E6F356 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC442628B8740900E6F356 /* SearchView.swift */; };
 		8EBC442E28B8DBC100E6F356 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC442D28B8DBBB00E6F356 /* ProfileView.swift */; };
 		8EBC443528B8DBD700E6F356 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC443428B8DBD700E6F356 /* SettingsViewController.swift */; };
@@ -116,6 +113,7 @@
 		8ED070D928BEF53D006DB54D /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED070D828BEF53D006DB54D /* SwiftSoup */; };
 		8ED070DC28BEFEC3006DB54D /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED070DB28BEFEC3006DB54D /* Stock.swift */; };
 		8ED9D77D28ADD13A006A7F94 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9D77C28ADD13A006A7F94 /* LoginView.swift */; };
+		8ED9EA9628E41042003D37C3 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED9EA9528E41042003D37C3 /* RxGesture */; };
 		8EDABDA228E0253A008814F3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 8EDABDA128E0253A008814F3 /* Moya */; };
 		8EDABDA428E0253A008814F3 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 8EDABDA328E0253A008814F3 /* RxMoya */; };
 		8EDABDA828E02694008814F3 /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDABDA728E02694008814F3 /* ServiceAPI.swift */; };
@@ -245,7 +243,6 @@
 		8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchedStocks.swift; sourceTree = "<group>"; };
 		8E9B2BC82895670C007B4196 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		8E9D32ED28CDB2050039094D /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		8E9D32EF28CECCD10039094D /* SearchViewController.UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.UICollectionView.swift; sourceTree = "<group>"; };
 		8E9EC10828E1531800A5DD2D /* SearchStockListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockListEntity.swift; sourceTree = "<group>"; };
 		8E9EC10A28E1535400A5DD2D /* SearchStockLIstDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockLIstDTO.swift; sourceTree = "<group>"; };
 		8E9EC10C28E15BBD00A5DD2D /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
@@ -261,11 +258,9 @@
 		8EAB1BD428BDB813004F38C3 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		8EAB1BD728BDBD99004F38C3 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		8EAB1BD928BDE761004F38C3 /* UpDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDown.swift; sourceTree = "<group>"; };
-		8EB0A06D28D9C98F0008C23B /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8EBC441D28B8662D00E6F356 /* SearchingItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingItemCell.swift; sourceTree = "<group>"; };
 		8EBC441E28B8662D00E6F356 /* RecentSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchCell.swift; sourceTree = "<group>"; };
 		8EBC441F28B8663200E6F356 /* RecentSearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchListView.swift; sourceTree = "<group>"; };
-		8EBC442328B8668F00E6F356 /* SearchViewController.UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.UITableView.swift; sourceTree = "<group>"; };
 		8EBC442628B8740900E6F356 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		8EBC442D28B8DBBB00E6F356 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8EBC443328B8DBD200E6F356 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -319,6 +314,7 @@
 				8EDABDA428E0253A008814F3 /* RxMoya in Frameworks */,
 				8EA4B54028B5E11500AB5D1D /* SnapKit in Frameworks */,
 				8ED070D928BEF53D006DB54D /* SwiftSoup in Frameworks */,
+				8ED9EA9628E41042003D37C3 /* RxGesture in Frameworks */,
 				8EDABDA228E0253A008814F3 /* Moya in Frameworks */,
 				8EAD1FEF28AFB77700288624 /* Kingfisher in Frameworks */,
 				8E43315328D199ED008922AB /* Charts in Frameworks */,
@@ -348,12 +344,9 @@
 		8E06F67E287E80610017F435 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				8EB0A06D28D9C98F0008C23B /* SearchViewController.swift */,
 				8E43316B28D42CA2008922AB /* SearchViewController+Rx.swift */,
 				8E43316D28D42D66008922AB /* SearchViewModel.swift */,
 				8E94B80028DAAB0A00988F69 /* SearchModel.swift */,
-				8E9D32EF28CECCD10039094D /* SearchViewController.UICollectionView.swift */,
-				8EBC442328B8668F00E6F356 /* SearchViewController.UITableView.swift */,
 				8EBC441C28B8662600E6F356 /* Cells */,
 				8EBC441B28B8661F00E6F356 /* Views */,
 			);
@@ -884,6 +877,7 @@
 				8E43315228D199ED008922AB /* Charts */,
 				8EDABDA128E0253A008814F3 /* Moya */,
 				8EDABDA328E0253A008814F3 /* RxMoya */,
+				8ED9EA9528E41042003D37C3 /* RxGesture */,
 			);
 			productName = TheFellowshipOfAnts;
 			productReference = 8E4CB36C28755FD60033AD85 /* TheFellowshipOfAnts.app */;
@@ -922,6 +916,7 @@
 				8ED070D728BEF53D006DB54D /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				8E43315128D199ED008922AB /* XCRemoteSwiftPackageReference "Charts" */,
 				8EDABDA028E0253A008814F3 /* XCRemoteSwiftPackageReference "Moya" */,
+				8ED9EA9428E41042003D37C3 /* XCRemoteSwiftPackageReference "RxGesture" */,
 			);
 			productRefGroup = 8E4CB36D28755FD60033AD85 /* Products */;
 			projectDirPath = "";
@@ -1013,7 +1008,6 @@
 				8EFFF48B28B7727C00C3E762 /* IndicesSectionView.swift in Sources */,
 				8E17814B28C36F5000E009BC /* SearchCoordinator.swift in Sources */,
 				8E96D54C28E287AB00CCFE15 /* TranslatedMessageEntity.swift in Sources */,
-				8E9D32F028CECCD10039094D /* SearchViewController.UICollectionView.swift in Sources */,
 				8EFFF41528B7282400C3E762 /* SignupView.swift in Sources */,
 				8EDABDAF28E03CC6008814F3 /* NetworkError.swift in Sources */,
 				8EFFF45128B7504A00C3E762 /* ChatViewController.swift in Sources */,
@@ -1036,7 +1030,6 @@
 				8E20DFFD28CB318300DB44A2 /* StockDetailViewController.UICollectionView.swift in Sources */,
 				8EBC443628B8DBFB00E6F356 /* SettingTableViewCell.swift in Sources */,
 				8E9EC10B28E1535400A5DD2D /* SearchStockLIstDTO.swift in Sources */,
-				8EBC442428B8668F00E6F356 /* SearchViewController.UITableView.swift in Sources */,
 				8E9D32EE28CDB2050039094D /* UserDefaults.swift in Sources */,
 				8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */,
 				8E55C9DD28E3115500191603 /* UserDefaultUseCase.swift in Sources */,
@@ -1048,7 +1041,6 @@
 				8ED070DC28BEFEC3006DB54D /* Stock.swift in Sources */,
 				8EDDC298287A720D00FA025D /* SignupWithEmailModel.swift in Sources */,
 				8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */,
-				8EB0A06E28D9C98F0008C23B /* SearchViewController.swift in Sources */,
 				8E43316C28D42CA2008922AB /* SearchViewController+Rx.swift in Sources */,
 				8E9EC11128E168BA00A5DD2D /* LogoAPI.swift in Sources */,
 				8EAB1BDA28BDE761004F38C3 /* UpDown.swift in Sources */,
@@ -1358,6 +1350,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		8ED9EA9428E41042003D37C3 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		8EDABDA028E0253A008814F3 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
@@ -1423,6 +1423,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8ED070D728BEF53D006DB54D /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		8ED9EA9528E41042003D37C3 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8ED9EA9428E41042003D37C3 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
 		};
 		8EDABDA128E0253A008814F3 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
