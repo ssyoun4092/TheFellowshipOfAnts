@@ -10,7 +10,6 @@ import UIKit
 import TheFellowshipOfAntsKey
 import RxCocoa
 import RxSwift
-import RxViewController
 import SnapKit
 
 class SearchViewControllerRx: UIViewController {
@@ -42,6 +41,11 @@ class SearchViewControllerRx: UIViewController {
     }
 
     private func bind(to viewModel: SearchViewModel) {
+        rx.viewWillAppear
+            .map { _ in () }
+            .bind(to: viewModel.firstLoad)
+            .disposed(by: disposeBag)
+
         searchView.searchBar.rx.text.orEmpty
             .bind(to: viewModel.searchBarText)
             .disposed(by: disposeBag)
@@ -58,9 +62,24 @@ class SearchViewControllerRx: UIViewController {
             .bind(to: viewModel.didTapCancelButton)
             .disposed(by: disposeBag)
 
+        searchView.recentSearchView.collectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+
         searchView.searchedStocksTableView.rx.itemSelected
             .map { $0.row }
             .bind(to: viewModel.didSelectSearchedStocksItem)
+            .disposed(by: disposeBag)
+
+        viewModel.recentSearchedStockList
+            .drive(searchView.recentSearchView.collectionView.rx.items) { collectionView, row, recentSearchStock in
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: RecentSearchCell.identifier,
+                    for: IndexPath(row: row, section: 0)
+                ) as! RecentSearchCell
+                cell.configure(with: recentSearchStock.companyName)
+
+                return cell
+            }
             .disposed(by: disposeBag)
 
         viewModel.searchedStocks
@@ -136,14 +155,30 @@ extension SearchViewControllerRx {
 
         view.addSubview(searchView)
 
-//        searchView.recentSearchView.collectionView.dataSource = self
-//        searchView.recentSearchView.collectionView.delegate = self
-//        searchView.searchResultTableView.dataSource = self
-//        searchView.searchResultTableView.delegate = self
-
         searchView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+}
+
+extension SearchViewControllerRx: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let cellWidths = viewModel.getRecentSearchedStocksCellWidths()
+        let cellWidth = cellWidths[indexPath.row]
+        let xWidth = "X".size(
+            withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(
+                ofSize: 14,
+                weight: .regular)]
+        ).width
+        let inset = CGFloat(15)
+        let spacing = CGFloat(13)
+        let totalWidth = cellWidth + xWidth + (2 * inset) + spacing
+
+        return CGSize(width: totalWidth, height: 30)
     }
 }

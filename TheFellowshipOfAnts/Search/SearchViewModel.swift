@@ -15,6 +15,7 @@ final class SearchViewModel {
     let disposeBag = DisposeBag()
 
     // view -> viewModel
+    let firstLoad = PublishRelay<Void>()
     let searchBarText =  PublishRelay<String>()
     let searchBarDidBeginEditing = PublishRelay<Void>()
     let searchButtonClicked = PublishRelay<Void>()
@@ -30,6 +31,7 @@ final class SearchViewModel {
     let recentSearchedStockList: Driver<[Entity.RecentSearchedStock]>
     let activated: Driver<Bool>
     let push: Driver<Entity.RecentSearchedStock>
+//    let recentSearchedStocksCellWidths: [CGFloat]
 
     private let stockUseCase: StocksUseCase
     private let translateUseCase: TranslateUseCase
@@ -81,6 +83,13 @@ final class SearchViewModel {
         self.searchedStocks = searchedStocksResult
             .asDriver(onErrorJustReturn: [])
 
+        self.recentSearchedStockList = firstLoad
+            .flatMap { _ in userDefaultUseCase.readRecentSearchStockList() }
+            .do(onNext: { print("RecentSearchStockList: \($0)") })
+            .asDriver(onErrorJustReturn: [])
+
+//        self.recentSearchedStocksCellWidths = userDefaultUseCase.getRecentSearchedStocksCellWidths()
+
         self.hideRecentSearchView = searchBarText
             .map { $0.isEmpty ? false : true }
             .asDriver(onErrorJustReturn: false)
@@ -112,5 +121,10 @@ final class SearchViewModel {
         self.activated = Observable
             .combineLatest(activating, searchBarText) { $1.isEmpty ? false : $0 }
             .asDriver(onErrorJustReturn: false)
+    }
+
+    func getRecentSearchedStocksCellWidths() -> [CGFloat] {
+
+        return userDefaultUseCase.getRecentSearchedStocksCellWidths()
     }
 }

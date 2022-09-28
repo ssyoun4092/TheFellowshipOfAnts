@@ -13,6 +13,8 @@ extension SearchViewController: UICollectionViewDataSource {
         numberOfItemsInSection section: Int
     ) -> Int {
 
+        print("=======")
+
         return UserDefaultManager.recentSearches.count
     }
 
@@ -34,29 +36,4 @@ extension SearchViewController: UICollectionViewDataSource {
     }
 }
 
-extension SearchViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        let reversedIndexPathRow = UserDefaultManager.recentSearches.count - 1 - indexPath.row
 
-        let itemWidth = UserDefaultManager.recentSearches[reversedIndexPathRow][0].size(
-            withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(
-                ofSize: 16,
-                weight: .medium)]
-        ).width
-
-        let xWidth = "X".size(
-            withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(
-                ofSize: 14,
-                weight: .regular)]
-        ).width
-        let inset = CGFloat(15)
-        let spacing = CGFloat(13)
-        let totalWidth = itemWidth + xWidth + (2 * inset) + spacing
-
-        return CGSize(width: totalWidth, height: 30)
-    }
-}

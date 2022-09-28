@@ -47,6 +47,7 @@
 		8E55C9DD28E3115500191603 /* UserDefaultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C9DC28E3115500191603 /* UserDefaultUseCase.swift */; };
 		8E55C9DF28E311AC00191603 /* UserDefaultUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C9DE28E311AC00191603 /* UserDefaultUseCaseImpl.swift */; };
 		8E55C9E128E341BB00191603 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C9E028E341BB00191603 /* Models.swift */; };
+		8E55C9E428E34D2400191603 /* RxSwift+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E55C9E328E34D2400191603 /* RxSwift+.swift */; };
 		8E7C469528E05D6000163D30 /* StockOverviewAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C469428E05D6000163D30 /* StockOverviewAPI.swift */; };
 		8E7C469628E061D300163D30 /* NetworkServiceMoya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDABDAC28E03A50008814F3 /* NetworkServiceMoya.swift */; };
 		8E7C469828E0633E00163D30 /* CustomProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C469728E0633E00163D30 /* CustomProvider.swift */; };
@@ -215,6 +216,7 @@
 		8E55C9DC28E3115500191603 /* UserDefaultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultUseCase.swift; sourceTree = "<group>"; };
 		8E55C9DE28E311AC00191603 /* UserDefaultUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultUseCaseImpl.swift; sourceTree = "<group>"; };
 		8E55C9E028E341BB00191603 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		8E55C9E328E34D2400191603 /* RxSwift+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+.swift"; sourceTree = "<group>"; };
 		8E7C469428E05D6000163D30 /* StockOverviewAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOverviewAPI.swift; sourceTree = "<group>"; };
 		8E7C469728E0633E00163D30 /* CustomProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProvider.swift; sourceTree = "<group>"; };
 		8E7C469A28E076DE00163D30 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
@@ -761,6 +763,7 @@
 				8E8068E828B842E2004039B1 /* NSObject+.swift */,
 				8EAB1BD428BDB813004F38C3 /* Double+.swift */,
 				8EAB1BD728BDBD99004F38C3 /* String+.swift */,
+				8E55C9E328E34D2400191603 /* RxSwift+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1063,6 +1066,7 @@
 				8E16555D28C4887100577886 /* StockGraphChartView.swift in Sources */,
 				8E27717628BCDAE000CF6D8D /* APIClient.swift in Sources */,
 				8EFFF48A28B7727C00C3E762 /* IndexChartView.swift in Sources */,
+				8E55C9E428E34D2400191603 /* RxSwift+.swift in Sources */,
 				8EFFF45828B7504A00C3E762 /* MyMessageCell.swift in Sources */,
 				8EFFF48C28B7727C00C3E762 /* StockRankSectionView.swift in Sources */,
 				8EFFF45928B7504A00C3E762 /* MessagesView.swift in Sources */,

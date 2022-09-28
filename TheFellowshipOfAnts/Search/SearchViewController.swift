@@ -95,7 +95,7 @@ extension SearchViewController {
 
         searchView.searchBar.delegate = self
         searchView.recentSearchView.collectionView.dataSource = self
-        searchView.recentSearchView.collectionView.delegate = self
+//        searchView.recentSearchView.collectionView.delegate = self
         searchView.searchedStocksTableView.dataSource = self
         searchView.searchedStocksTableView.delegate = self
 

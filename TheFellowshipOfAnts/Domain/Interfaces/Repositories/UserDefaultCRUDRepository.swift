@@ -10,6 +10,6 @@ import Foundation
 import RxSwift
 
 protocol UserDefaultCRUDRepository {
-    func readRecentSearchStocks() -> Observable<[Entity.RecentSearchedStock]>
+    func readRecentSearchStockList() -> [Entity.RecentSearchedStock]
     func updateRecentSearchStockList(_ entity: Entity.RecentSearchedStock)
 }
