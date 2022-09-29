@@ -15,72 +15,118 @@ final class SearchViewModel {
     let disposeBag = DisposeBag()
 
     // view -> viewModel
+    let firstLoad = PublishRelay<Void>()
     let searchBarText =  PublishRelay<String>()
     let searchBarDidBeginEditing = PublishRelay<Void>()
     let searchButtonClicked = PublishRelay<Void>()
     let didTapCancelButton = PublishRelay<Void>()
     let didSelectSearchedStocksItem = PublishRelay<Int>()
+    let didTapDeleteAllButton = PublishRelay<Void>()
+    let pushToStockDetailViewController = PublishRelay<[String]>()
+    let pushToStockDetailViewController2 = PublishRelay<Int>()
+    let deleteRecentSearchedCellRow = PublishRelay<Int>()
 
     // viewModel -> view
     let hideRecentSearchView: Driver<Bool>
     let hideSearchedStocksView: Driver<Bool>
     let hideCancelButton: Driver<Bool>
     let hideKeyboard: Driver<Void>
-    let searchedStocks: Driver<[SearchStock]>
+    let searchedStocks: Driver<[Entity.SearchStock]>
+    var reloadRecentSearchedStocks: Driver<[Entity.RecentSearchedStock]>
     let activated: Driver<Bool>
-    //    let searchItems =  BehaviorSubject<[SymbolSearchInfo]>(value: [])
+    let push: Driver<Entity.RecentSearchedStock>
 
-    init(model: SearchModel = SearchModel()) {
+    private let stockUseCase: StocksUseCase
+    private let translateUseCase: TranslateUseCase
+    private let userDefaultUseCase: UserDefaultUseCase
+
+    init(
+        stockUseCase: StocksUseCase = StocksUseCaseImpl(),
+        translateUseCase: TranslateUseCase = TranslateUseCaseImpl(),
+        userDefaultUseCase: UserDefaultUseCase = UserDefaultUseCaseImpl()
+    ) {
+        self.stockUseCase = stockUseCase
+        self.translateUseCase = translateUseCase
+        self.userDefaultUseCase = userDefaultUseCase
+
         let activating = BehaviorSubject<Bool>(value: false)
 
-        let isTextEmpty = searchBarText
-            .map { $0.isEmpty ? true : false }
-
         let inputText = searchBarText
-            .distinctUntilChanged()
-            .filter { !$0.isEmpty }
+            .share()
 
-        let translatedText = Observable
-            .combineLatest(searchButtonClicked, inputText) { $1 }
-            .filter { model.containKorean($0) }
-            .flatMap { text in
-                model.translateKoreanToEnglish(text: text)
-            }
-            .map { result -> String in
-                guard case let .success(translatedText) = result else { return "" }
-                return translatedText
-            }
+        let translatedText = searchButtonClicked
+            .withLatestFrom(inputText)
+            .do(onNext: { print("translatedText: \($0)") })
+            .filter { translateUseCase.containKorean($0) }
+            .flatMap { text in translateUseCase.translateKoreanToEnglish(text: text) }
+            .map { entity in entity.text}
 
         let searchedStocksResult = Observable.merge([
-            searchBarText.asObservable(),
+            inputText.asObservable(),
             translatedText
         ])
             .do(onNext: { _ in activating.onNext(true)})
-            .flatMap { model.fetchSearchingStockList(symbol: $0) }
+            .flatMap { stockUseCase.searchStockList(text: $0) }
             .do(onNext: { _ in activating.onNext(false)})
 
-        let searchedStocksError = searchedStocksResult
-            .compactMap { result -> Error? in
-                guard case .failure(let error) = result else { return nil }
-                return error
-            }
+        let deletedRecentSearchedStocks = didTapDeleteAllButton
+            .do(onNext: { _ in userDefaultUseCase.removeAllRecentSearchedStocks() })
 
-        searchedStocks = searchedStocksResult
-            .compactMap { result -> [SearchStock] in
-                guard case let Result.success(searchedStocks) = result else { return [] }
-                return searchedStocks
+        let removedRecentSearchStock = deleteRecentSearchedCellRow
+            .do(onNext: { print("row: ", $0) })
+            .do(onNext: { row in userDefaultUseCase.removeRecentSearchStock(at: row) })
+            .map { _ in () }
+
+        let readedRecentSearchedStocks = Observable.merge([
+            firstLoad.asObservable(),
+            deletedRecentSearchedStocks,
+            removedRecentSearchStock.asObservable()
+        ])
+            .flatMap { _ in userDefaultUseCase.readRecentSearchStocks() }
+            .share()
+
+        self.push = Observable.merge([
+            didSelectSearchedStocksItem
+                .withLatestFrom(searchedStocksResult) { row, searchedStocks -> Entity.RecentSearchedStock in
+                    let symbol = searchedStocks[row].symbol
+                    let companyName = searchedStocks[row].companyName
+                    let entity = Entity.RecentSearchedStock(symbol: symbol, companyName: companyName)
+                    userDefaultUseCase.updateRecentSearchStockList(entity)
+
+                    return entity
+                },
+            pushToStockDetailViewController2
+                .withLatestFrom(readedRecentSearchedStocks) { row, searchedStocks in
+                    print(searchedStocks)
+                    return searchedStocks[row]
             }
+        ])
+        .asDriver(onErrorJustReturn: .init(symbol: "", companyName: ""))
+
+
+        // TODO: - Fetch Error Handling
+
+        self.searchedStocks = searchedStocksResult
+                .asDriver(onErrorJustReturn: [])
+
+        self.reloadRecentSearchedStocks = readedRecentSearchedStocks
+            .do(onNext: { print("RecentSearchStockList: \($0)") })
             .asDriver(onErrorJustReturn: [])
 
-        hideRecentSearchView = isTextEmpty
-            .map { !$0 }
+        self.hideRecentSearchView = searchBarText
+            .map { $0.isEmpty ? false : true }
             .asDriver(onErrorJustReturn: false)
 
-        hideSearchedStocksView = isTextEmpty
-            .map { $0 }
-            .asDriver(onErrorJustReturn: false)
+        self.hideSearchedStocksView = Observable.combineLatest(searchBarText, activating) { searchBarText, activating in
+            if searchBarText.isEmpty {
+                return true
+            } else {
+                return activating ? true : false
+            }
+        }
+        .asDriver(onErrorJustReturn: false)
 
-        hideCancelButton = Observable
+        self.hideCancelButton = Observable
             .merge([
                 searchBarDidBeginEditing.map { _ in false },
                 didTapCancelButton.map { _ in true },
@@ -88,15 +134,21 @@ final class SearchViewModel {
             ])
             .asDriver(onErrorJustReturn: false)
 
-        hideKeyboard = Observable
+        self.hideKeyboard = Observable
             .merge([
                 didTapCancelButton.asObservable(),
                 searchButtonClicked.asObservable()
             ])
             .asDriver(onErrorJustReturn: ())
 
-        activated = Observable
-            .combineLatest(activating, isTextEmpty) { $0 ? false : $1 }
+        self.activated = Observable
+            .combineLatest(activating, searchBarText) { $1.isEmpty ? false : $0 }
             .asDriver(onErrorJustReturn: false)
     }
+
+    func getRecentSearchedStocksCellWidths() -> [CGFloat] {
+
+        return userDefaultUseCase.getRecentSearchedStocksCellWidths()
+    }
 }
+

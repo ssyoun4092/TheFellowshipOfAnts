@@ -12,11 +12,11 @@ import TheFellowshipOfAntsKey
 class NetworkService {
     static func fetchSearchStocks(text: String, completion: @escaping (Result<[SymbolSearchInfo], Error>) -> Void) {
         API<SymbolSearch>(
-            baseURL: TheFellowshipOfAntsRequest.SymbolSearch.baseURL,
+            baseURL: TheFOARequest.SymbolSearch.baseURL,
             params: [
-                TheFellowshipOfAntsRequest.SymbolSearch.ParamsKey.symbol: text
+                TheFOARequest.SymbolSearch.ParamsKey.symbol: text
             ],
-            apiKey: TheFellowshipOfAntsRequest.SymbolSearch.apikey
+            apiKey: TheFOARequest.SymbolSearch.apikey
         ).fetch { result in
             switch result {
             case .success(let searchedSymbols):
@@ -39,11 +39,11 @@ class NetworkService {
             dispatchGroup.enter()
 
             API<LogoData>(
-                baseURL: TheFellowshipOfAntsRequest.Logo.baseURL,
+                baseURL: TheFOARequest.Logo.baseURL,
                 params: [
-                    TheFellowshipOfAntsRequest.Logo.ParamsKey.symbol: symbol
+                    TheFOARequest.Logo.ParamsKey.symbol: symbol
                 ],
-                apiKey: TheFellowshipOfAntsRequest.Logo.apiKey
+                apiKey: TheFOARequest.Logo.apiKey
             ).fetch { result in
                 switch result {
                 case .success(let logo):
@@ -87,16 +87,16 @@ class NetworkService {
     }
 
     static func translateKoreanToEnglish(text: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let papagoURL = URL(string: TheFellowshipOfAntsRequest.Translate.baseURL)
+        let papagoURL = URL(string: TheFOARequest.Translate.baseURL)
 
         var request = URLRequest(url: papagoURL!)
         request.httpMethod = "POST"
         request.addValue(
-            TheFellowshipOfAntsRequest.Translate.clientID,
+            TheFOARequest.Translate.clientID,
             forHTTPHeaderField: "X-Naver-Client-Id"
         )
         request.addValue(
-            TheFellowshipOfAntsRequest.Translate.clientSecret,
+            TheFOARequest.Translate.clientSecret,
             forHTTPHeaderField: "X-Naver-Client-Secret"
         )
 

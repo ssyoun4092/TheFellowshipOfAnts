@@ -7,9 +7,11 @@
 
 import UIKit
 
+import RxSwift
 import SnapKit
 import SwiftUI
 import TheFellowshipOfAntsKey
+import Moya
 
 class StockDetailViewController: UIViewController {
 
@@ -72,12 +74,12 @@ class StockDetailViewController: UIViewController {
         var tempOverviews: [String] = []
 
         API<StockOverview>(
-            baseURL: TheFellowshipOfAntsRequest.Overview.baseURL,
+            baseURL: TheFOARequest.Overview.baseURL,
             params: [
-                TheFellowshipOfAntsRequest.Overview.ParamsKey.function: "OVERVIEW",
-                TheFellowshipOfAntsRequest.Overview.ParamsKey.symbol: symbol ?? "AAPL"
+                TheFOARequest.Overview.ParamsKey.function: "OVERVIEW",
+                TheFOARequest.Overview.ParamsKey.symbol: symbol ?? "AAPL"
             ],
-            apiKey: TheFellowshipOfAntsRequest.Overview.apiKey
+            apiKey: TheFOARequest.Overview.apiKey
         ).fetch { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -92,7 +94,7 @@ class StockDetailViewController: UIViewController {
                 tempOverviews.append(stockOverview.EPS)
 
                 self.overviews = tempOverviews
-
+                print(tempOverviews)
                 DispatchQueue.main.async {
                     self.stockDetailView.overviewCollectionView.reloadData()
                 }
@@ -104,13 +106,13 @@ class StockDetailViewController: UIViewController {
 
     private func fetchStockValues() {
         API<StockIndex>(
-            baseURL: TheFellowshipOfAntsRequest.Indices.baseURL,
+            baseURL: TheFOARequest.Indices.baseURL,
             params: [
-                TheFellowshipOfAntsRequest.Indices.ParamsKey.symbol: symbol ?? "AAPL",
-                TheFellowshipOfAntsRequest.Indices.ParamsKey.interval: "5min",
-                TheFellowshipOfAntsRequest.Indices.ParamsKey.outputsize: "78"
+                TheFOARequest.Indices.ParamsKey.symbol: symbol ?? "AAPL",
+                TheFOARequest.Indices.ParamsKey.interval: "5min",
+                TheFOARequest.Indices.ParamsKey.outputsize: "78"
             ],
-            apiKey: TheFellowshipOfAntsRequest.Indices.apiKey
+            apiKey: TheFOARequest.Indices.apiKey
         ).fetch { [weak self] result in
             switch result {
             case .success(let stockIndex):
@@ -132,10 +134,10 @@ class StockDetailViewController: UIViewController {
 
     private func fetchAnnualRevenue() {
         API<[StockIncome]>(
-            baseURL: TheFellowshipOfAntsRequest.Incomes.baseURL,
+            baseURL: TheFOARequest.Incomes.baseURL,
             path: symbol ?? "AAPL",
             params: [:],
-            apiKey: TheFellowshipOfAntsRequest.Incomes.apiKey
+            apiKey: TheFOARequest.Incomes.apiKey
         ).fetch { [weak self] result in
             let companyName = self?.companyName ?? ""
             switch result {

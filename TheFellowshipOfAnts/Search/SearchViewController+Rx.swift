@@ -8,18 +8,17 @@
 import UIKit
 
 import TheFellowshipOfAntsKey
-import RxSwift
 import RxCocoa
+import RxGesture
+import RxSwift
 import SnapKit
 
-class SearchViewControllerRx: UIViewController {
+class SearchViewController: UIViewController {
 
     // MARK: - Properties
 
     let disposeBag = DisposeBag()
     let viewModel = SearchViewModel()
-
-    let recentSearchList = UserDefaultManager.shared.recentSearches
 
     weak var coordinator: SearchCoordinator?
 
@@ -41,10 +40,12 @@ class SearchViewControllerRx: UIViewController {
     }
 
     private func bind(to viewModel: SearchViewModel) {
+        rx.viewWillAppear
+            .map { _ in () }
+            .bind(to: viewModel.firstLoad)
+            .disposed(by: disposeBag)
+
         searchView.searchBar.rx.text.orEmpty
-//            .do(onNext: { print("In VC", $0) })
-//            .debounce(0.001, scheduler: MainScheduler)
-//            .map { $0 ?? "" }
             .bind(to: viewModel.searchBarText)
             .disposed(by: disposeBag)
 
@@ -60,30 +61,70 @@ class SearchViewControllerRx: UIViewController {
             .bind(to: viewModel.didTapCancelButton)
             .disposed(by: disposeBag)
 
+        searchView.recentSearchView.collectionView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+
+        searchView.recentSearchView.deleteAllButton.rx.tap
+            .bind(to: viewModel.didTapDeleteAllButton)
+            .disposed(by: disposeBag)
+
         searchView.searchedStocksTableView.rx.itemSelected
             .map { $0.row }
             .bind(to: viewModel.didSelectSearchedStocksItem)
             .disposed(by: disposeBag)
 
+        searchView.recentSearchView.collectionView.rx.itemSelected
+            .map { $0.row }
+            .bind(to: viewModel.pushToStockDetailViewController2)
+            .disposed(by: disposeBag)
+
+        viewModel.reloadRecentSearchedStocks
+            .drive(searchView.recentSearchView.collectionView.rx.items) { [weak self] collectionView, row, recentSearchStock in
+                guard let self = self else { return UICollectionViewCell() }
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: RecentSearchCell.identifier,
+                    for: IndexPath(row: row, section: 0)
+                ) as! RecentSearchCell
+
+                cell.configure(with: recentSearchStock.companyName)
+                cell.deleteLabel.rx.tapGesture()
+                    .when(.recognized)
+                    .map { _ in row }
+                    .bind(to: viewModel.deleteRecentSearchedCellRow)
+                    .disposed(by: self.disposeBag)
+                
+                return cell
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.searchedStocks
-            .drive(searchView.searchedStocksTableView.rx.items) { tableView, row, data in
+            .drive(searchView.searchedStocksTableView.rx.items) { tableView, row, searchedStock in
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: SearchingItemCell.identifier,
                     for: IndexPath(row: row, section: 0)
                 ) as! SearchingItemCell
 
-                cell.configure(with: data)
+                cell.configure(with: searchedStock)
 
                 return cell
             }
             .disposed(by: disposeBag)
 
+        viewModel.push
+            .drive(with: self) { owner, entity in
+                let viewController = StockDetailViewController()
+                viewController.symbol = entity.symbol
+                viewController.companyName = entity.companyName
+                owner.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+
         viewModel.activated
-            .drive(with: self, onNext: { owner, isSearching in
+            .drive(with: self) { owner, isSearching in
                 isSearching
                 ? owner.searchView.activityIndicator.startAnimating()
                 : owner.searchView.activityIndicator.stopAnimating()
-            })
+            }
             .disposed(by: disposeBag)
 
         viewModel.hideRecentSearchView
@@ -123,20 +164,36 @@ class SearchViewControllerRx: UIViewController {
     }
 }
 
-extension SearchViewControllerRx {
+extension SearchViewController {
     private func setupViews() {
         view.endEditing(true)
 
         view.addSubview(searchView)
 
-//        searchView.recentSearchView.collectionView.dataSource = self
-//        searchView.recentSearchView.collectionView.delegate = self
-//        searchView.searchResultTableView.dataSource = self
-//        searchView.searchResultTableView.delegate = self
-
         searchView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+}
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let cellWidths = viewModel.getRecentSearchedStocksCellWidths()
+        let cellWidth = cellWidths[indexPath.row]
+        let xWidth = "X".size(
+            withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(
+                ofSize: 14,
+                weight: .regular)]
+        ).width
+        let inset = CGFloat(15)
+        let spacing = CGFloat(13)
+        let totalWidth = cellWidth + xWidth + (2 * inset) + spacing
+
+        return CGSize(width: totalWidth, height: 30)
     }
 }
