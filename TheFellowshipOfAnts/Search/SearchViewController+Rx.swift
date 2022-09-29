@@ -78,7 +78,7 @@ class SearchViewController: UIViewController {
             .bind(to: viewModel.pushToStockDetailViewController2)
             .disposed(by: disposeBag)
 
-        viewModel.recentSearchedStocks
+        viewModel.reloadRecentSearchedStocks
             .drive(searchView.recentSearchView.collectionView.rx.items) { [weak self] collectionView, row, recentSearchStock in
                 guard let self = self else { return UICollectionViewCell() }
                 let cell = collectionView.dequeueReusableCell(
@@ -87,12 +87,6 @@ class SearchViewController: UIViewController {
                 ) as! RecentSearchCell
 
                 cell.configure(with: recentSearchStock.companyName)
-//                cell.searchedItemLabel.rx.tapGesture()
-//                    .when(.recognized)
-//                    .map { _ in [recentSearchStock.symbol, recentSearchStock.companyName] }
-//                    .bind(to: viewModel.pushToStockDetailViewController)
-//                    .disposed(by: self.disposeBag)
-
                 cell.deleteLabel.rx.tapGesture()
                     .when(.recognized)
                     .map { _ in row }

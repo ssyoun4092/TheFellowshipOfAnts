@@ -63,7 +63,6 @@
 		8E82C9DE28D83DC000BB7001 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9DD28D83DC000BB7001 /* NetworkService.swift */; };
 		8E82C9E328D8593500BB7001 /* NetworkService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9E228D8593500BB7001 /* NetworkService+Rx.swift */; };
 		8E82C9E728D97B4A00BB7001 /* Translated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9E628D97B4A00BB7001 /* Translated.swift */; };
-		8E94B80128DAAB0A00988F69 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94B80028DAAB0A00988F69 /* SearchModel.swift */; };
 		8E96D54228E283A300CCFE15 /* TranslateUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54128E283A300CCFE15 /* TranslateUseCaseImpl.swift */; };
 		8E96D54628E2857800CCFE15 /* StocksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54528E2857800CCFE15 /* StocksUseCase.swift */; };
 		8E96D54A28E286EA00CCFE15 /* TranslateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54928E286EA00CCFE15 /* TranslateUseCase.swift */; };
@@ -229,7 +228,6 @@
 		8E82C9DD28D83DC000BB7001 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8E82C9E228D8593500BB7001 /* NetworkService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Rx.swift"; sourceTree = "<group>"; };
 		8E82C9E628D97B4A00BB7001 /* Translated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translated.swift; sourceTree = "<group>"; };
-		8E94B80028DAAB0A00988F69 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		8E96D54128E283A300CCFE15 /* TranslateUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateUseCaseImpl.swift; sourceTree = "<group>"; };
 		8E96D54528E2857800CCFE15 /* StocksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksUseCase.swift; sourceTree = "<group>"; };
 		8E96D54928E286EA00CCFE15 /* TranslateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateUseCase.swift; sourceTree = "<group>"; };
@@ -346,7 +344,6 @@
 			children = (
 				8E43316B28D42CA2008922AB /* SearchViewController+Rx.swift */,
 				8E43316D28D42D66008922AB /* SearchViewModel.swift */,
-				8E94B80028DAAB0A00988F69 /* SearchModel.swift */,
 				8EBC441C28B8662600E6F356 /* Cells */,
 				8EBC441B28B8661F00E6F356 /* Views */,
 			);
@@ -965,7 +962,6 @@
 				8EBC443A28B8ECA800E6F356 /* SettingsViewController.UITableView.swift in Sources */,
 				8EDDC29F287C01F600FA025D /* User.swift in Sources */,
 				8E16555A28C484C800577886 /* StockDetailView.swift in Sources */,
-				8E94B80128DAAB0A00988F69 /* SearchModel.swift in Sources */,
 				8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */,
 				8EFFF47528B76EF800C3E762 /* HomeView.swift in Sources */,
 				8EDABDA828E02694008814F3 /* ServiceAPI.swift in Sources */,

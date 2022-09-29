@@ -32,7 +32,7 @@ final class SearchViewModel {
     let hideCancelButton: Driver<Bool>
     let hideKeyboard: Driver<Void>
     let searchedStocks: Driver<[Entity.SearchStock]>
-    var recentSearchedStocks: Driver<[Entity.RecentSearchedStock]>
+    var reloadRecentSearchedStocks: Driver<[Entity.RecentSearchedStock]>
     let activated: Driver<Bool>
     let push: Driver<Entity.RecentSearchedStock>
 
@@ -52,19 +52,17 @@ final class SearchViewModel {
         let activating = BehaviorSubject<Bool>(value: false)
 
         let inputText = searchBarText
-            .distinctUntilChanged()
-            .do(onNext: { print("inputText: \($0)") })
-            .filter { !$0.isEmpty }
+            .share()
 
         let translatedText = searchButtonClicked
             .withLatestFrom(inputText)
             .do(onNext: { print("translatedText: \($0)") })
             .filter { translateUseCase.containKorean($0) }
             .flatMap { text in translateUseCase.translateKoreanToEnglish(text: text) }
-            .map { $0.text }
+            .map { entity in entity.text}
 
         let searchedStocksResult = Observable.merge([
-            searchBarText.asObservable(),
+            inputText.asObservable(),
             translatedText
         ])
             .do(onNext: { _ in activating.onNext(true)})
@@ -79,6 +77,14 @@ final class SearchViewModel {
             .do(onNext: { row in userDefaultUseCase.removeRecentSearchStock(at: row) })
             .map { _ in () }
 
+        let readedRecentSearchedStocks = Observable.merge([
+            firstLoad.asObservable(),
+            deletedRecentSearchedStocks,
+            removedRecentSearchStock.asObservable()
+        ])
+            .flatMap { _ in userDefaultUseCase.readRecentSearchStocks() }
+            .share()
+
         self.push = Observable.merge([
             didSelectSearchedStocksItem
                 .withLatestFrom(searchedStocksResult) { row, searchedStocks -> Entity.RecentSearchedStock in
@@ -90,7 +96,7 @@ final class SearchViewModel {
                     return entity
                 },
             pushToStockDetailViewController2
-                .withLatestFrom(userDefaultUseCase.readRecentSearchStocks()) { row, searchedStocks in
+                .withLatestFrom(readedRecentSearchedStocks) { row, searchedStocks in
                     print(searchedStocks)
                     return searchedStocks[row]
             }
@@ -103,12 +109,7 @@ final class SearchViewModel {
         self.searchedStocks = searchedStocksResult
                 .asDriver(onErrorJustReturn: [])
 
-        self.recentSearchedStocks = Observable.merge([
-            firstLoad.asObservable(),
-            deletedRecentSearchedStocks,
-            removedRecentSearchStock.asObservable()
-        ])
-            .flatMap { _ in userDefaultUseCase.readRecentSearchStocks() }
+        self.reloadRecentSearchedStocks = readedRecentSearchedStocks
             .do(onNext: { print("RecentSearchStockList: \($0)") })
             .asDriver(onErrorJustReturn: [])
 
