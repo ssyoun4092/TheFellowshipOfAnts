@@ -52,7 +52,7 @@ extension HomeViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StockRankCollectionViewCell.identifier, for: indexPath) as? StockRankCollectionViewCell else { return UICollectionViewCell() }
             let stockRank = stockRanks[indexPath.row]
 
-            cell.configure(with: stockRank)
+            cell.configure(with: Entity.RankStock(rank: "", companyName: "", symbol: "", price: "", fluctuationRate: "", logoURLString: ""))
 
             return cell
         case 2:

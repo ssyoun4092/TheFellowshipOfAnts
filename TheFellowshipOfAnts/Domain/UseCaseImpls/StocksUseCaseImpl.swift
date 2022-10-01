@@ -26,4 +26,9 @@ class StocksUseCaseImpl: StocksUseCase {
 
         return repository.fetchStockOverview(symbol: symbol)
     }
+
+    func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {
+
+        return repository.fetchTop20Stocks()
+    }
 }

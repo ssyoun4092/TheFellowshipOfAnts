@@ -15,7 +15,7 @@ struct TranslateAPI: ServiceAPI {
     init(text: String) {
         self.text = text
     }
-    var apiProvider: APIProvider { .naver }
+    var provider: APIProvider { .naver }
     var method: Moya.Method { .post }
     var path: String { "/v1/papago/n2mt" }
     var task: Moya.Task {

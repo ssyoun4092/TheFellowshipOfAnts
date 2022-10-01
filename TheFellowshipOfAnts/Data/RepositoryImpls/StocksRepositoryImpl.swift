@@ -7,13 +7,20 @@
 
 import Foundation
 
+import SwiftSoup
 import RxSwift
 
 class StocksRepositoryImpl: StocksRepository {
     let network: NetworkServable
+    let crawlNetwork: CrawlServable
     let disposeBag = DisposeBag()
-    init(network: NetworkServable = NetworkServiceMoya()) {
+
+    init(
+        network: NetworkServable = NetworkServiceMoya(),
+        crawlNetwork: CrawlServable = CrawlService()
+    ) {
         self.network = network
+        self.crawlNetwork = crawlNetwork
     }
 
     func searchStockList(text: String) -> Observable<[Entity.SearchStock]> {
@@ -66,6 +73,14 @@ class StocksRepositoryImpl: StocksRepository {
             .asObservable()
     }
 
+    func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {
+        return crawlNetwork.request(Top20StocksCrawlAPI())
+            .compactMap { [weak self] elements in
+                self?.convertTop20StocksDTOToEntity(elements)
+            }
+            .asObservable()
+    }
+
     private func convertOverviewDTOToEntity(_ DTO: DTO.StockOverview) -> Entity.StockOverview {
         return .init(
             marketCap: DTO.marketCapitalization,
@@ -75,6 +90,42 @@ class StocksRepositoryImpl: StocksRepository {
             the52WeekHigh: DTO.the52WeekHigh,
             the52WeekLow: DTO.the52WeekLow
         )
+    }
+
+    private func convertTop20StocksDTOToEntity(_ elementsArray: [Elements]) -> [Entity.RankStock] {
+        var rankStocks: [Entity.RankStock] = []
+        let companyNames = elementsArray[0]
+        let symbols = elementsArray[1]
+        let prices = elementsArray[2]
+        let fluctuationRates = elementsArray[3]
+        let logoURLStrings = elementsArray[4]
+
+        do {
+            for index in 0..<20 {
+                let rank = String(index + 1)
+                let companyName = try companyNames[index].text()
+                let symbol = try symbols[index].text()
+                let price = try prices[index * 3 + 2].text()
+                let fluctuationRate = try fluctuationRates[index + 1].text()
+                let logoURLString = try logoURLStrings[index].attr("src").description
+
+                let rankStock = Entity.RankStock(
+                    rank: rank,
+                    companyName: companyName,
+                    symbol: symbol,
+                    price: price,
+                    fluctuationRate: fluctuationRate,
+                    logoURLString: CrawlProvider.companiesMarketCap.baseURLString + logoURLString
+                )
+                rankStocks.append(rankStock)
+            }
+
+            return rankStocks
+        } catch {
+            print("convertingTop20StocksDTOToEntities Error")
+
+            return rankStocks
+        }
     }
 
     private func convertSearchStockDTOToEntity(_ DTO: [DTO.SearchStocks.SearchStockInfo]) -> [Entity.SearchStock] {

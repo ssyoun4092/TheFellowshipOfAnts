@@ -15,7 +15,7 @@ struct StockOverviewAPI: StockAPI {
     init(symbol: String) {
         self.symbol = symbol
     }
-    var apiProvider: APIProvider { .alphavantage }
+    var provider: APIProvider { .alphavantage }
     var path: String { "/query" }
     var task: Moya.Task {
         .requestParameters(parameters: [

@@ -34,42 +34,42 @@ public extension Reactive where Base: UIViewController {
     let source = self.methodInvoked(#selector(Base.viewDidDisappear)).map { $0.first as? Bool ?? false }
     return ControlEvent(events: source)
   }
-//
-//  var viewWillLayoutSubviews: ControlEvent<Void> {
-//    let source = self.methodInvoked(#selector(Base.viewWillLayoutSubviews)).map { _ in }
-//    return ControlEvent(events: source)
-//  }
-//  var viewDidLayoutSubviews: ControlEvent<Void> {
-//    let source = self.methodInvoked(#selector(Base.viewDidLayoutSubviews)).map { _ in }
-//    return ControlEvent(events: source)
-//  }
-//
-//  var willMoveToParentViewController: ControlEvent<UIViewController?> {
-//    let source = self.methodInvoked(#selector(Base.willMove)).map { $0.first as? UIViewController }
-//    return ControlEvent(events: source)
-//  }
-//  var didMoveToParentViewController: ControlEvent<UIViewController?> {
-//    let source = self.methodInvoked(#selector(Base.didMove)).map { $0.first as? UIViewController }
-//    return ControlEvent(events: source)
-//  }
-//
-//  var didReceiveMemoryWarning: ControlEvent<Void> {
-//    let source = self.methodInvoked(#selector(Base.didReceiveMemoryWarning)).map { _ in }
-//    return ControlEvent(events: source)
-//  }
-//
-//  /// Rx observable, triggered when the ViewController appearance state changes (true if the View is being displayed, false otherwise)
-//  var isVisible: Observable<Bool> {
-//      let viewDidAppearObservable = self.base.rx.viewDidAppear.map { _ in true }
-//      let viewWillDisappearObservable = self.base.rx.viewWillDisappear.map { _ in false }
-//      return Observable<Bool>.merge(viewDidAppearObservable, viewWillDisappearObservable)
-//  }
-//
-//  /// Rx observable, triggered when the ViewController is being dismissed
-//  var isDismissing: ControlEvent<Bool> {
-//      let source = self.sentMessage(#selector(Base.dismiss)).map { $0.first as? Bool ?? false }
-//      return ControlEvent(events: source)
-//  }
+
+  var viewWillLayoutSubviews: ControlEvent<Void> {
+    let source = self.methodInvoked(#selector(Base.viewWillLayoutSubviews)).map { _ in }
+    return ControlEvent(events: source)
+  }
+  var viewDidLayoutSubviews: ControlEvent<Void> {
+    let source = self.methodInvoked(#selector(Base.viewDidLayoutSubviews)).map { _ in }
+    return ControlEvent(events: source)
+  }
+
+  var willMoveToParentViewController: ControlEvent<UIViewController?> {
+    let source = self.methodInvoked(#selector(Base.willMove)).map { $0.first as? UIViewController }
+    return ControlEvent(events: source)
+  }
+  var didMoveToParentViewController: ControlEvent<UIViewController?> {
+    let source = self.methodInvoked(#selector(Base.didMove)).map { $0.first as? UIViewController }
+    return ControlEvent(events: source)
+  }
+
+  var didReceiveMemoryWarning: ControlEvent<Void> {
+    let source = self.methodInvoked(#selector(Base.didReceiveMemoryWarning)).map { _ in }
+    return ControlEvent(events: source)
+  }
+
+  /// Rx observable, triggered when the ViewController appearance state changes (true if the View is being displayed, false otherwise)
+  var isVisible: Observable<Bool> {
+      let viewDidAppearObservable = self.base.rx.viewDidAppear.map { _ in true }
+      let viewWillDisappearObservable = self.base.rx.viewWillDisappear.map { _ in false }
+      return Observable<Bool>.merge(viewDidAppearObservable, viewWillDisappearObservable)
+  }
+
+  /// Rx observable, triggered when the ViewController is being dismissed
+  var isDismissing: ControlEvent<Bool> {
+      let source = self.sentMessage(#selector(Base.dismiss)).map { $0.first as? Bool ?? false }
+      return ControlEvent(events: source)
+  }
 
 }
 #endif

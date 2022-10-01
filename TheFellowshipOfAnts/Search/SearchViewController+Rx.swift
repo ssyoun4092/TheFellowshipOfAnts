@@ -7,7 +7,6 @@
 
 import UIKit
 
-import TheFellowshipOfAntsKey
 import RxCocoa
 import RxGesture
 import RxSwift

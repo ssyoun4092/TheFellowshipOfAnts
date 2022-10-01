@@ -28,14 +28,25 @@ class StockRankCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Methods
 
-    func configure(with model: StockRank) {
-        rankLabel.text = model.rank
-        logoImageView.kf.setImage(with: URL(string: model.logoURL))
-        companyNameLabel.text = model.companyName
-        symbolLabel.text = model.symbol
-        currentPriceLabel.text = model.price
-        fluctuationRateLabel.text = model.upDown.sign + model.fluctuationRate
-        fluctuationRateLabel.textColor = model.upDown.textColor
+//    func configure(with model: StockRank) {
+//        rankLabel.text = model.rank
+//        logoImageView.kf.setImage(with: URL(string: model.logoURL))
+//        companyNameLabel.text = model.companyName
+//        symbolLabel.text = model.symbol
+//        currentPriceLabel.text = model.price
+//        fluctuationRateLabel.text = model.upDown.sign + model.fluctuationRate
+//        fluctuationRateLabel.textColor = model.upDown.textColor
+//    }
+
+    func configure(with entity: Entity.RankStock) {
+        rankLabel.text = entity.rank
+        print("logoURLString: ", entity.logoURLString)
+        logoImageView.kf.setImage(with: URL(string: entity.logoURLString))
+        companyNameLabel.text = entity.companyName
+        symbolLabel.text = entity.symbol
+        currentPriceLabel.text = entity.price
+        fluctuationRateLabel.text = entity.fluctuationRate
+        fluctuationRateLabel.textColor = .red
     }
 }
 
