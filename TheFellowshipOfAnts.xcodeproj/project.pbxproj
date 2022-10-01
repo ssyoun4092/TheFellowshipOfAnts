@@ -64,7 +64,7 @@
 		8E82C9E328D8593500BB7001 /* NetworkService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9E228D8593500BB7001 /* NetworkService+Rx.swift */; };
 		8E82C9E728D97B4A00BB7001 /* Translated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9E628D97B4A00BB7001 /* Translated.swift */; };
 		8E8FED6C28E55DFF00944D82 /* HomeViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED6B28E55DFF00944D82 /* HomeViewController+Rx.swift */; };
-		8E8FED6E28E55EC500944D82 /* StockIndiceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED6D28E55EC500944D82 /* StockIndiceDTO.swift */; };
+		8E8FED6E28E55EC500944D82 /* MajorStockIndicesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */; };
 		8E8FED7028E5614C00944D82 /* StockIndice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED6F28E5614C00944D82 /* StockIndice.swift */; };
 		8E8FED7228E56FCD00944D82 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED7128E56FCD00944D82 /* HomeViewModel.swift */; };
 		8E8FED7428E5740800944D82 /* Top20StocksDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED7328E5740800944D82 /* Top20StocksDTO.swift */; };
@@ -88,7 +88,7 @@
 		8E96D55B28E29A0500CCFE15 /* RecentSearchedStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */; };
 		8E9B2BC92895670C007B4196 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B2BC82895670C007B4196 /* Setting.swift */; };
 		8E9D32EE28CDB2050039094D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D32ED28CDB2050039094D /* UserDefaults.swift */; };
-		8E9EC10928E1531800A5DD2D /* SearchStockListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10828E1531800A5DD2D /* SearchStockListEntity.swift */; };
+		8E9EC10928E1531800A5DD2D /* SearchStockEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10828E1531800A5DD2D /* SearchStockEntity.swift */; };
 		8E9EC10B28E1535400A5DD2D /* SearchStocksDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10A28E1535400A5DD2D /* SearchStocksDTO.swift */; };
 		8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10C28E15BBD00A5DD2D /* APIProvider.swift */; };
 		8E9EC10F28E1679900A5DD2D /* LogoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10E28E1679900A5DD2D /* LogoDTO.swift */; };
@@ -128,8 +128,9 @@
 		8EDABDA228E0253A008814F3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 8EDABDA128E0253A008814F3 /* Moya */; };
 		8EDABDA428E0253A008814F3 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 8EDABDA328E0253A008814F3 /* RxMoya */; };
 		8EDABDA828E02694008814F3 /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDABDA728E02694008814F3 /* ServiceAPI.swift */; };
-		8EDABDAB28E02AE3008814F3 /* SearchStockListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDABDAA28E02AE3008814F3 /* SearchStockListAPI.swift */; };
+		8EDABDAB28E02AE3008814F3 /* SearchStocksAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDABDAA28E02AE3008814F3 /* SearchStocksAPI.swift */; };
 		8EDABDAF28E03CC6008814F3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDABDAE28E03CC6008814F3 /* NetworkError.swift */; };
+		8EDD188928E85D4800AC51D4 /* MajorStockIndicesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */; };
 		8EDD6FE628BF4058004958C5 /* StockRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD6FE528BF4058004958C5 /* StockRank.swift */; };
 		8EDD6FE928BF46F6004958C5 /* HomeViewController.UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD6FE828BF46F6004958C5 /* HomeViewController.UICollectionView.swift */; };
 		8EDDC298287A720D00FA025D /* SignupWithEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDDC297287A720D00FA025D /* SignupWithEmailModel.swift */; };
@@ -241,7 +242,7 @@
 		8E82C9E228D8593500BB7001 /* NetworkService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Rx.swift"; sourceTree = "<group>"; };
 		8E82C9E628D97B4A00BB7001 /* Translated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translated.swift; sourceTree = "<group>"; };
 		8E8FED6B28E55DFF00944D82 /* HomeViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Rx.swift"; sourceTree = "<group>"; };
-		8E8FED6D28E55EC500944D82 /* StockIndiceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIndiceDTO.swift; sourceTree = "<group>"; };
+		8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorStockIndicesDTO.swift; sourceTree = "<group>"; };
 		8E8FED6F28E5614C00944D82 /* StockIndice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIndice.swift; sourceTree = "<group>"; };
 		8E8FED7128E56FCD00944D82 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8E8FED7328E5740800944D82 /* Top20StocksDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top20StocksDTO.swift; sourceTree = "<group>"; };
@@ -265,7 +266,7 @@
 		8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchedStocks.swift; sourceTree = "<group>"; };
 		8E9B2BC82895670C007B4196 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		8E9D32ED28CDB2050039094D /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		8E9EC10828E1531800A5DD2D /* SearchStockListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockListEntity.swift; sourceTree = "<group>"; };
+		8E9EC10828E1531800A5DD2D /* SearchStockEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockEntity.swift; sourceTree = "<group>"; };
 		8E9EC10A28E1535400A5DD2D /* SearchStocksDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStocksDTO.swift; sourceTree = "<group>"; };
 		8E9EC10C28E15BBD00A5DD2D /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		8E9EC10E28E1679900A5DD2D /* LogoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoDTO.swift; sourceTree = "<group>"; };
@@ -292,9 +293,10 @@
 		8ED070DB28BEFEC3006DB54D /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		8ED9D77C28ADD13A006A7F94 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8EDABDA728E02694008814F3 /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
-		8EDABDAA28E02AE3008814F3 /* SearchStockListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockListAPI.swift; sourceTree = "<group>"; };
+		8EDABDAA28E02AE3008814F3 /* SearchStocksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStocksAPI.swift; sourceTree = "<group>"; };
 		8EDABDAC28E03A50008814F3 /* NetworkServiceMoya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMoya.swift; sourceTree = "<group>"; };
 		8EDABDAE28E03CC6008814F3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorStockIndicesAPI.swift; sourceTree = "<group>"; };
 		8EDD6FE528BF4058004958C5 /* StockRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRank.swift; sourceTree = "<group>"; };
 		8EDD6FE828BF46F6004958C5 /* HomeViewController.UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.UICollectionView.swift; sourceTree = "<group>"; };
 		8EDDC297287A720D00FA025D /* SignupWithEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWithEmailModel.swift; sourceTree = "<group>"; };
@@ -509,7 +511,7 @@
 				8E7C46AE28E08BD100163D30 /* EmptyDTO.swift */,
 				8E7C469C28E0770C00163D30 /* StockOverviewDTO.swift */,
 				8E9EC10A28E1535400A5DD2D /* SearchStocksDTO.swift */,
-				8E8FED6D28E55EC500944D82 /* StockIndiceDTO.swift */,
+				8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */,
 				8E9EC10E28E1679900A5DD2D /* LogoDTO.swift */,
 				8E8FED7328E5740800944D82 /* Top20StocksDTO.swift */,
 				8E8FED7528E574F400944D82 /* CommoditiesDTO.swift */,
@@ -553,7 +555,7 @@
 			children = (
 				8E7C46A228E07ACA00163D30 /* Entity.swift */,
 				8E7C46A428E07AE300163D30 /* StockOverviewEntity.swift */,
-				8E9EC10828E1531800A5DD2D /* SearchStockListEntity.swift */,
+				8E9EC10828E1531800A5DD2D /* SearchStockEntity.swift */,
 				8E96D54B28E287AB00CCFE15 /* TranslatedMessageEntity.swift */,
 				8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */,
 				8E8FED6F28E5614C00944D82 /* StockIndice.swift */,
@@ -768,8 +770,9 @@
 		8EDABDA928E02AD6008814F3 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */,
 				8E7C469428E05D6000163D30 /* StockOverviewAPI.swift */,
-				8EDABDAA28E02AE3008814F3 /* SearchStockListAPI.swift */,
+				8EDABDAA28E02AE3008814F3 /* SearchStocksAPI.swift */,
 				8E9EC11028E168BA00A5DD2D /* LogoAPI.swift */,
 				8E96D55328E288E600CCFE15 /* TranslateAPI.swift */,
 			);
@@ -1028,7 +1031,7 @@
 				8E17814328C3066800E009BC /* AppCoordinator.swift in Sources */,
 				8E55C9DB28E2FFF700191603 /* UserDefaultCRUDRepositoryImpl.swift in Sources */,
 				8E96D54A28E286EA00CCFE15 /* TranslateUseCase.swift in Sources */,
-				8E9EC10928E1531800A5DD2D /* SearchStockListEntity.swift in Sources */,
+				8E9EC10928E1531800A5DD2D /* SearchStockEntity.swift in Sources */,
 				8E4CB37028755FD60033AD85 /* AppDelegate.swift in Sources */,
 				8EFFF48628B7727C00C3E762 /* MajorCarouselCell.swift in Sources */,
 				8E16556B28C5D02E00577886 /* PercentageValueChartView.swift in Sources */,
@@ -1045,7 +1048,7 @@
 				8E8FED7028E5614C00944D82 /* StockIndice.swift in Sources */,
 				8E96D54228E283A300CCFE15 /* TranslateUseCaseImpl.swift in Sources */,
 				8E17812928C05D0400E009BC /* Coordinator.swift in Sources */,
-				8E8FED6E28E55EC500944D82 /* StockIndiceDTO.swift in Sources */,
+				8E8FED6E28E55EC500944D82 /* MajorStockIndicesDTO.swift in Sources */,
 				8E9B2BC92895670C007B4196 /* Setting.swift in Sources */,
 				8E43316328D3084E008922AB /* SymbolSearch.swift in Sources */,
 				8EBC442028B8666D00E6F356 /* RecentSearchListView.swift in Sources */,
@@ -1085,6 +1088,7 @@
 				8E8FED6C28E55DFF00944D82 /* HomeViewController+Rx.swift in Sources */,
 				8E8FED7D28E58B5600944D82 /* Top20StocksCrawlAPI.swift in Sources */,
 				8E9EC10B28E1535400A5DD2D /* SearchStocksDTO.swift in Sources */,
+				8EDD188928E85D4800AC51D4 /* MajorStockIndicesAPI.swift in Sources */,
 				8E9D32EE28CDB2050039094D /* UserDefaults.swift in Sources */,
 				8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */,
 				8E8FED7628E574F400944D82 /* CommoditiesDTO.swift in Sources */,
@@ -1122,7 +1126,7 @@
 				8EFFF45928B7504A00C3E762 /* MessagesView.swift in Sources */,
 				8E8FED8128E58D0F00944D82 /* CrawlService.swift in Sources */,
 				8E4CB37228755FD60033AD85 /* SceneDelegate.swift in Sources */,
-				8EDABDAB28E02AE3008814F3 /* SearchStockListAPI.swift in Sources */,
+				8EDABDAB28E02AE3008814F3 /* SearchStocksAPI.swift in Sources */,
 				8E7C469528E05D6000163D30 /* StockOverviewAPI.swift in Sources */,
 				8EAB1BD828BDBD99004F38C3 /* String+.swift in Sources */,
 				8EAAA4C42877382400F3D5CC /* EmailLoginViewModel.swift in Sources */,

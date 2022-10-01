@@ -16,6 +16,7 @@ class HomeViewModel {
     let firstLoad = PublishRelay<Void>()
 
     // ViewModel -> View
+    let stockIndices: Driver<[Entity.StockIndice]>
     let top20Stocks: Driver<[Entity.RankStock]>
 //    let fetchedMajorIndices = Driver<[Entity.RecentSearchedStock]>
 
@@ -24,11 +25,13 @@ class HomeViewModel {
     init(useCase: StocksUseCase = StocksUseCaseImpl()) {
         self.useCase = useCase
 
+        self.stockIndices = firstLoad.asObservable()
+            .flatMap { _ in useCase.fetchMajorStockIndices() }
+            .asDriver(onErrorJustReturn: [])
+
         self.top20Stocks = firstLoad.asObservable()
             .do(onNext: { print("First Load") } )
-            .flatMap { _ in
-                return useCase.fetchTop20Stocks()
-            }
+            .flatMap { _ in useCase.fetchTop20Stocks() }
             .asDriver(onErrorJustReturn: [])
     }
 }

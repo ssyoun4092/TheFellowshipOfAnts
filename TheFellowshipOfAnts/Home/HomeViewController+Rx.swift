@@ -55,11 +55,13 @@ class HomeViewControllerRx: UIViewController {
             .bind(to: viewModel.firstLoad)
             .disposed(by: disposeBag)
 
+        viewModel.stockIndices
+            .drive(with: self) { owner, stockIndices in
+                print("stockIndices:", stockIndices)
+            }
+            .disposed(by: disposeBag)
+
         viewModel.top20Stocks
-//            .drive(with: self) { owner, rankStocks in
-//                print("fetchedRankStocks: \(rankStocks)")
-//            }
-//            .disposed(by: disposeBag)
             .drive(homeView.stockRankSectionView.collectionView.rx.items(
                 cellIdentifier: StockRankCollectionViewCell.identifier,
                 cellType: StockRankCollectionViewCell.self)

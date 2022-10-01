@@ -31,4 +31,8 @@ class StocksUseCaseImpl: StocksUseCase {
 
         return repository.fetchTop20Stocks()
     }
+
+    func fetchMajorStockIndices() -> Observable<[Entity.StockIndice]> {
+        return repository.fetchMajorStockIndices()
+    }
 }

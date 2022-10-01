@@ -40,7 +40,6 @@ class StockRankCollectionViewCell: UICollectionViewCell {
 
     func configure(with entity: Entity.RankStock) {
         rankLabel.text = entity.rank
-        print("logoURLString: ", entity.logoURLString)
         logoImageView.kf.setImage(with: URL(string: entity.logoURLString))
         companyNameLabel.text = entity.companyName
         symbolLabel.text = entity.symbol

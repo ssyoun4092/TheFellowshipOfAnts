@@ -66,6 +66,7 @@ class StocksRepositoryImpl: StocksRepository {
     }
 
     func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview> {
+
         return network.request(StockOverviewAPI(symbol: symbol))
             .compactMap { [weak self] stockOverviewDTO in
                 return self?.convertOverviewDTOToEntity(stockOverviewDTO)
@@ -73,15 +74,41 @@ class StocksRepositoryImpl: StocksRepository {
             .asObservable()
     }
 
+    func fetchMajorStockIndices() -> Observable<[Entity.StockIndice]> {
+
+        return network.request(MajorStockIndicesAPI(
+            indicesSymbol: ["IXIC, SPX, DJI"],
+            timeInterval: ._30min)
+        )
+        .compactMap {[weak self] majorStockIndicesDTO in
+            self?.convertMajorStockIndicesDTOToEntity(majorStockIndicesDTO)
+        }
+        .asObservable()
+    }
+
     func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {
+
         return crawlNetwork.request(Top20StocksCrawlAPI())
             .compactMap { [weak self] elements in
                 self?.convertTop20StocksDTOToEntity(elements)
             }
             .asObservable()
     }
+}
+
+extension StocksRepositoryImpl {
+    private func convertMajorStockIndicesDTOToEntity(_ DTO: DTO.MajorStockIndices)
+    -> [Entity.StockIndice] {
+
+        return [
+            .init(title: "나스닥 종합지수", prices: Array(DTO.IXIC.details.map { $0.close })),
+            .init(title: "S&P 500", prices: Array(DTO.SPX.details.map { $0.close })),
+            .init(title: "다우지수", prices: Array(DTO.DJI.details.map { $0.close }))
+        ]
+    }
 
     private func convertOverviewDTOToEntity(_ DTO: DTO.StockOverview) -> Entity.StockOverview {
+
         return .init(
             marketCap: DTO.marketCapitalization,
             PER: DTO.PER,
