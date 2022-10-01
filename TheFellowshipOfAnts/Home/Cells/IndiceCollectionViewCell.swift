@@ -2,7 +2,7 @@ import UIKit
 
 import SnapKit
 
-class IndexCollectionViewCell: UICollectionViewCell {
+class IndiceCollectionViewCell: UICollectionViewCell {
 
     // MARK: - IBOutlets
 
@@ -29,23 +29,21 @@ class IndexCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with indexModel: StockIndex, upDown: UpDown) {
-        indexTitleLabel.text = indexModel.basic.title
-        currentPriceLabel.text = indexModel.details.first?.close.floorIfDouble(at: 2)
+    func configure(with entity: Entity.StockIndice, upDown: UpDown) {
+        indexTitleLabel.text = entity.title
+        currentPriceLabel.text = entity.prices.first?.floorIfDouble(at: 2)
         currentPriceLabel.textColor = upDown.textColor
-        DTDLabel.text = calculateDayToDayPrice(with: indexModel.details.last!.close, indexModel.details.first!.close)
+        DTDLabel.text = calculateDayToDayPrice(with: entity.prices.last!, entity.prices.first!)
         DTDLabel.textColor = upDown.textColor
-        fluctuationRateLabel.text = calculateFluctuation(with: indexModel.details.last!.close, indexModel.details.first!.close) + "%"
+        fluctuationRateLabel.text = calculateFluctuation(with: entity.prices.last!, entity.prices.first!) + "%"
         fluctuationRateLabel.textColor = upDown.textColor
 
-        let chartInfos: [Double] = indexModel.details.map { value in
-            Double(value.close)!
-        }
+        let chartInfos: [Double] = entity.prices.map { price in Double(price)! }
         chartView.configure(with: chartInfos.reversed(), upDown: upDown)
     }
 }
 
-extension IndexCollectionViewCell {
+extension IndiceCollectionViewCell {
     var leading: CGFloat { return 15 }
     var trailing: CGFloat { return 15 }
 

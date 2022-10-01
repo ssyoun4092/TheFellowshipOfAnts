@@ -29,6 +29,7 @@ class IndexChartView: UIView {
     }
 
     func configure(with model: [Double], upDown: UpDown) {
+        print("prices:", model)
         var entries = [ChartDataEntry]()
 
         for (index, value) in model.enumerated() {

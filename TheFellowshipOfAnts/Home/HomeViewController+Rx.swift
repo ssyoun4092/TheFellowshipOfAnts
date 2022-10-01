@@ -56,8 +56,14 @@ class HomeViewControllerRx: UIViewController {
             .disposed(by: disposeBag)
 
         viewModel.stockIndices
-            .drive(with: self) { owner, stockIndices in
-                print("stockIndices:", stockIndices)
+//            .drive(with: self) { owner, stockIndices in
+//                print("stockIndices:", stockIndices)
+//            }
+            .drive(homeView.indicesSectionView.collectionView.rx.items(
+                cellIdentifier: IndiceCollectionViewCell.identifier,
+                cellType: IndiceCollectionViewCell.self)
+            ) { index, entity, cell in
+                cell.configure(with: entity, upDown: .up)
             }
             .disposed(by: disposeBag)
 

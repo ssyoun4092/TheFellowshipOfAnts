@@ -78,7 +78,7 @@ class StocksRepositoryImpl: StocksRepository {
 
         return network.request(MajorStockIndicesAPI(
             indicesSymbol: ["IXIC, SPX, DJI"],
-            timeInterval: ._30min)
+            timeInterval: ._15min)
         )
         .compactMap {[weak self] majorStockIndicesDTO in
             self?.convertMajorStockIndicesDTOToEntity(majorStockIndicesDTO)

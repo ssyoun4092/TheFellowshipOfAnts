@@ -38,14 +38,14 @@ extension HomeViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView.tag {
         case 0:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IndexCollectionViewCell.identifier, for: indexPath) as? IndexCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IndiceCollectionViewCell.identifier, for: indexPath) as? IndiceCollectionViewCell else { return UICollectionViewCell() }
             let stockIndex = stockIndexes[indexPath.row]
             let currentPrice = stockIndex.details.first?.close ?? "0"
             let prevPrice = stockIndex.details.last?.close ?? "0"
 
             let updown = UpDown.check(Double(prevPrice)!, Double(currentPrice)!)
 
-            cell.configure(with: stockIndex, upDown: updown)
+//            cell.configure(with: stockIndex, upDown: updown)
 
             return cell
         case 1:
