@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		8E06F68A287EADE60017F435 /* StockIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F689287EADE60017F435 /* StockIndex.swift */; };
 		8E06F68D287EB5830017F435 /* IndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68C287EB5830017F435 /* IndexService.swift */; };
-		8E0FBBF828E93D8600B1930C /* MajorCommoditiesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBBF728E93D8600B1930C /* MajorCommoditiesAPI.swift */; };
 		8E0FBBFA28E9409600B1930C /* MajorCommoditiesCrawlAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBBF928E9409600B1930C /* MajorCommoditiesCrawlAPI.swift */; };
 		8E0FBBFC28E9428200B1930C /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBBFB28E9428200B1930C /* Commodity.swift */; };
 		8E0FBC0C28E9A99700B1930C /* MajorCarouselCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBC0B28E9A99700B1930C /* MajorCarouselCellViewModel.swift */; };
+		8E0FBC0E28E9B1B800B1930C /* MajorETFsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBC0D28E9B1B800B1930C /* MajorETFsDTO.swift */; };
+		8E0FBC1028E9B27700B1930C /* MajorETFsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBC0F28E9B27700B1930C /* MajorETFsAPI.swift */; };
+		8E0FBC1228E9B59C00B1930C /* ETF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBC1128E9B59C00B1930C /* ETF.swift */; };
 		8E16555728C454BB00577886 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555628C454BB00577886 /* StockDetailViewController.swift */; };
 		8E16555A28C484C800577886 /* StockDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555928C484C800577886 /* StockDetailView.swift */; };
 		8E16555D28C4887100577886 /* StockGraphChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555C28C4887100577886 /* StockGraphChartView.swift */; };
@@ -23,7 +25,7 @@
 		8E17812928C05D0400E009BC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812828C05D0400E009BC /* Coordinator.swift */; };
 		8E17812D28C0788700E009BC /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812C28C0788700E009BC /* UIView+.swift */; };
 		8E17813528C099D700E009BC /* Commodity2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813428C099D700E009BC /* Commodity2.swift */; };
-		8E17813B28C1C1D900E009BC /* ETF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813A28C1C1D900E009BC /* ETF.swift */; };
+		8E17813B28C1C1D900E009BC /* ETF2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813A28C1C1D900E009BC /* ETF2.swift */; };
 		8E17814328C3066800E009BC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814228C3066800E009BC /* AppCoordinator.swift */; };
 		8E17814528C307BB00E009BC /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814428C307BB00E009BC /* AuthCoordinator.swift */; };
 		8E17814728C33D1D00E009BC /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814628C33D1D00E009BC /* TabBarCoordinator.swift */; };
@@ -191,10 +193,12 @@
 /* Begin PBXFileReference section */
 		8E06F689287EADE60017F435 /* StockIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIndex.swift; sourceTree = "<group>"; };
 		8E06F68C287EB5830017F435 /* IndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexService.swift; sourceTree = "<group>"; };
-		8E0FBBF728E93D8600B1930C /* MajorCommoditiesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCommoditiesAPI.swift; sourceTree = "<group>"; };
 		8E0FBBF928E9409600B1930C /* MajorCommoditiesCrawlAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCommoditiesCrawlAPI.swift; sourceTree = "<group>"; };
 		8E0FBBFB28E9428200B1930C /* Commodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
 		8E0FBC0B28E9A99700B1930C /* MajorCarouselCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCarouselCellViewModel.swift; sourceTree = "<group>"; };
+		8E0FBC0D28E9B1B800B1930C /* MajorETFsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorETFsDTO.swift; sourceTree = "<group>"; };
+		8E0FBC0F28E9B27700B1930C /* MajorETFsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorETFsAPI.swift; sourceTree = "<group>"; };
+		8E0FBC1128E9B59C00B1930C /* ETF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETF.swift; sourceTree = "<group>"; };
 		8E16555628C454BB00577886 /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
 		8E16555928C484C800577886 /* StockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailView.swift; sourceTree = "<group>"; };
 		8E16555C28C4887100577886 /* StockGraphChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockGraphChartView.swift; sourceTree = "<group>"; };
@@ -205,7 +209,7 @@
 		8E17812828C05D0400E009BC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8E17812C28C0788700E009BC /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		8E17813428C099D700E009BC /* Commodity2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity2.swift; sourceTree = "<group>"; };
-		8E17813A28C1C1D900E009BC /* ETF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETF.swift; sourceTree = "<group>"; };
+		8E17813A28C1C1D900E009BC /* ETF2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETF2.swift; sourceTree = "<group>"; };
 		8E17814228C3066800E009BC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8E17814428C307BB00E009BC /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		8E17814628C33D1D00E009BC /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -520,6 +524,7 @@
 				8E7C469C28E0770C00163D30 /* StockOverviewDTO.swift */,
 				8E9EC10A28E1535400A5DD2D /* SearchStocksDTO.swift */,
 				8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */,
+				8E0FBC0D28E9B1B800B1930C /* MajorETFsDTO.swift */,
 				8E9EC10E28E1679900A5DD2D /* LogoDTO.swift */,
 				8E8FED7328E5740800944D82 /* Top20StocksDTO.swift */,
 				8E8FED7528E574F400944D82 /* CommoditiesDTO.swift */,
@@ -569,6 +574,7 @@
 				8E8FED6F28E5614C00944D82 /* StockIndice.swift */,
 				8E8FED8528E5980D00944D82 /* RankStock.swift */,
 				8E0FBBFB28E9428200B1930C /* Commodity.swift */,
+				8E0FBC1128E9B59C00B1930C /* ETF.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -782,7 +788,7 @@
 			isa = PBXGroup;
 			children = (
 				8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */,
-				8E0FBBF728E93D8600B1930C /* MajorCommoditiesAPI.swift */,
+				8E0FBC0F28E9B27700B1930C /* MajorETFsAPI.swift */,
 				8E7C469428E05D6000163D30 /* StockOverviewAPI.swift */,
 				8EDABDAA28E02AE3008814F3 /* SearchStocksAPI.swift */,
 				8E9EC11028E168BA00A5DD2D /* LogoAPI.swift */,
@@ -803,7 +809,7 @@
 				8E27715828BC8E2A00CF6D8D /* Auth.swift */,
 				8EAB1BD928BDE761004F38C3 /* UpDown.swift */,
 				8E17813428C099D700E009BC /* Commodity2.swift */,
-				8E17813A28C1C1D900E009BC /* ETF.swift */,
+				8E17813A28C1C1D900E009BC /* ETF2.swift */,
 				8E16556C28C5DD1100577886 /* StockOverview.swift */,
 				8E82C9E628D97B4A00BB7001 /* Translated.swift */,
 				8E43316228D3084E008922AB /* SymbolSearch.swift */,
@@ -1059,7 +1065,6 @@
 				8E7C46A728E07B1E00163D30 /* StocksUseCaseImpl.swift in Sources */,
 				8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */,
 				8E8FED7028E5614C00944D82 /* StockIndice.swift in Sources */,
-				8E0FBBF828E93D8600B1930C /* MajorCommoditiesAPI.swift in Sources */,
 				8E96D54228E283A300CCFE15 /* TranslateUseCaseImpl.swift in Sources */,
 				8E17812928C05D0400E009BC /* Coordinator.swift in Sources */,
 				8E8FED6E28E55EC500944D82 /* MajorStockIndicesDTO.swift in Sources */,
@@ -1076,6 +1081,7 @@
 				8EBC443828B8E87200E6F356 /* SettingsView.swift in Sources */,
 				8EFFF48B28B7727C00C3E762 /* IndicesSectionView.swift in Sources */,
 				8E17814B28C36F5000E009BC /* SearchCoordinator.swift in Sources */,
+				8E0FBC1028E9B27700B1930C /* MajorETFsAPI.swift in Sources */,
 				8E96D54C28E287AB00CCFE15 /* TranslatedMessageEntity.swift in Sources */,
 				8EFFF41528B7282400C3E762 /* SignupView.swift in Sources */,
 				8EDABDAF28E03CC6008814F3 /* NetworkError.swift in Sources */,
@@ -1104,6 +1110,7 @@
 				8E9EC10B28E1535400A5DD2D /* SearchStocksDTO.swift in Sources */,
 				8EDD188928E85D4800AC51D4 /* MajorStockIndicesAPI.swift in Sources */,
 				8E9D32EE28CDB2050039094D /* UserDefaults.swift in Sources */,
+				8E0FBC1228E9B59C00B1930C /* ETF.swift in Sources */,
 				8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */,
 				8E0FBBFC28E9428200B1930C /* Commodity.swift in Sources */,
 				8E8FED7628E574F400944D82 /* CommoditiesDTO.swift in Sources */,
@@ -1112,9 +1119,10 @@
 				8E8FED7428E5740800944D82 /* Top20StocksDTO.swift in Sources */,
 				8E06F68D287EB5830017F435 /* IndexService.swift in Sources */,
 				8EA4B55428B60E7200AB5D1D /* UITextField+.swift in Sources */,
-				8E17813B28C1C1D900E009BC /* ETF.swift in Sources */,
+				8E17813B28C1C1D900E009BC /* ETF2.swift in Sources */,
 				8E17813528C099D700E009BC /* Commodity2.swift in Sources */,
 				8ED070DC28BEFEC3006DB54D /* Stock.swift in Sources */,
+				8E0FBC0E28E9B1B800B1930C /* MajorETFsDTO.swift in Sources */,
 				8EDDC298287A720D00FA025D /* SignupWithEmailModel.swift in Sources */,
 				8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */,
 				8E43316C28D42CA2008922AB /* SearchViewController+Rx.swift in Sources */,

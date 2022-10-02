@@ -103,6 +103,15 @@ class StocksRepositoryImpl: StocksRepository {
             }
             .asObservable()
     }
+
+    func fetchMajorETFs() -> Observable<[Entity.ETF]> {
+
+        return network.request(MajorETFsAPI())
+            .compactMap { [weak self] majorETFsDTO in
+                self?.covertMajorETFsDTOToEntities(majorETFsDTO)
+            }
+            .asObservable()
+    }
 }
 
 extension StocksRepositoryImpl {
@@ -185,8 +194,6 @@ extension StocksRepositoryImpl {
                 commodities.append(commodity)
             }
 
-            print("crawled Commodities: \(commodities)")
-
             return commodities
         } catch {
             print("convertCrawledMajorCommoditiesToEntity error")
@@ -208,5 +215,31 @@ extension StocksRepositoryImpl {
     private func fetchLogoURLString(symbol: String) -> Single<DTO.Logo> {
 
         return network.request(LogoAPI(symbol: symbol))
+    }
+
+    private func covertMajorETFsDTOToEntities(_ DTO: DTO.MajorETFs) -> [Entity.ETF] {
+        var entities: [Entity.ETF] = []
+
+        let etfs: [DTO.MajorETFs.ETF] = [
+            DTO.SHY,
+            DTO.VIX,
+            DTO.TLT,
+            DTO.SPY
+        ]
+
+        etfs.forEach { etf in
+            let prevValue = Double(etf.details.first!.close)!
+            let currentValue = Double(etf.details.last!.close)!
+
+            let tempETF = Entity.ETF(
+                name: etf.basic.symbol,
+                price: etf.details[0].close.floorIfDouble(at: 2),
+                fluctuationRate: (((currentValue - prevValue) / prevValue) * 100)
+                    .toStringWithFloor(at: 2)
+            )
+            entities.append(tempETF)
+        }
+
+        return entities
     }
 }

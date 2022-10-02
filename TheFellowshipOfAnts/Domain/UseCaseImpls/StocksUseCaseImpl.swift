@@ -40,5 +40,28 @@ class StocksUseCaseImpl: StocksUseCase {
     func fetchMajorCommodities() -> Observable<[Entity.Commodity]> {
 
         return repository.fetchMajorCommodities()
+            .map { entities in
+                entities.map { entity in
+                    Entity.Commodity(
+                        name: entity.name,
+                        price: "$" + entity.price,
+                        fluctuationRate: entity.fluctuationRate
+                    )
+                }
+            }
+    }
+
+    func fetchMajorETFs() -> Observable<[Entity.ETF]> {
+
+        return repository.fetchMajorETFs()
+            .map { entities in
+                entities.map { entity in
+                    Entity.ETF(
+                        name: entity.name,
+                        price: "$" + entity.price,
+                        fluctuationRate: entity.fluctuationRate + "%"
+                    )
+                }
+            }
     }
 }

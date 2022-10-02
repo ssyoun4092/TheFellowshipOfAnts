@@ -15,4 +15,5 @@ protocol StocksRepository {
     func fetchTop20Stocks() -> Observable<[Entity.RankStock]>
     func fetchMajorStockIndices() -> Observable<[Entity.StockIndice]>
     func fetchMajorCommodities() -> Observable<[Entity.Commodity]>
+    func fetchMajorETFs() -> Observable<[Entity.ETF]>
 }

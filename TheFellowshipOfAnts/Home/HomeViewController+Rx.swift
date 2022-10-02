@@ -77,8 +77,17 @@ class HomeViewControllerRx: UIViewController {
             }
             .disposed(by: disposeBag)
 
-        viewModel.carouselCellViewModels
+        viewModel.commodityCellViewModels
             .drive(homeView.majorCommoditiesSectionView.collectionView.rx.items(
+                cellIdentifier: MajorCarouselCell.identifier,
+                cellType: MajorCarouselCell.self)
+            ) { index, viewModel, cell in
+                cell.bind(to: viewModel)
+            }
+            .disposed(by: disposeBag)
+
+        viewModel.etfCellViewModels
+            .drive(homeView.majorETFSectionView.collectionView.rx.items(
                 cellIdentifier: MajorCarouselCell.identifier,
                 cellType: MajorCarouselCell.self)
             ) { index, viewModel, cell in

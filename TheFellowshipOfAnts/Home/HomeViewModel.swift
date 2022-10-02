@@ -18,7 +18,8 @@ class HomeViewModel {
     // ViewModel -> View
     let stockIndices: Driver<[Entity.StockIndice]>
     let top20Stocks: Driver<[Entity.RankStock]>
-    let carouselCellViewModels: Driver<[MajorCarouselCellViewModel]>
+    let commodityCellViewModels: Driver<[MajorCarouselCellViewModel]>
+    let etfCellViewModels: Driver<[MajorCarouselCellViewModel]>
 
     private let useCase: StocksUseCase
 
@@ -34,8 +35,15 @@ class HomeViewModel {
             .flatMap { _ in useCase.fetchTop20Stocks() }
             .asDriver(onErrorJustReturn: [])
 
-        self.carouselCellViewModels = firstLoad.asObservable()
+        self.commodityCellViewModels = firstLoad.asObservable()
             .flatMap { _ in useCase.fetchMajorCommodities() }
+            .map { entities -> [MajorCarouselCellViewModel] in
+                entities.map { MajorCarouselCellViewModel(with: $0) }
+            }
+            .asDriver(onErrorJustReturn: [])
+
+        self.etfCellViewModels = firstLoad.asObservable()
+            .flatMap { _ in useCase.fetchMajorETFs() }
             .map { entities -> [MajorCarouselCellViewModel] in
                 entities.map { MajorCarouselCellViewModel(with: $0) }
             }
