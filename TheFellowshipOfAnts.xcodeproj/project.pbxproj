@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		8E06F68A287EADE60017F435 /* StockIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F689287EADE60017F435 /* StockIndex.swift */; };
 		8E06F68D287EB5830017F435 /* IndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68C287EB5830017F435 /* IndexService.swift */; };
+		8E0FBBF828E93D8600B1930C /* MajorCommoditiesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBBF728E93D8600B1930C /* MajorCommoditiesAPI.swift */; };
+		8E0FBBFA28E9409600B1930C /* MajorCommoditiesCrawlAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBBF928E9409600B1930C /* MajorCommoditiesCrawlAPI.swift */; };
+		8E0FBBFC28E9428200B1930C /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBBFB28E9428200B1930C /* Commodity.swift */; };
+		8E0FBC0C28E9A99700B1930C /* MajorCarouselCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBC0B28E9A99700B1930C /* MajorCarouselCellViewModel.swift */; };
 		8E16555728C454BB00577886 /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555628C454BB00577886 /* StockDetailViewController.swift */; };
 		8E16555A28C484C800577886 /* StockDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555928C484C800577886 /* StockDetailView.swift */; };
 		8E16555D28C4887100577886 /* StockGraphChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555C28C4887100577886 /* StockGraphChartView.swift */; };
@@ -18,7 +22,7 @@
 		8E16556D28C5DD1200577886 /* StockOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556C28C5DD1100577886 /* StockOverview.swift */; };
 		8E17812928C05D0400E009BC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812828C05D0400E009BC /* Coordinator.swift */; };
 		8E17812D28C0788700E009BC /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812C28C0788700E009BC /* UIView+.swift */; };
-		8E17813528C099D700E009BC /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813428C099D700E009BC /* Commodity.swift */; };
+		8E17813528C099D700E009BC /* Commodity2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813428C099D700E009BC /* Commodity2.swift */; };
 		8E17813B28C1C1D900E009BC /* ETF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813A28C1C1D900E009BC /* ETF.swift */; };
 		8E17814328C3066800E009BC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814228C3066800E009BC /* AppCoordinator.swift */; };
 		8E17814528C307BB00E009BC /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814428C307BB00E009BC /* AuthCoordinator.swift */; };
@@ -74,7 +78,7 @@
 		8E8FED7F28E58CA100944D82 /* Crawlable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED7E28E58CA100944D82 /* Crawlable.swift */; };
 		8E8FED8128E58D0F00944D82 /* CrawlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED8028E58D0F00944D82 /* CrawlService.swift */; };
 		8E8FED8428E591B900944D82 /* CrawlAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED8328E591B900944D82 /* CrawlAPIProvider.swift */; };
-		8E8FED8628E5980D00944D82 /* Top20Stocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED8528E5980D00944D82 /* Top20Stocks.swift */; };
+		8E8FED8628E5980D00944D82 /* RankStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED8528E5980D00944D82 /* RankStock.swift */; };
 		8E96D54228E283A300CCFE15 /* TranslateUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54128E283A300CCFE15 /* TranslateUseCaseImpl.swift */; };
 		8E96D54628E2857800CCFE15 /* StocksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54528E2857800CCFE15 /* StocksUseCase.swift */; };
 		8E96D54A28E286EA00CCFE15 /* TranslateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D54928E286EA00CCFE15 /* TranslateUseCase.swift */; };
@@ -187,6 +191,10 @@
 /* Begin PBXFileReference section */
 		8E06F689287EADE60017F435 /* StockIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIndex.swift; sourceTree = "<group>"; };
 		8E06F68C287EB5830017F435 /* IndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexService.swift; sourceTree = "<group>"; };
+		8E0FBBF728E93D8600B1930C /* MajorCommoditiesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCommoditiesAPI.swift; sourceTree = "<group>"; };
+		8E0FBBF928E9409600B1930C /* MajorCommoditiesCrawlAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCommoditiesCrawlAPI.swift; sourceTree = "<group>"; };
+		8E0FBBFB28E9428200B1930C /* Commodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
+		8E0FBC0B28E9A99700B1930C /* MajorCarouselCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCarouselCellViewModel.swift; sourceTree = "<group>"; };
 		8E16555628C454BB00577886 /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
 		8E16555928C484C800577886 /* StockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailView.swift; sourceTree = "<group>"; };
 		8E16555C28C4887100577886 /* StockGraphChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockGraphChartView.swift; sourceTree = "<group>"; };
@@ -196,7 +204,7 @@
 		8E16556C28C5DD1100577886 /* StockOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOverview.swift; sourceTree = "<group>"; };
 		8E17812828C05D0400E009BC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8E17812C28C0788700E009BC /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		8E17813428C099D700E009BC /* Commodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
+		8E17813428C099D700E009BC /* Commodity2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity2.swift; sourceTree = "<group>"; };
 		8E17813A28C1C1D900E009BC /* ETF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETF.swift; sourceTree = "<group>"; };
 		8E17814228C3066800E009BC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8E17814428C307BB00E009BC /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -252,7 +260,7 @@
 		8E8FED7E28E58CA100944D82 /* Crawlable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crawlable.swift; sourceTree = "<group>"; };
 		8E8FED8028E58D0F00944D82 /* CrawlService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlService.swift; sourceTree = "<group>"; };
 		8E8FED8328E591B900944D82 /* CrawlAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrawlAPIProvider.swift; sourceTree = "<group>"; };
-		8E8FED8528E5980D00944D82 /* Top20Stocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top20Stocks.swift; sourceTree = "<group>"; };
+		8E8FED8528E5980D00944D82 /* RankStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankStock.swift; sourceTree = "<group>"; };
 		8E96D54128E283A300CCFE15 /* TranslateUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateUseCaseImpl.swift; sourceTree = "<group>"; };
 		8E96D54528E2857800CCFE15 /* StocksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksUseCase.swift; sourceTree = "<group>"; };
 		8E96D54928E286EA00CCFE15 /* TranslateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateUseCase.swift; sourceTree = "<group>"; };
@@ -559,7 +567,8 @@
 				8E96D54B28E287AB00CCFE15 /* TranslatedMessageEntity.swift */,
 				8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */,
 				8E8FED6F28E5614C00944D82 /* StockIndice.swift */,
-				8E8FED8528E5980D00944D82 /* Top20Stocks.swift */,
+				8E8FED8528E5980D00944D82 /* RankStock.swift */,
+				8E0FBBFB28E9428200B1930C /* Commodity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -589,6 +598,7 @@
 				8EFFF48028B7727B00C3E762 /* IndiceCollectionViewCell.swift */,
 				8EFFF48328B7727C00C3E762 /* StockRankCollectionViewCell.swift */,
 				8EFFF47828B7727B00C3E762 /* MajorCarouselCell.swift */,
+				8E0FBC0B28E9A99700B1930C /* MajorCarouselCellViewModel.swift */,
 				8E20DFF728CB298300DB44A2 /* StockOverviewCollectionViewCell.swift */,
 			);
 			path = Cells;
@@ -607,6 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				8E8FED7C28E58B5600944D82 /* Top20StocksCrawlAPI.swift */,
+				8E0FBBF928E9409600B1930C /* MajorCommoditiesCrawlAPI.swift */,
 				8E8FED7E28E58CA100944D82 /* Crawlable.swift */,
 			);
 			path = CrawlAPI;
@@ -771,6 +782,7 @@
 			isa = PBXGroup;
 			children = (
 				8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */,
+				8E0FBBF728E93D8600B1930C /* MajorCommoditiesAPI.swift */,
 				8E7C469428E05D6000163D30 /* StockOverviewAPI.swift */,
 				8EDABDAA28E02AE3008814F3 /* SearchStocksAPI.swift */,
 				8E9EC11028E168BA00A5DD2D /* LogoAPI.swift */,
@@ -790,7 +802,7 @@
 				8E9B2BC82895670C007B4196 /* Setting.swift */,
 				8E27715828BC8E2A00CF6D8D /* Auth.swift */,
 				8EAB1BD928BDE761004F38C3 /* UpDown.swift */,
-				8E17813428C099D700E009BC /* Commodity.swift */,
+				8E17813428C099D700E009BC /* Commodity2.swift */,
 				8E17813A28C1C1D900E009BC /* ETF.swift */,
 				8E16556C28C5DD1100577886 /* StockOverview.swift */,
 				8E82C9E628D97B4A00BB7001 /* Translated.swift */,
@@ -1029,6 +1041,7 @@
 				8E17814528C307BB00E009BC /* AuthCoordinator.swift in Sources */,
 				8E16556D28C5DD1200577886 /* StockOverview.swift in Sources */,
 				8E17814328C3066800E009BC /* AppCoordinator.swift in Sources */,
+				8E0FBBFA28E9409600B1930C /* MajorCommoditiesCrawlAPI.swift in Sources */,
 				8E55C9DB28E2FFF700191603 /* UserDefaultCRUDRepositoryImpl.swift in Sources */,
 				8E96D54A28E286EA00CCFE15 /* TranslateUseCase.swift in Sources */,
 				8E9EC10928E1531800A5DD2D /* SearchStockEntity.swift in Sources */,
@@ -1046,6 +1059,7 @@
 				8E7C46A728E07B1E00163D30 /* StocksUseCaseImpl.swift in Sources */,
 				8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */,
 				8E8FED7028E5614C00944D82 /* StockIndice.swift in Sources */,
+				8E0FBBF828E93D8600B1930C /* MajorCommoditiesAPI.swift in Sources */,
 				8E96D54228E283A300CCFE15 /* TranslateUseCaseImpl.swift in Sources */,
 				8E17812928C05D0400E009BC /* Coordinator.swift in Sources */,
 				8E8FED6E28E55EC500944D82 /* MajorStockIndicesDTO.swift in Sources */,
@@ -1070,7 +1084,7 @@
 				8E7C469B28E076DE00163D30 /* DTO.swift in Sources */,
 				8E96D54628E2857800CCFE15 /* StocksUseCase.swift in Sources */,
 				8E06F68A287EADE60017F435 /* StockIndex.swift in Sources */,
-				8E8FED8628E5980D00944D82 /* Top20Stocks.swift in Sources */,
+				8E8FED8628E5980D00944D82 /* RankStock.swift in Sources */,
 				8E7C46A528E07AE300163D30 /* StockOverviewEntity.swift in Sources */,
 				8EAAA4C22877259800F3D5CC /* UIViewController+.swift in Sources */,
 				8E82C9E328D8593500BB7001 /* NetworkService+Rx.swift in Sources */,
@@ -1091,6 +1105,7 @@
 				8EDD188928E85D4800AC51D4 /* MajorStockIndicesAPI.swift in Sources */,
 				8E9D32EE28CDB2050039094D /* UserDefaults.swift in Sources */,
 				8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */,
+				8E0FBBFC28E9428200B1930C /* Commodity.swift in Sources */,
 				8E8FED7628E574F400944D82 /* CommoditiesDTO.swift in Sources */,
 				8E55C9DD28E3115500191603 /* UserDefaultUseCase.swift in Sources */,
 				8EDD6FE628BF4058004958C5 /* StockRank.swift in Sources */,
@@ -1098,7 +1113,7 @@
 				8E06F68D287EB5830017F435 /* IndexService.swift in Sources */,
 				8EA4B55428B60E7200AB5D1D /* UITextField+.swift in Sources */,
 				8E17813B28C1C1D900E009BC /* ETF.swift in Sources */,
-				8E17813528C099D700E009BC /* Commodity.swift in Sources */,
+				8E17813528C099D700E009BC /* Commodity2.swift in Sources */,
 				8ED070DC28BEFEC3006DB54D /* Stock.swift in Sources */,
 				8EDDC298287A720D00FA025D /* SignupWithEmailModel.swift in Sources */,
 				8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */,
@@ -1110,6 +1125,7 @@
 				8E96D54E28E2883A00CCFE15 /* TranslateRepository.swift in Sources */,
 				8E7C46A328E07ACA00163D30 /* Entity.swift in Sources */,
 				8E7C46A928E07BBA00163D30 /* StocksRepository.swift in Sources */,
+				8E0FBC0C28E9A99700B1930C /* MajorCarouselCellViewModel.swift in Sources */,
 				8E96D55228E288DA00CCFE15 /* TranslateDTO.swift in Sources */,
 				8E8FED7828E577AC00944D82 /* CrawlServiceAPI.swift in Sources */,
 				8E27715928BC8E2A00CF6D8D /* Auth.swift in Sources */,

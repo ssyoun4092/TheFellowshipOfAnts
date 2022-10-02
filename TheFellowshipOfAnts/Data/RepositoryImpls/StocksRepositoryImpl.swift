@@ -89,8 +89,17 @@ class StocksRepositoryImpl: StocksRepository {
     func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {
 
         return crawlNetwork.request(Top20StocksCrawlAPI())
-            .compactMap { [weak self] elements in
-                self?.convertTop20StocksDTOToEntity(elements)
+            .compactMap { [weak self] elementsArray in
+                self?.convertCrawledTop20StocksToEntities(elementsArray)
+            }
+            .asObservable()
+    }
+
+    func fetchMajorCommodities() -> Observable<[Entity.Commodity]> {
+
+        return crawlNetwork.request(MajorCommoditiesCrawlAPI())
+            .compactMap { [weak self] elementsArray in
+                self?.convertCrawledMajorCommoditiesToEntities(elementsArray)
             }
             .asObservable()
     }
@@ -119,7 +128,7 @@ extension StocksRepositoryImpl {
         )
     }
 
-    private func convertTop20StocksDTOToEntity(_ elementsArray: [Elements]) -> [Entity.RankStock] {
+    private func convertCrawledTop20StocksToEntities(_ elementsArray: [Elements]) -> [Entity.RankStock] {
         var rankStocks: [Entity.RankStock] = []
         let companyNames = elementsArray[0]
         let symbols = elementsArray[1]
@@ -152,6 +161,37 @@ extension StocksRepositoryImpl {
             print("convertingTop20StocksDTOToEntities Error")
 
             return rankStocks
+        }
+    }
+
+    private func convertCrawledMajorCommoditiesToEntities(_ elementsArray: [Elements]) -> [Entity.Commodity] {
+        var commodities: [Entity.Commodity] = []
+        let commoditiesName: [String] = ["Gold", "Silver", "Oil (WTI)", "Copper", "Nickel", "Coffee"]
+        let commoditiesNameLink = elementsArray[0]
+        let commoditiesPriceLink = elementsArray[1]
+
+        do {
+            for index in 0..<commoditiesNameLink.count - 5 {
+                let name = try commoditiesNameLink[index + 5].text()
+                if !commoditiesName.contains(name) { continue }
+                let price = try commoditiesPriceLink[index * 4].text()
+                let fluctuationRate = try commoditiesPriceLink[index * 4 + 1].text()
+
+                let commodity = Entity.Commodity(
+                    name: name,
+                    price: price,
+                    fluctuationRate: fluctuationRate
+                )
+                commodities.append(commodity)
+            }
+
+            print("crawled Commodities: \(commodities)")
+
+            return commodities
+        } catch {
+            print("convertCrawledMajorCommoditiesToEntity error")
+
+            return commodities
         }
     }
 

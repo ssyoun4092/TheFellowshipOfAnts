@@ -10,10 +10,10 @@ import Foundation
 import SwiftSoup
 
 struct Top20StocksCrawlAPI: CrawlServiceAPI {
-    typealias ResponseDTO = DTO.Top20Stocks
+//    typealias ResponseDTO = DTO.Top20Stocks
     var provider: CrawlProvider { .companiesMarketCap }
     var path: String { "/usa/largest-companies-in-the-usa-by-market-cap/"}
-    var elementIDs: [String] {
+    var elementLinks: [String] {
         return [
             ".company-name",
             ".company-code",

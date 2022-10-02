@@ -16,7 +16,7 @@ class HomeViewControllerRx: UIViewController {
     // MARK: - Properties
 
     let disposeBag = DisposeBag()
-    let viewModel = HomeViewModel()
+    private var viewModel = HomeViewModel()
 
     weak var coordinator: HomeCoordinator?
 
@@ -55,15 +55,16 @@ class HomeViewControllerRx: UIViewController {
             .bind(to: viewModel.firstLoad)
             .disposed(by: disposeBag)
 
+        homeView.indicesSectionView.collectionView.rx.currentPage
+            .bind(to: homeView.indicesSectionView.pageControl.rx.currentPage)
+            .disposed(by: disposeBag)
+
         viewModel.stockIndices
-//            .drive(with: self) { owner, stockIndices in
-//                print("stockIndices:", stockIndices)
-//            }
             .drive(homeView.indicesSectionView.collectionView.rx.items(
                 cellIdentifier: IndiceCollectionViewCell.identifier,
                 cellType: IndiceCollectionViewCell.self)
-            ) { index, entity, cell in
-                cell.configure(with: entity, upDown: .up)
+            ) { index, stockIndice, cell in
+                cell.configure(with: stockIndice, upDown: .up)
             }
             .disposed(by: disposeBag)
 
@@ -71,8 +72,17 @@ class HomeViewControllerRx: UIViewController {
             .drive(homeView.stockRankSectionView.collectionView.rx.items(
                 cellIdentifier: StockRankCollectionViewCell.identifier,
                 cellType: StockRankCollectionViewCell.self)
-            ) { index, entity, cell in
-                cell.configure(with: entity)
+            ) { index, rankStock, cell in
+                cell.configure(with: rankStock)
+            }
+            .disposed(by: disposeBag)
+
+        viewModel.carouselCellViewModels
+            .drive(homeView.majorCommoditiesSectionView.collectionView.rx.items(
+                cellIdentifier: MajorCarouselCell.identifier,
+                cellType: MajorCarouselCell.self)
+            ) { index, viewModel, cell in
+                cell.bind(to: viewModel)
             }
             .disposed(by: disposeBag)
     }
@@ -95,6 +105,18 @@ extension HomeViewControllerRx {
 
         homeView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+    }
+}
+
+extension Reactive where Base: UIScrollView {
+    var currentPage: Observable<Int> {
+        return didEndDecelerating.map { () in
+            let offset = self.base.contentOffset.x
+            let width = UIScreen.main.bounds.width
+            let currentPage = Int(offset / width)
+
+            return currentPage
         }
     }
 }

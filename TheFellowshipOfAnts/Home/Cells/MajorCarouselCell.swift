@@ -43,6 +43,12 @@ class MajorCarouselCell: UICollectionViewCell {
         self.fluctuationRateLabel.text = model.fluctuationRate
         self.currentPriceLabel.text = model.price
     }
+
+    func bind(to viewModel: MajorCarouselCellViewModel) {
+        self.mainLabel.text = viewModel.title
+        self.fluctuationRateLabel.text = viewModel.fluctuationRate
+        self.currentPriceLabel.text = viewModel.price
+    }
 }
 
 extension MajorCarouselCell {

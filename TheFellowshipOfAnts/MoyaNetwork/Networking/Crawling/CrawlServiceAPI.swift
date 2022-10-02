@@ -10,10 +10,10 @@ import Foundation
 import SwiftSoup
 
 protocol CrawlServiceAPI {
-    associatedtype ResponseDTO: Crawlable
+//    associatedtype ResponseDTO: Crawlable
     var provider: CrawlProvider { get }
     var path: String { get }
-    var elementIDs: [String] { get }
+    var elementLinks: [String] { get }
 }
 
 extension CrawlServiceAPI {

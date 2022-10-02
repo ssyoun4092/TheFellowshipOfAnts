@@ -20,10 +20,9 @@ class CrawlService: CrawlServable {
         let elementsSubject = PublishSubject<[Elements]>()
 
         DispatchQueue.global().async {
-            let elements = api.elementIDs.map { link in
+            let elements = api.elementLinks.map { link in
                 try! api.doc.select(link)
             }
-
             elementsSubject.onNext(elements)
             elementsSubject.onCompleted()
         }

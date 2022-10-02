@@ -14,4 +14,5 @@ protocol StocksUseCase {
     func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview>
     func fetchMajorStockIndices() -> Observable<[Entity.StockIndice]>
     func fetchTop20Stocks() -> Observable<[Entity.RankStock]>
+    func fetchMajorCommodities() -> Observable<[Entity.Commodity]>
 }
