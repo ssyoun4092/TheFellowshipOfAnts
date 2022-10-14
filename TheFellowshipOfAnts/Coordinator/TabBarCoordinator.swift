@@ -13,7 +13,6 @@ class TabBarCoordinator: Coordinator {
 
     weak var parentCoordinator: AppCoordinator?
 
-
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }

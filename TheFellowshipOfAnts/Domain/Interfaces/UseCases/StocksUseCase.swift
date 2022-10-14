@@ -12,4 +12,8 @@ import RxSwift
 protocol StocksUseCase {
     func searchStockList(text: String) -> Observable<[Entity.SearchStock]>
     func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview>
+    func fetchMajorStockIndices() -> Observable<[Entity.StockIndice]>
+    func fetchTop20Stocks() -> Observable<[Entity.RankStock]>
+    func fetchMajorCommodities() -> Observable<[Entity.Commodity]>
+    func fetchMajorETFs() -> Observable<[Entity.ETF]>
 }

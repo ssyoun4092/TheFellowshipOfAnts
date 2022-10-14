@@ -44,9 +44,9 @@ class MajorCommoditiesSectionView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        collectionView.scrollToItem(
-            at: IndexPath(item: majorCommodityList.count, section: 0),
-            at: .centeredHorizontally, animated: false)
+//        collectionView.scrollToItem(
+//            at: IndexPath(item: majorCommodityList.count, section: 0),
+//            at: .centeredHorizontally, animated: false)
     }
 }
 
@@ -70,7 +70,7 @@ extension MajorCommoditiesSectionView {
             forCellWithReuseIdentifier: MajorCarouselCell.identifier)
         collectionView.decelerationRate = .fast
         collectionView.isPagingEnabled = false
-        collectionView.tag = 2
+//        collectionView.tag = 2
         collectionView.showsHorizontalScrollIndicator = false
 
         collectionView.snp.makeConstraints {

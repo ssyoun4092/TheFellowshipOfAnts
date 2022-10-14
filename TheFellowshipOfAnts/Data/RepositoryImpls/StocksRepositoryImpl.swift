@@ -7,13 +7,20 @@
 
 import Foundation
 
+import SwiftSoup
 import RxSwift
 
 class StocksRepositoryImpl: StocksRepository {
     let network: NetworkServable
+    let crawlNetwork: CrawlServable
     let disposeBag = DisposeBag()
-    init(network: NetworkServable = NetworkServiceMoya()) {
+
+    init(
+        network: NetworkServable = NetworkServiceMoya(),
+        crawlNetwork: CrawlServable = CrawlService()
+    ) {
         self.network = network
+        self.crawlNetwork = crawlNetwork
     }
 
     func searchStockList(text: String) -> Observable<[Entity.SearchStock]> {
@@ -59,6 +66,7 @@ class StocksRepositoryImpl: StocksRepository {
     }
 
     func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview> {
+
         return network.request(StockOverviewAPI(symbol: symbol))
             .compactMap { [weak self] stockOverviewDTO in
                 return self?.convertOverviewDTOToEntity(stockOverviewDTO)
@@ -66,7 +74,59 @@ class StocksRepositoryImpl: StocksRepository {
             .asObservable()
     }
 
+    func fetchMajorStockIndices() -> Observable<[Entity.StockIndice]> {
+
+        return network.request(MajorStockIndicesAPI(
+            indicesSymbol: ["IXIC, SPX, DJI"],
+            timeInterval: ._15min)
+        )
+        .compactMap {[weak self] majorStockIndicesDTO in
+            self?.convertMajorStockIndicesDTOToEntity(majorStockIndicesDTO)
+        }
+        .asObservable()
+    }
+
+    func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {
+
+        return crawlNetwork.request(Top20StocksCrawlAPI())
+            .compactMap { [weak self] elementsArray in
+                self?.convertCrawledTop20StocksToEntities(elementsArray)
+            }
+            .asObservable()
+    }
+
+    func fetchMajorCommodities() -> Observable<[Entity.Commodity]> {
+
+        return crawlNetwork.request(MajorCommoditiesCrawlAPI())
+            .compactMap { [weak self] elementsArray in
+                self?.convertCrawledMajorCommoditiesToEntities(elementsArray)
+            }
+            .asObservable()
+    }
+
+    func fetchMajorETFs() -> Observable<[Entity.ETF]> {
+
+        return network.request(MajorETFsAPI())
+            .compactMap { [weak self] majorETFsDTO in
+                self?.covertMajorETFsDTOToEntities(majorETFsDTO)
+            }
+            .asObservable()
+    }
+}
+
+extension StocksRepositoryImpl {
+    private func convertMajorStockIndicesDTOToEntity(_ DTO: DTO.MajorStockIndices)
+    -> [Entity.StockIndice] {
+
+        return [
+            .init(title: "나스닥 종합지수", prices: Array(DTO.IXIC.details.map { $0.close })),
+            .init(title: "S&P 500", prices: Array(DTO.SPX.details.map { $0.close })),
+            .init(title: "다우지수", prices: Array(DTO.DJI.details.map { $0.close }))
+        ]
+    }
+
     private func convertOverviewDTOToEntity(_ DTO: DTO.StockOverview) -> Entity.StockOverview {
+
         return .init(
             marketCap: DTO.marketCapitalization,
             PER: DTO.PER,
@@ -75,6 +135,71 @@ class StocksRepositoryImpl: StocksRepository {
             the52WeekHigh: DTO.the52WeekHigh,
             the52WeekLow: DTO.the52WeekLow
         )
+    }
+
+    private func convertCrawledTop20StocksToEntities(_ elementsArray: [Elements]) -> [Entity.RankStock] {
+        var rankStocks: [Entity.RankStock] = []
+        let companyNames = elementsArray[0]
+        let symbols = elementsArray[1]
+        let prices = elementsArray[2]
+        let fluctuationRates = elementsArray[3]
+        let logoURLStrings = elementsArray[4]
+
+        do {
+            for index in 0..<20 {
+                let rank = String(index + 1)
+                let companyName = try companyNames[index].text()
+                let symbol = try symbols[index].text()
+                let price = try prices[index * 3 + 2].text()
+                let fluctuationRate = try fluctuationRates[index + 1].text()
+                let logoURLString = try logoURLStrings[index].attr("src").description
+
+                let rankStock = Entity.RankStock(
+                    rank: rank,
+                    companyName: companyName,
+                    symbol: symbol,
+                    price: price,
+                    fluctuationRate: fluctuationRate,
+                    logoURLString: CrawlProvider.companiesMarketCap.baseURLString + logoURLString
+                )
+                rankStocks.append(rankStock)
+            }
+
+            return rankStocks
+        } catch {
+            print("convertingTop20StocksDTOToEntities Error")
+
+            return rankStocks
+        }
+    }
+
+    private func convertCrawledMajorCommoditiesToEntities(_ elementsArray: [Elements]) -> [Entity.Commodity] {
+        var commodities: [Entity.Commodity] = []
+        let commoditiesName: [String] = ["Gold", "Silver", "Oil (WTI)", "Copper", "Nickel", "Coffee"]
+        let commoditiesNameLink = elementsArray[0]
+        let commoditiesPriceLink = elementsArray[1]
+
+        do {
+            for index in 0..<commoditiesNameLink.count - 5 {
+                let name = try commoditiesNameLink[index + 5].text()
+                if !commoditiesName.contains(name) { continue }
+                let price = try commoditiesPriceLink[index * 4].text()
+                let fluctuationRate = try commoditiesPriceLink[index * 4 + 1].text()
+
+                let commodity = Entity.Commodity(
+                    name: name,
+                    price: price,
+                    fluctuationRate: fluctuationRate
+                )
+                commodities.append(commodity)
+            }
+
+            return commodities
+        } catch {
+            print("convertCrawledMajorCommoditiesToEntity error")
+
+            return commodities
+        }
     }
 
     private func convertSearchStockDTOToEntity(_ DTO: [DTO.SearchStocks.SearchStockInfo]) -> [Entity.SearchStock] {
@@ -90,5 +215,31 @@ class StocksRepositoryImpl: StocksRepository {
     private func fetchLogoURLString(symbol: String) -> Single<DTO.Logo> {
 
         return network.request(LogoAPI(symbol: symbol))
+    }
+
+    private func covertMajorETFsDTOToEntities(_ DTO: DTO.MajorETFs) -> [Entity.ETF] {
+        var entities: [Entity.ETF] = []
+
+        let etfs: [DTO.MajorETFs.ETF] = [
+            DTO.SHY,
+            DTO.VIX,
+            DTO.TLT,
+            DTO.SPY
+        ]
+
+        etfs.forEach { etf in
+            let prevValue = Double(etf.details.first!.close)!
+            let currentValue = Double(etf.details.last!.close)!
+
+            let tempETF = Entity.ETF(
+                name: etf.basic.symbol,
+                price: etf.details[0].close.floorIfDouble(at: 2),
+                fluctuationRate: (((currentValue - prevValue) / prevValue) * 100)
+                    .toStringWithFloor(at: 2)
+            )
+            entities.append(tempETF)
+        }
+
+        return entities
     }
 }

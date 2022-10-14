@@ -44,9 +44,9 @@ class MajorETFSectionView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        collectionView.scrollToItem(
-            at: IndexPath(item: majorETFList.count, section: 0),
-            at: .centeredHorizontally, animated: false)
+//        collectionView.scrollToItem(
+//            at: IndexPath(item: majorETFList.count, section: 0),
+//            at: .centeredHorizontally, animated: false)
     }
 }
 
@@ -70,7 +70,7 @@ extension MajorETFSectionView {
             forCellWithReuseIdentifier: MajorCarouselCell.identifier)
         collectionView.decelerationRate = .fast
         collectionView.isPagingEnabled = false
-        collectionView.tag = 3
+//        collectionView.tag = 3
         collectionView.showsHorizontalScrollIndicator = false
 
         collectionView.snp.makeConstraints {

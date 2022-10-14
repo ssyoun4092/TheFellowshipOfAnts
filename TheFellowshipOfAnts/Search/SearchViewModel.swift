@@ -7,14 +7,13 @@
 
 import Foundation
 
-import TheFellowshipOfAntsKey
 import RxCocoa
 import RxSwift
 
 final class SearchViewModel {
     let disposeBag = DisposeBag()
 
-    // view -> viewModel
+    // View -> ViewModel
     let firstLoad = PublishRelay<Void>()
     let searchBarText =  PublishRelay<String>()
     let searchBarDidBeginEditing = PublishRelay<Void>()
@@ -26,7 +25,7 @@ final class SearchViewModel {
     let pushToStockDetailViewController2 = PublishRelay<Int>()
     let deleteRecentSearchedCellRow = PublishRelay<Int>()
 
-    // viewModel -> view
+    // ViewModel -> View
     let hideRecentSearchView: Driver<Bool>
     let hideSearchedStocksView: Driver<Bool>
     let hideCancelButton: Driver<Bool>

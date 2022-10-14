@@ -68,7 +68,6 @@ extension StockRankSectionView {
         titleLabel.text = "TOP 20"
         titleLabel.font = UIFont.systemFont(ofSize: 23, weight: .bold)
 
-
         titleLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(10)
         }

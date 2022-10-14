@@ -26,4 +26,42 @@ class StocksUseCaseImpl: StocksUseCase {
 
         return repository.fetchStockOverview(symbol: symbol)
     }
+
+    func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {
+
+        return repository.fetchTop20Stocks()
+    }
+
+    func fetchMajorStockIndices() -> Observable<[Entity.StockIndice]> {
+
+        return repository.fetchMajorStockIndices()
+    }
+
+    func fetchMajorCommodities() -> Observable<[Entity.Commodity]> {
+
+        return repository.fetchMajorCommodities()
+            .map { entities in
+                entities.map { entity in
+                    Entity.Commodity(
+                        name: entity.name,
+                        price: "$" + entity.price,
+                        fluctuationRate: entity.fluctuationRate
+                    )
+                }
+            }
+    }
+
+    func fetchMajorETFs() -> Observable<[Entity.ETF]> {
+
+        return repository.fetchMajorETFs()
+            .map { entities in
+                entities.map { entity in
+                    Entity.ETF(
+                        name: entity.name,
+                        price: "$" + entity.price,
+                        fluctuationRate: entity.fluctuationRate + "%"
+                    )
+                }
+            }
+    }
 }

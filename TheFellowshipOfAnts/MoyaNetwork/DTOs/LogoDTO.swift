@@ -13,6 +13,7 @@ extension DTO {
         let url: String?
 
     }
+    
     struct Meta: Decodable {
         let symbol: String
     }

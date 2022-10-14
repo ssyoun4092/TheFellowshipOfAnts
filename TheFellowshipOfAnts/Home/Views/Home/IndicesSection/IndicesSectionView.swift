@@ -51,8 +51,8 @@ extension IndicesSectionView {
         addSubview(collectionView)
 
         collectionView.register(
-            IndexCollectionViewCell.self,
-            forCellWithReuseIdentifier: IndexCollectionViewCell.identifier)
+            IndiceCollectionViewCell.self,
+            forCellWithReuseIdentifier: IndiceCollectionViewCell.identifier)
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.tag = 0

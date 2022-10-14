@@ -11,14 +11,14 @@ import Moya
 
 protocol ServiceAPI: TargetType {
     associatedtype ResponseDTO: Decodable
-    var apiProvider: APIProvider { get }
+    var provider: APIProvider { get }
 }
 
 extension ServiceAPI {
-    var baseURL: URL { apiProvider.baseURL }
+    var baseURL: URL { provider.baseURL }
     var method: Moya.Method { .get }
     var headers: [String : String]? { nil }
-    var apiKey: String { apiProvider.apiKey }
+    var apiKey: String { provider.apiKey }
 }
 
 protocol StockAPI: ServiceAPI {
