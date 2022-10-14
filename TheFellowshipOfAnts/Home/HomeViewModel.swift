@@ -26,23 +26,23 @@ class HomeViewModel {
     init(useCase: StocksUseCase = StocksUseCaseImpl()) {
         self.useCase = useCase
 
-        self.stockIndices = firstLoad.asObservable()
+        stockIndices = firstLoad.asObservable()
             .flatMap { _ in useCase.fetchMajorStockIndices() }
             .asDriver(onErrorJustReturn: [])
 
-        self.top20Stocks = firstLoad.asObservable()
+        top20Stocks = firstLoad.asObservable()
             .do(onNext: { print("First Load") } )
             .flatMap { _ in useCase.fetchTop20Stocks() }
             .asDriver(onErrorJustReturn: [])
 
-        self.commodityCellViewModels = firstLoad.asObservable()
+        commodityCellViewModels = firstLoad.asObservable()
             .flatMap { _ in useCase.fetchMajorCommodities() }
             .map { entities -> [MajorCarouselCellViewModel] in
                 entities.map { MajorCarouselCellViewModel(with: $0) }
             }
             .asDriver(onErrorJustReturn: [])
 
-        self.etfCellViewModels = firstLoad.asObservable()
+        etfCellViewModels = firstLoad.asObservable()
             .flatMap { _ in useCase.fetchMajorETFs() }
             .map { entities -> [MajorCarouselCellViewModel] in
                 entities.map { MajorCarouselCellViewModel(with: $0) }
