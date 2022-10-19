@@ -17,7 +17,7 @@ class SearchViewController: UIViewController {
     // MARK: - Properties
 
     let disposeBag = DisposeBag()
-    let viewModel = SearchViewModel()
+    let viewModel: SearchViewModel
 
     weak var coordinator: SearchCoordinator?
 
@@ -26,6 +26,16 @@ class SearchViewController: UIViewController {
     let searchView = SearchView()
 
     // MARK: - Life Cycle
+
+    init(viewModel: SearchViewModel) {
+        self.viewModel = viewModel
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -11,7 +11,7 @@ import RxSwift
 
 class TranslateUseCaseImpl: TranslateUseCase {
     let repository: TranslateRepository
-    init(repository: TranslateRepository = TranslateRepositoryImpl()) {
+    init(repository: TranslateRepository) {
         self.repository = repository
     }
 

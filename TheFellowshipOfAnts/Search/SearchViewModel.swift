@@ -40,9 +40,9 @@ final class SearchViewModel {
     private let userDefaultUseCase: UserDefaultUseCase
 
     init(
-        stockUseCase: StocksUseCase = StocksUseCaseImpl(),
-        translateUseCase: TranslateUseCase = TranslateUseCaseImpl(),
-        userDefaultUseCase: UserDefaultUseCase = UserDefaultUseCaseImpl()
+        stockUseCase: StocksUseCase,
+        translateUseCase: TranslateUseCase,
+        userDefaultUseCase: UserDefaultUseCase
     ) {
         self.stockUseCase = stockUseCase
         self.translateUseCase = translateUseCase

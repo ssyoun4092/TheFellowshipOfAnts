@@ -20,6 +20,7 @@ class AppCoordinator: Coordinator {
     func start() {
         window.backgroundColor = .systemBackground
         window.rootViewController = navigationController
+//        window.rootViewController = UINavigationController(r)
         showLoginVC()
 
         window.makeKeyAndVisible()

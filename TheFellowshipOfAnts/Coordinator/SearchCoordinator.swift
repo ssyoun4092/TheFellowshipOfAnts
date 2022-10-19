@@ -18,7 +18,18 @@ class SearchCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = SearchViewController()
+        let stockRepository = StocksRepositoryImpl()
+        let stockUseCase = StocksUseCaseImpl(repository: stockRepository)
+
+        let translateRepository = TranslateRepositoryImpl()
+        let translateUseCase = TranslateUseCaseImpl(repository: translateRepository)
+
+        let userDefaultRepository = UserDefaultCRUDRepositoryImpl()
+        let userDefaultUseCase = UserDefaultUseCaseImpl(repository: userDefaultRepository)
+
+        let viewModel = SearchViewModel(stockUseCase: stockUseCase, translateUseCase: translateUseCase, userDefaultUseCase: userDefaultUseCase)
+        let vc = SearchViewController(viewModel: viewModel)
+        
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }

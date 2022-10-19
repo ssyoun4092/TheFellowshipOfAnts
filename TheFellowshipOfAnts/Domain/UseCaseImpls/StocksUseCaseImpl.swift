@@ -13,7 +13,7 @@ import RxSwift
 class StocksUseCaseImpl: StocksUseCase {
     let repository: StocksRepository
 
-    init(repository: StocksRepository = StocksRepositoryImpl()) {
+    init(repository: StocksRepository) {
         self.repository = repository
     }
 

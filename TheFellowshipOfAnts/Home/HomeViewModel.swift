@@ -23,7 +23,7 @@ class HomeViewModel {
 
     private let useCase: StocksUseCase
 
-    init(useCase: StocksUseCase = StocksUseCaseImpl()) {
+    init(useCase: StocksUseCase) {
         self.useCase = useCase
 
         stockIndices = firstLoad.asObservable()
