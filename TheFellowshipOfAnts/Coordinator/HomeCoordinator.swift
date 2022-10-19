@@ -18,8 +18,11 @@ class HomeCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = HomeViewControllerRx()
-        vc.coordinator = self
+        let repository = StocksRepositoryImpl()
+        let useCase = StocksUseCaseImpl(repository: repository)
+        let viewModel = HomeViewModel(useCase: useCase)
+        let vc = HomeViewControllerRx(viewModel: viewModel)
+
         navigationController.pushViewController(vc, animated: true)
     }
 

@@ -18,7 +18,7 @@ class HomeViewControllerRx: UIViewController {
     // MARK: - Properties
 
     let disposeBag = DisposeBag()
-    private var viewModel = HomeViewModel()
+    var viewModel: HomeViewModel
 
     weak var coordinator: HomeCoordinator?
 
@@ -28,15 +28,21 @@ class HomeViewControllerRx: UIViewController {
 
     // MARK: - LifeCycle
 
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
         bind(to: viewModel)
-//        fetchMajorStockIndexes()
-//        crawlTop20Stocks()
-//        crawlCommodities()
-//        fetchETFs()
     }
 
     private func bind(to viewModel: HomeViewModel) {
@@ -102,7 +108,7 @@ extension HomeViewControllerRx {
 extension Reactive where Base: UIScrollView {
     var currentPage: Observable<Int> {
         return didEndDecelerating.map { () in
-            let offset = self.base.contentOffset.x
+            let offset = base.contentOffset.x
             let width = UIScreen.main.bounds.width
             let currentPage = Int(offset / width)
 

@@ -12,7 +12,7 @@ import RxSwift
 class UserDefaultUseCaseImpl: UserDefaultUseCase {
     let repository: UserDefaultCRUDRepository
 
-    init(repository: UserDefaultCRUDRepository = UserDefaultCRUDRepositoryImpl()) {
+    init(repository: UserDefaultCRUDRepository) {
         self.repository = repository
     }
 
