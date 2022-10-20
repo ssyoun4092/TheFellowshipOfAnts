@@ -27,10 +27,18 @@ class HomeCoordinator: Coordinator {
     }
 
     func pushToStockDetailViewController(companyName: String, symbol: String) {
-        let vc = StockDetailViewController()
-        vc.companyName = companyName
-        vc.symbol = symbol
-        vc.coordinator = self
+        let repository = StocksRepositoryImpl()
+        let useCase = StocksUseCaseImpl(repository: repository)
+        let viewModel = StockDetailViewModel(useCase: useCase,
+                                             symbol: symbol,
+                                             companyName: companyName)
+        let vc = StockDetailViewControllerRx(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
+
+//        let vc = StockDetailViewController()
+//        vc.companyName = companyName
+//        vc.symbol = symbol
+//        vc.coordinator = self
+//        navigationController.pushViewController(vc, animated: true)
     }
 }
