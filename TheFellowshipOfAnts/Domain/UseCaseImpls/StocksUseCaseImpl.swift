@@ -24,7 +24,11 @@ class StocksUseCaseImpl: StocksUseCase {
 
     func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview> {
 
-        return repository.fetchStockOverview(symbol: symbol)
+        return repository.fetchStockOverview(for: symbol)
+    }
+
+    func fetchStockPrices(for symbol: String) -> Observable<[Entity.StockPrice]> {
+        return repository.fetchStockPrices(for: symbol)
     }
 
     func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {

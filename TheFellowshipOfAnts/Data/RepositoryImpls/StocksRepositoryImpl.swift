@@ -65,11 +65,19 @@ class StocksRepositoryImpl: StocksRepository {
             .asObservable()
     }
 
-    func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview> {
+    func fetchStockOverview(for symbol: String) -> Observable<Entity.StockOverview> {
 
         return network.request(StockOverviewAPI(symbol: symbol))
             .compactMap { [weak self] stockOverviewDTO in
                 return self?.convertOverviewDTOToEntity(stockOverviewDTO)
+            }
+            .asObservable()
+    }
+
+    func fetchStockPrices(for symbol: String) -> Observable<[Entity.StockPrice]> {
+        return network.request(StockPriceAPI(symbol: symbol))
+            .compactMap { [weak self] stockPriceDTO in
+                return self?.convertStockPriceDTOToEntity(stockPriceDTO)
             }
             .asObservable()
     }
@@ -135,6 +143,11 @@ extension StocksRepositoryImpl {
             the52WeekHigh: DTO.the52WeekHigh,
             the52WeekLow: DTO.the52WeekLow
         )
+    }
+
+    private func convertStockPriceDTOToEntity(_ DTO: DTO.StockPrice) -> [Entity.StockPrice] {
+
+        return DTO.details.map { .init(close: Double($0.close) ?? 0) }
     }
 
     private func convertCrawledTop20StocksToEntities(_ elementsArray: [Elements]) -> [Entity.RankStock] {
