@@ -435,13 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				8E17812828C05D0400E009BC /* Coordinator.swift */,
-				8E17814228C3066800E009BC /* AppCoordinator.swift */,
-				8E17814428C307BB00E009BC /* AuthCoordinator.swift */,
-				8E17814628C33D1D00E009BC /* TabBarCoordinator.swift */,
-				8E17814828C36F1000E009BC /* HomeCoordinator.swift */,
-				8E17814A28C36F5000E009BC /* SearchCoordinator.swift */,
-				8E17814C28C36F7C00E009BC /* ChatCoordinator.swift */,
-				8E17814E28C36FA900E009BC /* ProfileCoordinator.swift */,
+				8EB9F2FA2900FB28003FA011 /* AppCoordinator */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -713,6 +707,68 @@
 				8EA4B55528B60EE900AB5D1D /* ViewModel */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		8EB9F2FA2900FB28003FA011 /* AppCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8E17814228C3066800E009BC /* AppCoordinator.swift */,
+				8EB9F3002900FB94003FA011 /* AuthCoordinator */,
+				8EB9F2FB2900FB30003FA011 /* TabBarCoordinator */,
+			);
+			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
+		8EB9F2FB2900FB30003FA011 /* TabBarCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8E17814628C33D1D00E009BC /* TabBarCoordinator.swift */,
+				8EB9F2FC2900FB46003FA011 /* HomeCoordinator */,
+				8EB9F2FD2900FB4B003FA011 /* SearchCoordinator */,
+				8EB9F2FE2900FB67003FA011 /* ChatCoordinator */,
+				8EB9F2FF2900FB73003FA011 /* ProfileCoordinator */,
+			);
+			path = TabBarCoordinator;
+			sourceTree = "<group>";
+		};
+		8EB9F2FC2900FB46003FA011 /* HomeCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8E17814828C36F1000E009BC /* HomeCoordinator.swift */,
+			);
+			path = HomeCoordinator;
+			sourceTree = "<group>";
+		};
+		8EB9F2FD2900FB4B003FA011 /* SearchCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8E17814A28C36F5000E009BC /* SearchCoordinator.swift */,
+			);
+			path = SearchCoordinator;
+			sourceTree = "<group>";
+		};
+		8EB9F2FE2900FB67003FA011 /* ChatCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8E17814C28C36F7C00E009BC /* ChatCoordinator.swift */,
+			);
+			path = ChatCoordinator;
+			sourceTree = "<group>";
+		};
+		8EB9F2FF2900FB73003FA011 /* ProfileCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8E17814E28C36FA900E009BC /* ProfileCoordinator.swift */,
+			);
+			path = ProfileCoordinator;
+			sourceTree = "<group>";
+		};
+		8EB9F3002900FB94003FA011 /* AuthCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8E17814428C307BB00E009BC /* AuthCoordinator.swift */,
+			);
+			path = AuthCoordinator;
 			sourceTree = "<group>";
 		};
 		8EBC441B28B8661F00E6F356 /* Views */ = {
