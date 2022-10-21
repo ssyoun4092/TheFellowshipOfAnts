@@ -6,7 +6,7 @@ class ProfileViewController: UIViewController {
     //MARK: - SubComponents
     let profileSectionView = ProfileView()
 
-    weak var coordinator: Coordinator?
+    weak var coordinator: ProfileCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

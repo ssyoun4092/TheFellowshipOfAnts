@@ -135,6 +135,9 @@
 		8ED9A2892902523F007E5046 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9A2882902523F007E5046 /* ProfileViewController.swift */; };
 		8ED9A28F29025A07007E5046 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9A28E29025A07007E5046 /* Setting.swift */; };
 		8ED9A29129025A9D007E5046 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9A29029025A9D007E5046 /* Auth.swift */; };
+		8ED9A29829027395007E5046 /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9A29729027395007E5046 /* LikedViewController.swift */; };
+		8ED9A29B290274B6007E5046 /* LikedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9A29A290274B6007E5046 /* LikedCoordinator.swift */; };
+		8ED9A29E29027559007E5046 /* LikedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9A29D29027559007E5046 /* LikedTableViewCell.swift */; };
 		8ED9D77D28ADD13A006A7F94 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9D77C28ADD13A006A7F94 /* LoginView.swift */; };
 		8ED9EA9628E41042003D37C3 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED9EA9528E41042003D37C3 /* RxGesture */; };
 		8EDABDA228E0253A008814F3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 8EDABDA128E0253A008814F3 /* Moya */; };
@@ -301,6 +304,9 @@
 		8ED9A2882902523F007E5046 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8ED9A28E29025A07007E5046 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		8ED9A29029025A9D007E5046 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		8ED9A29729027395007E5046 /* LikedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedViewController.swift; sourceTree = "<group>"; };
+		8ED9A29A290274B6007E5046 /* LikedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCoordinator.swift; sourceTree = "<group>"; };
+		8ED9A29D29027559007E5046 /* LikedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedTableViewCell.swift; sourceTree = "<group>"; };
 		8ED9D77C28ADD13A006A7F94 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8EDABDA728E02694008814F3 /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
 		8EDABDAA28E02AE3008814F3 /* SearchStocksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStocksAPI.swift; sourceTree = "<group>"; };
@@ -671,6 +677,7 @@
 				8E17814628C33D1D00E009BC /* TabBarCoordinator.swift */,
 				8EB9F2FC2900FB46003FA011 /* HomeCoordinator */,
 				8EB9F2FD2900FB4B003FA011 /* SearchCoordinator */,
+				8ED9A2992902749F007E5046 /* LikedCoordinator */,
 				8EB9F2FE2900FB67003FA011 /* ChatCoordinator */,
 				8EB9F2FF2900FB73003FA011 /* ProfileCoordinator */,
 			);
@@ -725,6 +732,7 @@
 				8EFFF47128B7570400C3E762 /* TabBarController.swift */,
 				8E06F67D287E80580017F435 /* Home */,
 				8E06F67E287E80610017F435 /* Search */,
+				8ED9A29629027374007E5046 /* Liked */,
 				8E06F67F287E806C0017F435 /* Chat */,
 				8E06F680287E80740017F435 /* Profile */,
 			);
@@ -861,6 +869,31 @@
 				8ED9A28E29025A07007E5046 /* Setting.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		8ED9A29629027374007E5046 /* Liked */ = {
+			isa = PBXGroup;
+			children = (
+				8ED9A29729027395007E5046 /* LikedViewController.swift */,
+				8ED9A29C29027547007E5046 /* Cells */,
+			);
+			path = Liked;
+			sourceTree = "<group>";
+		};
+		8ED9A2992902749F007E5046 /* LikedCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8ED9A29A290274B6007E5046 /* LikedCoordinator.swift */,
+			);
+			path = LikedCoordinator;
+			sourceTree = "<group>";
+		};
+		8ED9A29C29027547007E5046 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8ED9A29D29027559007E5046 /* LikedTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		8ED9D77E28ADD140006A7F94 /* Views */ = {
@@ -1097,6 +1130,7 @@
 				8ED9A27F29025233007E5046 /* ChatHeaderView.swift in Sources */,
 				8E9EC10F28E1679900A5DD2D /* LogoDTO.swift in Sources */,
 				8EB9F3022900FC47003FA011 /* StockDetailCoordinator.swift in Sources */,
+				8ED9A29E29027559007E5046 /* LikedTableViewCell.swift in Sources */,
 				8EBC443A28B8ECA800E6F356 /* SettingsViewController.UITableView.swift in Sources */,
 				8E16555A28C484C800577886 /* StockDetailView.swift in Sources */,
 				8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */,
@@ -1108,6 +1142,7 @@
 				8ED9A28F29025A07007E5046 /* Setting.swift in Sources */,
 				8EAAA4C02877244000F3D5CC /* EmailLoginViewController.swift in Sources */,
 				8EFFF48828B7727C00C3E762 /* StockRankCollectionViewCell.swift in Sources */,
+				8ED9A29B290274B6007E5046 /* LikedCoordinator.swift in Sources */,
 				8E17814528C307BB00E009BC /* AuthCoordinator.swift in Sources */,
 				8E17814328C3066800E009BC /* AppCoordinator.swift in Sources */,
 				8E0FBBFA28E9409600B1930C /* MajorCommoditiesCrawlAPI.swift in Sources */,
@@ -1176,6 +1211,7 @@
 				8E55C9DD28E3115500191603 /* UserDefaultUseCase.swift in Sources */,
 				8E8FED7428E5740800944D82 /* Top20StocksDTO.swift in Sources */,
 				8EA4B55428B60E7200AB5D1D /* UITextField+.swift in Sources */,
+				8ED9A29829027395007E5046 /* LikedViewController.swift in Sources */,
 				8E0FBC0E28E9B1B800B1930C /* MajorETFsDTO.swift in Sources */,
 				8EDDC298287A720D00FA025D /* SignupWithEmailModel.swift in Sources */,
 				8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */,

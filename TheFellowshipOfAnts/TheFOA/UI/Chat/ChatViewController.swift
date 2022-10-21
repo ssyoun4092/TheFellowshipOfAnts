@@ -3,7 +3,7 @@ import SnapKit
 
 class ChatViewController: UIViewController {
 
-    weak var coordinator: Coordinator?
+    weak var coordinator: ChatCoordinator?
 
     private lazy var headerView = ChatHeaderView()
     private lazy var chatListView = ChatListView()
