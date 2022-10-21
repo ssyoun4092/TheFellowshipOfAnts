@@ -121,10 +121,7 @@ class SearchViewController: UIViewController {
 
         viewModel.push
             .drive(with: self) { owner, entity in
-                let viewController = StockDetailViewController()
-                viewController.symbol = entity.symbol
-                viewController.companyName = entity.companyName
-                owner.navigationController?.pushViewController(viewController, animated: true)
+                owner.coordinator?.pushToStockDetailVC(companyName: entity.companyName, symbol: entity.symbol)
             }
             .disposed(by: disposeBag)
 
