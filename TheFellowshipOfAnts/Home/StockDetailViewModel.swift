@@ -27,13 +27,14 @@ class StockDetailViewModel {
     let symbol: String?
     let companyName: String?
     private let useCase: StocksUseCase
+    private let stockOverviewTitles = Observable<[String]>
+        .just(["시가총액", "52주 최고가", "52주 최저가", "PER", "PBR", "EPS"])
 
     init(useCase: StocksUseCase, symbol: String, companyName: String) {
         self.useCase = useCase
         self.symbol = symbol
         self.companyName = companyName
 
-        let stockOverviewTitles = ["시가총액", "52주 최고가", "52주 최저가", "PER", "PBR", "EPS"]
         let sharedViewWillAppear = viewWillAppear.share()
 
         stockPrices = sharedViewWillAppear
@@ -42,9 +43,10 @@ class StockDetailViewModel {
 
         stockOverview = sharedViewWillAppear
             .flatMap { _ in useCase.fetchStockOverview(symbol: symbol)}
-            .enumerated()
-            .map { index, overview in
-                overview.map { .init(title: stockOverviewTitles[index], value: $0) }
+            .withLatestFrom(stockOverviewTitles) { overview, titles in
+                zip(overview, titles).map {
+                        .init(title: $1, content: $0)
+                }
             }
             .asDriver(onErrorJustReturn: [])
 
