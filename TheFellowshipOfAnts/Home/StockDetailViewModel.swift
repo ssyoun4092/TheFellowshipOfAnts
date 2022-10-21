@@ -52,7 +52,7 @@ class StockDetailViewModel {
 
         stockIncomeStatements = sharedViewWillAppear
             .flatMap { _ in useCase.fetchStockIncomeStatements(for: symbol) }
-            .map { .init(companyName: companyName, incomeStatements: $0) }
+            .map { .init(companyName: companyName, incomeStatements: $0.reversed()) }
             .asDriver(onErrorJustReturn: .init(companyName: "", incomeStatements: []))
     }
 }
