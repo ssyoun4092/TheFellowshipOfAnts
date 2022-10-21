@@ -94,6 +94,15 @@ class StocksRepositoryImpl: StocksRepository {
         .asObservable()
     }
 
+    func fetchStockIncomeStatements(for symbol: String) -> Observable<[Entity.StockIncomeStatement]> {
+
+        return network.request(StockIncomeStatementAPI(symbol: symbol))
+            .compactMap { [weak self] stockIncomeDTO in
+                self?.convertStockIncomeStatementDTOToEntity(stockIncomeDTO)
+            }
+            .asObservable()
+    }
+
     func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {
 
         return crawlNetwork.request(Top20StocksCrawlAPI())
@@ -148,6 +157,15 @@ extension StocksRepositoryImpl {
     private func convertStockPriceDTOToEntity(_ DTO: DTO.StockPrice) -> [Entity.StockPrice] {
 
         return DTO.details.map { .init(close: Double($0.close) ?? 0) }
+    }
+
+    private func convertStockIncomeStatementDTOToEntity(_ DTO: [DTO.StockIncomeStatement]) -> [Entity.StockIncomeStatement] {
+
+        return DTO.map { .init(symbol: $0.symbol,
+                               calendarYear: $0.calendarYear,
+                               revenue: $0.revenue,
+                               operatingIncome: $0.operatingIncome,
+                               operatingIncomeRatio: $0.operatingIncomeRatio) }
     }
 
     private func convertCrawledTop20StocksToEntities(_ elementsArray: [Elements]) -> [Entity.RankStock] {

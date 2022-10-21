@@ -10,9 +10,10 @@ import Foundation
 import RxSwift
 
 protocol StocksUseCase {
-    func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview>
+    func fetchStockOverview(symbol: String) -> Observable<[String]>
     func searchStockList(text: String) -> Observable<[Entity.SearchStock]>
-    func fetchStockPrices(for symbol: String) -> Observable<[Entity.StockPrice]>
+    func fetchStockPrices(for symbol: String) -> Observable<[Double]>
+    func fetchStockIncomeStatements(for symbol: String) -> Observable<[Entity.StockIncomeStatement]>
     func fetchTop20Stocks() -> Observable<[Entity.RankStock]>
     func fetchMajorStockIndices() -> Observable<[Entity.StockIndice]>
     func fetchMajorCommodities() -> Observable<[Entity.Commodity]>
