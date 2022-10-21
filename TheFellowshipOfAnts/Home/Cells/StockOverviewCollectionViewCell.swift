@@ -19,7 +19,6 @@ class StockOverviewCollectionViewCell: UICollectionViewCell {
     let titleLabel = UILabel()
     let valueLabel = UILabel()
 
-
     // MARK: - Life Cycle
 
     override init(frame: CGRect) {
@@ -38,6 +37,11 @@ class StockOverviewCollectionViewCell: UICollectionViewCell {
     func configure(with title: String, value: String) {
         titleLabel.text = title
         valueLabel.text = value
+    }
+
+    func bind(to viewModel: StockOverviewCellViewModel) {
+        titleLabel.text = viewModel.title
+        valueLabel.text = viewModel.value
     }
 }
 

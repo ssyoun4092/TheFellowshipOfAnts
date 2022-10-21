@@ -18,6 +18,7 @@ protocol CrawlServiceAPI {
 
 extension CrawlServiceAPI {
     var url: URL { return URL(string: provider.baseURLString + path)! }
+    // TODO: - 네트워크 통신이 안되면 아래 try! 에러남..
     var html: String { return try! String(contentsOf: url, encoding: .utf8) }
     var doc: Document {
         do {

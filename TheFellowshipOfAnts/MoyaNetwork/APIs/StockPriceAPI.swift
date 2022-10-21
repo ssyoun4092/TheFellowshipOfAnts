@@ -9,7 +9,7 @@ import Foundation
 
 import Moya
 
-struct StockPriceAPI: ServiceAPI {
+struct StockPriceAPI: StockAPI {
     typealias ResponseDTO = DTO.StockPrice
     var symbol: String
     var timeInterval: TimeIntervalType

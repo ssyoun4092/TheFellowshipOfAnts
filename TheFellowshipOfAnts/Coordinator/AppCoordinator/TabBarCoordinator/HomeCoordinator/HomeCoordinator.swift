@@ -26,7 +26,7 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
 
-    func pushToStockDetailViewController(companyName: String, symbol: String) {
+    func pushToStockDetailVC(companyName: String, symbol: String) {
         let repository = StocksRepositoryImpl()
         let useCase = StocksUseCaseImpl(repository: repository)
         let viewModel = StockDetailViewModel(useCase: useCase,
