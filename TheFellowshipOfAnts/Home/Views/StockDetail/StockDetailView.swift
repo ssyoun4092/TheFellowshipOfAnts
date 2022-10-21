@@ -86,6 +86,23 @@ class StockDetailView: UIView {
         let grossProfitRatioValues = incomes.map { Double($0.operatingIncomeRatio) }
         grossProfitRatioChartView.configure(with: grossProfitRatioValues, periods: periods)
     }
+
+    func bind(to viewModel: StockDetailChartViewModel) {
+        logoImageView.kf.setImage(with: URL(string: "https://logo.clearbit.com/\(viewModel.companyName)"))
+        companyNameLabel.text = viewModel.companyName
+        symbolLabel.text = viewModel.incomeStatements[0].symbol
+
+        let periods = viewModel.incomeStatements.map { $0.calendarYear }
+
+        let revenueValues = viewModel.incomeStatements.map { $0.revenue }
+        revenueChartView.configure(with: revenueValues, periods: periods)
+
+        let grossProfitValues = viewModel.incomeStatements.map { $0.operatingIncome }
+        grossProfitChartView.configure(with: grossProfitValues, periods: periods)
+
+        let grossProfitRatioValues = viewModel.incomeStatements.map { $0.operatingIncomeRatio }
+        grossProfitRatioChartView.configure(with: grossProfitRatioValues, periods: periods)
+    }
 }
 
 extension StockDetailView {
