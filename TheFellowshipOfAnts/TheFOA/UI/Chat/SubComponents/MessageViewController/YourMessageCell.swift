@@ -2,8 +2,6 @@ import UIKit
 import SnapKit
 
 class YourMessageCell: MessageCell {
-    static let identifier = String(describing: YourMessageCell.self)
-
     private lazy var profilePic: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .black

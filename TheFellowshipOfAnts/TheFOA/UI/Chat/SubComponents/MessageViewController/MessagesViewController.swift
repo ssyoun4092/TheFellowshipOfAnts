@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 import RxSwift
 
-class MessagesViewController: UIViewController, KeyboardHandler {
+class MessagesViewController: UIViewController {
     var barBottomConstraint: NSLayoutConstraint!
     var disposeBag = DisposeBag()
 

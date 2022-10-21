@@ -82,3 +82,14 @@ extension MessagesView: UICollectionViewDelegateFlowLayout {
 extension MessagesView: UICollectionViewDelegate {
 
 }
+
+extension UICollectionView {
+    enum Position {
+        case bottom
+        case top
+    }
+
+    func scroll(to position: Position, animated: Bool) {
+
+    }
+}

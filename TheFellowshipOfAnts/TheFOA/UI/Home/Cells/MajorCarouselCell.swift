@@ -38,11 +38,11 @@ class MajorCarouselCell: UICollectionViewCell {
 
     // MARK: - Methods
 
-    func configure(with model: CarouselCellType) {
-        self.mainLabel.text = model.name
-        self.fluctuationRateLabel.text = model.fluctuationRate
-        self.currentPriceLabel.text = model.price
-    }
+//    func configure(with model: CarouselCellType) {
+//        self.mainLabel.text = model.name
+//        self.fluctuationRateLabel.text = model.fluctuationRate
+//        self.currentPriceLabel.text = model.price
+//    }
 
     func bind(to viewModel: MajorCarouselCellViewModel) {
         self.mainLabel.text = viewModel.title

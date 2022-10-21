@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 class ChatCell: UITableViewCell {
-    static let identifier = String(describing: ChatCell.self)
+//    static let identifier = String(describing: ChatCell.self)
 
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()

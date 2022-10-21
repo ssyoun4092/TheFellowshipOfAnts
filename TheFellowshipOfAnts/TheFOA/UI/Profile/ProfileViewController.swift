@@ -4,7 +4,9 @@ import SnapKit
 class ProfileViewController: UIViewController {
 
     //MARK: - SubComponents
-    let profileSectionView = ProfileSectionView()
+    let profileSectionView = ProfileView()
+
+    weak var coordinator: Coordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

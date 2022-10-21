@@ -45,29 +45,6 @@ class NetworkServiceMoya: NetworkServable {
                     print("💩💩💩💩 \(response) 디코딩하는데 문제가 생겼어요!!!")
 
                     return .error(MoyaError.objectMapping(error, response))
-                } catch let DecodingError.dataCorrupted(context) {
-                    print(context)
-
-                    return .error(NetworkError.unableToDecode)
-                } catch let DecodingError.keyNotFound(key, context) {
-                    print("Key '\(key)' not found:", context.debugDescription)
-                    print("codingPath:", context.codingPath)
-
-                    return .error(NetworkError.unableToDecode)
-                } catch let DecodingError.valueNotFound(value, context) {
-                    print("Value '\(value)' not found:", context.debugDescription)
-                    print("codingPath:", context.codingPath)
-
-                    return .error(NetworkError.unableToDecode)
-                } catch let DecodingError.typeMismatch(type, context)  {
-                    print("Type '\(type)' mismatch:", context.debugDescription)
-                    print("codingPath:", context.codingPath)
-
-                    return .error(NetworkError.unableToDecode)
-                } catch {
-                    print("error: ", error)
-
-                    return .error(NetworkError.unableToDecode)
                 }
             }
     }

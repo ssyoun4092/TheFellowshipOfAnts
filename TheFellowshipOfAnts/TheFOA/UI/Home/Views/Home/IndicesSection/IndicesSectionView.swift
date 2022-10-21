@@ -5,13 +5,13 @@ import SnapKit
 final class IndicesSectionView: UIView {
 
     // MARK: - Properties
-    var stockIndexes: [StockIndex] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
+//    var stockIndexes: [StockIndex] = [] {
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//            }
+//        }
+//    }
 
     // MARK: - IBOutlets
     lazy var collectionView = UICollectionView(

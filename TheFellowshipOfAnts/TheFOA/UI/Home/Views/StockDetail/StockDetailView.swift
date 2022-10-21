@@ -71,22 +71,6 @@ class StockDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with companyName: String, _ incomes: [StockIncome]) {
-        logoImageView.kf.setImage(with: URL(string: "https://logo.clearbit.com/\(companyName).com"))
-        companyNameLabel.text = companyName
-        symbolLabel.text = incomes[0].symbol
-
-        let revenueValues = incomes.map { Double($0.revenue) }
-        let periods = incomes.map { $0.calendarYear }
-        revenueChartView.configure(with: revenueValues, periods: periods)
-
-        let grossProfitValues = incomes.map { Double($0.operatingIncome) }
-        operatingIncomeChartView.configure(with: grossProfitValues, periods: periods)
-
-        let grossProfitRatioValues = incomes.map { Double($0.operatingIncomeRatio) }
-        operatingIncomeRatioChartView.configure(with: grossProfitRatioValues, periods: periods)
-    }
-
     func bind(to viewModel: StockDetailChartViewModel) {
         logoImageView.kf.setImage(with: URL(string: "https://logo.clearbit.com/\(viewModel.companyName).com"))
         companyNameLabel.text = viewModel.companyName
