@@ -65,11 +65,19 @@ class StocksRepositoryImpl: StocksRepository {
             .asObservable()
     }
 
-    func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview> {
+    func fetchStockOverview(for symbol: String) -> Observable<Entity.StockOverview> {
 
         return network.request(StockOverviewAPI(symbol: symbol))
             .compactMap { [weak self] stockOverviewDTO in
                 return self?.convertOverviewDTOToEntity(stockOverviewDTO)
+            }
+            .asObservable()
+    }
+
+    func fetchStockPrices(for symbol: String) -> Observable<[Entity.StockPrice]> {
+        return network.request(StockPriceAPI(symbol: symbol))
+            .compactMap { [weak self] stockPriceDTO in
+                return self?.convertStockPriceDTOToEntity(stockPriceDTO)
             }
             .asObservable()
     }
@@ -84,6 +92,15 @@ class StocksRepositoryImpl: StocksRepository {
             self?.convertMajorStockIndicesDTOToEntity(majorStockIndicesDTO)
         }
         .asObservable()
+    }
+
+    func fetchStockIncomeStatements(for symbol: String) -> Observable<[Entity.StockIncomeStatement]> {
+
+        return network.request(StockIncomeStatementAPI(symbol: symbol))
+            .compactMap { [weak self] stockIncomeDTO in
+                self?.convertStockIncomeStatementDTOToEntity(stockIncomeDTO)
+            }
+            .asObservable()
     }
 
     func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {
@@ -135,6 +152,20 @@ extension StocksRepositoryImpl {
             the52WeekHigh: DTO.the52WeekHigh,
             the52WeekLow: DTO.the52WeekLow
         )
+    }
+
+    private func convertStockPriceDTOToEntity(_ DTO: DTO.StockPrice) -> [Entity.StockPrice] {
+
+        return DTO.details.map { .init(close: Double($0.close) ?? 0) }
+    }
+
+    private func convertStockIncomeStatementDTOToEntity(_ DTO: [DTO.StockIncomeStatement]) -> [Entity.StockIncomeStatement] {
+
+        return DTO.map { .init(symbol: $0.symbol,
+                               calendarYear: $0.calendarYear,
+                               revenue: $0.revenue,
+                               operatingIncome: $0.operatingIncome,
+                               operatingIncomeRatio: $0.operatingIncomeRatio) }
     }
 
     private func convertCrawledTop20StocksToEntities(_ elementsArray: [Elements]) -> [Entity.RankStock] {

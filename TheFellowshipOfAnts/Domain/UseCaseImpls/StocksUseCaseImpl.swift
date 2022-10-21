@@ -22,9 +22,28 @@ class StocksUseCaseImpl: StocksUseCase {
         return repository.searchStockList(text: text)
     }
 
-    func fetchStockOverview(symbol: String) -> Observable<Entity.StockOverview> {
+    func fetchStockOverview(symbol: String) -> Observable<[String]> {
 
-        return repository.fetchStockOverview(symbol: symbol)
+        return repository.fetchStockOverview(for: symbol)
+            .map { overview in
+                ["$" + Double(overview.marketCap)!.convertToMetrics(),
+                 "$" + overview.the52WeekHigh,
+                 "$" + overview.the52WeekLow,
+                 overview.PER,
+                 overview.PBR,
+                 overview.EPS] }
+    }
+
+    func fetchStockPrices(for symbol: String) -> Observable<[Double]> {
+
+        return repository.fetchStockPrices(for: symbol)
+            .map { stockPriceEntities in
+                stockPriceEntities.map { $0.close } }
+    }
+
+    func fetchStockIncomeStatements(for symbol: String) -> Observable<[Entity.StockIncomeStatement]> {
+
+        return repository.fetchStockIncomeStatements(for: symbol)
     }
 
     func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {
