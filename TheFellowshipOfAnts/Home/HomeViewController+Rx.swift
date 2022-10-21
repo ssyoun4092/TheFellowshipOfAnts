@@ -18,7 +18,7 @@ class HomeViewControllerRx: UIViewController {
     // MARK: - Properties
 
     let disposeBag = DisposeBag()
-    var viewModel: HomeViewModel
+    let viewModel: HomeViewModel
 
     weak var coordinator: HomeCoordinator?
 
@@ -55,11 +55,16 @@ class HomeViewControllerRx: UIViewController {
             .bind(to: homeView.indicesSectionView.pageControl.rx.currentPage)
             .disposed(by: disposeBag)
 
+        homeView.stockRankSectionView.collectionView.rx.itemSelected
+            .map { indexPath in indexPath.row }
+            .bind(to: viewModel.didTapStockRankItem)
+            .disposed(by: disposeBag)
+
         viewModel.stockIndices
             .drive(homeView.indicesSectionView.collectionView.rx.items(
                 cellIdentifier: IndiceCollectionViewCell.identifier,
-                cellType: IndiceCollectionViewCell.self)
-            ) { index, stockIndice, cell in
+                cellType: IndiceCollectionViewCell.self
+            )) { _, stockIndice, cell in
                 cell.configure(with: stockIndice, upDown: .up)
             }
             .disposed(by: disposeBag)
@@ -67,8 +72,8 @@ class HomeViewControllerRx: UIViewController {
         viewModel.top20Stocks
             .drive(homeView.stockRankSectionView.collectionView.rx.items(
                 cellIdentifier: StockRankCollectionViewCell.identifier,
-                cellType: StockRankCollectionViewCell.self)
-            ) { index, rankStock, cell in
+                cellType: StockRankCollectionViewCell.self
+            )) { _, rankStock, cell in
                 cell.configure(with: rankStock)
             }
             .disposed(by: disposeBag)
@@ -76,8 +81,8 @@ class HomeViewControllerRx: UIViewController {
         viewModel.commodityCellViewModels
             .drive(homeView.majorCommoditiesSectionView.collectionView.rx.items(
                 cellIdentifier: MajorCarouselCell.identifier,
-                cellType: MajorCarouselCell.self)
-            ) { index, viewModel, cell in
+                cellType: MajorCarouselCell.self
+            )) { _, viewModel, cell in
                 cell.bind(to: viewModel)
             }
             .disposed(by: disposeBag)
@@ -85,11 +90,18 @@ class HomeViewControllerRx: UIViewController {
         viewModel.etfCellViewModels
             .drive(homeView.majorETFSectionView.collectionView.rx.items(
                 cellIdentifier: MajorCarouselCell.identifier,
-                cellType: MajorCarouselCell.self)
-            ) { index, viewModel, cell in
+                cellType: MajorCarouselCell.self
+            )) { _, viewModel, cell in
                 cell.bind(to: viewModel)
             }
             .disposed(by: disposeBag)
+
+        viewModel.pushToStockDetailVC
+            .drive(with: self) { owner, info in
+                owner.coordinator?.pushToStockDetailVC(companyName: info.0, symbol: info.1)
+            }
+            .disposed(by: disposeBag)
+
     }
 }
 
