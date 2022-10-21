@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E06F68A287EADE60017F435 /* StockIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F689287EADE60017F435 /* StockIndex.swift */; };
-		8E06F68D287EB5830017F435 /* IndexService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06F68C287EB5830017F435 /* IndexService.swift */; };
 		8E0FBBFA28E9409600B1930C /* MajorCommoditiesCrawlAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBBF928E9409600B1930C /* MajorCommoditiesCrawlAPI.swift */; };
 		8E0FBBFC28E9428200B1930C /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBBFB28E9428200B1930C /* Commodity.swift */; };
 		8E0FBC0C28E9A99700B1930C /* MajorCarouselCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FBC0B28E9A99700B1930C /* MajorCarouselCellViewModel.swift */; };
@@ -18,13 +16,9 @@
 		8E16555A28C484C800577886 /* StockDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555928C484C800577886 /* StockDetailView.swift */; };
 		8E16555D28C4887100577886 /* StockGraphChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555C28C4887100577886 /* StockGraphChartView.swift */; };
 		8E16555F28C4888E00577886 /* AbsoluteValueBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16555E28C4888E00577886 /* AbsoluteValueBarChartView.swift */; };
-		8E16556928C5B03700577886 /* StockIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556828C5B03700577886 /* StockIncome.swift */; };
 		8E16556B28C5D02E00577886 /* PercentageValueChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556A28C5D02E00577886 /* PercentageValueChartView.swift */; };
-		8E16556D28C5DD1200577886 /* StockOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E16556C28C5DD1100577886 /* StockOverview.swift */; };
 		8E17812928C05D0400E009BC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812828C05D0400E009BC /* Coordinator.swift */; };
 		8E17812D28C0788700E009BC /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17812C28C0788700E009BC /* UIView+.swift */; };
-		8E17813528C099D700E009BC /* Commodity2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813428C099D700E009BC /* Commodity2.swift */; };
-		8E17813B28C1C1D900E009BC /* ETF2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17813A28C1C1D900E009BC /* ETF2.swift */; };
 		8E17814328C3066800E009BC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814228C3066800E009BC /* AppCoordinator.swift */; };
 		8E17814528C307BB00E009BC /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814428C307BB00E009BC /* AuthCoordinator.swift */; };
 		8E17814728C33D1D00E009BC /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814628C33D1D00E009BC /* TabBarCoordinator.swift */; };
@@ -33,12 +27,9 @@
 		8E17814D28C36F7C00E009BC /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814C28C36F7C00E009BC /* ChatCoordinator.swift */; };
 		8E17814F28C36FA900E009BC /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814E28C36FA900E009BC /* ProfileCoordinator.swift */; };
 		8E20DFF828CB298300DB44A2 /* StockOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E20DFF728CB298300DB44A2 /* StockOverviewCollectionViewCell.swift */; };
-		8E27715928BC8E2A00CF6D8D /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27715828BC8E2A00CF6D8D /* Auth.swift */; };
-		8E27717628BCDAE000CF6D8D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27717528BCDAE000CF6D8D /* APIClient.swift */; };
 		8E27718128BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */; };
 		8E27718228BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8E43315328D199ED008922AB /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 8E43315228D199ED008922AB /* Charts */; };
-		8E43316328D3084E008922AB /* SymbolSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43316228D3084E008922AB /* SymbolSearch.swift */; };
 		8E43316C28D42CA2008922AB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43316B28D42CA2008922AB /* SearchViewController.swift */; };
 		8E43316E28D42D66008922AB /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43316D28D42D66008922AB /* SearchViewModel.swift */; };
 		8E46F37B28F97A48001AD4D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E46F37A28F97A48001AD4D8 /* HomeViewController.swift */; };
@@ -65,9 +56,6 @@
 		8E7C46AD28E07BFF00163D30 /* StocksRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46AC28E07BFF00163D30 /* StocksRepositoryImpl.swift */; };
 		8E7C46AF28E08BD100163D30 /* EmptyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46AE28E08BD100163D30 /* EmptyDTO.swift */; };
 		8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8068E828B842E2004039B1 /* NSObject+.swift */; };
-		8E82C9DE28D83DC000BB7001 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9DD28D83DC000BB7001 /* NetworkService.swift */; };
-		8E82C9E328D8593500BB7001 /* NetworkService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9E228D8593500BB7001 /* NetworkService+Rx.swift */; };
-		8E82C9E728D97B4A00BB7001 /* Translated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E82C9E628D97B4A00BB7001 /* Translated.swift */; };
 		8E8FED6E28E55EC500944D82 /* MajorStockIndicesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */; };
 		8E8FED7028E5614C00944D82 /* StockIndice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED6F28E5614C00944D82 /* StockIndice.swift */; };
 		8E8FED7228E56FCD00944D82 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED7128E56FCD00944D82 /* HomeViewModel.swift */; };
@@ -90,8 +78,6 @@
 		8E96D55728E2988D00CCFE15 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D55628E2988D00CCFE15 /* UserDefault.swift */; };
 		8E96D55928E298B800CCFE15 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D55828E298B800CCFE15 /* UserDefaultManager.swift */; };
 		8E96D55B28E29A0500CCFE15 /* RecentSearchedStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */; };
-		8E9B2BC92895670C007B4196 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B2BC82895670C007B4196 /* Setting.swift */; };
-		8E9D32EE28CDB2050039094D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9D32ED28CDB2050039094D /* UserDefaults.swift */; };
 		8E9EC10928E1531800A5DD2D /* SearchStockEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10828E1531800A5DD2D /* SearchStockEntity.swift */; };
 		8E9EC10B28E1535400A5DD2D /* SearchStocksDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10A28E1535400A5DD2D /* SearchStocksDTO.swift */; };
 		8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9EC10C28E15BBD00A5DD2D /* APIProvider.swift */; };
@@ -137,7 +123,6 @@
 		8EBC443828B8E87200E6F356 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC443728B8E87200E6F356 /* SettingsView.swift */; };
 		8EBC443A28B8ECA800E6F356 /* SettingsViewController.UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBC443928B8ECA800E6F356 /* SettingsViewController.UITableView.swift */; };
 		8ED070D928BEF53D006DB54D /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED070D828BEF53D006DB54D /* SwiftSoup */; };
-		8ED070DC28BEFEC3006DB54D /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED070DB28BEFEC3006DB54D /* Stock.swift */; };
 		8ED9D77D28ADD13A006A7F94 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9D77C28ADD13A006A7F94 /* LoginView.swift */; };
 		8ED9EA9628E41042003D37C3 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 8ED9EA9528E41042003D37C3 /* RxGesture */; };
 		8EDABDA228E0253A008814F3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 8EDABDA128E0253A008814F3 /* Moya */; };
@@ -146,9 +131,7 @@
 		8EDABDAB28E02AE3008814F3 /* SearchStocksAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDABDAA28E02AE3008814F3 /* SearchStocksAPI.swift */; };
 		8EDABDAF28E03CC6008814F3 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDABDAE28E03CC6008814F3 /* NetworkError.swift */; };
 		8EDD188928E85D4800AC51D4 /* MajorStockIndicesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */; };
-		8EDD6FE628BF4058004958C5 /* StockRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD6FE528BF4058004958C5 /* StockRank.swift */; };
 		8EDDC298287A720D00FA025D /* SignupWithEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDDC297287A720D00FA025D /* SignupWithEmailModel.swift */; };
-		8EDDC29F287C01F600FA025D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDDC29E287C01F600FA025D /* User.swift */; };
 		8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF41128B7161300C3E762 /* EmailLoginView.swift */; };
 		8EFFF41528B7282400C3E762 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF41428B7282400C3E762 /* SignupView.swift */; };
 		8EFFF45128B7504A00C3E762 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF44528B7504A00C3E762 /* ChatViewController.swift */; };
@@ -198,8 +181,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8E06F689287EADE60017F435 /* StockIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIndex.swift; sourceTree = "<group>"; };
-		8E06F68C287EB5830017F435 /* IndexService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexService.swift; sourceTree = "<group>"; };
 		8E0FBBF928E9409600B1930C /* MajorCommoditiesCrawlAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCommoditiesCrawlAPI.swift; sourceTree = "<group>"; };
 		8E0FBBFB28E9428200B1930C /* Commodity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
 		8E0FBC0B28E9A99700B1930C /* MajorCarouselCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCarouselCellViewModel.swift; sourceTree = "<group>"; };
@@ -209,13 +190,9 @@
 		8E16555928C484C800577886 /* StockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailView.swift; sourceTree = "<group>"; };
 		8E16555C28C4887100577886 /* StockGraphChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockGraphChartView.swift; sourceTree = "<group>"; };
 		8E16555E28C4888E00577886 /* AbsoluteValueBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsoluteValueBarChartView.swift; sourceTree = "<group>"; };
-		8E16556828C5B03700577886 /* StockIncome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIncome.swift; sourceTree = "<group>"; };
 		8E16556A28C5D02E00577886 /* PercentageValueChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageValueChartView.swift; sourceTree = "<group>"; };
-		8E16556C28C5DD1100577886 /* StockOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOverview.swift; sourceTree = "<group>"; };
 		8E17812828C05D0400E009BC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		8E17812C28C0788700E009BC /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		8E17813428C099D700E009BC /* Commodity2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commodity2.swift; sourceTree = "<group>"; };
-		8E17813A28C1C1D900E009BC /* ETF2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETF2.swift; sourceTree = "<group>"; };
 		8E17814228C3066800E009BC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8E17814428C307BB00E009BC /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		8E17814628C33D1D00E009BC /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -224,11 +201,8 @@
 		8E17814C28C36F7C00E009BC /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		8E17814E28C36FA900E009BC /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		8E20DFF728CB298300DB44A2 /* StockOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StockOverviewCollectionViewCell.swift; path = TheFellowshipOfAnts/Home/Cells/StockOverviewCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
-		8E27715828BC8E2A00CF6D8D /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		8E27717528BCDAE000CF6D8D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheFellowshipOfAntsKey.xcodeproj; path = ../../TheFellowshipOfAntsKey/TheFellowshipOfAntsKey.xcodeproj; sourceTree = "<group>"; };
 		8E32114528B9EBC6009B7F42 /* TheFellowshipOfAnts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheFellowshipOfAnts.entitlements; sourceTree = "<group>"; };
-		8E43316228D3084E008922AB /* SymbolSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolSearch.swift; sourceTree = "<group>"; };
 		8E43316B28D42CA2008922AB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8E43316D28D42D66008922AB /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		8E46F37A28F97A48001AD4D8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -256,9 +230,6 @@
 		8E7C46AC28E07BFF00163D30 /* StocksRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksRepositoryImpl.swift; sourceTree = "<group>"; };
 		8E7C46AE28E08BD100163D30 /* EmptyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDTO.swift; sourceTree = "<group>"; };
 		8E8068E828B842E2004039B1 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
-		8E82C9DD28D83DC000BB7001 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		8E82C9E228D8593500BB7001 /* NetworkService+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Rx.swift"; sourceTree = "<group>"; };
-		8E82C9E628D97B4A00BB7001 /* Translated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translated.swift; sourceTree = "<group>"; };
 		8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorStockIndicesDTO.swift; sourceTree = "<group>"; };
 		8E8FED6F28E5614C00944D82 /* StockIndice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIndice.swift; sourceTree = "<group>"; };
 		8E8FED7128E56FCD00944D82 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -281,8 +252,6 @@
 		8E96D55628E2988D00CCFE15 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		8E96D55828E298B800CCFE15 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchedStocks.swift; sourceTree = "<group>"; };
-		8E9B2BC82895670C007B4196 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		8E9D32ED28CDB2050039094D /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		8E9EC10828E1531800A5DD2D /* SearchStockEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStockEntity.swift; sourceTree = "<group>"; };
 		8E9EC10A28E1535400A5DD2D /* SearchStocksDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStocksDTO.swift; sourceTree = "<group>"; };
 		8E9EC10C28E15BBD00A5DD2D /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
@@ -318,16 +287,13 @@
 		8EBC443428B8DBD700E6F356 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8EBC443728B8E87200E6F356 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8EBC443928B8ECA800E6F356 /* SettingsViewController.UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.UITableView.swift; sourceTree = "<group>"; };
-		8ED070DB28BEFEC3006DB54D /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		8ED9D77C28ADD13A006A7F94 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8EDABDA728E02694008814F3 /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
 		8EDABDAA28E02AE3008814F3 /* SearchStocksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStocksAPI.swift; sourceTree = "<group>"; };
 		8EDABDAC28E03A50008814F3 /* NetworkServiceMoya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMoya.swift; sourceTree = "<group>"; };
 		8EDABDAE28E03CC6008814F3 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorStockIndicesAPI.swift; sourceTree = "<group>"; };
-		8EDD6FE528BF4058004958C5 /* StockRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRank.swift; sourceTree = "<group>"; };
 		8EDDC297287A720D00FA025D /* SignupWithEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWithEmailModel.swift; sourceTree = "<group>"; };
-		8EDDC29E287C01F600FA025D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8EFFF41128B7161300C3E762 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		8EFFF41428B7282400C3E762 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		8EFFF44528B7504A00C3E762 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "../../../../../../../../Downloads/TheFellowshipOfAnts-a2c6bf0eb0112a565b73a2e4875b8901f22b5043/TheFellowshipOfAnts/Views/TabBar/Chat/ChatViewController.swift"; sourceTree = "<group>"; };
@@ -488,28 +454,11 @@
 		8E4CB36E28755FD60033AD85 /* TheFellowshipOfAnts */ = {
 			isa = PBXGroup;
 			children = (
-				8E96D50928E1DA5900CCFE15 /* Presentation */,
 				8E7C46AA28E07BE800163D30 /* Data */,
+				8EDABDA528E0265C008814F3 /* TheFOANetwork */,
 				8E7C469E28E07A9D00163D30 /* Domain */,
-				8EDABDA528E0265C008814F3 /* MoyaNetwork */,
-				8E82C9DC28D8397600BB7001 /* NetworkService */,
-				8E9D32EA28CDB1D30039094D /* SDK */,
-				8E17812628C05CF700E009BC /* Coordinator */,
-				8E32114528B9EBC6009B7F42 /* TheFellowshipOfAnts.entitlements */,
-				8E4CB36F28755FD60033AD85 /* AppDelegate.swift */,
-				8E4CB37128755FD60033AD85 /* SceneDelegate.swift */,
-				8EFFF47128B7570400C3E762 /* TabBarController.swift */,
-				8EAAA4BE2876C60200F3D5CC /* Login */,
-				8E06F67D287E80580017F435 /* Home */,
-				8E06F67E287E80610017F435 /* Search */,
-				8E06F67F287E806C0017F435 /* Chat */,
-				8E06F680287E80740017F435 /* Profile */,
+				8E96D50928E1DA5900CCFE15 /* TheFOA */,
 				8EDDC29B287C019D00FA025D /* Extensions */,
-				8E06F68C287EB5830017F435 /* IndexService.swift */,
-				8EA2D55C28792E6A00163D6A /* GoogleService-Info.plist */,
-				8E4CB37D28755FD70033AD85 /* Info.plist */,
-				8E4CB37828755FD70033AD85 /* Assets.xcassets */,
-				8E4CB37A28755FD70033AD85 /* LaunchScreen.storyboard */,
 				8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */,
 			);
 			path = TheFellowshipOfAnts;
@@ -586,6 +535,7 @@
 				8E8FED8528E5980D00944D82 /* RankStock.swift */,
 				8E0FBBFB28E9428200B1930C /* Commodity.swift */,
 				8E0FBC1128E9B59C00B1930C /* ETF.swift */,
+				8EAB1BD928BDE761004F38C3 /* UpDown.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -622,15 +572,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		8E82C9DC28D8397600BB7001 /* NetworkService */ = {
-			isa = PBXGroup;
-			children = (
-				8E82C9DD28D83DC000BB7001 /* NetworkService.swift */,
-				8E82C9E228D8593500BB7001 /* NetworkService+Rx.swift */,
-			);
-			path = NetworkService;
-			sourceTree = "<group>";
-		};
 		8E8FED7B28E58B3300944D82 /* CrawlAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,11 +592,16 @@
 			path = Crawling;
 			sourceTree = "<group>";
 		};
-		8E96D50928E1DA5900CCFE15 /* Presentation */ = {
+		8E96D50928E1DA5900CCFE15 /* TheFOA */ = {
 			isa = PBXGroup;
 			children = (
+				8E17812628C05CF700E009BC /* Coordinator */,
+				8EB9F31A29024E49003FA011 /* App */,
+				8EB9F31929024E33003FA011 /* UI */,
+				8EB9F31C29024E8D003FA011 /* SupportingFiles */,
+				8EB9F31D29024F76003FA011 /* Resources */,
 			);
-			path = Presentation;
+			path = TheFOA;
 			sourceTree = "<group>";
 		};
 		8E96D54328E2853B00CCFE15 /* Interfaces */ = {
@@ -685,24 +631,6 @@
 				8E55C9E228E341C000191603 /* Models */,
 			);
 			path = UserDefaults;
-			sourceTree = "<group>";
-		};
-		8E9D32EA28CDB1D30039094D /* SDK */ = {
-			isa = PBXGroup;
-			children = (
-				8E27717528BCDAE000CF6D8D /* APIClient.swift */,
-				8EDDC299287C017400FA025D /* Models */,
-				8E9D32EC28CDB1ED0039094D /* Commons */,
-			);
-			path = SDK;
-			sourceTree = "<group>";
-		};
-		8E9D32EC28CDB1ED0039094D /* Commons */ = {
-			isa = PBXGroup;
-			children = (
-				8E9D32ED28CDB2050039094D /* UserDefaults.swift */,
-			);
-			path = Commons;
 			sourceTree = "<group>";
 		};
 		8EA4B55528B60EE900AB5D1D /* ViewModel */ = {
@@ -790,6 +718,47 @@
 			path = AuthCoordinator;
 			sourceTree = "<group>";
 		};
+		8EB9F31929024E33003FA011 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8EAAA4BE2876C60200F3D5CC /* Login */,
+				8EFFF47128B7570400C3E762 /* TabBarController.swift */,
+				8E06F67D287E80580017F435 /* Home */,
+				8E06F67E287E80610017F435 /* Search */,
+				8E06F67F287E806C0017F435 /* Chat */,
+				8E06F680287E80740017F435 /* Profile */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		8EB9F31A29024E49003FA011 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8E4CB36F28755FD60033AD85 /* AppDelegate.swift */,
+				8E4CB37128755FD60033AD85 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8EB9F31C29024E8D003FA011 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8E32114528B9EBC6009B7F42 /* TheFellowshipOfAnts.entitlements */,
+				8EA2D55C28792E6A00163D6A /* GoogleService-Info.plist */,
+				8E4CB37D28755FD70033AD85 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		8EB9F31D29024F76003FA011 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8E4CB37828755FD70033AD85 /* Assets.xcassets */,
+				8E4CB37A28755FD70033AD85 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		8EBC441B28B8661F00E6F356 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -835,7 +804,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		8EDABDA528E0265C008814F3 /* MoyaNetwork */ = {
+		8EDABDA528E0265C008814F3 /* TheFOANetwork */ = {
 			isa = PBXGroup;
 			children = (
 				8E8FED7B28E58B3300944D82 /* CrawlAPI */,
@@ -843,7 +812,7 @@
 				8EDABDA928E02AD6008814F3 /* APIs */,
 				8EDABDA628E0267C008814F3 /* Networking */,
 			);
-			path = MoyaNetwork;
+			path = TheFOANetwork;
 			sourceTree = "<group>";
 		};
 		8EDABDA628E0267C008814F3 /* Networking */ = {
@@ -872,26 +841,6 @@
 				8E96D55328E288E600CCFE15 /* TranslateAPI.swift */,
 			);
 			path = APIs;
-			sourceTree = "<group>";
-		};
-		8EDDC299287C017400FA025D /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8EDDC29E287C01F600FA025D /* User.swift */,
-				8EDD6FE528BF4058004958C5 /* StockRank.swift */,
-				8E06F689287EADE60017F435 /* StockIndex.swift */,
-				8ED070DB28BEFEC3006DB54D /* Stock.swift */,
-				8E16556828C5B03700577886 /* StockIncome.swift */,
-				8E9B2BC82895670C007B4196 /* Setting.swift */,
-				8E27715828BC8E2A00CF6D8D /* Auth.swift */,
-				8EAB1BD928BDE761004F38C3 /* UpDown.swift */,
-				8E17813428C099D700E009BC /* Commodity2.swift */,
-				8E17813A28C1C1D900E009BC /* ETF2.swift */,
-				8E16556C28C5DD1100577886 /* StockOverview.swift */,
-				8E82C9E628D97B4A00BB7001 /* Translated.swift */,
-				8E43316228D3084E008922AB /* SymbolSearch.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		8EDDC29B287C019D00FA025D /* Extensions */ = {
@@ -1111,19 +1060,16 @@
 				8E9EC10F28E1679900A5DD2D /* LogoDTO.swift in Sources */,
 				8EB9F3022900FC47003FA011 /* StockDetailCoordinator.swift in Sources */,
 				8EBC443A28B8ECA800E6F356 /* SettingsViewController.UITableView.swift in Sources */,
-				8EDDC29F287C01F600FA025D /* User.swift in Sources */,
 				8E16555A28C484C800577886 /* StockDetailView.swift in Sources */,
 				8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */,
 				8EFFF47528B76EF800C3E762 /* HomeView.swift in Sources */,
 				8EDABDA828E02694008814F3 /* ServiceAPI.swift in Sources */,
 				8E8FED8428E591B900944D82 /* CrawlAPIProvider.swift in Sources */,
-				8E82C9DE28D83DC000BB7001 /* NetworkService.swift in Sources */,
 				8E96D55428E288E600CCFE15 /* TranslateAPI.swift in Sources */,
 				8E17814D28C36F7C00E009BC /* ChatCoordinator.swift in Sources */,
 				8EAAA4C02877244000F3D5CC /* EmailLoginViewController.swift in Sources */,
 				8EFFF48828B7727C00C3E762 /* StockRankCollectionViewCell.swift in Sources */,
 				8E17814528C307BB00E009BC /* AuthCoordinator.swift in Sources */,
-				8E16556D28C5DD1200577886 /* StockOverview.swift in Sources */,
 				8E17814328C3066800E009BC /* AppCoordinator.swift in Sources */,
 				8E0FBBFA28E9409600B1930C /* MajorCommoditiesCrawlAPI.swift in Sources */,
 				8E55C9DB28E2FFF700191603 /* UserDefaultCRUDRepositoryImpl.swift in Sources */,
@@ -1147,8 +1093,6 @@
 				8E96D54228E283A300CCFE15 /* TranslateUseCaseImpl.swift in Sources */,
 				8E17812928C05D0400E009BC /* Coordinator.swift in Sources */,
 				8E8FED6E28E55EC500944D82 /* MajorStockIndicesDTO.swift in Sources */,
-				8E9B2BC92895670C007B4196 /* Setting.swift in Sources */,
-				8E43316328D3084E008922AB /* SymbolSearch.swift in Sources */,
 				8EBC442028B8666D00E6F356 /* RecentSearchListView.swift in Sources */,
 				8EFFF45528B7504A00C3E762 /* YourMessageCell.swift in Sources */,
 				8EBC442128B8667000E6F356 /* RecentSearchCell.swift in Sources */,
@@ -1165,16 +1109,13 @@
 				8EFFF41528B7282400C3E762 /* SignupView.swift in Sources */,
 				8EDABDAF28E03CC6008814F3 /* NetworkError.swift in Sources */,
 				8EFFF45128B7504A00C3E762 /* ChatViewController.swift in Sources */,
-				8E16556928C5B03700577886 /* StockIncome.swift in Sources */,
 				8E7C469B28E076DE00163D30 /* DTO.swift in Sources */,
 				8E96D54628E2857800CCFE15 /* StocksUseCase.swift in Sources */,
-				8E06F68A287EADE60017F435 /* StockIndex.swift in Sources */,
 				8EB9F30E29013A82003FA011 /* StockIncomStatementDTO.swift in Sources */,
 				8E8FED8628E5980D00944D82 /* RankStock.swift in Sources */,
 				8E7C46A528E07AE300163D30 /* StockOverviewEntity.swift in Sources */,
 				8EB9F31229013D58003FA011 /* StockIncomeStatementEntity.swift in Sources */,
 				8EAAA4C22877259800F3D5CC /* UIViewController+.swift in Sources */,
-				8E82C9E328D8593500BB7001 /* NetworkService+Rx.swift in Sources */,
 				8EB9F31629023102003FA011 /* StockDetailChartViewModel.swift in Sources */,
 				8EFFF45228B7504A00C3E762 /* ChatHeaderView.swift in Sources */,
 				8EB9F3062900FD7C003FA011 /* StockDetailViewModel.swift in Sources */,
@@ -1188,20 +1129,14 @@
 				8E8FED7D28E58B5600944D82 /* Top20StocksCrawlAPI.swift in Sources */,
 				8E9EC10B28E1535400A5DD2D /* SearchStocksDTO.swift in Sources */,
 				8EDD188928E85D4800AC51D4 /* MajorStockIndicesAPI.swift in Sources */,
-				8E9D32EE28CDB2050039094D /* UserDefaults.swift in Sources */,
 				8E0FBC1228E9B59C00B1930C /* ETF.swift in Sources */,
 				8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */,
 				8E0FBBFC28E9428200B1930C /* Commodity.swift in Sources */,
 				8E8FED7628E574F400944D82 /* CommoditiesDTO.swift in Sources */,
 				8EB9F318290249E9003FA011 /* StockDetailViewController.swift in Sources */,
 				8E55C9DD28E3115500191603 /* UserDefaultUseCase.swift in Sources */,
-				8EDD6FE628BF4058004958C5 /* StockRank.swift in Sources */,
 				8E8FED7428E5740800944D82 /* Top20StocksDTO.swift in Sources */,
-				8E06F68D287EB5830017F435 /* IndexService.swift in Sources */,
 				8EA4B55428B60E7200AB5D1D /* UITextField+.swift in Sources */,
-				8E17813B28C1C1D900E009BC /* ETF2.swift in Sources */,
-				8E17813528C099D700E009BC /* Commodity2.swift in Sources */,
-				8ED070DC28BEFEC3006DB54D /* Stock.swift in Sources */,
 				8E0FBC0E28E9B1B800B1930C /* MajorETFsDTO.swift in Sources */,
 				8EDDC298287A720D00FA025D /* SignupWithEmailModel.swift in Sources */,
 				8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */,
@@ -1217,13 +1152,11 @@
 				8E0FBC0C28E9A99700B1930C /* MajorCarouselCellViewModel.swift in Sources */,
 				8E96D55228E288DA00CCFE15 /* TranslateDTO.swift in Sources */,
 				8E8FED7828E577AC00944D82 /* CrawlServiceAPI.swift in Sources */,
-				8E27715928BC8E2A00CF6D8D /* Auth.swift in Sources */,
 				8EFFF45728B7504A00C3E762 /* MessagesViewController.swift in Sources */,
 				8EFFF47228B7570400C3E762 /* TabBarController.swift in Sources */,
 				8ED9D77D28ADD13A006A7F94 /* LoginView.swift in Sources */,
 				8EBC442228B8667200E6F356 /* SearchingItemCell.swift in Sources */,
 				8E16555D28C4887100577886 /* StockGraphChartView.swift in Sources */,
-				8E27717628BCDAE000CF6D8D /* APIClient.swift in Sources */,
 				8EFFF48A28B7727C00C3E762 /* IndexChartView.swift in Sources */,
 				8E55C9E428E34D2400191603 /* UIViewController+Rx.swift in Sources */,
 				8EFFF45828B7504A00C3E762 /* MyMessageCell.swift in Sources */,
@@ -1252,7 +1185,6 @@
 				8EFFF48728B7727C00C3E762 /* IndiceCollectionViewCell.swift in Sources */,
 				8E7C469D28E0770C00163D30 /* StockOverviewDTO.swift in Sources */,
 				8E17814928C36F1000E009BC /* HomeCoordinator.swift in Sources */,
-				8E82C9E728D97B4A00BB7001 /* Translated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
