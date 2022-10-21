@@ -9,10 +9,10 @@ import Foundation
 
 class StockOverviewCellViewModel {
     let title: String
-    let value: String
+    let content: String
 
-    init(title: String, value: String) {
+    init(title: String, content: String) {
         self.title = title
-        self.value = value
+        self.content = content
     }
 }

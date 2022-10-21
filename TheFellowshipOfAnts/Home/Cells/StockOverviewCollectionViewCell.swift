@@ -17,7 +17,7 @@ class StockOverviewCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
 
     let titleLabel = UILabel()
-    let valueLabel = UILabel()
+    let contentLabel = UILabel()
 
     // MARK: - Life Cycle
 
@@ -36,12 +36,12 @@ class StockOverviewCollectionViewCell: UICollectionViewCell {
 
     func configure(with title: String, value: String) {
         titleLabel.text = title
-        valueLabel.text = value
+        contentLabel.text = value
     }
 
     func bind(to viewModel: StockOverviewCellViewModel) {
         titleLabel.text = viewModel.title
-        valueLabel.text = viewModel.value
+        contentLabel.text = viewModel.content
     }
 }
 
@@ -59,12 +59,12 @@ extension StockOverviewCollectionViewCell {
     }
 
     private func setupValueLabel() {
-        contentView.addSubview(valueLabel)
+        contentView.addSubview(contentLabel)
 
-        valueLabel.text = "59B"
-        valueLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        contentLabel.text = "59B"
+        contentLabel.font = .systemFont(ofSize: 16, weight: .semibold)
 
-        valueLabel.snp.makeConstraints {
+        contentLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(5)
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
