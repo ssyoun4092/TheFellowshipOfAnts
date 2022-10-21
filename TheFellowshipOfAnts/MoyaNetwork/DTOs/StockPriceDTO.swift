@@ -23,14 +23,14 @@ extension DTO {
             let symbol: String
             let interval: String
             let currency: String
-            let exchageTimezone: String
+            let exchangeTimezone: String
             let exchange: String
             let micCode: String
             let type: String
 
             enum CodingKeys: String, CodingKey {
                 case symbol, interval, currency, exchange, type
-                case exchageTimezone = "exchange_timezone"
+                case exchangeTimezone = "exchange_timezone"
                 case micCode = "mic_code"
             }
         }

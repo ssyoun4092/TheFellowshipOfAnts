@@ -24,6 +24,6 @@ struct StockPriceAPI: StockAPI {
             "symbol": symbol,
             "interval": timeInterval.rawValue,
             "outputsize": timeInterval.outputSize,
-            "apiKey": provider.apiKey
+            "apikey": provider.apiKey
         ], encoding: URLEncoding.queryString)}
 }

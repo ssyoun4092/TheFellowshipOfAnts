@@ -21,7 +21,8 @@ class HomeCoordinator: Coordinator {
         let repository = StocksRepositoryImpl()
         let useCase = StocksUseCaseImpl(repository: repository)
         let viewModel = HomeViewModel(useCase: useCase)
-        let vc = HomeViewControllerRx(viewModel: viewModel)
+        let vc = HomeViewController(viewModel: viewModel)
+        vc.coordinator = self
 
         navigationController.pushViewController(vc, animated: true)
     }
@@ -32,13 +33,7 @@ class HomeCoordinator: Coordinator {
         let viewModel = StockDetailViewModel(useCase: useCase,
                                              symbol: symbol,
                                              companyName: companyName)
-        let vc = StockDetailViewControllerRx(viewModel: viewModel)
+        let vc = StockDetailViewController(viewModel: viewModel)
         navigationController.pushViewController(vc, animated: true)
-
-//        let vc = StockDetailViewController()
-//        vc.companyName = companyName
-//        vc.symbol = symbol
-//        vc.coordinator = self
-//        navigationController.pushViewController(vc, animated: true)
     }
 }

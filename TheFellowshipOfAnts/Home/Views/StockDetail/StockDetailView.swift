@@ -88,7 +88,7 @@ class StockDetailView: UIView {
     }
 
     func bind(to viewModel: StockDetailChartViewModel) {
-        logoImageView.kf.setImage(with: URL(string: "https://logo.clearbit.com/\(viewModel.companyName)"))
+        logoImageView.kf.setImage(with: URL(string: "https://logo.clearbit.com/\(viewModel.companyName).com"))
         companyNameLabel.text = viewModel.companyName
         symbolLabel.text = viewModel.incomeStatements[0].symbol
 
@@ -138,8 +138,6 @@ extension StockDetailView {
     private func setupLogoImageView() {
         contentView.addSubview(logoImageView)
 
-        logoImageView.kf.setImage(with: URL(string: "https://companiesmarketcap.com/img/company-logos/64/AAPL.png"))
-
         logoImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().inset(20)
@@ -151,7 +149,6 @@ extension StockDetailView {
     private func setupCompanyNameLabel() {
         contentView.addSubview(companyNameLabel)
 
-        companyNameLabel.text = "애플"
         companyNameLabel.font = .systemFont(ofSize: 17, weight: .semibold)
 
         companyNameLabel.snp.makeConstraints {
@@ -163,7 +160,6 @@ extension StockDetailView {
     private func setupSymbolLabel() {
         contentView.addSubview(symbolLabel)
 
-        symbolLabel.text = "AAPL"
         symbolLabel.font = .systemFont(ofSize: 14, weight: .medium)
 
         symbolLabel.snp.makeConstraints {
