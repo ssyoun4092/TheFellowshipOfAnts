@@ -20,7 +20,7 @@ class StockDetailViewControllerRx: UIViewController {
 
     // MARK: - IBOutlets
 
-    let homeView = HomeView()
+    let stockDetailView = StockDetailView()
 
     // MARK: - Life Cycle
 
@@ -47,17 +47,39 @@ class StockDetailViewControllerRx: UIViewController {
             .map { _ in () }
             .bind(to: viewModel.viewWillAppear)
             .disposed(by: disposeBag)
+
+        viewModel.stockPrices
+            .drive(with: self) { owner, prices in
+                owner.stockDetailView.stockGraphChartView.configure(with: prices, upDown: .up)
+            }
+            .disposed(by: disposeBag)
+
+        viewModel.stockOverview
+            .drive(stockDetailView.overviewCollectionView.rx.items(
+                cellIdentifier: StockOverviewCollectionViewCell.identifier,
+                cellType: StockOverviewCollectionViewCell.self)
+            ) { _, viewModel, cell in
+                cell.bind(to: viewModel)
+            }
+            .disposed(by: disposeBag)
+
+        viewModel.stockIncomeStatements
+            .drive(with: self) { owner, viewModel in
+                owner.stockDetailView.bind(to: viewModel)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
 extension StockDetailViewControllerRx {
     private func setupViews() {
         view.backgroundColor = .white
+        view.addSubview(stockDetailView)
 
-        view.addSubview(homeView)
-
-        homeView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        stockDetailView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
 }
