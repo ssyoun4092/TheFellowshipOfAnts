@@ -51,13 +51,13 @@ class StockDetailView: UIView {
     let revenueTitleLabel = UILabel()
     let revenueChartView = AbsoluteValueBarChartView()
 
-    let grossProfitVStack = UIStackView()
-    let grossProfitTitleLabel = UILabel()
-    let grossProfitChartView = AbsoluteValueBarChartView()
+    let operatingIncomeVStack = UIStackView()
+    let operatingIncomeTitleLabel = UILabel()
+    let operatingIncomeChartView = AbsoluteValueBarChartView()
 
-    let grossProfitRatioVStack = UIStackView()
-    let grossProfitRatioTitleLabel = UILabel()
-    let grossProfitRatioChartView = PercentageValueBarChartView()
+    let operatingIncomeRatioVStack = UIStackView()
+    let operatingIncomeRatioTitleLabel = UILabel()
+    let operatingIncomeRatioChartView = PercentageValueBarChartView()
 
     // MARK: - Life Cycle
 
@@ -81,10 +81,10 @@ class StockDetailView: UIView {
         revenueChartView.configure(with: revenueValues, periods: periods)
 
         let grossProfitValues = incomes.map { Double($0.operatingIncome) }
-        grossProfitChartView.configure(with: grossProfitValues, periods: periods)
+        operatingIncomeChartView.configure(with: grossProfitValues, periods: periods)
 
         let grossProfitRatioValues = incomes.map { Double($0.operatingIncomeRatio) }
-        grossProfitRatioChartView.configure(with: grossProfitRatioValues, periods: periods)
+        operatingIncomeRatioChartView.configure(with: grossProfitRatioValues, periods: periods)
     }
 
     func bind(to viewModel: StockDetailChartViewModel) {
@@ -94,14 +94,14 @@ class StockDetailView: UIView {
 
         let periods = viewModel.incomeStatements.map { $0.calendarYear }
 
-        let revenueValues = viewModel.incomeStatements.map { $0.revenue }
-        revenueChartView.configure(with: revenueValues, periods: periods)
+        let revenues = viewModel.incomeStatements.map { $0.revenue }
+        revenueChartView.configure(with: revenues, periods: periods)
 
-        let grossProfitValues = viewModel.incomeStatements.map { $0.operatingIncome }
-        grossProfitChartView.configure(with: grossProfitValues, periods: periods)
+        let operatingIncomes = viewModel.incomeStatements.map { $0.operatingIncome }
+        operatingIncomeChartView.configure(with: operatingIncomes, periods: periods)
 
-        let grossProfitRatioValues = viewModel.incomeStatements.map { $0.operatingIncomeRatio }
-        grossProfitRatioChartView.configure(with: grossProfitRatioValues, periods: periods)
+        let operatingIncomeRatios = viewModel.incomeStatements.map { $0.operatingIncomeRatio }
+        operatingIncomeRatioChartView.configure(with: operatingIncomeRatios, periods: periods)
     }
 }
 
@@ -219,7 +219,7 @@ extension StockDetailView {
             $0.bottom.equalToSuperview().inset(20)
         }
 
-        [overviewVStack, revenueVStack, grossProfitVStack, grossProfitRatioVStack]
+        [overviewVStack, revenueVStack, operatingIncomeVStack, operatingIncomeRatioVStack]
             .forEach { informationsVStack.addArrangedSubview($0) }
 
         setupOverviewVStack()
@@ -263,29 +263,29 @@ extension StockDetailView {
     }
 
     private func setupGrossProfitVStack() {
-        grossProfitVStack.axis = .vertical
-        grossProfitVStack.spacing = 10
+        operatingIncomeVStack.axis = .vertical
+        operatingIncomeVStack.spacing = 10
 
-        [grossProfitTitleLabel, grossProfitChartView].forEach { grossProfitVStack.addArrangedSubview($0) }
+        [operatingIncomeTitleLabel, operatingIncomeChartView].forEach { operatingIncomeVStack.addArrangedSubview($0) }
 
-        grossProfitTitleLabel.text = "영업이익"
-        grossProfitTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        operatingIncomeTitleLabel.text = "영업이익"
+        operatingIncomeTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
 
-        grossProfitChartView.snp.makeConstraints {
+        operatingIncomeChartView.snp.makeConstraints {
             $0.height.equalTo(175)
         }
     }
 
     private func setupGrossProfitRatioVStack() {
-        grossProfitRatioVStack.axis = .vertical
-        grossProfitRatioVStack.spacing = 10
+        operatingIncomeRatioVStack.axis = .vertical
+        operatingIncomeRatioVStack.spacing = 10
 
-        [grossProfitRatioTitleLabel, grossProfitRatioChartView].forEach { grossProfitRatioVStack.addArrangedSubview($0) }
+        [operatingIncomeRatioTitleLabel, operatingIncomeRatioChartView].forEach { operatingIncomeRatioVStack.addArrangedSubview($0) }
 
-        grossProfitRatioTitleLabel.text = "영업이익 마진율"
-        grossProfitRatioTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        operatingIncomeRatioTitleLabel.text = "영업이익 마진율"
+        operatingIncomeRatioTitleLabel.font = .systemFont(ofSize: 20, weight: .bold)
 
-        grossProfitRatioChartView.snp.makeConstraints {
+        operatingIncomeRatioChartView.snp.makeConstraints {
             $0.height.equalTo(175)
         }
     }

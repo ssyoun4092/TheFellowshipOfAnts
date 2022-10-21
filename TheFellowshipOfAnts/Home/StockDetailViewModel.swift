@@ -11,27 +11,36 @@ import RxCocoa
 import RxSwift
 
 class StockDetailViewModel {
+
+    // MARK: - View -> ViewModel
+
     let viewWillAppear = PublishRelay<Void>()
+
+    // MARK: - ViewModel -> View
 
     let stockPrices: Driver<[Double]>
     let stockOverview: Driver<[StockOverviewCellViewModel]>
     let stockIncomeStatements: Driver<StockDetailChartViewModel>
+
+    // MARK: - Properties
 
     let symbol: String?
     let companyName: String?
     private let useCase: StocksUseCase
 
     init(useCase: StocksUseCase, symbol: String, companyName: String) {
-        let stockOverviewTitles = ["시가총액", "52주 최고가", "52주 최저가", "PER", "PBR", "EPS"]
         self.useCase = useCase
         self.symbol = symbol
         self.companyName = companyName
 
-        stockPrices = viewWillAppear
+        let stockOverviewTitles = ["시가총액", "52주 최고가", "52주 최저가", "PER", "PBR", "EPS"]
+        let sharedViewWillAppear = viewWillAppear.share()
+
+        stockPrices = sharedViewWillAppear
             .flatMap { _ in useCase.fetchStockPrices(for: symbol) }
             .asDriver(onErrorJustReturn: [])
 
-        stockOverview = viewWillAppear
+        stockOverview = sharedViewWillAppear
             .flatMap { _ in useCase.fetchStockOverview(symbol: symbol)}
             .enumerated()
             .map { index, overview in
@@ -39,7 +48,7 @@ class StockDetailViewModel {
             }
             .asDriver(onErrorJustReturn: [])
 
-        stockIncomeStatements = viewWillAppear
+        stockIncomeStatements = sharedViewWillAppear
             .flatMap { _ in useCase.fetchStockIncomeStatements(for: symbol) }
             .map { .init(companyName: companyName, incomeStatements: $0) }
             .asDriver(onErrorJustReturn: .init(companyName: "", incomeStatements: []))
