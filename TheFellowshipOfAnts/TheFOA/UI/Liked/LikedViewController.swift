@@ -16,6 +16,7 @@ class LikedViewController: UIViewController {
     // MARK: - Properties
 
     let disposeBag = DisposeBag()
+    let viewModel: LikedViewModel
 
     weak var coordinator: LikedCoordinator?
 
@@ -25,10 +26,33 @@ class LikedViewController: UIViewController {
 
     // MARK: - Life Cycle
 
+    init(viewModel: LikedViewModel) {
+        self.viewModel = viewModel
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupLikedTableView()
+        bind(to: viewModel)
+    }
+
+    private func bind(to viewModel: LikedViewModel) {
+        rx.viewWillAppear
+            .map { _ in () }
+            .bind(to: viewModel.viewWillAppear)
+            .disposed(by: disposeBag)
+
+        likedTableView.rx.itemSelected
+            .map { $0.row }
+            .bind(to: viewModel.likedItemSelected)
+            .disposed(by: disposeBag)
     }
 }
 
