@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Lottie
 import Kingfisher
 import SnapKit
 
@@ -20,9 +21,22 @@ class StockDetailView: UIView {
     let scrollView = UIScrollView()
     let contentView = UIView()
 
+    let lottieHeartView: LottieAnimationView = {
+        let view = LottieAnimationView(name: "Lottie-like")
+        view.contentMode = .scaleAspectFit
+        view.loopMode = .playOnce
+        return view
+    }()
+
     let logoImageView = UIImageView()
     let companyNameLabel = UILabel()
     let symbolLabel = UILabel()
+    let heartButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.contentMode = .scaleToFill
+        return button
+    }()
 
     let currentPriceLabel = UILabel()
     let fluctuationRateLabel = UILabel()
@@ -87,6 +101,30 @@ class StockDetailView: UIView {
         let operatingIncomeRatios = viewModel.incomeStatements.map { $0.operatingIncomeRatio }
         operatingIncomeRatioChartView.configure(with: operatingIncomeRatios, periods: periods)
     }
+
+    func setHeartButtonImage(isLiked: Bool) {
+        if isLiked {
+            heartButton.setImage(UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysOriginal), for: .normal)
+//            animateLottieHeartView()
+        } else {
+            heartButton.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+    }
+
+    private func animateLottieHeartView() {
+        // TODO: - 수정 필요
+        guard let window = UIApplication.shared.keyWindow else { return }
+        contentView.addSubview(lottieHeartView)
+        lottieHeartView.center = CGPoint(x: window.bounds.size.width / 2, y: window.bounds.size.height / 2)
+        lottieHeartView.frame.size = CGSize(width: 300, height: 300)
+        lottieHeartView.isHidden = false
+        lottieHeartView.play { didComplete in
+            if didComplete {
+                self.lottieHeartView.isHidden = true
+                self.lottieHeartView.removeFromSuperview()
+            }
+        }
+    }
 }
 
 extension StockDetailView {
@@ -113,10 +151,12 @@ extension StockDetailView {
         setupLogoImageView()
         setupCompanyNameLabel()
         setupSymbolLabel()
+        setupHeartAnimationView()
         setupCurrenPriceLabel()
         setupFluctuationRateLabel()
         setupStockGraphChartView()
         setupInformationsVStack()
+//        setupLottieHeartView()
     }
 
     private func setupLogoImageView() {
@@ -149,6 +189,17 @@ extension StockDetailView {
         symbolLabel.snp.makeConstraints {
             $0.leading.equalTo(logoImageView.snp.trailing).offset(10)
             $0.top.equalTo(logoImageView.snp.centerY).offset(2)
+        }
+    }
+
+    private func setupHeartAnimationView() {
+        contentView.addSubview(heartButton)
+
+        heartButton.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(20)
+            $0.width.equalTo(40)
+            $0.bottom.equalTo(logoImageView.snp.bottom)
         }
     }
 
@@ -267,6 +318,16 @@ extension StockDetailView {
 
         operatingIncomeRatioChartView.snp.makeConstraints {
             $0.height.equalTo(175)
+        }
+    }
+
+    private func setupLottieHeartView() {
+        contentView.addSubview(lottieHeartView)
+
+        lottieHeartView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.width.equalTo(contentView).multipliedBy(0.333)
+            $0.height.equalTo(lottieHeartView.snp.width)
         }
     }
 }
