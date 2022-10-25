@@ -16,5 +16,8 @@ public enum UserDefaultManager {
 
 
     @UserDefault(key: "recentSearchStocks", defaultValue: [])
-    static var recentSearchStocks: [UDSModel.RecentSearchStock]
+    static var recentSearchStocks: [UDModel.RecentSearchStock]
+
+    @UserDefault(key: "liked", defaultValue: [])
+    static var liked: [UDModel.Liked]
 }

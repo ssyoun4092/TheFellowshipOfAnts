@@ -29,16 +29,15 @@ class UserDefaultUseCaseImpl: UserDefaultUseCase {
     }
 
     func updateRecentSearchStockList(_ entity: Entity.RecentSearchedStock) {
-
         return repository.updateRecentSearchStockList(entity)
     }
 
     func removeAllRecentSearchedStocks() {
-        repository.removeAllRecentSearchedStocks()
+        return repository.removeAllRecentSearchedStocks()
     }
 
     func removeRecentSearchStock(at row: Int) {
-        repository.removeRecentSearchStock(at: row)
+        return repository.removeRecentSearchStock(at: row)
     }
 
     func getRecentSearchedStocksCellWidths() -> [CGFloat] {
@@ -57,5 +56,13 @@ class UserDefaultUseCaseImpl: UserDefaultUseCase {
         print("sizes: \(sizes)")
 
         return sizes
+    }
+
+    func likedItems() -> Observable<[Entity.Liked]> {
+        return Observable.create { [unowned self] observer in
+            observer.onNext(self.repository.likedItems())
+
+            return Disposables.create()
+        }
     }
 }

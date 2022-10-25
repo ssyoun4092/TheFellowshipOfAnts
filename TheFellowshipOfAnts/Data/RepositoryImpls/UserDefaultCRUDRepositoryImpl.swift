@@ -35,4 +35,10 @@ class UserDefaultCRUDRepositoryImpl: UserDefaultCRUDRepository {
     func removeRecentSearchStock(at row: Int) {
         UserDefaultManager.recentSearchStocks.remove(at: row)
     }
+
+    func likedItems() -> [Entity.Liked] {
+        return UserDefaultManager.liked.map { model in
+                .init(companyName: model.companyName, symbol: model.symbol)
+        }
+    }
 }

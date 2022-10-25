@@ -14,4 +14,5 @@ protocol UserDefaultCRUDRepository {
     func updateRecentSearchStockList(_ entity: Entity.RecentSearchedStock)
     func removeAllRecentSearchedStocks()
     func removeRecentSearchStock(at row: Int)
+    func likedItems() -> [Entity.Liked]
 }
