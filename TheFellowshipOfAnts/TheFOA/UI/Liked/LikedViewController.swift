@@ -81,6 +81,14 @@ class LikedViewController: UIViewController {
                 cell.configure(with: likedEntity)
             }
             .disposed(by: disposeBag)
+
+        viewModel.pushToStockDetailVC
+            .drive(with: self) { owner, info in
+                let companyName = info.0
+                let symbol = info.1
+                owner.coordinator?.pushToStockDetailVC(companyName: companyName, symbol: symbol)
+            }
+            .disposed(by: disposeBag)
     }
 }
 

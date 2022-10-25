@@ -11,10 +11,13 @@ import RxCocoa
 import RxSwift
 
 class LikedViewModel {
+    typealias StockBaseInfo = (String, String)
+
     let viewWillAppear = PublishRelay<Void>()
     let likedItemSelected = PublishRelay<Int>()
 
     let likedItems: Driver<[Entity.Liked]>
+    let pushToStockDetailVC: Driver<StockBaseInfo>
 
     private let useCase: UserDefaultUseCase
 
@@ -24,5 +27,11 @@ class LikedViewModel {
         likedItems = viewWillAppear
             .flatMap { _ in useCase.likedItems() }
             .asDriver(onErrorJustReturn: [])
+
+        pushToStockDetailVC  = likedItemSelected
+            .withLatestFrom(likedItems) { row, items in
+                (items[row].companyName, items[row].symbol)
+            }
+            .asDriver(onErrorJustReturn: ("", ""))
     }
 }
