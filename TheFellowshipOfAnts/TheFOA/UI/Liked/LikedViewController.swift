@@ -22,7 +22,26 @@ class LikedViewController: UIViewController {
 
     // MARK: - IBOutlets
 
-    let likedTableView = UITableView()
+    let likedTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "관심 목록"
+        label.font = .systemFont(ofSize: 27, weight: .bold)
+        return label
+    }()
+    let emptyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "현재 관심있는 종목이 없어요.."
+        label.font = .systemFont(ofSize: 17, weight: .semibold)
+        label.isHidden = true
+        return label
+    }()
+    lazy var likedTableView: UITableView = {
+        let tv = UITableView()
+        tv.register(LikedTableViewCell.self, forCellReuseIdentifier: LikedTableViewCell.identifier)
+        tv.rowHeight = 100
+        tv.separatorStyle = .none
+        return tv
+    }()
 
     // MARK: - Life Cycle
 
@@ -53,19 +72,38 @@ class LikedViewController: UIViewController {
             .map { $0.row }
             .bind(to: viewModel.likedItemSelected)
             .disposed(by: disposeBag)
+
+        viewModel.likedItems
+            .drive(likedTableView.rx.items(
+                cellIdentifier: LikedTableViewCell.identifier,
+                cellType: LikedTableViewCell.self)
+            ) { _, likedEntity, cell in
+                cell.configure(with: likedEntity)
+            }
+            .disposed(by: disposeBag)
     }
 }
 
 extension LikedViewController {
     private func setupLikedTableView() {
+        view.addSubview(likedTitleLabel)
+
+        likedTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalToSuperview().inset(20)
+            $0.trailing.equalToSuperview().inset(20)
+        }
+
+        view.addSubview(emptyLabel)
+
+        emptyLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+
         view.addSubview(likedTableView)
 
-        likedTableView.register(LikedTableViewCell.self,
-                                forCellReuseIdentifier: LikedTableViewCell.identifier)
-        likedTableView.rowHeight = 60
-
         likedTableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.top.equalTo(likedTitleLabel.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
