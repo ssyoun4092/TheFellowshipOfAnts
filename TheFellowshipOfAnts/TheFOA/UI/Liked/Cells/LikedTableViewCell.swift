@@ -69,7 +69,7 @@ extension LikedTableViewCell {
     private func setupWrapperView() {
         contentView.addSubview(wrapperView)
 
-        wrapperView.backgroundColor = .systemGray.withAlphaComponent(0.2)
+        wrapperView.backgroundColor = .designSystem(.BackgroundSecondary)
         wrapperView.layer.cornerRadius = 17
 
         wrapperView.snp.makeConstraints {
@@ -98,8 +98,8 @@ extension LikedTableViewCell {
         symbolLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10).priority(.low)
             $0.leading.equalTo(logoImageView.snp.trailing).offset(15)
-            $0.trailing.equalToSuperview().multipliedBy(0.35)
-            $0.bottom.equalTo(wrapperView.snp.centerY).offset(-2)
+            $0.trailing.equalToSuperview().multipliedBy(0.45)
+            $0.bottom.equalTo(wrapperView.snp.centerY).offset(-1)
         }
     }
 
@@ -107,9 +107,9 @@ extension LikedTableViewCell {
         wrapperView.addSubview(companyNameLabel)
 
         companyNameLabel.snp.makeConstraints {
-            $0.top.equalTo(wrapperView.snp.centerY).offset(4)
+            $0.top.equalTo(wrapperView.snp.centerY).offset(3)
             $0.leading.equalTo(logoImageView.snp.trailing).offset(15)
-            $0.trailing.equalToSuperview().multipliedBy(0.35)
+            $0.trailing.equalToSuperview().multipliedBy(0.45)
             $0.bottom.equalToSuperview().inset(10).priority(.low)
         }
     }
@@ -122,7 +122,7 @@ extension LikedTableViewCell {
         currentPriceLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10).priority(.low)
             $0.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalTo(wrapperView.snp.centerY).offset(-2)
+            $0.bottom.equalTo(wrapperView.snp.centerY).offset(-1)
         }
     }
 
@@ -132,7 +132,7 @@ extension LikedTableViewCell {
         fluctuationRateLabel.text = "+3.21%"
 
         fluctuationRateLabel.snp.makeConstraints {
-            $0.top.equalTo(wrapperView.snp.centerY).offset(4)
+            $0.top.equalTo(wrapperView.snp.centerY).offset(3)
             $0.trailing.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(10).priority(.low)
         }

@@ -58,6 +58,9 @@
 		8E7C46AD28E07BFF00163D30 /* StocksRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46AC28E07BFF00163D30 /* StocksRepositoryImpl.swift */; };
 		8E7C46AF28E08BD100163D30 /* EmptyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C46AE28E08BD100163D30 /* EmptyDTO.swift */; };
 		8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8068E828B842E2004039B1 /* NSObject+.swift */; };
+		8E8F9AFB2908329000B91F98 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E8F9AFA2908329000B91F98 /* Color.xcassets */; };
+		8E8F9AFF2908332C00B91F98 /* Pallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F9AFE2908332C00B91F98 /* Pallete.swift */; };
+		8E8F9B012908337400B91F98 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8F9B002908337400B91F98 /* UIColor+.swift */; };
 		8E8FED6E28E55EC500944D82 /* MajorStockIndicesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */; };
 		8E8FED7028E5614C00944D82 /* StockIndice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED6F28E5614C00944D82 /* StockIndice.swift */; };
 		8E8FED7228E56FCD00944D82 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8FED7128E56FCD00944D82 /* HomeViewModel.swift */; };
@@ -242,6 +245,9 @@
 		8E7C46AC28E07BFF00163D30 /* StocksRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksRepositoryImpl.swift; sourceTree = "<group>"; };
 		8E7C46AE28E08BD100163D30 /* EmptyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDTO.swift; sourceTree = "<group>"; };
 		8E8068E828B842E2004039B1 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		8E8F9AFA2908329000B91F98 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		8E8F9AFE2908332C00B91F98 /* Pallete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pallete.swift; sourceTree = "<group>"; };
+		8E8F9B002908337400B91F98 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorStockIndicesDTO.swift; sourceTree = "<group>"; };
 		8E8FED6F28E5614C00944D82 /* StockIndice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockIndice.swift; sourceTree = "<group>"; };
 		8E8FED7128E56FCD00944D82 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -612,8 +618,35 @@
 		8E8F9AF829082D3D00B91F98 /* DesignSystems */ = {
 			isa = PBXGroup;
 			children = (
+				8E8F9AF92908327A00B91F98 /* Resources */,
+				8E8F9AFC2908330E00B91F98 /* Sources */,
 			);
 			path = DesignSystems;
+			sourceTree = "<group>";
+		};
+		8E8F9AF92908327A00B91F98 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8E8F9AFA2908329000B91F98 /* Color.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8E8F9AFC2908330E00B91F98 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8E8F9AFD2908331900B91F98 /* Color */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		8E8F9AFD2908331900B91F98 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				8E8F9AFE2908332C00B91F98 /* Pallete.swift */,
+				8E8F9B002908337400B91F98 /* UIColor+.swift */,
+			);
+			path = Color;
 			sourceTree = "<group>";
 		};
 		8E8FED7B28E58B3300944D82 /* CrawlAPI */ = {
@@ -1159,6 +1192,7 @@
 			files = (
 				8E4CB37C28755FD70033AD85 /* LaunchScreen.storyboard in Resources */,
 				8EA2D55D28792E6A00163D6A /* GoogleService-Info.plist in Resources */,
+				8E8F9AFB2908329000B91F98 /* Color.xcassets in Resources */,
 				8E4CB37928755FD70033AD85 /* Assets.xcassets in Resources */,
 				8E18C9782907BEB900AB6908 /* Lottie-like.json in Resources */,
 			);
@@ -1176,6 +1210,7 @@
 				8EB9F3022900FC47003FA011 /* StockDetailCoordinator.swift in Sources */,
 				8ED9A29E29027559007E5046 /* LikedTableViewCell.swift in Sources */,
 				8EBC443A28B8ECA800E6F356 /* SettingsViewController.UITableView.swift in Sources */,
+				8E8F9B012908337400B91F98 /* UIColor+.swift in Sources */,
 				8E16555A28C484C800577886 /* StockDetailView.swift in Sources */,
 				8E4CB37428755FD60033AD85 /* LoginViewController.swift in Sources */,
 				8ED9A2A4290279F1007E5046 /* RecentSearchStockUDModel.swift in Sources */,
@@ -1255,6 +1290,7 @@
 				8E9EC10D28E15BBD00A5DD2D /* APIProvider.swift in Sources */,
 				8E0FBBFC28E9428200B1930C /* Commodity.swift in Sources */,
 				8E8FED7628E574F400944D82 /* CommoditiesDTO.swift in Sources */,
+				8E8F9AFF2908332C00B91F98 /* Pallete.swift in Sources */,
 				8EB9F318290249E9003FA011 /* StockDetailViewController.swift in Sources */,
 				8E55C9DD28E3115500191603 /* UserDefaultUseCase.swift in Sources */,
 				8E8FED7428E5740800944D82 /* Top20StocksDTO.swift in Sources */,
