@@ -27,9 +27,7 @@ class TabBarCoordinator: Coordinator {
             image: UIImage(systemName: "house"),
             tag: 0
         )
-        let homeCoordinator = HomeCoordinator(navigationController: homeNavigationController)
-        childCoordinators.append(homeCoordinator)
-        homeCoordinator.start()
+        startHomeCoordinator(navigationController: homeNavigationController)
 
         let searchNavigationController = UINavigationController()
         searchNavigationController.tabBarItem = UITabBarItem(
@@ -37,9 +35,7 @@ class TabBarCoordinator: Coordinator {
             image: UIImage(systemName: "magnifyingglass"),
             tag: 1
         )
-        let searchCoordinator = SearchCoordinator(navigationController: searchNavigationController)
-        childCoordinators.append(searchCoordinator)
-        searchCoordinator.start()
+        startSearchCoordinator(navigationController: searchNavigationController)
 
 //        let chatNavigationController = UINavigationController()
 //        chatNavigationController.tabBarItem = UITabBarItem(
@@ -47,18 +43,15 @@ class TabBarCoordinator: Coordinator {
 //            image: UIImage(systemName: "bubble.left"),
 //            tag: 2
 //        )
-//        let chatCoordinator = ChatCoordinator(navigationController: chatNavigationController)
-//        childCoordinators.append(chatCoordinator)
-//        chatCoordinator.start()
+//        startChatCoordinator(navigationController: chatNavigationController)
+
         let likedNavigationController = UINavigationController()
         likedNavigationController.tabBarItem = UITabBarItem(
             title: "좋아요",
             image: UIImage(systemName: "heart"),
             tag: 2
         )
-        let likedCoordinator = LikedCoordinator(navigationController: likedNavigationController)
-        childCoordinators.append(likedCoordinator)
-        likedCoordinator.start()
+        startLikedCoordinator(navigationController: likedNavigationController)
 
         let profileNavigationController = UINavigationController()
         profileNavigationController.tabBarItem = UITabBarItem(
@@ -66,12 +59,9 @@ class TabBarCoordinator: Coordinator {
             image: UIImage(systemName: "person"),
             tag: 3
         )
-        let profileCoordinator = ProfileCoordinator(navigationController: profileNavigationController)
-        childCoordinators.append(profileCoordinator)
-        profileCoordinator.start()
+        startProfileCoordinator(navigationController: profileNavigationController)
 
         tabBarController.modalPresentationStyle = .fullScreen
-
         tabBarController.viewControllers = [
             homeNavigationController,
             searchNavigationController,
@@ -84,5 +74,37 @@ class TabBarCoordinator: Coordinator {
 
     func childDidFinish(_ coordinator: Coordinator) {
         self.childCoordinators = self.childCoordinators.filter { $0 !== coordinator }
+    }
+}
+
+extension TabBarCoordinator {
+    private func startHomeCoordinator(navigationController: UINavigationController) {
+        let homeCoordinator = HomeCoordinator(navigationController: navigationController)
+        childCoordinators.append(homeCoordinator)
+        homeCoordinator.start()
+    }
+
+    private func startSearchCoordinator(navigationController: UINavigationController) {
+        let searchCoordinator = SearchCoordinator(navigationController: navigationController)
+        childCoordinators.append(searchCoordinator)
+        searchCoordinator.start()
+    }
+
+    private func startChatCoordinator(navigationController: UINavigationController) {
+        let chatCoordinator = ChatCoordinator(navigationController: navigationController)
+        childCoordinators.append(chatCoordinator)
+        chatCoordinator.start()
+    }
+
+    private func startLikedCoordinator(navigationController: UINavigationController) {
+        let likedCoordinator = LikedCoordinator(navigationController: navigationController)
+        childCoordinators.append(likedCoordinator)
+        likedCoordinator.start()
+    }
+
+    private func startProfileCoordinator(navigationController: UINavigationController) {
+        let profileCoordinator = ProfileCoordinator(navigationController: navigationController)
+        childCoordinators.append(profileCoordinator)
+        profileCoordinator.start()
     }
 }
