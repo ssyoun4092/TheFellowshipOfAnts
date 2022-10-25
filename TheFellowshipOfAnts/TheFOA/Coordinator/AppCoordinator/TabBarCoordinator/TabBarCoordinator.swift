@@ -41,15 +41,24 @@ class TabBarCoordinator: Coordinator {
         childCoordinators.append(searchCoordinator)
         searchCoordinator.start()
 
-        let chatNavigationController = UINavigationController()
-        chatNavigationController.tabBarItem = UITabBarItem(
-            title: "채팅",
-            image: UIImage(systemName: "bubble.left"),
+//        let chatNavigationController = UINavigationController()
+//        chatNavigationController.tabBarItem = UITabBarItem(
+//            title: "채팅",
+//            image: UIImage(systemName: "bubble.left"),
+//            tag: 2
+//        )
+//        let chatCoordinator = ChatCoordinator(navigationController: chatNavigationController)
+//        childCoordinators.append(chatCoordinator)
+//        chatCoordinator.start()
+        let likedNavigationController = UINavigationController()
+        likedNavigationController.tabBarItem = UITabBarItem(
+            title: "좋아요",
+            image: UIImage(systemName: "heart"),
             tag: 2
         )
-        let chatCoordinator = ChatCoordinator(navigationController: chatNavigationController)
-        childCoordinators.append(chatCoordinator)
-        chatCoordinator.start()
+        let likedCoordinator = LikedCoordinator(navigationController: likedNavigationController)
+        childCoordinators.append(likedCoordinator)
+        likedCoordinator.start()
 
         let profileNavigationController = UINavigationController()
         profileNavigationController.tabBarItem = UITabBarItem(
@@ -66,7 +75,7 @@ class TabBarCoordinator: Coordinator {
         tabBarController.viewControllers = [
             homeNavigationController,
             searchNavigationController,
-            chatNavigationController,
+            likedNavigationController,
             profileNavigationController
         ]
 
