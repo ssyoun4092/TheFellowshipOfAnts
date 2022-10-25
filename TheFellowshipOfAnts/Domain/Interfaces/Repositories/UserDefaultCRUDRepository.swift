@@ -15,4 +15,5 @@ protocol UserDefaultCRUDRepository {
     func removeAllRecentSearchedStocks()
     func removeRecentSearchStock(at row: Int)
     func likedItems() -> [Entity.Liked]
+    func toggleLikedItem(companyName: String, symbol: String)
 }

@@ -492,6 +492,7 @@
 		8E4CB36E28755FD60033AD85 /* TheFellowshipOfAnts */ = {
 			isa = PBXGroup;
 			children = (
+				8E8F9AF829082D3D00B91F98 /* DesignSystems */,
 				8E7C46AA28E07BE800163D30 /* Data */,
 				8EDABDA528E0265C008814F3 /* TheFOANetwork */,
 				8E7C469E28E07A9D00163D30 /* Domain */,
@@ -606,6 +607,13 @@
 				8EB9F31329018D61003FA011 /* StockOverviewCellViewModel.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		8E8F9AF829082D3D00B91F98 /* DesignSystems */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DesignSystems;
 			sourceTree = "<group>";
 		};
 		8E8FED7B28E58B3300944D82 /* CrawlAPI */ = {

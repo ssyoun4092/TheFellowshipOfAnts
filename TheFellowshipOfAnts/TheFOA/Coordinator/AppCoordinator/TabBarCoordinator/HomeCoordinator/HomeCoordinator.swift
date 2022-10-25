@@ -28,9 +28,13 @@ class HomeCoordinator: Coordinator {
     }
 
     func pushToStockDetailVC(companyName: String, symbol: String) {
-        let repository = StocksRepositoryImpl()
-        let useCase = StocksUseCaseImpl(repository: repository)
-        let viewModel = StockDetailViewModel(useCase: useCase,
+        let stockRepository = StocksRepositoryImpl()
+        let userDefaultRepository = UserDefaultCRUDRepositoryImpl()
+        let stockUseCase = StocksUseCaseImpl(repository: stockRepository)
+        let userDefaultUseCase = UserDefaultUseCaseImpl(repository: userDefaultRepository)
+
+        let viewModel = StockDetailViewModel(stockUseCase: stockUseCase,
+                                             userDefaultUseCase: userDefaultUseCase,
                                              symbol: symbol,
                                              companyName: companyName)
         let vc = StockDetailViewController(viewModel: viewModel)

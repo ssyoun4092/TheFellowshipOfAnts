@@ -11,5 +11,6 @@ extension Entity {
     struct Liked {
         let companyName: String
         let symbol: String
+        let logoImageURL: URL?
     }
 }

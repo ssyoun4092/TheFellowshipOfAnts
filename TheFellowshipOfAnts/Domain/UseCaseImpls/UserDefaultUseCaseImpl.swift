@@ -65,4 +65,12 @@ class UserDefaultUseCaseImpl: UserDefaultUseCase {
             return Disposables.create()
         }
     }
+
+    func toggleLikedItem(companyName: String, symbol: String) -> Observable<Void> {
+        return Observable.create { [unowned self] observer in
+            observer.onNext(self.repository.toggleLikedItem(companyName: companyName, symbol: symbol))
+
+            return Disposables.create()
+        }
+    }
 }

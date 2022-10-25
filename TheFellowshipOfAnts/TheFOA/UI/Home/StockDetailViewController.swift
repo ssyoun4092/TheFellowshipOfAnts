@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Lottie
 import RxCocoa
 import RxSwift
 import SnapKit
@@ -45,7 +46,18 @@ class StockDetailViewController: UIViewController {
     private func bind(to viewModel: StockDetailViewModel) {
         rx.viewWillAppear
             .map { _ in () }
+            .do(onNext: { print("ViewWillAppear")})
             .bind(to: viewModel.viewWillAppear)
+            .disposed(by: disposeBag)
+
+        stockDetailView.heartButton.rx.tap
+            .bind(to: viewModel.didTapHeartButton)
+            .disposed(by: disposeBag)
+
+        viewModel.isLiked
+            .drive(with: self) { owner, isLiked in
+                owner.stockDetailView.setHeartButtonImage(isLiked: isLiked)
+            }
             .disposed(by: disposeBag)
 
         viewModel.stockPrices
