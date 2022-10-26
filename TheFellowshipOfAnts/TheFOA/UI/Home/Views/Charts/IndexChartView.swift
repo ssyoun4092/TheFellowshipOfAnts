@@ -38,21 +38,13 @@ class IndexChartView: UIView {
 
         let dataSet = LineChartDataSet(entries: entries, label: "1day")
 
-        dataSet.colors = [upDown.textColor]
-        let gradient = upDown.gradient
+        dataSet.colors = [.black]
+        let gradient = [UIColor.black.withAlphaComponent(0.5).cgColor, UIColor.clear.cgColor]
         dataSet.fill = LinearGradientFill(gradient: CGGradient(
             colorsSpace: CGColorSpaceCreateDeviceRGB(),
             colors: gradient as CFArray,
             locations: [0.0, 1.0]
         )!, angle: -90)
-//        dataSet.fill = Fill.fillWithLinearGradient(
-//            CGGradient(
-//                colorsSpace: CGColorSpaceCreateDeviceRGB(),
-//                colors: gradient as CFArray,
-//                locations: [0.0, 1.0]
-//            )!,
-//            angle: -90
-//        )
         dataSet.drawFilledEnabled = true
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = false

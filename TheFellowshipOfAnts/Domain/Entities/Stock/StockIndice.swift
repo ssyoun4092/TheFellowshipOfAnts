@@ -12,5 +12,6 @@ extension Entity {
     struct StockIndice {
         let title: String
         let prices: [String]
+        let upDown: UpDown
     }
 }
