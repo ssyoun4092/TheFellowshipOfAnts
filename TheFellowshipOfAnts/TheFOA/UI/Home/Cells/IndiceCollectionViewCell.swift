@@ -6,10 +6,26 @@ class IndiceCollectionViewCell: UICollectionViewCell {
 
     // MARK: - IBOutlets
 
-    let indexTitleLabel = UILabel()
-    let currentPriceLabel = UILabel()
-    let DTDLabel = UILabel()
-    let fluctuationRateLabel = UILabel()
+    let indexTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        return label
+    }()
+    let currentPriceLabel: UILabel = {
+        let label = UILabel()
+        label.text = "11,713.15"
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    let fluctuationRateLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
     let chartView = IndexChartView()
 
     // MARK: - LifeCycle
@@ -21,7 +37,6 @@ class IndiceCollectionViewCell: UICollectionViewCell {
         setupChartView()
         setupIndexTitleLabel()
         setupCurrentPriceLabel()
-        setupDTDLabel()
         setupfluctuationRateLabel()
     }
 
@@ -29,17 +44,15 @@ class IndiceCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with entity: Entity.StockIndice, upDown: UpDown) {
+    func configure(with entity: Entity.StockIndice) {
         indexTitleLabel.text = entity.title
         currentPriceLabel.text = entity.prices.first?.floorIfDouble(at: 2)
-        currentPriceLabel.textColor = upDown.textColor
-        DTDLabel.text = calculateDayToDayPrice(with: entity.prices.last!, entity.prices.first!)
-        DTDLabel.textColor = upDown.textColor
-        fluctuationRateLabel.text = calculateFluctuation(with: entity.prices.last!, entity.prices.first!) + "%"
-        fluctuationRateLabel.textColor = upDown.textColor
+//        currentPriceLabel.textColor = upDown.textColor
+        fluctuationRateLabel.text = entity.upDown.sign + calculateFluctuation(with: entity.prices.last!, entity.prices.first!) + "%"
+        fluctuationRateLabel.textColor = entity.upDown.textColor
 
         let chartInfos: [Double] = entity.prices.map { price in Double(price)! }
-        chartView.configure(with: chartInfos.reversed(), upDown: upDown)
+        chartView.configure(with: chartInfos.reversed(), upDown: entity.upDown)
     }
 }
 
@@ -65,11 +78,6 @@ extension IndiceCollectionViewCell {
     private func setupIndexTitleLabel() {
         contentView.addSubview(indexTitleLabel)
 
-        indexTitleLabel.text = "나스닥"
-        indexTitleLabel.textColor = .black
-        indexTitleLabel.textAlignment = .left
-        indexTitleLabel.font = .systemFont(ofSize: 20, weight: .semibold)
-
         indexTitleLabel.snp.makeConstraints {
             $0.leading.top.equalToSuperview().inset(leading)
         }
@@ -78,41 +86,18 @@ extension IndiceCollectionViewCell {
     private func setupCurrentPriceLabel() {
         contentView.addSubview(currentPriceLabel)
 
-        currentPriceLabel.text = "11,713.15"
-        currentPriceLabel.textColor = .systemRed
-        currentPriceLabel.font = .systemFont(ofSize: 25, weight: .bold)
-        currentPriceLabel.adjustsFontSizeToFitWidth = true
-
         currentPriceLabel.snp.makeConstraints {
-            $0.top.equalTo(indexTitleLabel.snp.bottom).offset(6)
+            $0.top.equalTo(indexTitleLabel.snp.bottom).offset(3)
             $0.leading.equalToSuperview().inset(leading)
-            $0.trailing.equalTo(chartView.snp.leading).offset(15)
-        }
-    }
-
-    private func setupDTDLabel() {
-        contentView.addSubview(DTDLabel)
-
-        DTDLabel.text = "+10.88"
-        DTDLabel.font = .systemFont(ofSize: 15, weight: .medium)
-
-        DTDLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(leading)
-            $0.top.equalTo(currentPriceLabel.snp.bottom).offset(6)
         }
     }
 
     private func setupfluctuationRateLabel() {
         contentView.addSubview(fluctuationRateLabel)
 
-        fluctuationRateLabel.text = "(1.3%)"
-        fluctuationRateLabel.textAlignment = .left
-        fluctuationRateLabel.font = .systemFont(ofSize: 15, weight: .medium)
-        fluctuationRateLabel.adjustsFontSizeToFitWidth = true
-
         fluctuationRateLabel.snp.makeConstraints {
-            $0.leading.equalTo(DTDLabel.snp.trailing).offset(5)
-            $0.bottom.equalTo(DTDLabel.snp.bottom)
+            $0.top.equalToSuperview().inset(leading)
+            $0.trailing.equalToSuperview().inset(trailing)
         }
     }
 
@@ -120,16 +105,9 @@ extension IndiceCollectionViewCell {
         contentView.addSubview(chartView)
 
         chartView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.trailing.bottom.equalToSuperview().inset(trailing)
-            $0.width.equalToSuperview().multipliedBy(0.4)
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(0.5)
         }
-    }
-
-    private func calculateDayToDayPrice(with prev: String, _ current: String) -> String {
-        let value = Double(current)! - Double(prev)!
-
-        return value.toStringWithFloor(at: 2)
     }
 
     private func calculateFluctuation(with prev: String, _ current: String) -> String {

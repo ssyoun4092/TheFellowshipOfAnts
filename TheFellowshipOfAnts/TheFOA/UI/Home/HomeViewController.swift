@@ -56,7 +56,6 @@ class HomeViewController: UIViewController {
             .disposed(by: disposeBag)
 
         homeView.stockRankSectionView.collectionView.rx.itemSelected
-            .do(onNext: { _ in print("did Tapped") })
             .map { indexPath in indexPath.row }
             .bind(to: viewModel.didTapStockRankItem)
             .disposed(by: disposeBag)
@@ -66,7 +65,7 @@ class HomeViewController: UIViewController {
                 cellIdentifier: IndiceCollectionViewCell.identifier,
                 cellType: IndiceCollectionViewCell.self
             )) { _, stockIndice, cell in
-                cell.configure(with: stockIndice, upDown: .up)
+                cell.configure(with: stockIndice)
             }
             .disposed(by: disposeBag)
 
