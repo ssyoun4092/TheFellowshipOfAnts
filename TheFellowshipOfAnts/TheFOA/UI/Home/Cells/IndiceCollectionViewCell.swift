@@ -6,14 +6,14 @@ class IndiceCollectionViewCell: UICollectionViewCell {
 
     // MARK: - IBOutlets
 
-    let indexTitleLabel: UILabel = {
+    private let indexTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
-    let currentPriceLabel: UILabel = {
+    private let currentPriceLabel: UILabel = {
         let label = UILabel()
         label.text = "11,713.15"
         label.textColor = .black
@@ -21,12 +21,12 @@ class IndiceCollectionViewCell: UICollectionViewCell {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    let fluctuationRateLabel: UILabel = {
+    private let fluctuationRateLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
-    let chartView = IndexChartView()
+    private let chartView = IndexChartView()
 
     // MARK: - LifeCycle
 
@@ -47,7 +47,6 @@ class IndiceCollectionViewCell: UICollectionViewCell {
     func configure(with entity: Entity.StockIndice) {
         indexTitleLabel.text = entity.title
         currentPriceLabel.text = entity.prices.first?.floorIfDouble(at: 2)
-//        currentPriceLabel.textColor = upDown.textColor
         fluctuationRateLabel.text = entity.upDown.sign + calculateFluctuation(with: entity.prices.last!, entity.prices.first!) + "%"
         fluctuationRateLabel.textColor = entity.upDown.textColor
 

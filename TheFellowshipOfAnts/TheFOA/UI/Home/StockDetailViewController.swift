@@ -60,12 +60,6 @@ class StockDetailViewController: UIViewController {
             }
             .disposed(by: disposeBag)
 
-        viewModel.stockPrices
-            .drive(with: self) { owner, prices in
-                owner.stockDetailView.stockGraphChartView.configure(with: prices, upDown: .up)
-            }
-            .disposed(by: disposeBag)
-
         viewModel.stockOverview
             .drive(stockDetailView.overviewCollectionView.rx.items(
                 cellIdentifier: StockOverviewCollectionViewCell.identifier,
@@ -75,7 +69,7 @@ class StockDetailViewController: UIViewController {
             }
             .disposed(by: disposeBag)
 
-        viewModel.stockIncomeStatements
+        viewModel.stockDetailChartViewModel
             .drive(with: self) { owner, viewModel in
                 owner.stockDetailView.bind(to: viewModel)
             }

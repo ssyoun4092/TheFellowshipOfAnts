@@ -31,9 +31,6 @@ class AbsoluteValueBarChartView: UIView {
     }
 
     func configure(with values: [Double], periods: [String]) {
-//        let annual: [String] = ["18", "19", "20", "21"]
-//        let revenue: [String] = ["53.2", "53.8", "59.6", "81.4"]
-
         var entries = [BarChartDataEntry]()
 
         for (index, value) in values.enumerated() {
@@ -52,7 +49,6 @@ class AbsoluteValueBarChartView: UIView {
         barChartView.xAxis.setLabelCount(periods.count, force: false)
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: periods)
 
-
         let data = BarChartData(dataSet: chartDataSet)
         barChartView.data = data
     }
@@ -62,6 +58,7 @@ extension AbsoluteValueBarChartView {
     private func setupBarChartView() {
         addSubview(barChartView)
 
+        barChartView.layer.cornerRadius = 10
         barChartView.xAxis.axisLineColor = .clear
         barChartView.xAxis.gridColor = .clear
         barChartView.xAxis.labelFont = .systemFont(ofSize: 15, weight: .bold)

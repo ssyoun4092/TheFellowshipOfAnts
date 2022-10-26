@@ -42,6 +42,7 @@ class StockDetailView: UIView {
     let fluctuationRateLabel = UILabel()
 
     let stockGraphChartView = StockGraphChartView()
+    let stockGraphChartCoverView = UIView()
 
     let informationsVStack = UIStackView()
 
@@ -88,7 +89,12 @@ class StockDetailView: UIView {
     func bind(to viewModel: StockDetailChartViewModel) {
         logoImageView.kf.setImage(with: URL(string: "https://logo.clearbit.com/\(viewModel.companyName).com"))
         companyNameLabel.text = viewModel.companyName
-        symbolLabel.text = viewModel.incomeStatements[0].symbol
+        symbolLabel.text = viewModel.incomeStatements.first?.symbol ?? ""
+        currentPriceLabel.text = "$" + String(viewModel.prices.last ?? 0)
+        fluctuationRateLabel.text = viewModel.upDown.sign + calculateFluctuation(with: viewModel.prices.first, viewModel.prices.last) + "%"
+        fluctuationRateLabel.textColor = viewModel.upDown.textColor
+        stockGraphChartView.configure(with: viewModel.prices, upDown: viewModel.upDown)
+        animateStockGraphChart()
 
         let periods = viewModel.incomeStatements.map { $0.calendarYear }
 
@@ -125,6 +131,27 @@ class StockDetailView: UIView {
             }
         }
     }
+
+    private func animateStockGraphChart() {
+        layoutIfNeeded()
+        stockGraphChartCoverView.snp.updateConstraints {
+            $0.width.equalTo(0)
+        }
+
+        UIView.animate(withDuration: 1.5) {
+            self.layoutIfNeeded()
+        } completion: { didComplete in
+            if didComplete { self.stockGraphChartCoverView.isHidden = true }
+        }
+    }
+
+    private func calculateFluctuation(with prev: Double?, _ current: Double?) -> String {
+        guard let prev = prev,
+              let current = current else { return "" }
+        let absFluctuationValue = abs((((prev - current) / prev) * 100))
+
+        return absFluctuationValue.toStringWithFloor(at: 2)
+    }
 }
 
 extension StockDetailView {
@@ -155,6 +182,7 @@ extension StockDetailView {
         setupCurrenPriceLabel()
         setupFluctuationRateLabel()
         setupStockGraphChartView()
+        setupStockGraphChartCoverView()
         setupInformationsVStack()
 //        setupLottieHeartView()
     }
@@ -236,6 +264,17 @@ extension StockDetailView {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(300)
         }
+    }
+
+    private func setupStockGraphChartCoverView() {
+        stockGraphChartView.addSubview(stockGraphChartCoverView)
+
+        stockGraphChartCoverView.snp.makeConstraints {
+            $0.top.trailing.bottom.equalToSuperview()
+            $0.width.equalTo(UIScreen.main.bounds.width)
+//            $0.leading.equalToSuperview().inset(0)
+        }
+        stockGraphChartCoverView.backgroundColor = .white
     }
 
     private func setupInformationsVStack() {
