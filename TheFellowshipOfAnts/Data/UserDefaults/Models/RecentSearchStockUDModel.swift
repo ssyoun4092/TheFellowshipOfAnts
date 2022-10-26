@@ -1,13 +1,13 @@
 //
-//  Models.swift
+//  RecentSearchedStockUDS.swift
 //  TheFellowshipOfAnts
 //
-//  Created by SeYeong on 2022/09/27.
+//  Created by SeYeong on 2022/10/21.
 //
 
 import Foundation
 
-enum UDSModel {
+extension UDModel {
     struct RecentSearchStock: Codable {
         let symbol: String
         let companyName: String

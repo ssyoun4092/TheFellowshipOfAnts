@@ -15,4 +15,6 @@ protocol UserDefaultUseCase {
     func removeAllRecentSearchedStocks()
     func removeRecentSearchStock(at row: Int)
     func getRecentSearchedStocksCellWidths() -> [CGFloat]
+    func likedItems() -> Observable<[Entity.Liked]>
+    func toggleLikedItem(companyName: String, symbol: String) -> Observable<Void>
 }

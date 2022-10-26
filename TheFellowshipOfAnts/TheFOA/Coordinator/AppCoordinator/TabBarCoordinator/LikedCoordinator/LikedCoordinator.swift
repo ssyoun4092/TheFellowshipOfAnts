@@ -1,13 +1,13 @@
 //
-//  HomeCoordinator.swift
+//  LikedCoordinator.swift
 //  TheFellowshipOfAnts
 //
-//  Created by SeYeong on 2022/09/03.
+//  Created by SeYeong on 2022/10/21.
 //
 
 import UIKit
 
-class HomeCoordinator: Coordinator {
+class LikedCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
 
@@ -18,10 +18,10 @@ class HomeCoordinator: Coordinator {
     }
 
     func start() {
-        let repository = StocksRepositoryImpl()
-        let useCase = StocksUseCaseImpl(repository: repository)
-        let viewModel = HomeViewModel(useCase: useCase)
-        let vc = HomeViewController(viewModel: viewModel)
+        let repository = UserDefaultCRUDRepositoryImpl()
+        let useCase = UserDefaultUseCaseImpl(repository: repository)
+        let viewModel = LikedViewModel(useCase: useCase)
+        let vc = LikedViewController(viewModel: viewModel)
         vc.coordinator = self
 
         navigationController.pushViewController(vc, animated: true)

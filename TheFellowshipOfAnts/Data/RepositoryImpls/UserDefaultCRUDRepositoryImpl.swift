@@ -35,4 +35,22 @@ class UserDefaultCRUDRepositoryImpl: UserDefaultCRUDRepository {
     func removeRecentSearchStock(at row: Int) {
         UserDefaultManager.recentSearchStocks.remove(at: row)
     }
+
+    func likedItems() -> [Entity.Liked] {
+        return UserDefaultManager.liked.map { model in
+                .init(companyName: model.companyName,
+                      symbol: model.symbol,
+                      logoImageURL: URL(string: "https://logo.clearbit.com/\(model.companyName).com"))
+        }
+    }
+
+    func toggleLikedItem(companyName: String, symbol: String) {
+        if UserDefaultManager.liked.contains(where: { $0.symbol == symbol }) {
+            let index = UserDefaultManager.liked.firstIndex { $0.symbol == symbol }!
+            UserDefaultManager.liked.remove(at: index)
+        } else {
+            UserDefaultManager.liked.append(.init(companyName: companyName, symbol: symbol))
+            print(UserDefaultManager.liked)
+        }
+    }
 }
