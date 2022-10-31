@@ -47,11 +47,11 @@ class IndiceCollectionViewCell: UICollectionViewCell {
     func configure(with entity: Entity.StockIndice) {
         indexTitleLabel.text = entity.title
         currentPriceLabel.text = entity.prices.first?.floorIfDouble(at: 2)
-        fluctuationRateLabel.text = entity.upDown.sign + calculateFluctuation(with: entity.prices.last!, entity.prices.first!) + "%"
-        fluctuationRateLabel.textColor = entity.upDown.textColor
+        fluctuationRateLabel.text = entity.fluctuation.sign + calculateFluctuation(with: entity.prices.last!, entity.prices.first!) + "%"
+        fluctuationRateLabel.textColor = entity.fluctuation.textColor
 
         let chartInfos: [Double] = entity.prices.map { price in Double(price)! }
-        chartView.configure(with: chartInfos.reversed(), upDown: entity.upDown)
+        chartView.configure(with: chartInfos.reversed(), upDown: entity.fluctuation)
     }
 }
 

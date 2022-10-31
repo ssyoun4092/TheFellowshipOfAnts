@@ -90,7 +90,7 @@ class StockDetailView: UIView {
         logoImageView.kf.setImage(with: URL(string: "https://logo.clearbit.com/\(viewModel.companyName).com"))
         companyNameLabel.text = viewModel.companyName
         symbolLabel.text = viewModel.incomeStatements.first?.symbol ?? ""
-        currentPriceLabel.text = "$" + String(viewModel.prices.last ?? 0)
+        currentPriceLabel.text = "$" + String(viewModel.prices.last ?? 0).floorIfDouble(at: 2)
         fluctuationRateLabel.text = viewModel.upDown.sign + calculateFluctuation(with: viewModel.prices.first, viewModel.prices.last) + "%"
         fluctuationRateLabel.textColor = viewModel.upDown.textColor
         stockGraphChartView.configure(with: viewModel.prices, upDown: viewModel.upDown)
@@ -234,7 +234,6 @@ extension StockDetailView {
     private func setupCurrenPriceLabel() {
         contentView.addSubview(currentPriceLabel)
 
-        currentPriceLabel.text = "$155.81"
         currentPriceLabel.font = .systemFont(ofSize: 45, weight: .bold)
 
         currentPriceLabel.snp.makeConstraints {
@@ -246,9 +245,7 @@ extension StockDetailView {
     private func setupFluctuationRateLabel() {
         contentView.addSubview(fluctuationRateLabel)
 
-        fluctuationRateLabel.text = "-1.37%"
         fluctuationRateLabel.font = .systemFont(ofSize: 25, weight: .regular)
-        fluctuationRateLabel.textColor = .systemRed
 
         fluctuationRateLabel.snp.makeConstraints {
             $0.leading.equalTo(currentPriceLabel.snp.trailing).offset(15)
@@ -272,7 +269,6 @@ extension StockDetailView {
         stockGraphChartCoverView.snp.makeConstraints {
             $0.top.trailing.bottom.equalToSuperview()
             $0.width.equalTo(UIScreen.main.bounds.width)
-//            $0.leading.equalToSuperview().inset(0)
         }
         stockGraphChartCoverView.backgroundColor = .white
     }

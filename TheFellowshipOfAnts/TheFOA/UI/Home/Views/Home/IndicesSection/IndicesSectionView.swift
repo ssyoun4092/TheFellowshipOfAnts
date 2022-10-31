@@ -58,8 +58,8 @@ extension IndicesSectionView {
         addSubview(pageControl)
 
         pageControl.numberOfPages = 3
-        pageControl.currentPageIndicatorTintColor = .systemPurple
-        pageControl.pageIndicatorTintColor = .systemPurple.withAlphaComponent(0.3)
+        pageControl.currentPageIndicatorTintColor = .designSystem(.PurpleBold)
+        pageControl.pageIndicatorTintColor = .designSystem(.PurpleLight)
         pageControl.isUserInteractionEnabled = false
 
         pageControl.snp.makeConstraints {

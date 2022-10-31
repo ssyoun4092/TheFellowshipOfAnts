@@ -39,7 +39,7 @@ class AbsoluteValueBarChartView: UIView {
         }
 
         let chartDataSet = BarChartDataSet(entries: entries)
-        chartDataSet.colors = [.red]
+        chartDataSet.colors = [.designSystem(.Purple) ?? .black]
         chartDataSet.valueFont = .systemFont(ofSize: 13, weight: .bold)
         chartDataSet.valueFormatter = self
         for (index, entry) in chartDataSet.enumerated() {

@@ -141,13 +141,13 @@ extension StocksRepositoryImpl {
         return [
             .init(title: "나스닥 종합지수",
                   prices: IXICClosedValues,
-                  upDown: Fluctuation.calculate(prev: Double(IXICClosedValues.last ?? "0")!, current: Double(IXICClosedValues.first ?? "0")!)),
+                  fluctuation: Fluctuation.calculate(prev: Double(IXICClosedValues.last ?? "0")!, current: Double(IXICClosedValues.first ?? "0")!)),
             .init(title: "S&P 500",
                   prices: SPXClosedValues,
-                  upDown: Fluctuation.calculate(prev: Double(SPXClosedValues.last ?? "0")!, current: Double(SPXClosedValues.first ?? "0")!)),
+                  fluctuation: Fluctuation.calculate(prev: Double(SPXClosedValues.last ?? "0")!, current: Double(SPXClosedValues.first ?? "0")!)),
             .init(title: "다우지수",
                   prices: DJIClosedValues,
-                  upDown: Fluctuation.calculate(prev: Double(DJIClosedValues.last ?? "0")!, current: Double(DJIClosedValues.first ?? "0")!))
+                  fluctuation: Fluctuation.calculate(prev: Double(DJIClosedValues.last ?? "0")!, current: Double(DJIClosedValues.first ?? "0")!))
         ]
     }
 
