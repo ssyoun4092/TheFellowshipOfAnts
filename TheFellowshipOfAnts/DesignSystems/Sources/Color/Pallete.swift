@@ -10,4 +10,8 @@ import Foundation
 enum Pallete: String {
     case BackgroundPrimary
     case BackgroundSecondary
+
+    case Purple
+    case PurpleBold
+    case PurpleLight
 }
