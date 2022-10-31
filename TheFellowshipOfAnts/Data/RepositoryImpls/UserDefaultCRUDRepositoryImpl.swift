@@ -10,6 +10,9 @@ import Foundation
 import RxSwift
 
 class UserDefaultCRUDRepositoryImpl: UserDefaultCRUDRepository {
+
+    // MARK: - SearchStockList
+
     func readRecentSearchStockList() -> [Entity.RecentSearchedStock] {
         return UserDefaultManager.recentSearchStocks.map{ UDSModel in
                     .init(
@@ -28,6 +31,8 @@ class UserDefaultCRUDRepositoryImpl: UserDefaultCRUDRepository {
 //        UserDefaultManager.recentSearchStocks.append(.init(symbol: entity.symbol, companyName: entity.companyName))
     }
 
+    // MARK: - RecentSearchedStocks
+
     func removeAllRecentSearchedStocks() {
         UserDefaultManager.recentSearchStocks.removeAll()
     }
@@ -35,6 +40,8 @@ class UserDefaultCRUDRepositoryImpl: UserDefaultCRUDRepository {
     func removeRecentSearchStock(at row: Int) {
         UserDefaultManager.recentSearchStocks.remove(at: row)
     }
+
+    // MARK: - Liked
 
     func likedItems() -> [Entity.Liked] {
         return UserDefaultManager.liked.map { model in
@@ -44,13 +51,22 @@ class UserDefaultCRUDRepositoryImpl: UserDefaultCRUDRepository {
         }
     }
 
-    func toggleLikedItem(companyName: String, symbol: String) {
-        if UserDefaultManager.liked.contains(where: { $0.symbol == symbol }) {
-            let index = UserDefaultManager.liked.firstIndex { $0.symbol == symbol }!
-            UserDefaultManager.liked.remove(at: index)
-        } else {
-            UserDefaultManager.liked.append(.init(companyName: companyName, symbol: symbol))
-            print(UserDefaultManager.liked)
-        }
+    func toggleLikedItem(companyName: String, symbol: String) -> Bool {
+        let indexShouldRemoved = UserDefaultManager.liked.firstIndex { $0.symbol == symbol }
+        let containItem = indexShouldRemoved != nil
+
+        containItem
+        ? removeLikedItem(at: indexShouldRemoved!)
+        : appendLikedItem(companyName: companyName, symbol: symbol)
+
+        return !containItem
+    }
+
+    private func removeLikedItem(at index: Int) {
+        UserDefaultManager.liked.remove(at: index)
+    }
+
+    private func appendLikedItem(companyName: String, symbol: String) {
+        UserDefaultManager.liked.append(.init(companyName: companyName, symbol: symbol))
     }
 }

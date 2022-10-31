@@ -19,9 +19,9 @@ class StockDetailViewModel {
 
     // MARK: - ViewModel -> View
 
-    let stockPrices: Driver<[Double]>
     let stockOverview: Driver<[StockOverviewCellViewModel]>
-    let stockIncomeStatements: Driver<StockDetailChartViewModel>
+    let stockDetailChartViewModel: Driver<StockDetailChartViewModel>
+    let animateHeartLottie: Driver<Void>
     let isLiked: Driver<Bool>
 
     // MARK: - Properties
@@ -39,23 +39,32 @@ class StockDetailViewModel {
         self.symbol = symbol
         self.companyName = companyName
 
+        let shouldAnimateHeartLottie = BehaviorSubject<Bool>(value: false)
+
         let sharedViewWillAppear = viewWillAppear.share()
 
         let didToggleHeartButton = didTapHeartButton
             .flatMap { _ in userDefaultUseCase.toggleLikedItem(companyName: companyName, symbol: symbol) }
+            .do { shouldAnimateHeartLottie.onNext($0) }
+            .map { _ in () }
             .share()
 
-        isLiked = Observable.merge([
-            sharedViewWillAppear,
-            didToggleHeartButton
-        ])
+        let stockPrices = sharedViewWillAppear
+            .flatMap { _ in stockUseCase.fetchStockPrices(for: symbol) }
+
+        let stockIncomeStatements = sharedViewWillAppear
+            .flatMap { _ in stockUseCase.fetchStockIncomeStatements(for: symbol) }
+
+        animateHeartLottie = shouldAnimateHeartLottie
+            .filter { $0 == true }
+            .map { _ in () }
+            .asDriver(onErrorJustReturn: ())
+
+        isLiked = Observable.merge([sharedViewWillAppear,
+                                    didToggleHeartButton])
             .flatMap { _ in userDefaultUseCase.likedItems() }
             .map { $0.contains { $0.symbol == symbol } }
             .asDriver(onErrorJustReturn: false)
-
-        stockPrices = sharedViewWillAppear
-            .flatMap { _ in stockUseCase.fetchStockPrices(for: symbol) }
-            .asDriver(onErrorJustReturn: [])
 
         stockOverview = sharedViewWillAppear
             .flatMap { _ in stockUseCase.fetchStockOverview(symbol: symbol)}
@@ -66,9 +75,15 @@ class StockDetailViewModel {
             }
             .asDriver(onErrorJustReturn: [])
 
-        stockIncomeStatements = sharedViewWillAppear
-            .flatMap { _ in stockUseCase.fetchStockIncomeStatements(for: symbol) }
-            .map { .init(companyName: companyName, incomeStatements: $0.reversed()) }
-            .asDriver(onErrorJustReturn: .init(companyName: "", incomeStatements: []))
+        stockDetailChartViewModel = Observable.combineLatest(stockPrices, stockIncomeStatements) { prices, incomes in
+                .init(companyName: companyName,
+                      prices: prices.reversed(),
+                      incomeStatements: incomes.reversed(),
+                      upDown: .calculate(prev: prices.last ?? 0, current: prices.first ?? 0))
+        }
+        .asDriver(onErrorJustReturn: .init(companyName: "",
+                                           prices: [],
+                                           incomeStatements: [],
+                                           upDown: .up))
     }
 }

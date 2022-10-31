@@ -82,6 +82,32 @@ class StocksRepositoryImpl: StocksRepository {
             .asObservable()
     }
 
+    func fetchMultiStocksPrices(for symbols: [String]) -> Observable<[Entity.MultiStocksPrice]> {
+        let publishSubject = PublishSubject<[Entity.MultiStocksPrice]>()
+        let dispatchGroup = DispatchGroup()
+        var tempMultiStocksPrice: [Entity.MultiStocksPrice] = []
+
+        symbols.forEach { symbol in
+            dispatchGroup.enter()
+            network.request(StockPriceAPI(symbol: symbol, timeInterval: ._1day))
+                .compactMap { [weak self] dto in
+                    return self?.convertStockPriceDTOToEntity(dto)
+                }
+                .subscribe(onSuccess: {
+                    tempMultiStocksPrice.append(.init(close: $0.map { $0.close }))
+                    dispatchGroup.leave()
+                })
+                .disposed(by: self.disposeBag)
+        }
+
+        dispatchGroup.notify(queue: .main) {
+            publishSubject.onNext(tempMultiStocksPrice)
+        }
+
+        return publishSubject
+            .asObservable()
+    }
+
     func fetchMajorStockIndices() -> Observable<[Entity.StockIndice]> {
 
         return network.request(MajorStockIndicesAPI(
@@ -135,19 +161,19 @@ extension StocksRepositoryImpl {
     private func convertMajorStockIndicesDTOToEntity(_ DTO: DTO.MajorStockIndices)
     -> [Entity.StockIndice] {
         let IXICClosedValues = Array(DTO.IXIC.details.map { $0.close })
-        let SPXClosedValues = Array(DTO.SPX.details.map { $0.close})
+        let SPXClosedValues = Array(DTO.SPX.details.map { $0.close })
         let DJIClosedValues = Array(DTO.DJI.details.map { $0.close })
 
         return [
             .init(title: "나스닥 종합지수",
                   prices: IXICClosedValues,
-                  upDown: .check(Double(IXICClosedValues.last ?? "0")!, Double(IXICClosedValues.first ?? "0")!)),
+                  fluctuation: Fluctuation.calculate(prev: Double(IXICClosedValues.last ?? "0")!, current: Double(IXICClosedValues.first ?? "0")!)),
             .init(title: "S&P 500",
                   prices: SPXClosedValues,
-                  upDown: .check(Double(SPXClosedValues.last ?? "0")!, Double(SPXClosedValues.first ?? "0")!)),
+                  fluctuation: Fluctuation.calculate(prev: Double(SPXClosedValues.last ?? "0")!, current: Double(SPXClosedValues.first ?? "0")!)),
             .init(title: "다우지수",
                   prices: DJIClosedValues,
-                  upDown: .check(Double(DJIClosedValues.last ?? "0")!, Double(DJIClosedValues.first ?? "0")!))
+                  fluctuation: Fluctuation.calculate(prev: Double(DJIClosedValues.last ?? "0")!, current: Double(DJIClosedValues.first ?? "0")!))
         ]
     }
 
@@ -166,6 +192,13 @@ extension StocksRepositoryImpl {
     private func convertStockPriceDTOToEntity(_ DTO: DTO.StockPrice) -> [Entity.StockPrice] {
 
         return DTO.details.map { .init(close: Double($0.close) ?? 0) }
+    }
+
+    private func converMultiStocksPriceDTOToEntity(_ DTO: [DTO.StockPrice]) -> [Entity.MultiStocksPrice] {
+        return DTO.map { stockPrice in
+            let prices = stockPrice.details.map { Double($0.close)! }
+            return .init(close: prices)
+        }
     }
 
     private func convertStockIncomeStatementDTOToEntity(_ DTO: [DTO.StockIncomeStatement]) -> [Entity.StockIncomeStatement] {

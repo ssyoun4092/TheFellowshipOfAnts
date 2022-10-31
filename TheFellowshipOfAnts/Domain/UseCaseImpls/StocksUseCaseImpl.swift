@@ -18,12 +18,10 @@ class StocksUseCaseImpl: StocksUseCase {
     }
 
     func searchStockList(text: String) -> Observable<[Entity.SearchStock]> {
-
         return repository.searchStockList(text: text)
     }
 
     func fetchStockOverview(symbol: String) -> Observable<[String]> {
-
         return repository.fetchStockOverview(for: symbol)
             .map { overview in
                 ["$" + Double(overview.marketCap)!.convertToMetrics(),
@@ -35,29 +33,28 @@ class StocksUseCaseImpl: StocksUseCase {
     }
 
     func fetchStockPrices(for symbol: String) -> Observable<[Double]> {
-
         return repository.fetchStockPrices(for: symbol)
             .map { stockPriceEntities in
                 stockPriceEntities.map { $0.close } }
     }
 
-    func fetchStockIncomeStatements(for symbol: String) -> Observable<[Entity.StockIncomeStatement]> {
+    func fetchMultiStocksPrices(for symbols: [String]) -> Observable<[Entity.MultiStocksPrice]> {
+        return repository.fetchMultiStocksPrices(for: symbols)
+    }
 
+    func fetchStockIncomeStatements(for symbol: String) -> Observable<[Entity.StockIncomeStatement]> {
         return repository.fetchStockIncomeStatements(for: symbol)
     }
 
     func fetchTop20Stocks() -> Observable<[Entity.RankStock]> {
-
         return repository.fetchTop20Stocks()
     }
 
     func fetchMajorStockIndices() -> Observable<[Entity.StockIndice]> {
-
         return repository.fetchMajorStockIndices()
     }
 
     func fetchMajorCommodities() -> Observable<[Entity.Commodity]> {
-
         return repository.fetchMajorCommodities()
             .map { entities in
                 entities.map { entity in
@@ -71,7 +68,6 @@ class StocksUseCaseImpl: StocksUseCase {
     }
 
     func fetchMajorETFs() -> Observable<[Entity.ETF]> {
-
         return repository.fetchMajorETFs()
             .map { entities in
                 entities.map { entity in

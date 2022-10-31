@@ -51,6 +51,7 @@ enum TimeIntervalType: String {
         case ._15min: return "28"
         case ._30min: return "14"
         case ._45min: return "10"
+        case ._1day: return "2"
         default: return ""
         }
     }

@@ -54,14 +54,16 @@ class LikedTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with item: Entity.Liked) {
-        logoImageView.kf.setImage(with: item.logoImageURL)
-        companyNameLabel.text = item.companyName
-        symbolLabel.text = item.symbol
-    }
+    func configure(with item: LikedCellViewModel) {
+        logoImageView.kf.setImage(with: item.likedEntity.logoImageURL)
+        companyNameLabel.text = item.likedEntity.companyName
+        symbolLabel.text = item.likedEntity.symbol
 
-    private func drawCharts(with values: [Double]) {
+        let prevPrice = item.prices.first ?? 0
+        let currentPrice = item.prices.last ?? 0
 
+        currentPriceLabel.text = "$" + String(currentPrice).floorIfDouble(at: 2)
+        fluctuationRateLabel.text = Fluctuation.rate(prev: prevPrice, current: currentPrice)
     }
 }
 

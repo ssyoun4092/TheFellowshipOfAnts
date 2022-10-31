@@ -54,15 +54,15 @@ class StockDetailViewController: UIViewController {
             .bind(to: viewModel.didTapHeartButton)
             .disposed(by: disposeBag)
 
-        viewModel.isLiked
-            .drive(with: self) { owner, isLiked in
-                owner.stockDetailView.setHeartButtonImage(isLiked: isLiked)
+        viewModel.animateHeartLottie
+            .drive(with: self) { owner, _ in
+                owner.stockDetailView.animateLottieHeartView()
             }
             .disposed(by: disposeBag)
 
-        viewModel.stockPrices
-            .drive(with: self) { owner, prices in
-                owner.stockDetailView.stockGraphChartView.configure(with: prices, upDown: .up)
+        viewModel.isLiked
+            .drive(with: self) { owner, isLiked in
+                owner.stockDetailView.setHeartButtonImage(isLiked: isLiked)
             }
             .disposed(by: disposeBag)
 
@@ -75,7 +75,7 @@ class StockDetailViewController: UIViewController {
             }
             .disposed(by: disposeBag)
 
-        viewModel.stockIncomeStatements
+        viewModel.stockDetailChartViewModel
             .drive(with: self) { owner, viewModel in
                 owner.stockDetailView.bind(to: viewModel)
             }

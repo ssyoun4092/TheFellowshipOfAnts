@@ -18,9 +18,11 @@ class LikedCoordinator: Coordinator {
     }
 
     func start() {
-        let repository = UserDefaultCRUDRepositoryImpl()
-        let useCase = UserDefaultUseCaseImpl(repository: repository)
-        let viewModel = LikedViewModel(useCase: useCase)
+        let userDefaultRepository = UserDefaultCRUDRepositoryImpl()
+        let stocksRepository = StocksRepositoryImpl()
+        let userDefaultUseCase = UserDefaultUseCaseImpl(repository: userDefaultRepository)
+        let stocksUseCase = StocksUseCaseImpl(repository: stocksRepository)
+        let viewModel = LikedViewModel(userDefaultUseCase: userDefaultUseCase, stockUseCase: stocksUseCase)
         let vc = LikedViewController(viewModel: viewModel)
         vc.coordinator = self
 

@@ -49,6 +49,10 @@ class LikedViewController: UIViewController {
         self.viewModel = viewModel
 
         super.init(nibName: nil, bundle: nil)
+
+        rx.viewDidLoad
+            .bind(to: viewModel.viewDidLoad)
+            .disposed(by: disposeBag)
     }
 
     required init?(coder: NSCoder) {
@@ -73,12 +77,12 @@ class LikedViewController: UIViewController {
             .bind(to: viewModel.likedItemSelected)
             .disposed(by: disposeBag)
 
-        viewModel.likedItems
+        viewModel.likedCellItems
             .drive(likedTableView.rx.items(
                 cellIdentifier: LikedTableViewCell.identifier,
                 cellType: LikedTableViewCell.self)
-            ) { _, likedEntity, cell in
-                cell.configure(with: likedEntity)
+            ) { _, viewModel, cell in
+                cell.configure(with: viewModel)
             }
             .disposed(by: disposeBag)
 

@@ -28,7 +28,7 @@ class IndexChartView: UIView {
         lineChartView.data = nil
     }
 
-    func configure(with model: [Double], upDown: UpDown) {
+    func configure(with model: [Double], upDown: Fluctuation) {
         var entries = [ChartDataEntry]()
 
         for (index, value) in model.enumerated() {

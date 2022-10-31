@@ -26,7 +26,7 @@ class StockGraphChartView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with values: [Double], upDown: UpDown) {
+    func configure(with values: [Double], upDown: Fluctuation) {
         var entries = [ChartDataEntry]()
 
         for (index, value) in values.enumerated() {
@@ -36,7 +36,7 @@ class StockGraphChartView: UIView {
 
         let dataSet = LineChartDataSet(entries: entries, label: "1day")
 
-        dataSet.colors = [upDown.textColor]
+        dataSet.colors = [.black]
         dataSet.drawFilledEnabled = false
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = false
