@@ -155,6 +155,9 @@
 		8EDD188928E85D4800AC51D4 /* MajorStockIndicesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */; };
 		8EDDC298287A720D00FA025D /* SignupWithEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDDC297287A720D00FA025D /* SignupWithEmailModel.swift */; };
 		8EF5E093290F69660054CD0B /* FOABarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF5E092290F69660054CD0B /* FOABarChartView.swift */; };
+		8EF5E096290F75A80054CD0B /* LikedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF5E095290F75A80054CD0B /* LikedCellViewModel.swift */; };
+		8EF5E09A290F7D2C0054CD0B /* MultiStocksPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF5E099290F7D2C0054CD0B /* MultiStocksPrice.swift */; };
+		8EF5E09C290F7E890054CD0B /* MultiStocksPriceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF5E09B290F7E890054CD0B /* MultiStocksPriceEntity.swift */; };
 		8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF41128B7161300C3E762 /* EmailLoginView.swift */; };
 		8EFFF41528B7282400C3E762 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF41428B7282400C3E762 /* SignupView.swift */; };
 		8EFFF47228B7570400C3E762 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47128B7570400C3E762 /* TabBarController.swift */; };
@@ -329,6 +332,9 @@
 		8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorStockIndicesAPI.swift; sourceTree = "<group>"; };
 		8EDDC297287A720D00FA025D /* SignupWithEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupWithEmailModel.swift; sourceTree = "<group>"; };
 		8EF5E092290F69660054CD0B /* FOABarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FOABarChartView.swift; sourceTree = "<group>"; };
+		8EF5E095290F75A80054CD0B /* LikedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCellViewModel.swift; sourceTree = "<group>"; };
+		8EF5E099290F7D2C0054CD0B /* MultiStocksPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStocksPrice.swift; sourceTree = "<group>"; };
+		8EF5E09B290F7E890054CD0B /* MultiStocksPriceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStocksPriceEntity.swift; sourceTree = "<group>"; };
 		8EFFF41128B7161300C3E762 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		8EFFF41428B7282400C3E762 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		8EFFF47128B7570400C3E762 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -524,6 +530,7 @@
 				8E7C46AE28E08BD100163D30 /* EmptyDTO.swift */,
 				8E7C469C28E0770C00163D30 /* StockOverviewDTO.swift */,
 				8EB9F3072901050F003FA011 /* StockPriceDTO.swift */,
+				8EF5E099290F7D2C0054CD0B /* MultiStocksPrice.swift */,
 				8E9EC10A28E1535400A5DD2D /* SearchStocksDTO.swift */,
 				8EB9F30D29013A82003FA011 /* StockIncomStatementDTO.swift */,
 				8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */,
@@ -908,6 +915,7 @@
 			children = (
 				8E7C46A428E07AE300163D30 /* StockOverviewEntity.swift */,
 				8EB9F30B290129CF003FA011 /* StockPriceEntity.swift */,
+				8EF5E09B290F7E890054CD0B /* MultiStocksPriceEntity.swift */,
 				8EB9F31129013D58003FA011 /* StockIncomeStatementEntity.swift */,
 				8E9EC10828E1531800A5DD2D /* SearchStockEntity.swift */,
 				8E96D55A28E29A0500CCFE15 /* RecentSearchedStocks.swift */,
@@ -963,6 +971,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED9A29D29027559007E5046 /* LikedTableViewCell.swift */,
+				8EF5E095290F75A80054CD0B /* LikedCellViewModel.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1246,6 +1255,7 @@
 				8E17814F28C36FA900E009BC /* ProfileCoordinator.swift in Sources */,
 				8EAB1BD528BDB813004F38C3 /* Double+.swift in Sources */,
 				8E7C46A728E07B1E00163D30 /* StocksUseCaseImpl.swift in Sources */,
+				8EF5E09C290F7E890054CD0B /* MultiStocksPriceEntity.swift in Sources */,
 				8ED9A28729025233007E5046 /* ChatViewController.swift in Sources */,
 				8E8068E928B842E2004039B1 /* NSObject+.swift in Sources */,
 				8E8FED7028E5614C00944D82 /* StockIndice.swift in Sources */,
@@ -1310,6 +1320,7 @@
 				8ED9A28229025233007E5046 /* YourMessageCell.swift in Sources */,
 				8EB9F30C290129CF003FA011 /* StockPriceEntity.swift in Sources */,
 				8EAAA5222877CA2500F3D5CC /* SignupWithEmailViewController.swift in Sources */,
+				8EF5E09A290F7D2C0054CD0B /* MultiStocksPrice.swift in Sources */,
 				8ED9A27229025213007E5046 /* StockOverviewCollectionViewCell.swift in Sources */,
 				8E96D54E28E2883A00CCFE15 /* TranslateRepository.swift in Sources */,
 				8E7C46A328E07ACA00163D30 /* Entity.swift in Sources */,
@@ -1334,6 +1345,7 @@
 				8EAB1BD828BDBD99004F38C3 /* String+.swift in Sources */,
 				8EAAA4C42877382400F3D5CC /* EmailLoginViewModel.swift in Sources */,
 				8EB9F31429018D61003FA011 /* StockOverviewCellViewModel.swift in Sources */,
+				8EF5E096290F75A80054CD0B /* LikedCellViewModel.swift in Sources */,
 				8E17814728C33D1D00E009BC /* TabBarCoordinator.swift in Sources */,
 				8ED9A28029025233007E5046 /* ChatListView.swift in Sources */,
 				8E55C9DF28E311AC00191603 /* UserDefaultUseCaseImpl.swift in Sources */,

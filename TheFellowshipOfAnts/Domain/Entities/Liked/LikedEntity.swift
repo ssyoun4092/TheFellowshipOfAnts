@@ -12,7 +12,5 @@ extension Entity {
         let companyName: String
         let symbol: String
         let logoImageURL: URL?
-        let currentPrice: Double
-        let fluctuationRate: Double
     }
 }
