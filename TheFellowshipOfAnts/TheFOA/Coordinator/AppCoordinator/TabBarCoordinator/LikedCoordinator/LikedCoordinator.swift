@@ -20,7 +20,7 @@ class LikedCoordinator: Coordinator {
     func start() {
         let repository = UserDefaultCRUDRepositoryImpl()
         let useCase = UserDefaultUseCaseImpl(repository: repository)
-        let viewModel = LikedViewModel(useCase: useCase)
+        let viewModel = LikedViewModel(userDefaultUseCase: useCase)
         let vc = LikedViewController(viewModel: viewModel)
         vc.coordinator = self
 

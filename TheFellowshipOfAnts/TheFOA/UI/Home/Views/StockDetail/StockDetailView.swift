@@ -64,15 +64,15 @@ class StockDetailView: UIView {
 
     let revenueVStack = UIStackView()
     let revenueTitleLabel = UILabel()
-    let revenueChartView = AbsoluteValueBarChartView()
+    let revenueChartView = FOABarChartView(chartType: .absolute)
 
     let operatingIncomeVStack = UIStackView()
     let operatingIncomeTitleLabel = UILabel()
-    let operatingIncomeChartView = AbsoluteValueBarChartView()
+    let operatingIncomeChartView = FOABarChartView(chartType: .absolute)
 
     let operatingIncomeRatioVStack = UIStackView()
     let operatingIncomeRatioTitleLabel = UILabel()
-    let operatingIncomeRatioChartView = PercentageValueBarChartView()
+    let operatingIncomeRatioChartView = FOABarChartView(chartType: .percentage)
 
     // MARK: - Life Cycle
 
