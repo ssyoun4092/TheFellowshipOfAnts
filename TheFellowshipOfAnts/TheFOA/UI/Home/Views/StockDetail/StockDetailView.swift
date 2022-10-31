@@ -117,12 +117,12 @@ class StockDetailView: UIView {
         }
     }
 
-    private func animateLottieHeartView() {
+    func animateLottieHeartView() {
         // TODO: - 수정 필요
         guard let window = UIApplication.shared.keyWindow else { return }
         contentView.addSubview(lottieHeartView)
-        lottieHeartView.center = CGPoint(x: window.bounds.size.width / 2, y: window.bounds.size.height / 2)
         lottieHeartView.frame.size = CGSize(width: 300, height: 300)
+        lottieHeartView.center = CGPoint(x: window.bounds.size.width / 2, y: window.bounds.size.height / 2)
         lottieHeartView.isHidden = false
         lottieHeartView.play { didComplete in
             if didComplete {
@@ -178,7 +178,7 @@ extension StockDetailView {
         setupLogoImageView()
         setupCompanyNameLabel()
         setupSymbolLabel()
-        setupHeartAnimationView()
+        setupHeartButton()
         setupCurrenPriceLabel()
         setupFluctuationRateLabel()
         setupStockGraphChartView()
@@ -220,7 +220,7 @@ extension StockDetailView {
         }
     }
 
-    private func setupHeartAnimationView() {
+    private func setupHeartButton() {
         contentView.addSubview(heartButton)
 
         heartButton.snp.makeConstraints {

@@ -54,6 +54,12 @@ class StockDetailViewController: UIViewController {
             .bind(to: viewModel.didTapHeartButton)
             .disposed(by: disposeBag)
 
+        viewModel.animateHeartLottie
+            .drive(with: self) { owner, _ in
+                owner.stockDetailView.animateLottieHeartView()
+            }
+            .disposed(by: disposeBag)
+
         viewModel.isLiked
             .drive(with: self) { owner, isLiked in
                 owner.stockDetailView.setHeartButtonImage(isLiked: isLiked)

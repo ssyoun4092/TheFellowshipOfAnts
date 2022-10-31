@@ -25,7 +25,6 @@
 		8E17814D28C36F7C00E009BC /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814C28C36F7C00E009BC /* ChatCoordinator.swift */; };
 		8E17814F28C36FA900E009BC /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17814E28C36FA900E009BC /* ProfileCoordinator.swift */; };
 		8E18C9752907909B00AB6908 /* LikedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E18C9742907909B00AB6908 /* LikedEntity.swift */; };
-		8E18C9782907BEB900AB6908 /* Lottie-like.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E18C9772907BEB900AB6908 /* Lottie-like.json */; };
 		8E18C97B2907BF2500AB6908 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8E18C97A2907BF2500AB6908 /* Lottie */; };
 		8E27718128BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */; };
 		8E27718228BDA53A00CF6D8D /* TheFellowshipOfAntsKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E27717E28BDA4A600CF6D8D /* TheFellowshipOfAntsKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -158,6 +157,7 @@
 		8EF5E096290F75A80054CD0B /* LikedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF5E095290F75A80054CD0B /* LikedCellViewModel.swift */; };
 		8EF5E09A290F7D2C0054CD0B /* MultiStocksPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF5E099290F7D2C0054CD0B /* MultiStocksPrice.swift */; };
 		8EF5E09C290F7E890054CD0B /* MultiStocksPriceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF5E09B290F7E890054CD0B /* MultiStocksPriceEntity.swift */; };
+		8EF5E09E290FA0A30054CD0B /* Lottie-like.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EF5E09D290FA0A30054CD0B /* Lottie-like.json */; };
 		8EFFF41228B7161300C3E762 /* EmailLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF41128B7161300C3E762 /* EmailLoginView.swift */; };
 		8EFFF41528B7282400C3E762 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF41428B7282400C3E762 /* SignupView.swift */; };
 		8EFFF47228B7570400C3E762 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFFF47128B7570400C3E762 /* TabBarController.swift */; };
@@ -215,7 +215,6 @@
 		8E17814C28C36F7C00E009BC /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		8E17814E28C36FA900E009BC /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		8E18C9742907909B00AB6908 /* LikedEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedEntity.swift; sourceTree = "<group>"; };
-		8E18C9772907BEB900AB6908 /* Lottie-like.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Lottie-like.json"; sourceTree = "<group>"; };
 		8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheFellowshipOfAntsKey.xcodeproj; path = ../../TheFellowshipOfAntsKey/TheFellowshipOfAntsKey.xcodeproj; sourceTree = "<group>"; };
 		8E32114528B9EBC6009B7F42 /* TheFellowshipOfAnts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheFellowshipOfAnts.entitlements; sourceTree = "<group>"; };
 		8E43316B28D42CA2008922AB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -335,6 +334,7 @@
 		8EF5E095290F75A80054CD0B /* LikedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCellViewModel.swift; sourceTree = "<group>"; };
 		8EF5E099290F7D2C0054CD0B /* MultiStocksPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStocksPrice.swift; sourceTree = "<group>"; };
 		8EF5E09B290F7E890054CD0B /* MultiStocksPriceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStocksPriceEntity.swift; sourceTree = "<group>"; };
+		8EF5E09D290FA0A30054CD0B /* Lottie-like.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Lottie-like.json"; sourceTree = "<group>"; };
 		8EFFF41128B7161300C3E762 /* EmailLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginView.swift; sourceTree = "<group>"; };
 		8EFFF41428B7282400C3E762 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		8EFFF47128B7570400C3E762 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -462,7 +462,7 @@
 		8E18C9762907BE9D00AB6908 /* Lotties */ = {
 			isa = PBXGroup;
 			children = (
-				8E18C9772907BEB900AB6908 /* Lottie-like.json */,
+				8EF5E09D290FA0A30054CD0B /* Lottie-like.json */,
 			);
 			path = Lotties;
 			sourceTree = "<group>";
@@ -1208,7 +1208,7 @@
 				8EA2D55D28792E6A00163D6A /* GoogleService-Info.plist in Resources */,
 				8E8F9AFB2908329000B91F98 /* Color.xcassets in Resources */,
 				8E4CB37928755FD70033AD85 /* Assets.xcassets in Resources */,
-				8E18C9782907BEB900AB6908 /* Lottie-like.json in Resources */,
+				8EF5E09E290FA0A30054CD0B /* Lottie-like.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

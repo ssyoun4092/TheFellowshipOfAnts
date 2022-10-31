@@ -21,6 +21,7 @@ class StockDetailViewModel {
 
     let stockOverview: Driver<[StockOverviewCellViewModel]>
     let stockDetailChartViewModel: Driver<StockDetailChartViewModel>
+    let animateHeartLottie: Driver<Void>
     let isLiked: Driver<Bool>
 
     // MARK: - Properties
@@ -38,10 +39,14 @@ class StockDetailViewModel {
         self.symbol = symbol
         self.companyName = companyName
 
+        let shouldAnimateHeartLottie = BehaviorSubject<Bool>(value: false)
+
         let sharedViewWillAppear = viewWillAppear.share()
 
         let didToggleHeartButton = didTapHeartButton
             .flatMap { _ in userDefaultUseCase.toggleLikedItem(companyName: companyName, symbol: symbol) }
+            .do { shouldAnimateHeartLottie.onNext($0) }
+            .map { _ in () }
             .share()
 
         let stockPrices = sharedViewWillAppear
@@ -49,6 +54,11 @@ class StockDetailViewModel {
 
         let stockIncomeStatements = sharedViewWillAppear
             .flatMap { _ in stockUseCase.fetchStockIncomeStatements(for: symbol) }
+
+        animateHeartLottie = shouldAnimateHeartLottie
+            .filter { $0 == true }
+            .map { _ in () }
+            .asDriver(onErrorJustReturn: ())
 
         isLiked = Observable.merge([sharedViewWillAppear,
                                     didToggleHeartButton])

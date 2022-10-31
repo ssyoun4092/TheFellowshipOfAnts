@@ -66,7 +66,7 @@ class UserDefaultUseCaseImpl: UserDefaultUseCase {
         }
     }
 
-    func toggleLikedItem(companyName: String, symbol: String) -> Observable<Void> {
+    func toggleLikedItem(companyName: String, symbol: String) -> Observable<Bool> {
         return Observable.create { [unowned self] observer in
             observer.onNext(self.repository.toggleLikedItem(companyName: companyName, symbol: symbol))
 
