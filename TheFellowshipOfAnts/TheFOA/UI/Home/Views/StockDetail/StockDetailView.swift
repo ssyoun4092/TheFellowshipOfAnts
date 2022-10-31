@@ -133,13 +133,13 @@ class StockDetailView: UIView {
     }
 
     private func animateStockGraphChart() {
-        layoutIfNeeded()
+        superview?.layoutIfNeeded()
         stockGraphChartCoverView.snp.updateConstraints {
             $0.width.equalTo(0)
         }
 
         UIView.animate(withDuration: 1.5) {
-            self.layoutIfNeeded()
+            self.superview?.layoutIfNeeded()
         } completion: { didComplete in
             if didComplete { self.stockGraphChartCoverView.isHidden = true }
         }

@@ -34,7 +34,6 @@ class HomeViewModel {
             .asDriver(onErrorJustReturn: [])
 
         top20Stocks = firstLoad.asObservable()
-            .do(onNext: { print("First Load") } )
             .flatMap { _ in useCase.fetchTop20Stocks() }
             .asDriver(onErrorJustReturn: [])
 

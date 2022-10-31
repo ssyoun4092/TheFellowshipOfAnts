@@ -112,7 +112,8 @@ extension IndiceCollectionViewCell {
     private func calculateFluctuation(with prev: String, _ current: String) -> String {
         let prevValue = Double(prev)!
         let currentValue = Double(current)!
+        let absValue = abs(currentValue - prevValue)
 
-        return (((currentValue - prevValue) / prevValue) * 100).toStringWithFloor(at: 2)
+        return ((absValue / prevValue) * 100).toStringWithFloor(at: 2)
     }
 }

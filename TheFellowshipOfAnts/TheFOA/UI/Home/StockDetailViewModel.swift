@@ -69,7 +69,7 @@ class StockDetailViewModel {
                 .init(companyName: companyName,
                       prices: prices.reversed(),
                       incomeStatements: incomes.reversed(),
-                      upDown: .check(prices.last ?? 0, prices.first ?? 0))
+                      upDown: .calculate(prev: prices.last ?? 0, current: prices.first ?? 0))
         }
         .asDriver(onErrorJustReturn: .init(companyName: "",
                                            prices: [],

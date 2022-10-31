@@ -11,13 +11,13 @@ class StockDetailChartViewModel {
     let companyName: String
     let prices: [Double]
     let incomeStatements: [Entity.StockIncomeStatement]
-    let upDown: UpDown
+    let upDown: Fluctuation
 
     init(
         companyName: String,
         prices: [Double],
         incomeStatements: [Entity.StockIncomeStatement],
-        upDown: UpDown
+        upDown: Fluctuation
     ) {
         self.prices = prices
         self.companyName = companyName

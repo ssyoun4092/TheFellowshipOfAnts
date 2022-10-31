@@ -26,7 +26,7 @@ class StockGraphChartView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with values: [Double], upDown: UpDown) {
+    func configure(with values: [Double], upDown: Fluctuation) {
         var entries = [ChartDataEntry]()
 
         for (index, value) in values.enumerated() {

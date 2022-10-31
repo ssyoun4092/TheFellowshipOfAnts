@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum UpDown {
+enum Fluctuation {
     case up
     case down
 
@@ -34,8 +34,8 @@ enum UpDown {
     }
 }
 
-extension UpDown {
-    static func check(_ prev: Double, _ current: Double) -> UpDown {
+extension Fluctuation {
+    static func calculate(prev: Double, current: Double) -> Fluctuation {
         return current - prev > 0 ? .up : .down
     }
 }

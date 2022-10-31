@@ -135,19 +135,19 @@ extension StocksRepositoryImpl {
     private func convertMajorStockIndicesDTOToEntity(_ DTO: DTO.MajorStockIndices)
     -> [Entity.StockIndice] {
         let IXICClosedValues = Array(DTO.IXIC.details.map { $0.close })
-        let SPXClosedValues = Array(DTO.SPX.details.map { $0.close})
+        let SPXClosedValues = Array(DTO.SPX.details.map { $0.close })
         let DJIClosedValues = Array(DTO.DJI.details.map { $0.close })
 
         return [
             .init(title: "나스닥 종합지수",
                   prices: IXICClosedValues,
-                  upDown: .check(Double(IXICClosedValues.last ?? "0")!, Double(IXICClosedValues.first ?? "0")!)),
+                  upDown: Fluctuation.calculate(prev: Double(IXICClosedValues.last ?? "0")!, current: Double(IXICClosedValues.first ?? "0")!)),
             .init(title: "S&P 500",
                   prices: SPXClosedValues,
-                  upDown: .check(Double(SPXClosedValues.last ?? "0")!, Double(SPXClosedValues.first ?? "0")!)),
+                  upDown: Fluctuation.calculate(prev: Double(SPXClosedValues.last ?? "0")!, current: Double(SPXClosedValues.first ?? "0")!)),
             .init(title: "다우지수",
                   prices: DJIClosedValues,
-                  upDown: .check(Double(DJIClosedValues.last ?? "0")!, Double(DJIClosedValues.first ?? "0")!))
+                  upDown: Fluctuation.calculate(prev: Double(DJIClosedValues.last ?? "0")!, current: Double(DJIClosedValues.first ?? "0")!))
         ]
     }
 
