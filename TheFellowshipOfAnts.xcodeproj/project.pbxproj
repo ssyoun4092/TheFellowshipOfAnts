@@ -529,17 +529,11 @@
 			children = (
 				8E7C469A28E076DE00163D30 /* DTO.swift */,
 				8E7C46AE28E08BD100163D30 /* EmptyDTO.swift */,
-				8E7C469C28E0770C00163D30 /* StockOverviewDTO.swift */,
-				8EB9F3072901050F003FA011 /* StockPriceDTO.swift */,
-				8EF5E099290F7D2C0054CD0B /* MultiStocksPrice.swift */,
-				8E9EC10A28E1535400A5DD2D /* SearchStocksDTO.swift */,
-				8EB9F30D29013A82003FA011 /* StockIncomStatementDTO.swift */,
-				8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */,
-				8E0FBC0D28E9B1B800B1930C /* MajorETFsDTO.swift */,
-				8E9EC10E28E1679900A5DD2D /* LogoDTO.swift */,
-				8E8FED7328E5740800944D82 /* Top20StocksDTO.swift */,
-				8E8FED7528E574F400944D82 /* CommoditiesDTO.swift */,
-				8E96D55128E288DA00CCFE15 /* TranslateDTO.swift */,
+				8EB7DC932910D4E5007D64CD /* Stock */,
+				8EB7DC962910D520007D64CD /* ETF */,
+				8EB7DC942910D4FF007D64CD /* Commodity */,
+				8EB7DC972910D528007D64CD /* Logo */,
+				8EB7DC952910D507007D64CD /* Translate */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -583,8 +577,8 @@
 				8ED9A28C29025836007E5046 /* ETF */,
 				8ED9A28D290259FB007E5046 /* Setting */,
 				8E18C9732907907A00AB6908 /* Liked */,
-				8E96D54B28E287AB00CCFE15 /* TranslatedMessageEntity.swift */,
-				8EAB1BD928BDE761004F38C3 /* Fluctuation.swift */,
+				8EB7DC922910D4C8007D64CD /* Translate */,
+				8EB7DC912910D4BC007D64CD /* Fluctuation */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -738,6 +732,104 @@
 				8EA4B55528B60EE900AB5D1D /* ViewModel */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		8EB7DC912910D4BC007D64CD /* Fluctuation */ = {
+			isa = PBXGroup;
+			children = (
+				8EAB1BD928BDE761004F38C3 /* Fluctuation.swift */,
+			);
+			path = Fluctuation;
+			sourceTree = "<group>";
+		};
+		8EB7DC922910D4C8007D64CD /* Translate */ = {
+			isa = PBXGroup;
+			children = (
+				8E96D54B28E287AB00CCFE15 /* TranslatedMessageEntity.swift */,
+			);
+			path = Translate;
+			sourceTree = "<group>";
+		};
+		8EB7DC932910D4E5007D64CD /* Stock */ = {
+			isa = PBXGroup;
+			children = (
+				8E8FED7328E5740800944D82 /* Top20StocksDTO.swift */,
+				8E7C469C28E0770C00163D30 /* StockOverviewDTO.swift */,
+				8EB9F3072901050F003FA011 /* StockPriceDTO.swift */,
+				8EF5E099290F7D2C0054CD0B /* MultiStocksPrice.swift */,
+				8E9EC10A28E1535400A5DD2D /* SearchStocksDTO.swift */,
+				8EB9F30D29013A82003FA011 /* StockIncomStatementDTO.swift */,
+				8E8FED6D28E55EC500944D82 /* MajorStockIndicesDTO.swift */,
+			);
+			path = Stock;
+			sourceTree = "<group>";
+		};
+		8EB7DC942910D4FF007D64CD /* Commodity */ = {
+			isa = PBXGroup;
+			children = (
+				8E8FED7528E574F400944D82 /* CommoditiesDTO.swift */,
+			);
+			path = Commodity;
+			sourceTree = "<group>";
+		};
+		8EB7DC952910D507007D64CD /* Translate */ = {
+			isa = PBXGroup;
+			children = (
+				8E96D55128E288DA00CCFE15 /* TranslateDTO.swift */,
+			);
+			path = Translate;
+			sourceTree = "<group>";
+		};
+		8EB7DC962910D520007D64CD /* ETF */ = {
+			isa = PBXGroup;
+			children = (
+				8E0FBC0D28E9B1B800B1930C /* MajorETFsDTO.swift */,
+			);
+			path = ETF;
+			sourceTree = "<group>";
+		};
+		8EB7DC972910D528007D64CD /* Logo */ = {
+			isa = PBXGroup;
+			children = (
+				8E9EC10E28E1679900A5DD2D /* LogoDTO.swift */,
+			);
+			path = Logo;
+			sourceTree = "<group>";
+		};
+		8EB7DC982910D53E007D64CD /* Stock */ = {
+			isa = PBXGroup;
+			children = (
+				8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */,
+				8E7C469428E05D6000163D30 /* StockOverviewAPI.swift */,
+				8EB9F30F29013BDC003FA011 /* StockIncomStatementAPI.swift */,
+				8EB9F309290105CD003FA011 /* StockPriceAPI.swift */,
+				8EDABDAA28E02AE3008814F3 /* SearchStocksAPI.swift */,
+			);
+			path = Stock;
+			sourceTree = "<group>";
+		};
+		8EB7DC992910D545007D64CD /* ETF */ = {
+			isa = PBXGroup;
+			children = (
+				8E0FBC0F28E9B27700B1930C /* MajorETFsAPI.swift */,
+			);
+			path = ETF;
+			sourceTree = "<group>";
+		};
+		8EB7DC9A2910D54C007D64CD /* Logo */ = {
+			isa = PBXGroup;
+			children = (
+				8E9EC11028E168BA00A5DD2D /* LogoAPI.swift */,
+			);
+			path = Logo;
+			sourceTree = "<group>";
+		};
+		8EB7DC9B2910D551007D64CD /* Translate */ = {
+			isa = PBXGroup;
+			children = (
+				8E96D55328E288E600CCFE15 /* TranslateAPI.swift */,
+			);
+			path = Translate;
 			sourceTree = "<group>";
 		};
 		8EB9F2FA2900FB28003FA011 /* AppCoordinator */ = {
@@ -1015,14 +1107,10 @@
 		8EDABDA928E02AD6008814F3 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				8EDD188828E85D4800AC51D4 /* MajorStockIndicesAPI.swift */,
-				8E0FBC0F28E9B27700B1930C /* MajorETFsAPI.swift */,
-				8E7C469428E05D6000163D30 /* StockOverviewAPI.swift */,
-				8EB9F30F29013BDC003FA011 /* StockIncomStatementAPI.swift */,
-				8EB9F309290105CD003FA011 /* StockPriceAPI.swift */,
-				8EDABDAA28E02AE3008814F3 /* SearchStocksAPI.swift */,
-				8E9EC11028E168BA00A5DD2D /* LogoAPI.swift */,
-				8E96D55328E288E600CCFE15 /* TranslateAPI.swift */,
+				8EB7DC982910D53E007D64CD /* Stock */,
+				8EB7DC992910D545007D64CD /* ETF */,
+				8EB7DC9A2910D54C007D64CD /* Logo */,
+				8EB7DC9B2910D551007D64CD /* Translate */,
 			);
 			path = APIs;
 			sourceTree = "<group>";

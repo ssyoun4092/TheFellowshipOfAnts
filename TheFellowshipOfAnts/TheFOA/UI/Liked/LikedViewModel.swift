@@ -33,7 +33,6 @@ class LikedViewModel {
         let stockPrices = likedItems
             .flatMap { entities in
                 let symbols = entities.map { $0.symbol }
-                print("symbols: \(symbols)")
                 return stockUseCase.fetchMultiStocksPrices(for: symbols)
             }
 
