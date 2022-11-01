@@ -104,6 +104,7 @@
 		8EAB1BD828BDBD99004F38C3 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB1BD728BDBD99004F38C3 /* String+.swift */; };
 		8EAB1BDA28BDE761004F38C3 /* Fluctuation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAB1BD928BDE761004F38C3 /* Fluctuation.swift */; };
 		8EAD1FEF28AFB77700288624 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8EAD1FEE28AFB77700288624 /* Kingfisher */; };
+		8EB7DC902910D467007D64CD /* Fluctuation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB7DC8F2910D467007D64CD /* Fluctuation+.swift */; };
 		8EB9F3022900FC47003FA011 /* StockDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB9F3012900FC47003FA011 /* StockDetailCoordinator.swift */; };
 		8EB9F3062900FD7C003FA011 /* StockDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB9F3052900FD7C003FA011 /* StockDetailViewModel.swift */; };
 		8EB9F3082901050F003FA011 /* StockPriceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB9F3072901050F003FA011 /* StockPriceDTO.swift */; };
@@ -284,6 +285,7 @@
 		8EAB1BD428BDB813004F38C3 /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		8EAB1BD728BDBD99004F38C3 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		8EAB1BD928BDE761004F38C3 /* Fluctuation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fluctuation.swift; sourceTree = "<group>"; };
+		8EB7DC8F2910D467007D64CD /* Fluctuation+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fluctuation+.swift"; sourceTree = "<group>"; };
 		8EB9F3012900FC47003FA011 /* StockDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailCoordinator.swift; sourceTree = "<group>"; };
 		8EB9F3052900FD7C003FA011 /* StockDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewModel.swift; sourceTree = "<group>"; };
 		8EB9F3072901050F003FA011 /* StockPriceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPriceDTO.swift; sourceTree = "<group>"; };
@@ -507,7 +509,6 @@
 				8EDABDA528E0265C008814F3 /* TheFOANetwork */,
 				8E7C469E28E07A9D00163D30 /* Domain */,
 				8E96D50928E1DA5900CCFE15 /* TheFOA */,
-				8EDDC29B287C019D00FA025D /* Extensions */,
 				8E27717928BDA4A600CF6D8D /* TheFellowshipOfAntsKey.xcodeproj */,
 			);
 			path = TheFellowshipOfAnts;
@@ -682,6 +683,7 @@
 				8EB9F31929024E33003FA011 /* UI */,
 				8EB9F31C29024E8D003FA011 /* SupportingFiles */,
 				8EB9F31D29024F76003FA011 /* Resources */,
+				8EDDC29B287C019D00FA025D /* Extensions */,
 				8ED9A29029025A9D007E5046 /* Auth.swift */,
 			);
 			path = TheFOA;
@@ -1035,6 +1037,7 @@
 				8E8068E828B842E2004039B1 /* NSObject+.swift */,
 				8EAB1BD428BDB813004F38C3 /* Double+.swift */,
 				8EAB1BD728BDBD99004F38C3 /* String+.swift */,
+				8EB7DC8F2910D467007D64CD /* Fluctuation+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1359,6 +1362,7 @@
 				8EFFF48728B7727C00C3E762 /* IndiceCollectionViewCell.swift in Sources */,
 				8ED9A2892902523F007E5046 /* ProfileViewController.swift in Sources */,
 				8E7C469D28E0770C00163D30 /* StockOverviewDTO.swift in Sources */,
+				8EB7DC902910D467007D64CD /* Fluctuation+.swift in Sources */,
 				8E17814928C36F1000E009BC /* HomeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
