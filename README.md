@@ -3,7 +3,7 @@
 
 ## Sample
 <!-- ![Simulator Screen Shot - iPhone 13 mini - 2022-10-31 at 18 27 46](https://user-images.githubusercontent.com/79982120/199152094-ace01ac2-dd4a-4f91-885b-528feb97057d.png) -->
-<img src="![Simulator Screen Shot - iPhone 13 mini - 2022-10-31 at 18 27 46](https://user-images.githubusercontent.com/79982120/199152094-ace01ac2-dd4a-4f91-885b-528feb97057d.png)" width="200" height="400"/>
+<img src="https://user-images.githubusercontent.com/79982120/199152094-ace01ac2-dd4a-4f91-885b-528feb97057d.png" width="200" height="400"/>
 
 
 ---
