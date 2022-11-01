@@ -1,5 +1,9 @@
 # 개미원정대
-해외주식에 관심있는 개미들을 위한 앱
+해외주식정보를 간편하게 조회할 수 있는 앱입니다😄
+
+## Sample
+![Simulator Screen Shot - iPhone 13 mini - 2022-10-31 at 18 27 46](https://user-images.githubusercontent.com/79982120/199152094-ace01ac2-dd4a-4f91-885b-528feb97057d.png)
+
 
 ---
 ## Architecture
