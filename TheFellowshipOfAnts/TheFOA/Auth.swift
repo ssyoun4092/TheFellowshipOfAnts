@@ -11,6 +11,8 @@ import CryptoKit
 import AuthenticationServices
 import FirebaseAuth
 
+// TODO: - 파일 옮겨야됨
+
 class AppleAuth: NSObject {
     static let shared = AppleAuth()
     private override init() {

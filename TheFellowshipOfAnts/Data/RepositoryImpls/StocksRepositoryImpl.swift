@@ -84,24 +84,26 @@ class StocksRepositoryImpl: StocksRepository {
 
     func fetchMultiStocksPrices(for symbols: [String]) -> Observable<[Entity.MultiStocksPrice]> {
         let publishSubject = PublishSubject<[Entity.MultiStocksPrice]>()
+        let dispatchQueue = DispatchQueue(label: "com.TheFOA.StocksRepositoryImpl", qos: .background)
         let dispatchGroup = DispatchGroup()
         var tempMultiStocksPrice: [Entity.MultiStocksPrice] = []
 
-        symbols.forEach { symbol in
-            dispatchGroup.enter()
-            network.request(StockPriceAPI(symbol: symbol, timeInterval: ._1day))
-                .compactMap { [weak self] dto in
-                    return self?.convertStockPriceDTOToEntity(dto)
-                }
-                .subscribe(onSuccess: {
-                    tempMultiStocksPrice.append(.init(close: $0.map { $0.close }))
-                    dispatchGroup.leave()
-                })
-                .disposed(by: self.disposeBag)
-        }
+        dispatchQueue.async { [weak self] in
+            guard let self = self else { return }
+            symbols.forEach { symbol in
+                dispatchGroup.enter()
+                self.fetchStockPrices(for: symbol)
+                    .subscribe {
+                        tempMultiStocksPrice.append(.init(close: $0.map { $0.close }))
+                        dispatchGroup.leave()
+                    }
+                    .disposed(by: self.disposeBag)
+                dispatchGroup.wait()
+            }
 
-        dispatchGroup.notify(queue: .main) {
-            publishSubject.onNext(tempMultiStocksPrice)
+            dispatchGroup.notify(queue: .main) {
+                publishSubject.onNext(tempMultiStocksPrice)
+            }
         }
 
         return publishSubject

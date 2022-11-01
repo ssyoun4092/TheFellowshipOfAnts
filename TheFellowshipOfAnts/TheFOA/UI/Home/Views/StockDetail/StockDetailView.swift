@@ -111,7 +111,6 @@ class StockDetailView: UIView {
     func setHeartButtonImage(isLiked: Bool) {
         if isLiked {
             heartButton.setImage(UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysOriginal), for: .normal)
-//            animateLottieHeartView()
         } else {
             heartButton.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
