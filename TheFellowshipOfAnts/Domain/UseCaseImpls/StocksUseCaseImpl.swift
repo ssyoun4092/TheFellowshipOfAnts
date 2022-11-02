@@ -24,7 +24,7 @@ class StocksUseCaseImpl: StocksUseCase {
     func fetchStockOverview(symbol: String) -> Observable<[String]> {
         return repository.fetchStockOverview(for: symbol)
             .map { overview in
-                ["$" + Double(overview.marketCap)!.convertToMetrics(),
+                ["$" + Double(overview.marketCap)!.asMetrics(),
                  "$" + overview.the52WeekHigh,
                  "$" + overview.the52WeekLow,
                  overview.PER,

@@ -51,16 +51,26 @@ class FOABarChartView: UIView {
     }()
 
     func configure(with values: [Double], periods: [String]) {
-        var entries = [BarChartDataEntry]()
+//        var entries = [BarChartDataEntry]()
+        print("values: \(values)")
 
-        for (index, value) in values.enumerated() {
-            let entryData = BarChartDataEntry(x: Double(index), y: value)
-            entries.append(entryData)
+//        for (index, value) in values.enumerated() {
+//            let entryData = BarChartDataEntry(x: Double(index), y: value)
+//            entries.append(entryData)
+//        }
+
+        let entries = (0..<values.count).map { index -> BarChartDataEntry in
+            BarChartDataEntry(x: Double(index), y: values[index])
         }
 
         let chartDataSet = setupChartDataSet(entries: entries)
         for (index, entry) in chartDataSet.enumerated() {
             stringForValue(values[index], entry: entry, dataSetIndex: index, viewPortHandler: nil)
+        }
+
+        if let minimumValue = values.min(),
+           minimumValue < 0 {
+            barChartView.leftAxis.axisMinimum = minimumValue * 3
         }
 
         setupLeftAxisMaximum()
@@ -101,7 +111,7 @@ extension FOABarChartView {
 extension FOABarChartView: ValueFormatter {
     func stringForValue(_ value: Double, entry: Charts.ChartDataEntry, dataSetIndex: Int, viewPortHandler: Charts.ViewPortHandler?) -> String {
         switch chartType {
-        case .absolute: return value.convertToMetrics()
+        case .absolute: return value.asMetrics()
         case .percentage: return String((value * 100).toStringWithFloor(at: 1)) + "%"
         }
     }
