@@ -12,24 +12,34 @@ extension Double {
         return String(format: "%.\(num)f", self)
     }
 
-    func convertToMetrics() -> String {
-        switch self {
+    func asMetrics() -> String {
+        var value = self
+
+        let isNegativeValue = value < 0
+        if isNegativeValue { value *= -1 }
+
+        var formattedValue: Double = 0
+        var formattedMetrics: String = ""
+
+        switch value {
         case ..<1_000:
-            return String(self)
+            formattedMetrics = String(value)
         case ..<1_000_000:
-            let formattedValue = self / 1_000
-            return String(format: "%.1f", formattedValue) + "K"
+            formattedValue = value / 1_000
+            formattedMetrics = String(format: "%.1f", formattedValue) + "K"
         case ..<1_000_000_000:
-            let formattedValue = self / 1_000_000
-            return String(format: "%.1f", formattedValue) + "M"
+            formattedValue = value / 1_000_000
+            formattedMetrics = String(format: "%.1f", formattedValue) + "M"
         case ..<1_000_000_000_000:
-            let formattedValue = self / 1_000_000_000
-            return String(format: "%.1f", formattedValue) + "B"
+            formattedValue = value / 1_000_000_000
+            formattedMetrics = String(format: "%.1f", formattedValue) + "B"
         case ..<1_000_000_000_000_000:
-            let formattedValue = self / 1_000_000_000_000
-            return String(format: "%.1f", formattedValue) + "T"
+            formattedValue = value / 1_000_000_000_000
+            formattedMetrics = String(format: "%.1f", formattedValue) + "T"
         default:
-            return String(self)
+            return String(value)
         }
+
+        return isNegativeValue ? "-" + formattedMetrics : formattedMetrics
     }
 }

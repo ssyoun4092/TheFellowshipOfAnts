@@ -22,6 +22,7 @@ class AppCoordinator: Coordinator {
         window.rootViewController = navigationController
 //        window.rootViewController = UINavigationController(r)
         showLoginVC()
+//        showTabBarVC()
 
         window.makeKeyAndVisible()
     }
